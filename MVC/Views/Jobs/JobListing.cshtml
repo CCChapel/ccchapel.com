@@ -24,18 +24,20 @@
         <div class="section-title">Position Summary</div>
         <div class="section-description">@Html.Raw(Html.Kentico().ResolveUrls(Model.JobSummary.ProcessForOutput()))</div>
 
-        <div class="grid">
-            <div class="grid__item one-third palm--one-whole">
+        <hr />
+
+        <div class="grid grid--center">
+            <div class="grid__item one-third lap--one-half palm--one-whole">
                 <div class="section-subtitle">Job Responsibilities</div>
                 <div>@Html.Raw(Html.Kentico().ResolveUrls(Model.JobResponsibilities.ProcessForOutput()))</div>
             </div><!--
                   
-         --><div class="grid__item one-third palm--one-whole">
+         --><div class="grid__item one-third lap--one-half palm--one-whole">
                 <div class="section-subtitle">Qualifications &amp; Requirements</div>
                 <div>@Html.Raw(Html.Kentico().ResolveUrls(Model.JobQualifications.ProcessForOutput()))</div>
             </div><!--
                   
-         --><div class="grid__item one-third palm--one-whole">
+         --><div class="grid__item one-third lap--one-half palm--one-whole">
                 <div class="section-subtitle">Personal/Character</div>
                 <div>@Html.Raw(Html.Kentico().ResolveUrls(Model.JobCharacter.ProcessForOutput()))</div>
             </div>

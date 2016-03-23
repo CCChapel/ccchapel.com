@@ -795,6 +795,8 @@
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Jobs\JobListing.cshtml" />
     <Content Include="Views\Jobs\_JobsTable.cshtml" />
+    <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\lists.scss" />
+    <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\horizontal-rule.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

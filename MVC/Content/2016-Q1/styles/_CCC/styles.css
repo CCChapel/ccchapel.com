@@ -2517,6 +2517,18 @@ tbody tr {
   width: 100%;
   object-fit: contain; }
 
+ul {
+  list-style: square;
+  list-style-position: inside;
+  margin-left: 0; }
+
+li {
+  margin-left: 1rem;
+  text-indent: -1rem; }
+
+hr {
+  margin-bottom: 24px; }
+
 .cta, .fsSubmit input.fsSubmitButton {
   cursor: pointer;
   border: 2px solid currentColor;
