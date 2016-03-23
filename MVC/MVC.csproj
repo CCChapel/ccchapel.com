@@ -670,6 +670,8 @@
     <Compile Include="Models\Kentico\Types\PageTypes\Events\Providers\CcbEvent.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Image\Image-Background.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Image\Image-Basic.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\Jobs\JobListing.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\Jobs\Providers\JobListing.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\MacroLink\MacroLink.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\MacroLink\Providers\MacroLink.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Media\AmazonMP3.cs" />

@@ -2512,7 +2512,8 @@ tbody tr {
 
 .img-square {
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  object-fit: contain; }
 
 .cta, .fsSubmit input.fsSubmitButton {
   cursor: pointer;
