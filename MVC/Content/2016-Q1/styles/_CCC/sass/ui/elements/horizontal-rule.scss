@@ -1,3 +1,7 @@
 ﻿hr {
-    margin-bottom: $bottom-margin;
+    border: 1px solid $blue;
+    margin-top: $vertical-padding / 2;
+    margin-bottom: $vertical-padding / 2;
+
+    width: 66%;
 }

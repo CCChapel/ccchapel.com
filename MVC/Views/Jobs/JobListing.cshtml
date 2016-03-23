@@ -8,9 +8,7 @@
     <div class="content-wrapper">
         <div class="section-title">@Model.JobTitle</div>
         <div class="section-subtitle">@Model.Campus.CampusName Campus</div>
-        <div class="section-description">
-            The @Model.JobTitle reports to the @Model.DirectReport.
-        </div>
+        <div class="section-description">@Html.Raw(Html.Kentico().ResolveUrls(Model.JobSummary.ProcessForOutput()))</div>
 
         <div class="section-description">
             <a class="cta auto" href="@Model.JobApplicationUrl">Apply For This Job</a>
@@ -21,8 +19,11 @@
 
 <div class="[ content-section light-gray ] [ grid__item one-whole ]">
     <div class="content-wrapper">
-        <div class="section-title">Position Summary</div>
-        <div class="section-description">@Html.Raw(Html.Kentico().ResolveUrls(Model.JobSummary.ProcessForOutput()))</div>
+        <div class="section-title">Job Description</div>
+        
+        <div class="section-description">
+            The @Model.JobTitle reports to the @Model.DirectReport.
+        </div>
 
         <hr />
 

@@ -1361,16 +1361,6 @@ body {
 .content-section.light-gray {
   background: #EEE; }
 
-.content-section.image + .content-section.transparent, .content-section.sub-image + .content-section.transparent,
-.content-section.light-blue + .content-section.transparent,
-.content-section.light-gray + .content-section.transparent {
-  margin-top: 72px; }
-
-.content-section.transparent + .content-section.image, .content-section.transparent + .content-section.sub-image,
-.content-section.transparent + .content-section.light-blue,
-.content-section.transparent + .content-section.light-gray {
-  margin-top: 72px; }
-
 .content-section--noBottomBuffer, .content-section.no-bottom-margin {
   margin-bottom: inherit; }
 
@@ -2527,7 +2517,10 @@ li {
   text-indent: -1rem; }
 
 hr {
-  margin-bottom: 24px; }
+  border: 1px solid #185e94;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  width: 66%; }
 
 .cta, .fsSubmit input.fsSubmitButton {
   cursor: pointer;

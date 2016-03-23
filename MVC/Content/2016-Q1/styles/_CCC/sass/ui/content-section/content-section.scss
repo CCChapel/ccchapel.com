@@ -77,13 +77,13 @@
     &.image + &.transparent,
     &.light-blue + &.transparent,
     &.light-gray + &.transparent {
-        margin-top: $vertical-padding;
+        //margin-top: $vertical-padding;
     }
     
     &.transparent + &.image,
     &.transparent + &.light-blue,
     &.transparent + &.light-gray {
-        margin-top: $vertical-padding;
+        //margin-top: $vertical-padding;
     }
     
     &--noBottomBuffer,
