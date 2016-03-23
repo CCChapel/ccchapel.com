@@ -9,13 +9,13 @@
     /************************************************
     // Private Properties
     //***********************************************/
-    var apiUrl = "api/search?query=";
+    var apiUrl = "api/search/";
 
     /************************************************
     // Public Methods
     //***********************************************/
     CCChapel.getSearchResults = function(query) {
-        var url = apiUrl + encodeURI(query.replace(" ", "+"));
+        var url = apiUrl + encodeURI(query); //.replace(" ", "+"));
         console.log(url);
 
         return $.getJSON(url);

@@ -39,30 +39,30 @@ namespace MVC.Controllers
             return View(model);
         }
 
-        public ActionResult Json(string query)
-        {
-            int numberOfResults;
-            var model = new SearchResults()
-            {
-                Items = mService.Search(
-                    query,
-                    page: 0,
-                    pageSize: PAGE_SIZE,
-                    numberOfResults: out numberOfResults),
-                Query = query,
-                ItemCount = numberOfResults
-            };
+        //public ActionResult Json(string query)
+        //{
+        //    int numberOfResults;
+        //    var model = new SearchResults()
+        //    {
+        //        Items = mService.Search(
+        //            query,
+        //            page: 0,
+        //            pageSize: PAGE_SIZE,
+        //            numberOfResults: out numberOfResults),
+        //        Query = query,
+        //        ItemCount = numberOfResults
+        //    };
 
-            return View("JSONResults", model);
+        //    return View("JSONResults", model);
 
-            //if (numberOfResults > 0)
-            //{
-            //    return View("JSONResults", model);
-            //}
-            //else
-            //{
-            //    return View("_Empty");
-            //}
-        }
+        //    //if (numberOfResults > 0)
+        //    //{
+        //    //    return View("JSONResults", model);
+        //    //}
+        //    //else
+        //    //{
+        //    //    return View("_Empty");
+        //    //}
+        //}
     }
 }

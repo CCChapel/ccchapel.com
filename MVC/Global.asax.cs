@@ -4,9 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+
+using API;
 
 using Kentico.Web.Mvc;
 
@@ -17,6 +20,10 @@ namespace MVC
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            // Manually installed WebAPI 2.2 after making an MVC project.
+            GlobalConfiguration.Configure(WebApiConfig.Register); // NEW way
+
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             // Enables and configures the selected Kentico ASP.NET MVC integration features
