@@ -53,7 +53,7 @@
         text-align: center;
 
         @include grid-media-query("desk") {
-            width: 50%;
+            //max-width: 66%;
         }
     }
 
