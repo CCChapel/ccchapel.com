@@ -29,6 +29,13 @@ namespace MVC
             //    defaults: new { controller = "Search", action = "Json" }
             //);
 
+            //Jobs
+            routes.MapRoute(
+                name: "Jobs",
+                url: "employment/{jobTitle}",
+                defaults: new { controller = "Jobs", action = "Index", jobTitle = UrlParameter.Optional }
+            );
+
             //Search
             routes.MapRoute(
                 name: "SearchResults",

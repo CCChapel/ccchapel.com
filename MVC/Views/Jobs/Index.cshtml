@@ -1,0 +1,26 @@
+﻿@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+}
+
+@*Page Sections*@
+@{
+    //Get Page
+    var page = PageProvider.GetPage("/Pages/Employment", SiteHelpers.SiteCulture, SiteHelpers.SiteName).FirstOrDefault();
+
+    //Process Each Section
+    foreach (var sect in page.Sections)
+    {
+        Html.RenderAction("Index", "PageSection", new { section = sect });
+    }
+}
+
+<div class="[ content-section no-bottom-margin light-gray ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title">Current Openings</div>
+
+        @{ Html.RenderPartial("_JobsTable"); }
+    </div>
+</div>

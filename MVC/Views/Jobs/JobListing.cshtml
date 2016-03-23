@@ -1,0 +1,52 @@
+﻿@model CMS.DocumentEngine.Types.JobListing
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+}
+
+<div class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title">@Model.JobTitle</div>
+        <div class="section-subtitle">@Model.Campus.CampusName Campus</div>
+        <div class="section-description">
+            The @Model.JobTitle reports to the @Model.DirectReport.
+        </div>
+
+        <div class="section-description">
+            <a class="cta auto" href="@Model.JobApplicationUrl">Apply For This Job</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="[ content-section light-gray ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title">Position Summary</div>
+        <div class="section-description">@Html.Raw(Html.Kentico().ResolveUrls(Model.JobSummary.ProcessForOutput()))</div>
+    </div>
+</div>
+
+<div class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="grid">
+            <div class="grid__item one-third palm--one-whole">
+                <div class="section-subtitle">Job Responsibilities</div>
+                <div>@Html.Raw(Html.Kentico().ResolveUrls(Model.JobResponsibilities.ProcessForOutput()))</div>
+            </div><!--
+                  
+         --><div class="grid__item one-third palm--one-whole">
+                <div class="section-subtitle">Qualifications &amp; Requirements</div>
+                <div>@Html.Raw(Html.Kentico().ResolveUrls(Model.JobQualifications.ProcessForOutput()))</div>
+            </div><!--
+                  
+         --><div class="grid__item one-third palm--one-whole">
+                <div class="section-subtitle">Personal/Character</div>
+                <div>@Html.Raw(Html.Kentico().ResolveUrls(Model.JobCharacter.ProcessForOutput()))</div>
+            </div>
+        </div>
+
+        <div class="section-description">
+            <a class="cta auto" href="@Model.JobApplicationUrl">Apply For This Job</a>
+        </div>
+    </div>
+</div>

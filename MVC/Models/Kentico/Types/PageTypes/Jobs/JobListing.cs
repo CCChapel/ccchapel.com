@@ -138,11 +138,12 @@ namespace CMS.DocumentEngine.Types
         {
             get
             {
-                return ValidationHelper.GetString(GetValue("JobResponsibilities"), "<ul>
-< li > Use </ li >
-< li > a </ li >
-< li > list </ li >
-</ ul > ");
+                return ValidationHelper.GetString(GetValue("JobResponsibilities"), 
+                    @"<ul>
+                        <li>Use</li>
+                        <li>a</li>
+                        <li>list</li>
+                      </ul>");
 
             }
             set
@@ -160,12 +161,12 @@ namespace CMS.DocumentEngine.Types
         {
             get
             {
-                return ValidationHelper.GetString(GetValue("JobQualifications"), "<ul>
-< li > Use </ li >
-< li > a </ li >
-< li > list </ li >
-</ ul > ");
-
+                return ValidationHelper.GetString(GetValue("JobQualifications"),
+                    @"<ul>
+                        <li>Use</li>
+                        <li>a</li>
+                        <li>list</li>
+                      </ul>");
             }
             set
             {
@@ -182,15 +183,15 @@ namespace CMS.DocumentEngine.Types
         {
             get
             {
-                return ValidationHelper.GetString(GetValue("JobCharacter"), "<ul>
-  < li >
-  This person should be a member of Christ Community Chapel or in agreement with < a href = "/new-here#beliefs-core-values" > Christ Community Chapel doctrine and DNA </ a >
-  </ li >
-  < li > This person should attend regularly and support Christ Community Chapel weekly services / ministry </ li >
-  < li > This person is expected to hold weekly office hours(TBD) </ li >
-  < li > This person is expected to attend the Christ Community Chapel All Staff Meeting </ li >
-</ ul > ");
-
+                return ValidationHelper.GetString(GetValue("JobCharacter"), 
+                    @"<ul>
+                          <li>
+                            This person should be a member of Christ Community Chapel or in agreement with <a href=""/new-here#beliefs-core-values"">Christ Community Chapel doctrine and DNA</a>
+                          </li>
+                          <li>This person should attend regularly and support Christ Community Chapel weekly services/ministry</li>
+                          <li>This person is expected to hold weekly office hours (TBD)</li>
+                          <li>This person is expected to attend the Christ Community Chapel All Staff Meeting</li>
+                      </ul>");
             }
             set
             {

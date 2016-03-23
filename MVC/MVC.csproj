@@ -624,6 +624,7 @@
     <Compile Include="Classes\Kentico\Types\CustomTables\SpeakersItem.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Events\CcbEvent.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Image\Image-Background.cs" />
+    <Compile Include="Classes\Kentico\Types\PageTypes\Jobs\JobListing.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Media\AmazonMP3.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Message\Message-Series.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Message\Message-Sermon.cs" />
@@ -642,16 +643,17 @@
     <Compile Include="Classes\_CCC\Helpers\SiteHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\UrlHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\VimeoHelpers.cs" />
-    <Compile Include="Controllers\EventController.cs" />
-    <Compile Include="Controllers\EventsController.cs" />
-    <Compile Include="Controllers\HttpErrorsController.cs" />
-    <Compile Include="Controllers\MessageController.cs" />
-    <Compile Include="Controllers\MessagesController.cs" />
-    <Compile Include="Controllers\MessageSeriesController.cs" />
-    <Compile Include="Controllers\NotificationController.cs" />
-    <Compile Include="Controllers\PageController.cs" />
-    <Compile Include="Controllers\PageSectionController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\MVC\EventController.cs" />
+    <Compile Include="Controllers\MVC\EventsController.cs" />
+    <Compile Include="Controllers\MVC\HttpErrorsController.cs" />
+    <Compile Include="Controllers\MVC\JobsController.cs" />
+    <Compile Include="Controllers\MVC\MessageController.cs" />
+    <Compile Include="Controllers\MVC\MessagesController.cs" />
+    <Compile Include="Controllers\MVC\MessageSeriesController.cs" />
+    <Compile Include="Controllers\MVC\NotificationController.cs" />
+    <Compile Include="Controllers\MVC\PageController.cs" />
+    <Compile Include="Controllers\MVC\PageSectionController.cs" />
+    <Compile Include="Controllers\MVC\SearchController.cs" />
     <Compile Include="Controllers\WebAPI\SearchController.cs" />
     <Compile Include="Controllers\WebAPI\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -790,6 +792,9 @@
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\blocks\body\dividing-line.scss" />
     <Content Include="Views\Search\JSONResults.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Jobs\JobListing.cshtml" />
+    <Content Include="Views\Jobs\_JobsTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

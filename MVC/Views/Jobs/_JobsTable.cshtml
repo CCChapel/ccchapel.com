@@ -1,0 +1,21 @@
+﻿@using CMS.DocumentEngine.Types
+
+<table class="jobs__table">
+    <thead>
+        <tr>
+            <th class="one-whole">Job Title</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            //Get Jobs
+            foreach (JobListing job in JobListingProvider.GetJobListings().Published())
+            {
+                <tr>
+                    <td><a href="@job.RouteUrl">@job.JobTitle</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
