@@ -166,6 +166,8 @@ div.content-section.transparent:last-child {
 }
 
 .section-subtitle {
+    margin-bottom: $bottom-margin;
+    
     @include typecsset-font-size($tertiary-headline-size);
     font-weight: bold;
 
@@ -177,6 +179,8 @@ div.content-section.transparent:last-child {
 }
 
 .section-sub-subtitle {
+    margin-bottom: $bottom-margin;
+
     @include typecsset-font-size($quaternary-headline-size);
     font-weight: bold;
 

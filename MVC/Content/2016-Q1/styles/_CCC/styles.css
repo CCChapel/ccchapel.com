@@ -1414,6 +1414,7 @@ div.content-section.transparent:last-child {
       text-align: center; } }
 
 .section-subtitle {
+  margin-bottom: 24px;
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 1;
@@ -1423,6 +1424,7 @@ div.content-section.transparent:last-child {
     text-align: left; }
 
 .section-sub-subtitle {
+  margin-bottom: 24px;
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.2;
