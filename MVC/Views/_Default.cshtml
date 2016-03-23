@@ -302,11 +302,13 @@
         $(document).ready(function () {
             var timer;
             var delay = 600;
+            var query;
 
+            //Setup AJAX Results
             $(searchInputSelector).on('input', function () {
                 window.clearTimeout(timer);
                 timer = window.setTimeout(function () {
-                    var query = $(searchInputSelector).val();
+                    query = $(searchInputSelector).val();
                     console.log(query);
 
                     var jqxhr = CCChapel.getSearchResults(query);
@@ -320,6 +322,17 @@
                          });
                 }, delay);
             });
+
+            //Setup Enter to Load Search Page
+
+
+            $(searchInputSelector).keyup(function (e) {
+                if (e.keyCode == 13) {
+                    window.location = "/search?query=" + encodeURI(query.replace(" ", "+"));
+                }
+            });
+
+
         });
 
         function displaySearchResults(results) {
