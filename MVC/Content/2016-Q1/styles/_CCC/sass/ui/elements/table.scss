@@ -1,0 +1,60 @@
+﻿//table {
+//    
+//}
+
+//.palm--hide-col {
+//    @include grid-media-query("palm") {
+//        visibility: collapse;
+//    }
+//}
+
+.hide-col-4 {
+    tr th:nth-of-type(4),       
+    tr td:nth-of-type(4) {
+        display: none;
+    }
+}
+
+.palm--hide-col-3 {
+    @include grid-media-query("palm") {
+        tr th:nth-of-type(3),       
+        tr td:nth-of-type(3) {
+            display: none;
+        }
+    }
+}
+
+.palm--hide-col-4 {
+    @include grid-media-query("palm") {
+        tr th:nth-of-type(4),       
+        tr td:nth-of-type(4) {
+            display: none;
+        }
+    }
+}
+
+.palm--hide-col-5 {
+    @include grid-media-query("palm") {
+        tr th:nth-of-type(5),       
+        tr td:nth-of-type(5) {
+            display: none;
+        }
+    }
+}
+
+thead,
+tbody {
+    border-bottom: 2px solid $black;
+}
+
+th {
+    @extend .accent;
+    
+    text-align: left;
+}
+
+tbody {
+    tr {
+        border-bottom: 1px solid $medium-gray;
+    }
+}

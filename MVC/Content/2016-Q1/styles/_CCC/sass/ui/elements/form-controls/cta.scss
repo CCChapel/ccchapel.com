@@ -1,0 +1,149 @@
+﻿//**************************************************
+// CALL TO ACTION BUTTONS
+//**************************************************/
+//Color Variants
+@mixin cta--red($important: false) {
+    $add: "" !default;
+    @if $important == true {
+        $add: " !important";
+    }
+    
+    background-color: transparentize($red, .2)#{$add};
+    border: none#{$add};
+
+    color: #FFF#{$add};
+
+    &:hover,
+    &.active {
+        background-color: $dark-red#{$add};
+        color: #FFF#{$add};
+    } 
+
+    &.disabled,
+    &.disabled:hover,
+    &.active.disabled {
+        background-color: $dark-gray !important;
+        color: #FFF !important;
+
+        cursor: default;
+    }
+}
+
+@mixin cta--transparent($important: false) {
+    $add: "" !default;
+    @if $important == true {
+        $add: " !important";
+    }
+    
+    background-color: transparent#{$add};
+    border-color: $blue#{$add};
+
+    color: #FFF#{$add};
+
+    &:hover,
+    &.active {
+        background-color: $blue#{$add};
+        color: #FFF#{$add};
+    }
+    
+    &.blue-text {
+        color: $blue#{$add};
+        
+        &:hover,
+        &.active {
+            color: #FFF#{$add};
+        }
+    }
+}
+
+.cta {
+    $border-size: 2px;
+    
+    @extend .center-vertically;
+    
+    cursor: pointer;
+
+    border: $border-size solid currentColor;
+    border-radius: $border-radius;
+    box-sizing: border-box;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: none;
+    white-space: nowrap;
+    text-overflow: hidden;
+    overflow: hidden;
+
+    height: 3rem !important;
+    width: 75%; // !important;
+
+    transition: background-color $transition-length $transition-function,
+                color $transition-length $transition-function,
+                border-color $transition-length $transition-function;
+
+    @include grid-media-query("portable") {
+        width: 100%;
+    }
+    
+    //Size variants
+    &.auto {
+        display: inline-flex !important;
+        margin-left: 0;
+        padding: 0 $magic-number;
+
+        width: auto;
+        
+        @include grid-media-query("palm") {
+            width: 100%;
+        }
+        
+        // &.palm--one-whole {
+        //     @include grid-media-query("palm") {
+        //         width: 100%;
+        //     }
+        // }
+    }
+
+    &.full {
+        width: 100% !important;
+    }
+
+    & + & {
+        @include grid-media-query("desk") {
+            margin-left: $magic-number;
+        }
+
+        @include grid-media-query("lap") {
+            margin-left: $magic-number;
+        }
+        
+        @include grid-media-query("palm") {
+            margin-top: 10px;
+        }
+    }
+    
+    //Transparent & Light Gray Sections
+    .content-section.transparent &,
+    .content-section.light-gray & {
+        @include cta--red;
+    }
+    
+    //Image, Light Blue & Footer Sections
+    .content-section.image &,
+    .content-section.light-blue &,
+    footer & {
+        @include cta--transparent;
+    }
+    
+    &.red {
+        @include cta--red(true);
+    }
+
+    &.transparent {
+        @include cta--transparent(true);
+    }
+}

@@ -1,0 +1,23 @@
+﻿@state-smarttip-text:             @color-blue-100;
+@state-smarttip-bg:               @color-gray-160;
+@state-smarttip-border:           1px dashed @color-gray-100;
+
+@alert-smarttip-bg:               @state-smarttip-bg;
+@alert-smarttip-border:           @state-smarttip-border;
+@alert-smarttip-text:             @state-smarttip-text;
+@alert-smarttip-icon-color:       @color-smarttip;
+@alert-smarttip-icon-close-color: @color-smarttip;
+        
+.alert-smarttip {
+    .alert-variant(@alert-smarttip-bg;
+    @alert-smarttip-text;
+    @alert-smarttip-icon-color;
+    @alert-smarttip-icon-close-color;
+    @alert-smarttip-border
+    );
+    z-index: (@zindex-alert - 1);
+    
+    h4 {
+        color: @color-blue-70;
+    }
+}

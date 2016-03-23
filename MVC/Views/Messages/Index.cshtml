@@ -1,0 +1,49 @@
+﻿@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+
+@model CMS.DocumentEngine.Types.Page
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = "Messages";
+}
+
+@*Page Sections & Series*@
+@{
+    //Get Page
+    var page = PageProvider.GetPage("/Pages/Messages", SiteHelpers.SiteCulture, SiteHelpers.SiteName).FirstOrDefault();
+
+    //Process Each Section
+    foreach (var sect in page.Sections)
+    {
+        Html.RenderAction("Index", "PageSection", new { section = sect });
+    }
+
+    //Get Series
+    var series = SeriesProvider.GetSeries();
+}
+
+<div class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title">Weekend Messages</div>
+        <div class="section-description">Miss a weekend? Want to hear a message again? Look no further.</div>
+
+        <div class="grid"><!--
+            @{
+                //Render Cross Sell Items
+                foreach (var s in series)
+                {
+                    //Get Linked Page Type
+                    if (s.ClassName == Series.CLASS_NAME)
+                    {
+                        Html.RenderAction("CrossSell", "MessageSeries", new { guid = s.NodeGUID, title = s.Fields.Title, description = "" });
+                    }
+                }
+            }
+     --></div>
+
+        <div class="section-description">
+            <a class="cta one-third" href="https://vimeo.com/ccchapel/channels" target="_blank">Archives</a>
+        </div>
+    </div>
+</div>

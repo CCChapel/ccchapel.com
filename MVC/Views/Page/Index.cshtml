@@ -1,0 +1,15 @@
+﻿@model CMS.DocumentEngine.Types.Page
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = Model.Fields.Name;
+}
+
+@{ 
+    //Process Each Section
+    foreach (var sect in Model.Sections)
+    {
+        <a name="@sect.NodeAlias.ToLower()"></a>
+        Html.RenderAction("Index", "PageSection", new { section = sect });
+    }
+}

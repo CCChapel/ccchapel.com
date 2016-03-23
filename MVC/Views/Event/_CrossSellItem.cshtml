@@ -1,0 +1,19 @@
+﻿@using CMS.DocumentEngine.Types
+
+@model CcbEvent
+
+--><div class="cross-sell__item [ grid__item one-third lap--one-half palm--one-whole ]">
+    <a href="@Model.RouteUrl">
+        <div class="[ cross-sell__image bg--center-center ] [ one-whole ]"
+                style="background-image: url(@Url.Kentico().Attachment(Model.GraphicAttachment))">
+        </div>
+
+        <div class="cross-sell__name [ one-whole ]">
+            @ViewData["crossSellTitle"]
+        </div>
+
+        <div class="cross-sell__details [ one-whole ]">
+            @ViewData["crossSellDescription"]
+        </div>
+    </a>
+</div><!--

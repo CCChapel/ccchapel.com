@@ -1,0 +1,44 @@
+﻿@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+
+@model CCC.Models.EventsPage
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = "Events";
+}
+
+@*Page Sections*@
+@{
+    //Get Page
+    var page = PageProvider.GetPage("/Pages/Events", SiteHelpers.SiteCulture, SiteHelpers.SiteName).FirstOrDefault();
+
+    //Process Each Section
+    foreach (var sect in page.Sections)
+    {
+        Html.RenderAction("Index", "PageSection", new { section = sect });
+    }
+}
+
+<a name="all-events"></a>
+@*Events Table*@
+@{ 
+    //Get Calendar Collection 
+    var events = CCB.PublicCalendar.GetEvents(Model.List.StartDate, Model.List.EndDate);
+}
+
+<div name="all-events" class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title">All Events</div>
+        <div class="section-description">
+            Here's everything happening from @Model.List.StartDate.ToString("MMM d") to @Model.List.EndDate.ToString("MMM d").<br />
+            If you're looking for something specific, try searching for a keyword or by campus.
+        </div>
+
+        @{ Html.RenderPartial("_EventTable", events); }
+
+        <div class="section-description">
+            <a href="https://communitychapel.ccbchurch.com/w_group_list.php">Looking for something happening week-in / week-out?</a>
+        </div>
+    </div>
+</div>

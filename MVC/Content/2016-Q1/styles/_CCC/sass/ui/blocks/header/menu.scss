@@ -1,0 +1,174 @@
+﻿//**************************************************
+// MENU
+//**************************************************/
+.menu {
+    height: 100%;
+    
+    div {
+        height: 100%;
+    }
+    
+    color: #FFF;
+    font-weight: bold;
+    text-align: center;
+
+    @include grid-media-query("portable") {
+        padding: .5em 0;
+
+        height: 100vh;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+    
+    &__search {
+        @include grid-media-query("portable") {
+            height: auto !important;
+        }
+        
+        &-grid {
+            height: 100%;
+        }
+        
+        &-field {
+            @include grid-media-query("desk") {
+                padding-top: 1em;
+                padding-bottom: 1em;
+            }
+
+            &.show {
+                display: inline-block;
+            }
+        }
+        
+        &-icon {
+            cursor: pointer;
+
+            height: 100%;
+
+            transition: color 250ms linear;
+
+            &.open {
+                color: $light-blue;
+            }
+        }
+    }
+    
+    /*&__items {
+    }
+    
+    &__grid {
+    }*/
+    
+    &__item {
+        text-transform: uppercase;
+        white-space: nowrap;
+        
+        @include grid-media-query("portable") {
+            @include typecsset-font-size($tertiary-headline-size);
+            
+            height: 3rem !important;
+        }
+    }
+}
+
+.logo {
+    height: 85%;
+}
+
+//*# Menu Icon #*//
+/* Based on code originally by @bennettfeely, and updated by @SaraSoueidan (https://github.com/SaraSoueidan/navicon-transformicons) */
+$button-size : 1.5rem;
+$nav-icon-transition-speed: 100ms; // increase this to see the transformations in slow-motion
+
+.nav-icon {
+    //padding: $button-size/2 $button-size/4;
+    margin-top: -10px;
+    transition: $nav-icon-transition-speed;
+    cursor: pointer;
+    user-select: none;
+    border-radius: $button-size/7;
+
+    &:hover {
+        opacity: 1;
+    }
+    &:active {
+        transition: 0;
+    }
+}
+
+@mixin line {
+    display: inline-block;
+    width: $button-size;
+    height: $button-size/7;
+    background: currentColor;
+    border-radius: $button-size/14;
+    //transition: $transition;
+}
+
+.lines {
+    @include line;
+    position: relative;
+
+    &:before, &:after {
+        @include line;
+        position: absolute;
+        left:0;
+        content: '';
+        -webkit-transform-origin: $button-size/14 center;
+        transform-origin: $button-size/14 center;
+    }
+    &:before {
+        top: $button-size/4;
+    }
+    &:after {
+        top: -$button-size/4;
+    }
+}
+
+.nav-icon:hover {
+    .lines {
+        &:before {
+            top: $button-size/3.5;
+        }
+        &:after {
+            top: -$button-size/3.5;
+        }
+    }
+}
+
+.nav-icon{
+    .lines{
+        transition: background $nav-icon-transition-speed .5s ease;
+        &:before, &:after{
+            //set transform origin
+            -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+            transition: top $nav-icon-transition-speed .6s ease, -webkit-transform $nav-icon-transition-speed ease;
+            transition: top $nav-icon-transition-speed .6s ease, transform $nav-icon-transition-speed ease;
+        }
+    }
+}
+
+.nav-icon.close{
+    .lines {
+        transition: background $nav-icon-transition-speed 0s ease;
+        background: transparent;
+
+        &:before, &:after{
+            transition: top $nav-icon-transition-speed ease, -webkit-transform $nav-icon-transition-speed .5s ease; //delay the formation of the x till the minus is formed
+            transition: top $nav-icon-transition-speed ease, transform $nav-icon-transition-speed .5s ease; //delay the formation of the x till the minus is formed
+            top:0;
+            width: $button-size;
+        }
+        &:before{
+            -webkit-transform: rotate3d(0,0,1,45deg);
+            transform: rotate3d(0,0,1,45deg);
+        }
+        &:after{
+            -webkit-transform: rotate3d(0,0,1,-45deg);
+            transform: rotate3d(0,0,1,-45deg);
+        }
+    }
+}

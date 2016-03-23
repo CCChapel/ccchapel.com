@@ -1,0 +1,37 @@
+﻿@using CCC.Models
+
+@model SearchResults
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+}
+
+@if (Model.Items == null)
+{
+    if (!string.IsNullOrWhiteSpace(Model.Query))
+    {
+        <h2>No results found for @Model.Query</h2>
+    }
+}
+else
+{
+    <h2>Found @Model.ItemCount results.</h2>
+    foreach (var item in Model.Items)
+    {
+        <a href="@GetUrl(item.PageTypeCodeName, item.NodeId)">@item.Title</a>
+    }
+}
+
+@helper GetUrl(string pageTypeCodeName, int nodeId)
+{
+    switch (pageTypeCodeName)
+    {
+        case "MVCSite.Article":
+                @Url.Action("Show", "Articles", new { id = nodeId })
+            break;
+        default:
+            throw new NotImplementedException("Unknown PageType: " + pageTypeCodeName);
+    }
+}
+
+

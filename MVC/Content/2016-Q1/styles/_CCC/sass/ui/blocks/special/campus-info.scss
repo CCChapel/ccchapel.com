@@ -1,0 +1,175 @@
+﻿//**************************************************
+// CAMPUS INFO
+//**************************************************/
+.campus-info {
+    //All Campuses
+    text-align: left;
+
+    @include grid-media-query("lap") {
+        text-align: center;
+    }
+
+    /*&__title {
+        font-size: calc(3vw + 2vh + 1vmin);
+        line-height: 1em;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        margin: 0 0 $bottom-margin 0;
+
+        @include grid-media-query("portable") {
+            @include typecsset-font-size(56px, false);
+        }
+    }*/
+
+    &__instructions {
+        margin-bottom: ($bottom-margin * 3);
+    }
+
+    &__campus {
+        cursor: pointer;
+
+        margin-bottom: $magic-number * 2;
+
+        text-align: center;
+
+        color: $black;
+
+        @include grid-media-query("desk") {
+            &:nth-last-child(1),
+            &:nth-last-child(2) {
+                margin-bottom: 0;
+            }
+        }
+
+        & .campus-info__icon {
+            height: 20vw !important;
+
+            //Override styles below in Common
+            @include grid-media-query("lap") {
+                img {
+                    width: auto !important;
+                }
+            }
+
+            @include grid-media-query("palm") {
+                height: auto !important;
+            }
+        }
+    }
+
+    /*&__address {
+        color: #FFF;
+    }*/
+
+    &__map {
+        display: none;
+        margin: 0 auto;
+
+        width: 60vw;
+        height: 34rem;
+
+        @include grid-media-query("portable") {
+            width: 90vw;
+            height: 90vw;
+
+            max-height: 90vw;
+        }
+    }
+
+    /*// CURRENT CAMPUS
+    &__current {
+        height: 24em;
+
+        margin-bottom: $magic-number;
+
+        @include grid-media-query("palm") {
+            margin-bottom: 0;
+            height: auto;
+
+            text-align: center;
+        }
+
+        .campus-info__icon {
+            margin-bottom: $magic-number;
+        }
+    }
+
+    &__details {
+        height: 100%;
+
+        @include grid-media-query("palm") {
+            & > div {
+                align-items: center !important;
+            }
+        }
+    }
+
+    &__address,
+    &__services {
+        margin-bottom: $magic-number;
+    }
+
+    &__cta {
+    }
+
+    &__services-title {
+        @include typecsset-font-size($quaternary-headline-size);
+        font-weight: bold;
+    }
+
+    &__other {
+        @include typecsset-font-size($quaternary-headline-size);
+        text-align: center;
+        font-weight: bold;
+
+        &-title {
+            color: $black;
+        }
+
+        &-list {
+            a {
+                color: currentColor;
+            }
+
+            @include grid-media-query("palm") {
+                & > * {
+                    &:after {
+                        border-bottom-color: $dark-blue;
+                    }
+                }
+            }
+        }
+    }*/
+
+    // COMMON
+//    &__name {
+//        @include typecsset-font-size($tertiary-headline-size);
+//        font-weight: bold;
+//        //color: $black;
+//
+//        transition: color $transition-length $transition-function;
+//    }
+
+    &__icon {
+        height: 100%;
+
+        & div {
+            heigth: 100%;
+        }
+
+        img {
+            max-height: 100%;
+            max-width: 100%;
+
+            @include grid-media-query("lap") {
+                height: auto;
+                width: 100%;
+            }
+
+            @include grid-media-query("palm") {
+                width: 65%;
+            }
+        }
+    }
+}

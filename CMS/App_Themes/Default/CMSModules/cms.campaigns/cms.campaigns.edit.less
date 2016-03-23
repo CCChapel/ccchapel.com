@@ -1,0 +1,153 @@
+﻿.cms-campaigns-edit {
+
+    .campaign-category-description {
+        .control-label {
+            .h4;
+            color: @color-black;
+            margin: 0px;
+            padding-bottom: @padding-base-vertical;
+            text-align: left;
+        }
+
+        .form-control {
+            border: 2px solid @color-gray-130;
+            height: auto;
+
+            &:focus {
+                background-color: @color-white;
+                outline: 0;
+            }
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        background-color: @color-gray-150;
+        margin-bottom: @base-unit * 1.5;
+    }
+
+    .campaign-form-category {
+        strong {
+            color: @color-black;
+        }
+
+        ul {
+            span {
+                color: @color-black;
+            }
+
+            color: @color-gray-150;
+        }
+
+        li {
+            span {
+                padding-left: @base-unit * 0.25;
+            }
+        }
+
+        .control-label {
+            text-align: left;
+        }
+
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    }
+
+    .campaign-description-textboxes {
+        width: 50%;
+        float: left;
+    }
+
+    .campaign-input-padding {
+        padding: @base-unit;
+    }
+
+    .campaign-assetlist-item {
+        .form-control {
+            background-color: @color-white;
+            border: 1px solid @color-gray-140;
+        }
+
+        .form-control[disabled] {
+            background-color: @color-gray-150;
+        }
+
+        .control-label {
+            color: @color-black;
+        }
+
+        div {
+            float: left;
+        }
+
+        position: relative;
+        overflow: hidden;
+        background-color: @color-gray-155;
+        height: 100%;
+        padding-bottom: @base-unit;
+        padding-top: @base-unit * 0.5;
+        margin-bottom: @base-unit * 0.5;
+    }
+
+    .campaign-assetlist-icon {
+        width: @icon-size-100;
+        float: left;
+        margin-top: @base-unit * 0.25;
+    }
+
+    .campaign-assetlist-header {
+        padding-left: @base-unit * 0.75;
+        overflow: hidden;
+        width: 70%;
+
+        .campaign-assetlist-header-description {
+            padding-top: @base-unit * 0.5;
+        }
+    }
+
+    .campaign-assetlist-icons {
+        float: right;
+        height: 100%;
+
+        .icons-vertical-align {
+            float: right;
+            padding-top: @base-unit * 1.5;
+        }
+    }
+
+    .alert-success {
+        position: relative !important; // Success alert needs to be relative as other types
+    }
+
+    .campaign-assetlist-deleted {
+        font-size: @font-size-base;
+        color: @color-red-70;
+    }
+    
+    .form-control.ng-invalid {
+        outline: 0;
+        border-bottom: 2px solid @color-red-70;
+    }
+
+    .campaign-form-category {
+        ul {
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.campaign-edit-dialog {
+    @label-percent-width: 35%;
+    display: none;
+
+    .editing-form-label-cell{
+        width: @label-percent-width
+    }
+
+    .editing-form-value-cell {
+        width: 100 - @label-percent-width
+    }
+}

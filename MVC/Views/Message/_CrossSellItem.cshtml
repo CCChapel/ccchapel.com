@@ -1,0 +1,50 @@
+﻿@using CMS.DocumentEngine.Types
+
+@model Sermon
+
+--><div class="[ cross-sell__item cross-sell--@Model.NodeAlias ] [ grid__item one-third lap--one-half palm--one-whole ]">
+    <input id="embedHtml--@Model.NodeAlias" type="hidden" value="@Model.EmbedHtml" />
+
+    <a href="@Url.RouteUrl(Model.RouteValues)">
+        <div class="[ cross-sell__image @Model.MessageSeries.Background.Fields.ImagePositioning ] [ one-whole ]"
+                style="background-image: url(@Url.Kentico().Attachment(Model.MessageSeries.Background.Fields.ImageFile))">
+            @{
+                if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
+                {
+                    <div class="center-vertically">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle-thin fa-stack-2x"></i>
+                            <i class="fa fa-play fa-stack-1x"></i>
+                        </span>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="cross-sell__name [ one-whole ]">
+            @ViewData["crossSellTitle"]
+        </div>
+
+        <div class="cross-sell__details [ one-whole ]">
+            @ViewData["crossSellDescription"]
+        </div>
+    </a>
+
+
+    <script>
+        $(document).ready(function () {
+            //Play Video Click
+            $(".cross-sell--@Model.NodeAlias").click(function (e) {
+                e.preventDefault();
+
+                var html = $("#embedHtml--@Model.NodeAlias").val();
+
+                CCChapel.showVideo({
+                    videoMarkup: html
+                });
+            });
+        });
+    </script>
+</div><!--
+          
+      

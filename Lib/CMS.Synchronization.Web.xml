@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CMS.Synchronization.Web</name>
+    </assembly>
+    <members>
+        <member name="T:StagingServerListControlExtender">
+            <summary>
+            Permission edit control extender
+            </summary>
+        </member>
+        <member name="M:StagingServerListControlExtender.OnInit">
+            <summary>
+            OnInit event handler
+            </summary>
+        </member>
+        <member name="T:CMS.Synchronization.Web.TaskGroupListExtender">
+            <summary>
+            Extends staging task group listing so it can communicate with StagingTaskGroupMenu
+            </summary>
+        </member>
+        <member name="M:CMS.Synchronization.Web.TaskGroupListExtender.OnInit">
+            <summary>
+            Inits extender that will register javascript module
+            </summary>
+        </member>
+        <member name="T:CMS.Synchronization.Web.TaskGroupEditExtender">
+            <summary>
+            Extends edit of StagingTaskGroupInfo
+            </summary>
+        </member>
+        <member name="M:CMS.Synchronization.Web.TaskGroupEditExtender.OnInit">
+            <summary>
+            Init the extender, attach events that communicates with StagingTaskGroupMenu
+            </summary>
+        </member>
+    </members>
+</doc>

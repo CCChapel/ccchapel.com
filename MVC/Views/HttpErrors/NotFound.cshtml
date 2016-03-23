@@ -1,0 +1,36 @@
+﻿@using CMS.CustomTables.Types;
+@using CMS.DocumentEngine.Types;
+
+@using Newtonsoft.Json;
+
+@using Vimeo.Types;
+@using CCC.Helpers;
+@using CCB;
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = "Page Not Found";
+
+    //Get Background Image
+    Background bg = BackgroundProvider.GetBackground(new Guid("9c507666-cf39-4ed4-a866-6c6d4406b514"), SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+}
+
+<div class="header-image [ content-section image @bg.Fields.ImageTextColor auto ] [ center-vertically ] [ grid__item one-whole ] [ @bg.Fields.ImagePositioning ]" style="background-image: url(@Url.Kentico().Attachment(bg.Fields.ImageFile);">
+    <div class="header-image__content">
+        <div class="header-image__title">Oops&hellip;</div>
+    </div>
+</div>
+
+<div class="grid__item one-whole">
+    <div class="[ content-section transparent auto ] [ grid__item one-whole ]">
+        <div class="content-wrapper">
+            <div class="section-title">That was unexpected</div>
+
+            <div class="section-description">
+                We&rsquo;ll get to work fixing that, but in the meantime, why don&rsquo;t you
+                try a search to find what you&rsquo;re looking for. Or, feel free to
+                <a href="/contact-us">contact us</a> with any questions.
+            </div>
+        </div>
+    </div>
+</div>

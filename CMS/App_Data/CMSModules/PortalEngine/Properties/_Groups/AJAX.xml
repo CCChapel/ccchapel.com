@@ -1,0 +1,17 @@
+﻿<category name="AJAX">
+    <properties>
+        <collapsedbydefault>true</collapsedbydefault>
+        <collapsible>true</collapsible>
+        <visible>true</visible>
+    </properties>
+</category>
+<field column="UseUpdatePanel" visible="true" columntype="boolean" guid="dd7d576d-5abe-464b-9f25-e74c0ce62886">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.useupdatepanel$}</fielddescription>
+        <defaultvalue>false</defaultvalue>
+        <fieldcaption>Use update panel</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>checkboxcontrol</controlname>
+    </settings>
+</field>

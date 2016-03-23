@@ -1,0 +1,20 @@
+﻿.profile-photo {
+    background: $blue;
+    
+    height: 12rem;
+}
+
+.#{$ns-image}-fit-grid {
+    max-height: 85%;
+    max-width: 85%
+}
+
+.#{$ns-image}-fit-grid--max {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.#{$ns-image}-square {
+    max-height: 100%;
+    max-width:  100%;
+}

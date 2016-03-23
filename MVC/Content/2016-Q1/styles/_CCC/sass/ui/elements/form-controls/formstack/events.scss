@@ -1,0 +1,48 @@
+﻿/* EVENTS */
+.fsProductField__info,
+.fsProductField__fields,
+.fsProductField__fields__fixed-amount,
+.fsProductField__fields__quantity {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.fsProductField__info {
+    padding: 0px;
+    margin: 0px;
+    width: 69%;
+    
+    font-weight: bold;
+}
+
+.fsProductField__fields {
+    text-align: right;
+    width: 30%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.fsProductField__fields__fixed-amount {
+    padding: 0px 10px;
+    
+    font-weight: bold;
+}
+
+.fsProductField__fields__quantity {
+}
+
+@media only screen and (max-width: 768px) {
+    .fsProductField__info {
+        width: 100%;
+    }
+    .fsProductField__fields {
+        width: 100%;
+            
+        text-align: left;
+    }
+    .fsProductField__fields__fixed-amount,
+    .fsProductField__fields__quantity {
+        padding: 0;
+        width: 100%;
+    }
+}

@@ -1,0 +1,27 @@
+﻿/* LABELS */
+.fsBody .fsForm .fsOptionLabel, 
+.fsBody .fsForm .fsMatrix th, 
+.fsBody .fsForm .fsMatrixLabel,
+.fsBody .fsForm .fsLabel {
+    display: block;
+    padding-left: 1rem;
+
+    @include typecsset-font-size($tertiary-headline-size);
+    font-weight: normal;
+}
+
+.fsBody .fsForm .fsRequiredLabel {
+    font-weight: bold;
+}
+
+.fsBody .fsForm .fsSupporting {
+    font-weight: normal;
+    padding-left: 1rem;
+}
+
+.fsBody .fsLabelHorizontal > label {
+    width: auto !important;
+    
+    height: 36px;
+    line-height: 36px !important;
+}

@@ -1,0 +1,69 @@
+﻿@using CMS.DocumentEngine;
+@using CMS.DocumentEngine.Types;
+
+@model CrossSellSection
+
+<div class="@Model.SectionCssClass [ content-section @Model.SectionColor @Model.SectionHeight ] [ grid__item one-whole ]" style="@Model.SectionStyles">
+    @{
+        if (Model.SectionIncludeWrapper)
+        {
+            @:<div class="content-wrapper">
+        }
+    }
+
+    @*Render Section Content*@
+    @Html.Raw(
+            Html.Kentico().ResolveUrls(
+                Model.SectionContent.ProcessForOutput()))
+
+    <div class="grid grid--center"><!--
+    @{
+        //Render Cross Sell Items
+        foreach (var cs in Model.CrossSellItems)
+        {
+            //Get Linked Page Type
+            if (cs.Fields.PageClassName == Sermon.CLASS_NAME)
+            {
+                try
+                {
+                    Html.RenderAction("CrossSell", "Message", new { guid = cs.PageGUID, title = cs.Fields.ItemTitle, description = cs.Fields.ItemDescription });
+                }
+                catch { }
+            }
+            else if (cs.Fields.PageClassName == Series.CLASS_NAME)
+            {
+                try
+                {
+                    Html.RenderAction("CrossSell", "MessageSeries", new { guid = cs.PageGUID, title = cs.Fields.ItemTitle, description = cs.Fields.ItemDescription });
+                }
+                catch { }
+            }
+            else if (cs.Fields.PageClassName == CcbEvent.CLASS_NAME)
+            {
+                try
+                {
+                    Html.RenderAction("CrossSell", "Event", new { guid = cs.PageGUID, title = cs.Fields.ItemTitle, description = cs.Fields.ItemDescription });
+                }
+                catch { }
+            }
+            else if (cs.Fields.PageClassName == CMS.DocumentEngine.Types.Page.CLASS_NAME)
+            {
+                try
+                {
+                    Html.RenderAction("CrossSell", "Page", new { guid = cs.PageGUID, title = cs.Fields.ItemTitle, description = cs.Fields.ItemDescription });
+                }
+                catch { }
+            }
+        }
+    }
+    --></div>
+
+    @{
+        if (Model.SectionIncludeWrapper)
+        {
+            @:</div>
+        }
+    }
+    </div>
+
+@Html.Raw(Model.Fields.SectionJavaScript)

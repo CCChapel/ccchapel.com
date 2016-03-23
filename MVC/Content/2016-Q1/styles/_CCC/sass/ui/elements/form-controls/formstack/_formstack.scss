@@ -1,0 +1,71 @@
+﻿/* LAYOUT */
+/*.fsBody .fsRowBody,
+.fsBody .fsSectionHeader {
+    padding-left: 0 !important;
+}
+.fsBody .fsLabel, .fsBody label {
+    line-height: inherit !important;
+}
+.fsboxshadow .fsBody .fsForm {
+    box-shadow: none;
+}*/
+
+/* FORMS */
+/*.fsBody .fsForm input.fsField[type="text"], 
+.fsBody .fsForm input.fsField[type="file"], 
+.fsBody .fsForm input.fsField[type="number"], 
+.fsBody .fsForm input.fsField[type="email"], 
+.fsBody .fsForm input.fsField[type="tel"], 
+.fsBody .fsForm textarea.fsField, 
+.fsBody .fsForm select.fsField {
+    border-color: $black;
+}*/
+
+.fsBody {
+    margin: 0px auto;
+ 
+    width: 95%;
+    
+    input,
+    textarea,
+    select,
+    .css3-metro-dropdown {
+        width: 100%;
+    }
+}
+
+.fsRow {
+    margin-bottom: $bottom-margin;
+}
+
+.fsSubFieldGroup {
+    @include flexbox;
+}
+
+.fsSubField {
+    @include flex-grow(1);
+}
+
+/* RESPONSE MESSAGE */
+.fsForm.fsMaxCol1 {
+    width: 100% !important;
+    padding: 0 2em;
+    box-sizing: border-box;
+}
+
+#fsLocal {
+    margin: 0;
+}
+
+@import "sections.scss";
+@import "input.scss";
+@import "labels.scss";
+@import "buttons.scss";
+@import "radios-checkboxes.scss";
+@import "date-time-picker.scss";
+@import "matrix.scss";
+@import "events.scss";
+@import "numbers.scss";
+@import "credit-card.scss";
+@import "error.scss";
+@import "address.scss";

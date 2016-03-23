@@ -1,0 +1,30 @@
+﻿@using CCC.Models
+@model SearchResults
+@{
+    Layout = null;
+}
+{
+    @{
+        for (int i = 0; i < 5; i++)
+        {
+            if (i != 0)
+            {
+                @:,
+            }
+
+            @:"@i": { "title": "Page @i", "url": "/some/url/@i" }
+        }
+    }
+}
+
+@helper GetUrl(string pageTypeCodeName, int nodeId)
+{
+    switch (pageTypeCodeName)
+    {
+        case "MVCSite.Article":
+                @Url.Action("Show", "Articles", new { id = nodeId })
+            break;
+        default:
+            throw new NotImplementedException("Unknown PageType: " + pageTypeCodeName);
+    }
+}

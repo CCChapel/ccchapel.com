@@ -1,0 +1,142 @@
+﻿//**************************************************
+// HEADER
+//**************************************************/
+$header-z-index: 100;
+.header {
+    position: relative;
+    z-index: 100;
+    
+    a {
+        color: #FFF;
+    }
+    
+    &.sticky {
+        font-size: 90%;
+        
+        &:hover {
+            font-size: 1rem;
+        }
+    }
+}
+
+//**************************************************
+// CAMPUS SELECT
+//**************************************************/
+.campus-select {
+    min-height: 2em;
+    overflow: hidden;
+    
+    background-color: $blue;
+    
+    &__options {
+        padding-top: .25em;
+        padding-bottom: .25em;
+        
+        height: 100%;
+        
+        @include typecsset-font-size(14px);
+        color: #FFF;
+        text-align: center !important;
+    }
+    
+    &__list {
+//        display: inline;
+//        
+//        @include grid-media-query("portable") {
+//            //display: block;
+//            
+//            //padding: .5em 0;
+//        }
+        
+        display: inline;
+
+        @include grid-media-query("desk") {
+            a {
+                font-weight: normal;
+            }
+        }
+
+        @include grid-media-query("portable") {
+            display: block;
+
+            & > * {
+                @include typecsset-font-size($tertiary-headline-size);
+
+                &:after {
+                    border-bottom-color: $dark-blue;
+                }
+            }
+        }
+    }
+    
+    &__campus-marker {
+        cursor: pointer;
+    }
+    
+    &__campus {
+        display: inline;
+        
+        @include grid-media-query("desk") {
+            a {
+                font-weight: normal;
+            }
+        }
+        
+        @include grid-media-query("portable") {
+            display: block;
+
+            & > * {
+                @include typecsset-font-size($tertiary-headline-size);
+
+                &:after {
+                    border-bottom-color: $dark-blue;
+                }
+            }
+        }
+    }
+}
+
+//**************************************************
+// BANNER
+//**************************************************/
+.banner {
+    height: 4em;
+    
+    background-color: $dark-blue;
+    
+    transition: background-color $transition-length $transition-function,
+                height $transition-length $transition-function,                
+                font-size $transition-length $transition-function;
+    
+    &__logo {
+        height: 100%;
+    }
+
+    &__menu {
+        height: 100%;
+    }
+    
+    &__mobile-menu {
+        height: 100%;
+        
+        color: #FFF;
+    }
+    
+    .sticky & {
+        background-color: transparentize($dark-blue, .2);
+        
+        position: fixed;
+        top: 0;
+        
+        height: 3em;
+        width: calc(100% + #{$gutter});    //Offset left margin while keeping proportions
+        
+        &:hover,
+        &.fullHeight {
+            background-color: $dark-blue;
+            font-size: 1rem;
+            
+            height: 4rem;
+        }
+    }
+}

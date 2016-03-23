@@ -1,0 +1,29 @@
+﻿<category name="Time zones">
+    <properties>
+        <collapsedbydefault>true</collapsedbydefault>
+        <collapsible>true</collapsible>
+        <visible>true</visible>
+    </properties>
+</category>
+<field column="TimeZoneType" visible="true" columntype="text" allowempty="true" columnsize="100" guid="7bc3e789-4365-428f-bf85-9263d53d2941">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.timezonetype$}</fielddescription>
+        <fieldcaption>Time zone</fieldcaption>
+    </properties>
+    <settings>
+        <ResourcePrefix>timez.type</ResourcePrefix>
+        <controlname>timezonetypeselector</controlname>
+        <Sort>False</Sort>
+        <TypeName>CMS.Globalization.TimeZoneTypeEnum</TypeName>
+        <AssemblyName>CMS.Globalization</AssemblyName>
+    </settings>
+</field>
+<field column="CustomTimeZone" visible="true" columntype="text" allowempty="true" columnsize="100" guid="0bf63e3a-c748-409f-8972-b5a1ef04e761">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.customtimezone$}</fielddescription>
+        <fieldcaption>Custom time zone</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>timezoneselector</controlname>
+    </settings>
+</field>

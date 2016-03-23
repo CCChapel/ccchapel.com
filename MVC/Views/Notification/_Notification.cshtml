@@ -1,0 +1,24 @@
+﻿@using CMS.DocumentEngine.Types
+
+@{ 
+    //Check for Notifications
+    if (Notification.CurrentNotifications.Any())
+    {
+    <div class="notifications [ grid__item one-whole ]">
+        <div class="grid">
+    
+        @foreach (var n in Notification.CurrentNotifications)
+        {
+            <div class="notifications__item [ grid__item one-whole ]">
+                <span class="center-vertically">
+                    @Html.Raw(
+                          Html.Kentico().ResolveUrls(
+                              n.NotificationText.ProcessForOutput()))
+                </span>
+            </div>
+        }
+    
+        </div>
+    </div>
+    }
+}

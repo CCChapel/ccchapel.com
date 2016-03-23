@@ -1,0 +1,42 @@
+﻿.content-section.image {
+    background: currentColor none center center/cover no-repeat padding-box border-box scroll;
+
+    &.light {
+        color: #FFF;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+
+        a {
+            color: #FFF;
+
+            &:hover {
+                //color: $blue;
+            }
+        }
+    }
+
+    &.dark {
+        color: $charcoal;
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+
+        a {
+            color: $charcoal;
+
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+
+    &.parallax {
+        background-attachment: fixed;
+
+        @include grid-media-query("palm") {
+            background-attachment: scroll;
+        }
+    }
+}
+    
+.content-section.sub-image {
+    @extend .content-section.image;
+    height: 100%;
+}

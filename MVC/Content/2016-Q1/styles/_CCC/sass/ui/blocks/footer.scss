@@ -1,0 +1,62 @@
+﻿.footer {
+    background-color: $charcoal;
+    color: #FFF;
+    
+    text-align: center;
+    
+    a {
+        color: #FFF;
+        
+        &:hover {
+            color: $blue;
+        }
+    }
+    
+    &__logo {
+        margin-bottom: (.5 * $magic-number);
+    }
+    
+    .logo--footer {
+        height: 85px;
+        width: auto;
+    }
+    
+    &__address {
+        margin-bottom: (.5 * $magic-number);
+    }
+    
+    &__campuses {
+        margin-bottom: $magic-number;
+    }
+
+    &__social {
+        margin-bottom: (2 * $magic-number);
+        
+        .grid__item {
+            text-align: center;
+        }
+    }
+    
+    &__cta {
+        margin-bottom: (2 * $magic-number);
+    }
+    
+    // &__buttons {
+    //     display: inline-flex;
+        
+    //     .cta {
+    //         //color: #FFF !important;
+    //     }
+    // }
+
+    &__navigation {
+        text-align: left;
+        
+        a {
+            font-weight: normal;
+        }
+    }
+
+    // &__copyright {
+    // }
+}

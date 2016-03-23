@@ -1,0 +1,430 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CMS.SocialMedia</name>
+    </assembly>
+    <members>
+        <member name="T:CMS.SocialMedia.GooglePlusActivity">
+            <summary>
+            GooglePlusActivity class
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusActivity.#ctor(System.String,System.DateTime)">
+            <summary>
+            GooglePlusActivity constructor
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.GooglePlusActivity.Content">
+            <summary>
+            Content of the activity.
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.GooglePlusActivity.Published">
+            <summary>
+            Date this activity was published.
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.GooglePlusPerson">
+            <summary>
+            GooglePlusPeople class
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusPerson.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            GooglePlusActivity constructor
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.GooglePlusPerson.DisplayName">
+            <summary>
+            Display name.
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.GooglePlusPerson.URL">
+            <summary>
+            Profile URL.
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.GooglePlusPerson.ImageURL">
+            <summary>
+            URL of the profile image.
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.GooglePlusPerson.UserID">
+            <summary>
+            UserID in the numeric form
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.GooglePlusProvider">
+            <summary>
+            GooglePlusProvider class
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.Authorize(System.String,System.String)">
+            <summary>
+            Authorizes client application for using user data.
+            </summary>
+            <param name="clientID">Client ID</param>
+            <param name="clientSecret">Client secret</param>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.GetActivities(System.String,System.Int32)">
+            <summary>
+            Gets list of activities 
+            </summary>
+            <param name="userID">ID of the user or page</param>
+            <param name="maxCount">Number of activities to return</param>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.FindPerson(System.String)">
+            <summary>
+            Uses the search method to find a person. 
+            Takes first result &amp; returns it.
+            </summary>
+            <param name="query">Query specifying what to look for</param>
+            <returns>If found, first result, null otherwise.</returns>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.GetProfileInfo(System.String)">
+            <summary>
+            Gets profile info of the person (or page) with given ID.
+            </summary>
+            <param name="userID">ID of the user or page</param>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.CreateAuthenticator">
+            <summary>
+            Creates Google+ Oauth2 authenticator. Client ID and secret is taken from settings.
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.GetAuthorization(DotNetOpenAuth.OAuth2.WebServerClient)">
+            <summary>
+            Gets authorization state. Tokens are taken from settings.
+            
+            Refresh token is taken from settings. Access token is refreshed if necessary.
+            </summary>
+            <param name="client">OAuth2 web server client</param>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.GetAuthorizationForTokens(DotNetOpenAuth.OAuth2.WebServerClient)">
+            <summary>
+            Gets authorization state. Used for authorization in settings.
+            
+            Gets access and refresh tokens.
+            </summary>
+            <param name="client">OAuth2 web server client</param>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.CheckSettings">
+            <summary>
+            Checks settings if all necessary values are set
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.GooglePlusProvider.GetAccessToken">
+            <summary>
+            Gets Google+ access token.
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.GooglePlusProvider.AuthState">
+            <summary>
+            Returns the authorization state which was either cached or set for this session.
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.LinkedInCompanyQuerySource">
+            <summary>
+            Data query source for LinkedIn companies
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInCompanyQuerySource.GetDataSourceName">
+            <summary>
+            Gets the unique query source ID
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInCompanyQuerySource.GetData(CMS.DataEngine.DataQuerySourceParameters)">
+            <summary>
+            Executes the query
+            </summary>
+            <param name="parameters">Query parameters</param>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInCompanyQuerySource.GetData(System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Returns the data according to the set of input parameters.
+            </summary>
+            <param name="where">Where condition to filter data</param>
+            <param name="offset">Index of first record to get</param>
+            <param name="maxRecords">Maximum number of records to get. If maxRecords is zero or less, all records are returned (no paging is used)</param>
+            <param name="totalRecords">Returns total number of available records</param>       
+        </member>
+        <member name="T:CMS.SocialMedia.LinkedInProvider">
+            <summary>
+            LinkedInProvider class
+            </summary>
+        </member>
+        <member name="F:CMS.SocialMedia.LinkedInProvider.ACCESS_TOKEN_PAGE">
+            <summary>
+            Access token page.
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInProvider.SearchCompany(System.String,System.Int32,System.Int32)">
+            <summary>
+            Searches LinkedIn for companies according to <paramref name="searchString"/> keyword.
+            </summary>
+            <param name="searchString">Keyword for the search.</param>
+            <param name="offset">Offset - where to start searching.</param>
+            <param name="count">Number of results to be returned. Actual number of results may be smaller.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInProvider.Authorize(System.String)">
+            <summary>
+            Authorizes client application for using user data.
+            </summary>
+            <param name="txtToken">Token client ID.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInProvider.PrepareService">
+            <summary>
+            Creates and sets up LinkedInServiceEnhanced instance.
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.LinkedInProvider.TokenManager">
+            <summary>
+            Token manager
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.LinkedInServiceEnhanced">
+            <summary>
+            LinkedInServiceEnhanced class
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInServiceEnhanced.#ctor(LinkedIn.ILinkedInAuthorization)">
+            <summary>
+            LinkedInServiceEnhanced constructor
+            </summary>
+            <param name="authorization"><see cref="T:LinkedIn.ILinkedInAuthorization"/> object.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInServiceEnhanced.SearchCompany(System.String,System.Int32,System.Int32)">
+            <summary>
+            Searches LinkedIn for companies.
+            </summary>
+            <param name="searchString">Keyword for the search.</param>
+            <param name="offset">Offset.</param>
+            <param name="maxCount">Defines maximal number of result to be returned.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInServiceEnhanced.SendRequest(System.Net.WebRequest)">
+            <summary>
+            Send a <see cref="T:System.Net.WebRequest"/> and retrieve the response.
+            </summary>
+            <param name="webRequest">The web request to send.</param>
+            <exception cref="T:System.Net.WebException">Thrown in case of a connect failure, name resolution failure, send failure or timeout of the WebException.</exception>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInServiceEnhanced.ProcessResponse(System.Net.WebResponse)">
+            <summary>
+            Process the API response.
+            </summary>
+            <param name="webResponse">The <see cref="T:System.Net.WebResponse"/> to process.</param>
+        </member>
+        <member name="T:CMS.SocialMedia.LinkedInCompany">
+            <summary>
+            LinkedInCompany class
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInCompany.#ctor(System.String,System.String,System.String)">
+            <summary>
+            LinkedInCompany constructor
+            </summary>
+            <param name="id">ID of the company</param>
+            <param name="name">Name of the company</param>
+            <param name="url">Company website address</param>
+        </member>
+        <member name="P:CMS.SocialMedia.LinkedInCompany.ID">
+            <summary>
+            Company ID
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.LinkedInCompany.Name">
+            <summary>
+            Company name
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.LinkedInCompany.Url">
+            <summary>
+            Company website address
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.LinkedInCompanyListInfo">
+            <summary>
+            Fake info for list of LinkedIn companies
+            </summary>
+        </member>
+        <member name="F:CMS.SocialMedia.LinkedInCompanyListInfo.OBJECT_TYPE">
+            <summary>
+            Object type
+            </summary>
+        </member>
+        <member name="F:CMS.SocialMedia.LinkedInCompanyListInfo.TYPEINFO">
+            <summary>
+            Type information.
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInCompanyListInfo.#ctor">
+            <summary>
+            Constructor - Creates an empty ContactAccountListInfo object.
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInCompanyListInfo.#ctor(System.Data.DataRow)">
+            <summary>
+            Constructor - Creates a new ContactAccountListInfo object from the given DataRow.
+            </summary>
+            <param name="dr">DataRow with the object data</param>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInCompanyListInfo.GetColumnNames">
+            <summary>
+            Gets the default list of column names for this class
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.LinkedInCompanyListInfo.GetDataQueryInternal">
+            <summary>
+            Returns the data according to the set of input parameters.
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.LinkedInCompanyListInfo.DisplayNameColumn">
+            <summary>
+            Display name column name of the info record
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.SocialMediaModuleMetadata">
+            <summary>
+            Represents the Social Media module metadata.
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaModuleMetadata.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.SocialMediaAbstractWebPart">
+            <summary>
+            Abstract WP layer ensuring CookieLaw is respected in third party WPs
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaAbstractWebPart.OnPreRender(System.EventArgs)">
+            <summary>
+            Pre-render
+            </summary>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaAbstractWebPart.ReloadData">
+            <summary>
+            Reload Data
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaAbstractWebPart.SetupControl">
+            <summary>
+            Set the control up
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaAbstractWebPart.ShowError(System.Web.UI.WebControls.Label,System.String)">
+            <summary>
+            Displays a given message in given label if not on Livesite
+            </summary>
+            <param name="label">Error message label</param>
+            <param name="message">Message you want to display or its resource-string</param>
+        </member>
+        <member name="P:CMS.SocialMedia.SocialMediaAbstractWebPart.HideContent">
+            <summary>
+            Indicates whether to hide the webpart
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.SocialMediaHelper">
+            <summary>
+            Helper methods for social media services.
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaHelper.GetFacebookApiKey(System.String)">
+            <summary>
+            Returns Facebook API key.
+            </summary>
+            <param name="siteName">Site name</param>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaHelper.GetPathToLinkedInSettings">
+            <summary>
+            Gets navigation path to LinkedIn settings
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaHelper.GetPathToGooglePlusSettings">
+            <summary>
+            Gets navigation path to Google+ settings
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.SocialMediaHelper.SocialMediaCookieLevel">
+            <summary>
+            Gets Social media cookie level.
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.SocialMediaModule">
+            <summary>
+            Represents the Social Media module.
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.SocialMediaModule.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:CMS.SocialMedia.TokenManager">
+            <summary>
+            TokenManager class
+            </summary>
+        </member>
+        <member name="M:CMS.SocialMedia.TokenManager.#ctor(System.String,System.String)">
+            <summary>
+            TokenManager constructor
+            </summary>
+            <param name="consumerKey">Consumer key.</param>
+            <param name="consumerSecret">Consumer secret.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.TokenManager.AddToken(System.String,System.String)">
+            <summary>
+            Adds token and its secret to the manager.
+            </summary>
+            <param name="token">Token.</param>
+            <param name="tokenSecret">Token secret.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.TokenManager.GetTokenSecret(System.String)">
+            <summary>
+            Gets the Token Secret given a request or access token.
+            </summary>
+            <param name="token">The request or access token.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.TokenManager.StoreNewRequestToken(DotNetOpenAuth.OAuth.Messages.UnauthorizedTokenRequest,DotNetOpenAuth.OAuth.Messages.ITokenSecretContainingMessage)">
+            <summary>
+            Stores a newly generated unauthorized request token, secret, and optional
+            application-specific parameters for later recall.
+            </summary>
+            <param name="request">The request message that resulted in the generation of a new unauthorized request token.</param>
+            <param name="response">The response message that includes the unauthorized request token.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.TokenManager.ExpireRequestTokenAndStoreNewAccessToken(System.String,System.String,System.String,System.String)">
+            <summary>
+            Deletes a request token and its associated secret and stores a new access
+            token and secret.
+            </summary>
+            <param name="consumerKey">The Consumer that is exchanging its request token for an access token.</param>
+            <param name="requestToken">The Consumer's request token that should be deleted/expired.</param>
+            <param name="accessToken">The new access token that is being issued to the Consumer.</param>
+            <param name="accessTokenSecret">The secret associated with the newly issued access token.</param>
+        </member>
+        <member name="M:CMS.SocialMedia.TokenManager.GetTokenType(System.String)">
+            <summary>
+            Classifies a token as a request token or an access token.
+            </summary>
+            <param name="token">The token to classify.</param>
+        </member>
+        <member name="P:CMS.SocialMedia.TokenManager.ConsumerKey">
+            <summary>
+            Consumer key
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.TokenManager.ConsumerSecret">
+            <summary>
+            Consumer secret
+            </summary>
+        </member>
+        <member name="P:CMS.SocialMedia.TokenManager.Tokens">
+            <summary>
+            All tokens and their secrets contained in token manager
+            </summary>
+        </member>
+    </members>
+</doc>

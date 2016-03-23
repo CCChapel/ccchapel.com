@@ -1,0 +1,17 @@
+﻿@model CMS.DocumentEngine.Types.Page
+
+--><div class="cross-sell__item [ grid__item one-third lap--one-half palm--one-whole ]">
+    <a href="@Url.RouteUrl(Model.RouteValues)">
+        <div class="[ cross-sell__image bg--center-center ] [ one-whole ]"
+                style="background-image: url(./images/events/Wednesdays.jpg)">
+        </div>
+
+        <div class="cross-sell__name [ one-whole ]">
+            @ViewData["crossSellTitle"]
+        </div>
+
+        <div class="cross-sell__details [ one-whole ]">
+            @ViewData["crossSellDescription"]
+        </div>
+    </a>
+</div><!--

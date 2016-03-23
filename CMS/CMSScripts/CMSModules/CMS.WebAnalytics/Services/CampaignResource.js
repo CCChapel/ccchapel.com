@@ -1,0 +1,12 @@
+﻿cmsdefine(['CMS/Application'], function (application) {
+    return ['$resource', function ($resource) {
+        var baseUrl = application.getData('applicationUrl') + 'cmsapi/Campaign/';
+
+        return $resource(baseUrl, {}, {
+            'update': { method: 'PUT' },
+            'launch': { method: 'GET', url: baseUrl + 'launch' },
+            'launchLog': { method: 'GET', url: baseUrl + 'launchLog'},
+            'finish': { method: 'GET', url: baseUrl + 'finish' },
+        });
+    }];
+});

@@ -1,0 +1,82 @@
+﻿/*------------------------------------*\
+$VARIABLES
+\*------------------------------------*/
+//TypeCSSet Variables
+$typecsset-base-font-size:      16px;
+$typecsset-base-line-height:    24px;
+
+//CCC Branding
+$dark-blue:     rgb(11, 70, 115);
+$blue:          rgb(24, 94, 148);
+$light-blue:    rgb(65, 165, 234);
+$green:         rgb(153, 182, 36);
+
+$charcoal:      rgb(51, 51, 51);
+$black:         #333;
+
+$light-gray:    #EEE;
+$medium-gray:   #CCC;
+$dark-gray:     #AAA;
+
+$red:           rgb(202, 55, 55);
+$dark-red:      rgb(184, 43, 43);
+
+$color-root:    $dark-blue;
+
+//Social Media Color Guide
+$twitter:       #00aced;
+$facebook:      #3b5998;
+$vimeo:         #1ab7ea;
+$youtube:       #bb0000;
+$google-plus:   #dd4b39;
+$instagram:     #517fa4;
+$pinterest:     #cb2027;
+$email:         $blue;
+//$tumblr: #32506d;
+//$reddit: #3E6895;
+//$linkedin: #007bb6;
+//$flickr: #ff0084;
+//$dribbble: #ea4c89;
+//$quora: #a82400;
+//$foursquare: #0072b1;
+//$forrst: #5B9A68;
+//$vk: #45668e;
+//$wordpress: #21759b;
+//$stumbleupon: #EB4823;
+//$yahoo: #7B0099;
+//$blogger: #fb8f3d;
+//$soundcloud: #ff3a00;
+
+//Border Radius
+$border-radius: 6px;
+
+//Fonts
+$base-font-size:            $typecsset-base-font-size; 
+$base-line-height:          $typecsset-base-line-height;
+$sans-serif-fonts:          'proxima-nova', 'Open Sans', Verdana, sans-serif;
+$serif-fonts:               Georgia, serif;
+
+$primary-headline-size:     64px;
+$secondary-headline-size:   32px;
+$tertiary-headline-size:    24px;
+$quaternary-headline-size:  20px;
+
+//Sizing
+$height-small:              18rem;
+$height-medium:             24rem;
+$height-large:              30rem;
+$height-extra-large:        36rem;
+
+//?
+$column-width-full: 520px;
+
+//Spacing
+$magic-number:          $typecsset-base-line-height; //$base-font-size * 1.5;
+$bottom-margin:         $magic-number; // * 3; //3rem;
+
+$vertical-padding:      $magic-number * 3; //3em;
+$mobile-padding:        10px;
+
+//Transitions
+$transition-length:     250ms;
+$transition-function:   linear;

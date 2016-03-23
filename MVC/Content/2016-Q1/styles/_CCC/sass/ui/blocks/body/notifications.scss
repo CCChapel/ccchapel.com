@@ -1,0 +1,13 @@
+﻿//**************************************************
+// NOTIFICATIONS
+//**************************************************/
+.notifications {
+    background-color: $green;
+
+    &__item {
+        height: 3em;
+
+        color: #FFF;
+        text-align: center;
+    }
+}

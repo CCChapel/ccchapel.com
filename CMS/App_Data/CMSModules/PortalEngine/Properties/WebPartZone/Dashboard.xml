@@ -1,0 +1,157 @@
+<form version="2">
+    <field column="ZoneTitle" visible="true" columntype="text" allowempty="true" columnsize="200" publicfield="false" guid="56cbb102-5795-48e4-b0fb-0c7eb3423d2d">
+        <properties>
+            <fielddescription>{$documentation.webpartproperties.zonetitle$}</fielddescription>
+            <fieldcaption>Zone title</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>textboxcontrol</controlname>
+        </settings>
+    </field>
+    <field column="DisableViewState" visible="true" columntype="boolean" publicfield="false" guid="5a4b6db0-f446-41a3-9a71-cfc9f0f2cea3">
+        <properties>
+            <defaultvalue>false</defaultvalue>
+            <fieldcaption>Disable view state</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>checkboxcontrol</controlname>
+        </settings>
+    </field>
+    <field column="WidgetZoneType" visible="true" columntype="text" columnsize="100" publicfield="false" guid="812a6bfc-7100-4a8f-8aeb-7b1610ab777b" visibility="none">
+        <properties>
+            <fielddescription>{$documentation.webpartproperties.zonetype$}</fielddescription>
+            <defaultvalue>None</defaultvalue>
+            <fieldcaption>Widget zone type</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>zonetypeselector</controlname>
+        </settings>
+    </field>
+    <category name="Visibility">
+        <properties>
+            <visible>true</visible>
+        </properties>
+    </category>
+    <field column="Visible" visible="true" columntype="boolean" publicfield="false" guid="8f351ce3-374f-4026-b935-2389d694a10c">
+        <properties>
+            <fielddescription>{$documentation.zoneproperties.visible$}</fielddescription>
+            <defaultvalue>true</defaultvalue>
+            <fieldcaption>Visible</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>checkboxcontrol</controlname>
+        </settings>
+    </field>
+    <field column="DisplayToRoles" visible="true" columntype="text" allowempty="true" columnsize="200" publicfield="false" guid="190c38c7-914b-4044-bc78-6948b50ae31a">
+        <properties>
+            <fielddescription>{$documentation.zoneproperties.displaytoroles$}</fielddescription>
+            <fieldcaption>Display to roles</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>rolecheckboxselector</controlname>
+        </settings>
+    </field>
+    <category name="Zone container">
+        <properties>
+            <visible>true</visible>
+        </properties>
+    </category>
+    <field column="Container" visible="true" columntype="text" allowempty="true" columnsize="200" publicfield="false" guid="490433f9-a6d6-45fa-99a7-d77a5382a4f2">
+        <properties>
+            <fielddescription>{$documentation.zoneproperties.container$}</fielddescription>
+            <fieldcaption>Container</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>selectcontainer</controlname>
+        </settings>
+    </field>
+    <field column="ContainerTitle" visible="true" columntype="text" allowempty="true" columnsize="200" publicfield="false" guid="fedffe9f-6e53-4853-bcff-8d6a87391e2e">
+        <properties>
+            <fielddescription>{$documentation.zoneproperties.containertitle$}</fielddescription>
+            <fieldcaption>Container title</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>textboxcontrol</controlname>
+        </settings>
+    </field>
+    <field column="ContainerCSSClass" visible="true" columntype="text" allowempty="true" columnsize="200" publicfield="false" guid="9491ae72-2026-43fb-a4a8-f78472763308">
+        <properties>
+            <fielddescription>{$documentation.zoneproperties.containercssclass$}</fielddescription>
+            <fieldcaption>Container CSS class</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>textboxcontrol</controlname>
+        </settings>
+    </field>
+    <field column="ContainerCustomContent" visible="true" columntype="longtext" allowempty="true" publicfield="false" guid="ac394f39-0b30-414b-a47e-6c285132c582">
+        <properties>
+            <fielddescription>{$documentation.zoneproperties.containercustomcontent$}</fielddescription>
+            <fieldcaption>Container custom content</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>largetextarea</controlname>
+        </settings>
+    </field>
+    <category name="HTML Envelope">
+        <properties>
+            <visible>true</visible>
+        </properties>
+    </category>
+    <field column="ContentBefore" visible="true" columntype="longtext" allowempty="true" publicfield="false" guid="0b46249c-6aba-41bd-a024-b015222fdf75">
+        <properties>
+            <fielddescription>{$documentation.zoneproperties.contentbefore$}</fielddescription>
+            <fieldcaption>Content before</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>largetextarea</controlname>
+        </settings>
+    </field>
+    <field column="ContentAfter" visible="true" columntype="longtext" allowempty="true" publicfield="false" guid="b3de2cd8-49f1-4c7f-bd64-9136c9d03974">
+        <properties>
+            <fielddescription>{$documentation.zoneproperties.contentafter$}</fielddescription>
+            <fieldcaption>Content after</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>largetextarea</controlname>
+        </settings>
+    </field>
+    <category name="AJAX">
+        <properties>
+            <visible>true</visible>
+        </properties>
+    </category>
+    <field column="UseUpdatePanel" visible="true" columntype="boolean" publicfield="false" guid="c4a5b852-8827-4a94-bed2-05c6fc8b94e3">
+        <properties>
+            <defaultvalue>false</defaultvalue>
+            <fieldcaption>Use update panel</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>checkboxcontrol</controlname>
+        </settings>
+    </field>
+    <category name="Time zones">
+        <properties>
+            <visible>true</visible>
+        </properties>
+    </category>
+    <field column="TimeZoneType" visible="true" columntype="text" allowempty="true" columnsize="100" publicfield="false" guid="70a5f9cb-9161-4055-b255-3a787904e7cd">
+        <properties>
+            <fieldcaption>Time zone</fieldcaption>
+        </properties>
+        <settings>
+            <TypeName>CMS.Globalization.TimeZoneTypeEnum</TypeName>
+            <controlname>timezonetypeselector</controlname>
+            <Sort>False</Sort>
+            <ResourcePrefix>timez.type</ResourcePrefix>
+            <AssemblyName>CMS.Globalization</AssemblyName>
+        </settings>
+    </field>
+    <field column="CustomTimeZone" visible="true" columntype="text" allowempty="true" columnsize="100" publicfield="false" guid="54d9a8ba-2a6d-4abb-8509-c65567f606d7">
+        <properties>
+            <fieldcaption>Custom time zone</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>timezoneselector</controlname>
+        </settings>
+    </field>
+</form>

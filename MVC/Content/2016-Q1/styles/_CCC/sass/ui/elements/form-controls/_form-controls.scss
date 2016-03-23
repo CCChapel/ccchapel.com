@@ -1,0 +1,64 @@
+﻿@mixin form-control-defaults {
+    padding: .5rem 1rem;
+    
+    border: 1px solid $charcoal;
+    border-radius: 500px;
+    
+    -webkit-appearance: none;
+    
+    &:hover,
+    &:active,
+    &:focus {
+        border-color: $light-blue;
+    }
+}
+
+@import "cta.scss";
+@import "input.scss";
+@import "textarea.scss";
+@import "placeholder.scss";
+@import "select.scss";
+@import "formstack/_formstack.scss";
+
+//**************************************************
+// Prevent iOS Zoom
+//**************************************************/
+@media screen and (-webkit-min-device-pixal-ratio:0) {
+    select,
+    textarea,
+    input {
+        font-size: 16px;
+    }
+}
+
+//**************************************************
+// BUTTON
+//**************************************************/
+//button {
+//    cursor: pointer;
+//    
+//    -webkit-appearance: none;
+//}
+
+
+
+//**************************************************
+// Date Range Selector
+//**************************************************/
+.drs-ticker {
+    //font-size: 14px;
+    text-align: left;
+
+    //padding-left: 5px;              //For alignment
+    
+    //border-left: 1px solid black;
+    
+    & > div {
+        border-left: none;
+    }
+}
+
+.ui-ruler-tick-label {
+    left: 10px !important;
+    bottom: auto !important;
+}

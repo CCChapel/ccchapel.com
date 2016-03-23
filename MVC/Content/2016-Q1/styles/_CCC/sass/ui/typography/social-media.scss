@@ -1,0 +1,69 @@
+﻿%social-media-icon {
+    color: currentColor;
+    transition: color $transition-length $transition-function;
+};
+
+.facebook-icon {
+    @extend %social-media-icon;
+    
+    &:hover {
+        color: $facebook !important;
+    }
+}
+
+.twitter-icon {
+    @extend %social-media-icon;
+    
+    
+    &:hover {
+        color: $twitter !important;
+    }
+}
+
+.youtube-icon {
+    @extend %social-media-icon;
+
+    &:hover {
+        color: $youtube !important;
+    }
+}
+
+.vimeo-icon {
+    @extend %social-media-icon;
+
+    &:hover {
+        color: $vimeo !important;
+    }
+}
+
+.instagram-icon {
+    @extend %social-media-icon;
+
+    &:hover {
+        color: $instagram !important;
+    }
+}
+
+.pinterest-icon {
+    @extend %social-media-icon;
+    
+    &:hover {
+        color: $pinterest !important;
+    }
+}
+
+.google-plus-icon {
+    @extend %social-media-icon;
+
+    &:hover {
+        color: $google-plus !important;
+    }
+}
+
+.email-icon {
+    @extend %social-media-icon;
+
+    &:hover {
+        color: $email !important;
+    }
+}

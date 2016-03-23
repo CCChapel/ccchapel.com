@@ -1,0 +1,59 @@
+<form version="2">
+    <field column="WebPartControlID" columntype="text" allowempty="true" columnsize="50" publicfield="false" guid="3eae0d45-0417-4e25-af77-083d3e79bc83" />
+    <field column="WebPartTitle" columntype="text" allowempty="true" columnsize="200" publicfield="false" guid="5aa0dcf2-bf0e-4932-a851-7caa86ee5790">
+        <properties>
+            <fielddescription>{$documentation.webpartproperties.webparttitle$}</fielddescription>
+            <fieldcaption>Web part title</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>textboxcontrol</controlname>
+        </settings>
+    </field>
+    <category name="Visibility">
+        <properties>
+            <visible>true</visible>
+        </properties>
+    </category>
+    <field column="Visible" columntype="boolean" publicfield="false" guid="2992331d-7d4f-4883-b726-947eb35ad60e">
+        <properties>
+            <fielddescription>{$documentation.webpartproperties.visible$}</fielddescription>
+            <defaultvalue>true</defaultvalue>
+            <fieldcaption>Visible</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>checkboxcontrol</controlname>
+        </settings>
+    </field>
+    <field column="HideOnSubPages" columntype="boolean" publicfield="false" guid="fc2633a0-af95-407f-9dcd-0194c585d21c">
+        <properties>
+            <fielddescription>{$documentation.webpartproperties.hideonsub$}</fielddescription>
+            <fieldcaption>Hide on subpages</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>checkboxcontrol</controlname>
+        </settings>
+    </field>
+    <field column="ShowForDocumentTypes" columntype="text" allowempty="true" columnsize="400" publicfield="false" guid="1e06b9f8-940f-4c75-924a-3fa79f7e1fc6">
+        <properties>
+            <fielddescription>{$documentation.webpartproperties.showfordocumenttypes$}</fielddescription>
+            <fieldcaption>Show for page types</fieldcaption>
+        </properties>
+        <settings>
+            <ReturnColumnName>ClassName</ReturnColumnName>
+            <SelectionMode>3</SelectionMode>
+            <ShowOnlyCoupled>False</ShowOnlyCoupled>
+            <AllowEmpty>True</AllowEmpty>
+            <controlname>selectclassnames</controlname>
+            <AllowAll>False</AllowAll>
+        </settings>
+    </field>
+    <field column="DisplayToRoles" columntype="text" allowempty="true" columnsize="200" publicfield="false" guid="5fed5c86-8e24-4130-b3ae-9181da53d7db">
+        <properties>
+            <fielddescription>{$documentation.webpartproperties.displaytoroles$}</fielddescription>
+            <fieldcaption>Display to roles</fieldcaption>
+        </properties>
+        <settings>
+            <controlname>rolecheckboxselector</controlname>
+        </settings>
+    </field>
+</form>

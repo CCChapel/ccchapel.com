@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{92B0A977-72C4-4616-9E24-6D851212A82D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMSAppAppCode</RootNamespace>
+    <AssemblyName>CMSAppAppCode</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin, Version=4.38.4352.23848, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\AjaxMin.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="CMS.AmazonStorage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.AmazonStorage.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.ApplicationDashboard, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.ApplicationDashboard.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Automation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Automation.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.AzureStorage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.AzureStorage.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Blogs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Blogs.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Chat, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Chat.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Controls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Controls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.DataEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.DataEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.FormControls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.FormControls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Core.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.CustomTables, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.CustomTables.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Forums, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Forums.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.MembershipProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.MembershipProvider.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.OutputFilter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.OutputFilter.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.PortalControls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.PortalControls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.CMSSiteMapProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.CMSSiteMapProvider.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.FileSystemStorage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.FileSystemStorage.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.HealthMonitoring, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.HealthMonitoring.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Modules, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Modules.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.OnlineForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.OnlineForms.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Personas, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Personas.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.SharePoint, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.SharePoint.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.SocialMarketing, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.SocialMarketing.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Synchronization.WSE3, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Synchronization.WSE3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Synchronization, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Synchronization.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Community, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Community.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.DataProviderSQL, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.DataProviderSQL.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.DocumentEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.DocumentEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.EcommerceProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.EcommerceProvider.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Ecommerce, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Ecommerce.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.EmailEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.EmailEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.EventLog, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.EventLog.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.EventManager, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.EventManager.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.ExtendedControls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.ExtendedControls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.FormEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.FormEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Helpers, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Helpers.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Globalization, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Globalization.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.ImportExport, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.ImportExport.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.IO, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.IO.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.LicenseProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.LicenseProvider.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.MacroEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.MacroEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.MediaLibrary, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.MediaLibrary.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Membership, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Membership.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.MessageBoards, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.MessageBoards.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Messaging, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Messaging.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Newsletters, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Newsletters.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Notifications, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Notifications.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.OnlineMarketing, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.OnlineMarketing.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Polls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Polls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.PortalEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.PortalEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Protection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Protection.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Relationships, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Relationships.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Reporting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Reporting.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Localization, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Localization.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Search, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Search.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Taxonomy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Taxonomy.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.TranslationServices, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.TranslationServices.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.WebServices, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.WebServices.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Scheduler, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Scheduler.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.SearchProviderSQL, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.SearchProviderSQL.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.Base, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.Base.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.SiteProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.SiteProvider.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.SynchronizationEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.SynchronizationEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.UIControls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.UIControls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.URLRewritingEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.URLRewritingEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.WebAnalytics, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.WebAnalytics.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.WebDAV, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.WebDAV.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.WebFarmSync, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.WebFarmSync.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CMS.WorkflowEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9">
+      <HintPath>..\Lib\CMS.WorkflowEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Old_App_Code\CMSModules\Chat\ChatUserFormExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\CreateInstallationPackageExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\ModuleLibrariesExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\ModuleLibrarySelectionExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\PermissionsListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\HelpTopicFormExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\QueriesGridExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\UserInterfaceEditTabsControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\HelpTopicUniGridExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Workflows\WorkflowScopeListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Workflows\WorkflowStepListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Workflows\WorkflowListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\ContactManagement\Extenders\AccountTabsExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\ContactManagement\Extenders\ContactGroupGeneralExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\ContactManagement\Extenders\ContactGroupObjectExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\ContactManagement\Extenders\ContactTabsExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Content\Extenders\ContentPropertiesTabsControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Content\Extenders\AnalyticsTabsControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Content\Extenders\MetaDataControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Content\Extenders\ContentEditTabsControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Content\Extenders\PreviewTabsControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Content\LiveTileModelProviders\PendingPagesLiveModelProvider.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CSSStylesheets\CSSStylesheetNewControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Cultures\CultureEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Cultures\CultureListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Cultures\CultureSitesExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\DocumentTypes\TransformationTabsExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\CMSCheckoutWebPart.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old_App_Code\CMSModules\Automation\AutomationFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Badges\BadgesListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\BadWords\BadWordsListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Chat\ChatFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\ContactManagement\SalesForceLoader.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Content\ContentFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\EcommerceFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\CouponCodesListPageExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\CustomerEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\DiscountEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\CatalogRulesListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\DocumentSKUTabsExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\EcommerceMenuExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\MultiBuyDiscountEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\MultiBuyDiscountListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\OrderAddressEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\OrderRulesListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\ProductAdvancedTabsExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\Extenders\ProductTabsExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\EmailEngine\LiveTileModelProviders\EmailsLiveTileModelProvider.cs" />
+    <Compile Include="Old_App_Code\CMSModules\EmailTemplates\EmailTemplateEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\EmailTemplates\EmailTemplateListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\FormControls\FormUserControlEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\FormControls\FormUserControlListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Groups\GroupEditTabsExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Licenses\LicenseListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Licenses\LicenseNewControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Licenses\LiveTileModelProviders\LicensesLiveTileModelProvider.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Membership\Users\EditUserTabsExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Membership\LiveTileModelProviders\UsersLiveTileModelProvider.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Membership\Users\UserListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Macros\MacroRuleEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\ModuleListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\ModuleEditControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\PermissionEditControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\ClassesListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\Modules\TransformationListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Newsletters\Extenders\UnsubscriptionsListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Newsletters\Extenders\UnsubscriptionsNewItemExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\OnlineMarketing\Extenders\OnlineMarketingMacroRuleEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\OnlineMarketing\Extenders\OnlineMarketingMacroRuleParametersExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\OnlineMarketing\Extenders\OnlineMarketingRulesListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\OnlineForms\LiveTileModelProviders\FormsLiveTileModelProvider.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Reporting\MacroRulesListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SharePoint\SharePointConnectionFormExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\CMS\LiveTileModelProviders\SystemLiveTileModelProvider.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SocialMarketing\LinkedInAccountUniGridExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SocialMarketing\LinkedInPostFormExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\TranslationServices\LiveTileModelProviders\TranslationsLiveTileModelProvider.cs" />
+    <Compile Include="Old_App_Code\CMSModules\WebAnalytics\LiveTileModelProviders\WebAnalyticsLiveTileModelProvider.cs" />
+    <Compile Include="Old_App_Code\CMSModules\WebAnalytics\WebAnalyticsTreeExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\OnlineMarketing\OnlineMarketingFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Personas\Extenders\PersonaContactsListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Personas\Extenders\PersonasUniGridExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Personas\Extenders\PersonasUniSelectorExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\PortalEngine\PageTemplateDeviceProfileTabExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\PortalEngine\PageTemplateEditControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\PortalEngine\PageTemplateDeviceControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\PortalEngine\WebPartControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Relationships\RelationshipNameExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Reporting\ReportingExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Sites\DomainAliasEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Sites\DomainAliasListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Sites\SiteEditCulturesExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Sites\SiteEditPageExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Sites\SiteListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SmartSearch\SearchIndexListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SmartSearch\SearchTaskListControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SMTPServers\SMTPServerEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SMTPServers\SMTPServerListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SocialMarketing\FacebookPostFormExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SocialMarketing\SocialMarketingFormExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SocialMarketing\SocialMarketingPostUniGridExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SocialMarketing\FacebookAccountUniGridExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SocialMarketing\TwitterAccountUniGridExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\SocialMarketing\TwitterPostFormExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\TranslationServices\TranslationServicesLoader.cs" />
+    <Compile Include="Old_App_Code\CMSModules\WebFarm\WebFarmAnonymousTasksExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\WebFarm\WebFarmServerEditExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\WebFarm\WebFarmServerListExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\WebFarm\WebFarmTasksExtender.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Widgets\WidgetTreeControlExtender.cs" />
+    <Compile Include="Old_App_Code\CMSPages\Minifiers\AjaxCssMinifier.cs" />
+    <Compile Include="Old_App_Code\CMSPages\Minifiers\AjaxJavaScriptMinifier.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Ecommerce\CMSTransformation.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old_App_Code\CMSModules\MessageBoards\CMSTransformation.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old_App_Code\CMSModules\MessageBoards\MessageBoardFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\TranslationServices\TranslationServicesFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Content\WorkflowFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\PortalEngine\CMSTransformation.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old_App_Code\CMSModules\Blogs\BlogFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\Forums\ForumFunctions.cs" />
+    <Compile Include="Old_App_Code\CMSModules\MediaLibrary\MediaLibraryFunctions.cs" />
+    <Compile Include="Old_App_Code\CMS\Functions.cs" />
+    <Compile Include="Old_App_Code\CMS\UpgradeProcedure.cs" />
+    <Compile Include="Old_App_Code\CMS\CMSModuleLoader.cs" />
+    <Compile Include="Old_App_Code\Samples\Modules\SampleHandlerModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CMSModules\Content\CMSPages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CMSPages\WebAnalyticsService.asmx" />
+    <Content Include="parameters.config" />
+    <Content Include="wse3policy.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CMSModules\Content\FormControls\Tags\TagSelectorService.asmx" />
+    <Content Include="CMSPages\Staging\SyncServer.asmx" />
+    <Content Include="CMSPages\WebService.asmx" />
+    <Content Include="Global.asax" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CMSModules\Forums\CMSPages\MultiFileUploader.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CMSModules\MediaLibrary\CMSPages\MultiFileUploader.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>27251</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)..\Lib\*" "$(TargetDir)" /y /r
+xcopy "$(ProjectDir)..\Lib\Azure\*" "$(TargetDir)" /y /r</PostBuildEvent>
+  </PropertyGroup>
+</Project>

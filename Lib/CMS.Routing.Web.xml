@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CMS.Routing.Web</name>
+    </assembly>
+    <members>
+        <member name="T:CMS.Routing.Web.GuidRouteConstraint">
+            <summary>
+            Constrains a route parameter to represent only <see cref="T:System.Guid"/> values.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.GuidRouteConstraint.Match(System.Web.HttpContextBase,System.Web.Routing.Route,System.String,System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteDirection)">
+            <summary>
+            Determines whether this instance matches a specified route.
+            </summary>
+            <param name="httpContext">The HTTP context.</param>
+            <param name="route">The route to match.</param>
+            <param name="parameterName">The name of the route parameter.</param>
+            <param name="values">A list of route parameter values.</param>
+            <param name="routeDirection">The route direction.</param>
+            <returns><c>true</c> if this instance matches a specified route; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:CMS.Routing.Web.IntRouteConstraint">
+            <summary>
+            Constrains a route parameter to represent only <see cref="T:System.Int32"/> values.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.IntRouteConstraint.Match(System.Web.HttpContextBase,System.Web.Routing.Route,System.String,System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteDirection)">
+            <summary>
+            Determines whether this instance matches a specified route.
+            </summary>
+            <param name="httpContext">The HTTP context.</param>
+            <param name="route">The route to match.</param>
+            <param name="parameterName">The name of the route parameter.</param>
+            <param name="values">A list of route parameter values.</param>
+            <param name="routeDirection">The route direction.</param>
+            <returns><c>true</c> if this instance matches a specified route; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:CMS.Routing.Web.DefaultInlineConstraintResolver">
+            <summary>
+            Resolves inline constraints as instances of <see cref="T:System.Web.Routing.IRouteConstraint"/>.
+            </summary>
+        </member>
+        <member name="T:CMS.Routing.Web.IInlineConstraintResolver">
+            <summary>
+            Represents the contract for resolving inline constraints as instances of <see cref="T:System.Web.Routing.IRouteConstraint"/>.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.IInlineConstraintResolver.ResolveConstraint(System.String)">
+            <summary>
+            Resolves the inline constraint.
+            </summary>
+            <param name="inlineConstraint">The inline constraint to resolve.</param>
+            <returns>The <see cref="T:System.Web.Routing.IRouteConstraint"/> that the inline constraint was resolved to, if applicable; otherwise, <c>null</c>.</returns>
+        </member>
+        <member name="M:CMS.Routing.Web.DefaultInlineConstraintResolver.ResolveConstraint(System.String)">
+            <summary>
+            Resolves the inline constraint.
+            </summary>
+            <param name="inlineConstraint">The inline constraint to resolve.</param>
+            <returns>The <see cref="T:System.Web.Routing.IRouteConstraint"/> that the inline constraint was resolved to, if applicable; otherwise, <c>null</c>.</returns>
+        </member>
+        <member name="T:CMS.Routing.Web.HttpHandlerRoute">
+            <summary>
+            Represents a route for Kentico HTTP handlers.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.HttpHandlerRoute.#ctor(System.String,System.Web.Routing.IRouteHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CMS.Routing.Web.HttpHandlerRoute"/> class.
+            </summary>
+            <param name="url">The URL pattern for the route.</param>
+            <param name="routeHandler">The object that processes requests for the route.</param>
+        </member>
+        <member name="M:CMS.Routing.Web.HttpHandlerRoute.GetVirtualPath(System.Web.Routing.RequestContext,System.Web.Routing.RouteValueDictionary)">
+            <summary>
+            Returns information about the URL that is associated with the route.
+            </summary>
+            <param name="requestContext">An object that encapsulates information about the requested route.</param>
+            <param name="values">An object that contains the parameters for a route.</param>
+            <remarks>
+            This method always returns <c>null</c> to prevent generation of links to Kentico HTTP handlers in external web applications.
+            </remarks>
+        </member>
+        <member name="T:CMS.Routing.Web.HttpHandlerRouteBuilder">
+            <summary>
+            Builds routes for Kentico HTTP handlers from route templates that support inline constraints.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.HttpHandlerRouteBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CMS.Routing.Web.HttpHandlerRouteBuilder"/> class using the default inline constraint resolver.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.HttpHandlerRouteBuilder.Build(System.String,System.Web.Routing.IRouteHandler)">
+            <summary>
+            Builds a route for a Kentico HTTP handler.
+            </summary>
+            <param name="routeTemplate">The route template with optional inline constraints.</param>
+            <param name="routeHandler">The route handler.</param>
+            <returns>A route for a Kentico HTTP handler.</returns>
+        </member>
+        <member name="T:CMS.Routing.Web.HttpHandlerRouteTable">
+            <summary>
+            Stores the URL routes to Kentico HTTP handlers.
+            </summary>
+            <threadsafety static="true" instance="true"/>
+        </member>
+        <member name="F:CMS.Routing.Web.HttpHandlerRouteTable.mDescriptors">
+            <summary>
+            A collection of attributes used for a registration of Kentico HTTP handlers.
+            </summary>
+        </member>
+        <member name="F:CMS.Routing.Web.HttpHandlerRouteTable.mRouteBuilder">
+            <summary>
+            An object that builds routes to Kentico HTTP handlers from route templates.
+            </summary>
+        </member>
+        <member name="F:CMS.Routing.Web.HttpHandlerRouteTable.mInstance">
+            <summary>
+            The default instance of the <see cref="T:CMS.Routing.Web.HttpHandlerRouteTable"/> class.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.HttpHandlerRouteTable.Register(CMS.Routing.Web.RegisterHttpHandlerAttribute)">
+            <summary>
+            Adds a route to Kentico HTTP handler.
+            </summary>
+            <param name="descriptor">The attribute used for a registration of Kentico HTTP handlers.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="descriptor"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">The route template is already registered.</exception>
+        </member>
+        <member name="M:CMS.Routing.Web.HttpHandlerRouteTable.GetRoutes">
+            <summary>
+            Returns an enumerable collection of routes to Kentico HTTP handlers.
+            </summary>
+            <returns>An enumerable collection of routes to Kentico HTTP handlers.</returns>
+        </member>
+        <member name="P:CMS.Routing.Web.HttpHandlerRouteTable.Default">
+            <summary>
+            Gets the default instance of the <see cref="T:CMS.Routing.Web.HttpHandlerRouteTable"/> class.
+            </summary>
+        </member>
+        <member name="T:CMS.Routing.Web.RoutingModule">
+            <summary>
+            Represents the Routing module.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.RoutingModule.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CMS.Routing.Web.RoutingModule"/> class.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.RoutingModule.OnPreInit">
+            <summary>
+            Initializes this module.
+            </summary>
+        </member>
+        <member name="T:CMS.Routing.Web.RoutingModuleMetadata">
+            <summary>
+            Represents the Routing module metadata.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.RoutingModuleMetadata.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CMS.Routing.Web.RoutingModuleMetadata"/> class.
+            </summary>
+        </member>
+        <member name="T:CMS.Routing.Web.RegisterHttpHandlerAttribute">
+            <summary>
+            Represents a route to a Kentico HTTP handler using a route template that supports inline constraints.
+            </summary>
+            <remarks>
+            Route templates are compatible with ASP.NET MVC 5 route templates with the following exceptions:
+            <list type="bullet">
+            <item><description>Only <c>guid</c> and <c>int</c> inline constraints are supported, other constraints are ignored.</description></item>
+            <item><description>There must be no unpaired braces except the escaped ones, otherwise an exception is thrown.</description></item>
+            </list>
+            Routes to Kentico HTTP handlers are excluded from URL generation, i.e. in MVC applications it is not possible
+            to accidentally generate an URL to a Kentico HTTP handler instead of a controller action.
+            </remarks>
+        </member>
+        <member name="M:CMS.Routing.Web.RegisterHttpHandlerAttribute.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CMS.Routing.Web.RegisterHttpHandlerAttribute"/> class.
+            </summary>
+            <param name="routeTemplate">The route template.</param>
+            <param name="handlerType">The type of a Kentico HTTP handler.</param>
+        </member>
+        <member name="M:CMS.Routing.Web.RegisterHttpHandlerAttribute.PreInit">
+            <summary>
+            Adds this instance to the table with routes to Kentico HTTP handlers.
+            </summary>
+        </member>
+        <member name="M:CMS.Routing.Web.RegisterHttpHandlerAttribute.GetHttpHandler(System.Web.Routing.RequestContext)">
+            <summary>
+            Provides the Kentico HTTP handler that processes the request.
+            </summary>
+            <param name="requestContext">An object that encapsulates information about the request.</param>
+            <returns>A Kentico HTTP handler that processes the request.</returns>
+        </member>
+        <member name="P:CMS.Routing.Web.RegisterHttpHandlerAttribute.MarkedType">
+            <summary>
+            Gets the type of a Kentico HTTP handler.
+            </summary>
+        </member>
+        <member name="P:CMS.Routing.Web.RegisterHttpHandlerAttribute.RouteTemplate">
+            <summary>
+            Gets the route template.
+            </summary>
+        </member>
+        <member name="P:CMS.Routing.Web.RegisterHttpHandlerAttribute.Order">
+            <summary>
+            Gets or sets the order weight of the route.
+            </summary>
+            <remarks>
+            Routes are sorted for each HTTP handler in increasing order based on the order value.
+            Routes without the order weight specified have an order value of 0.
+            Negative values are valid and can be used to position a route before all non-negative routes.
+            </remarks>
+        </member>
+    </members>
+</doc>

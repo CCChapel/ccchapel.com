@@ -1,0 +1,262 @@
+﻿@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+@using ChurchCommunityBuilder.Api.Events.Entity;
+@using CCB;
+
+@model CalendarCollection
+
+<!-- Table Controls -->
+<div class="event__table-controls">
+    <div class="grid">
+        <div class="[ palm--add-bottom-margin palm--center ] [ grid__item two-thirds palm--one-whole ]">
+            <input class="search-keywords" type="search" placeholder="Search Keywords">
+        </div><!--
+
+     --><div class="[ palm--add-bottom-margin palm--center ] [ grid__item one-third palm--one-whole ]">
+            <span class="css3-metro-dropdown">
+                <select class="search-campus">
+                    <option value="">All Campuses</option>
+                    <option value="hudson">Hudson Campus</option>
+                    <option value="aurora">Aurora Campus</option>
+                    <option value="stow">Stow Campus</option>
+                    <option value="highland-square">Highland Square Campus</option>
+                </select>
+            </span>
+        </div>
+    </div>
+
+    <div id="date-range-slider"></div>
+</div>
+
+<table class="event__table [ palm--hide-col-3 palm--hide-col-4 palm--hide-col-5 ]">
+    <thead>
+        <tr>
+            <th class="one-twelfth palm--one-quarter">Date</th>
+            <th class="four-twelfths palm--three-quarters">Name</th>
+            <th class="two-twelfths palm--hide">Time</th>
+            <th class="two-twelfths palm--hide">Campus</th>
+            <th class="two-twelfths palm--hide">Location</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{ 
+            foreach (Calendar ev in Model.Items)
+            {
+                DateTime startTime = CMS.Helpers.ValidationHelper.GetDateTime(ev.StartTime, DateTime.Now);
+                DateTime endTime = CMS.Helpers.ValidationHelper.GetDateTime(ev.EndTime, DateTime.Now);
+
+                string timeString = startTime.ToTimeRangeString(endTime);
+
+                <tr data-campus="@ev.CampusInfo().CampusCodeName.ToLower()">
+                    <td>@ev.Date.Value.ToShortDateString()</td>
+                    <td>
+                        <a class="event__name" href="#">@ev.EventName.Value</a>
+                        <div class="description hidden">
+                            <ul class="[ horizontal-list ] [ accent ] [ desk--hide ]">
+                                <li>@Html.Raw(timeString)</li><!--
+                             --><li>@ev.Location</li>
+                            </ul>
+
+                            @Html.Raw(DocumentHelpers.LineBreaksToParagraphs(ev.EventDescription))
+
+                            <div class="event-details__cta">
+                                @{
+                                    if (ev.EventInfo().HasRegistration())
+                                    {
+                                        if (ev.EventInfo().GetForm().IsActive)
+                                        {
+                                            <a class="cta auto" href="@ev.EventInfo().GetForm().Url">Register</a>
+
+                                        }
+                                        else
+                                        {
+                                            <a class="cta auto disabled">Registration Closed</a>
+                                        }
+                                    }
+                                }
+
+                                @{
+                                    if (ev.EventInfo().Organizer.CCBID.HasValue)
+                                    {
+                                        <p class="accent">
+                                            <a href="mailto:@ev.EventInfo().GetOrganizer().Email">Questions?</a>
+                                        </p>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </td>
+                    <td>@Html.Raw(timeString)</td>
+                    <td>@ev.CampusInfo().CampusName</td>
+                    <td>@ev.Location</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<style>
+    @{
+        //Show only current campus sermons
+        if (!string.IsNullOrWhiteSpace(MiscellaneousHelpers.CurrentCampusName))
+        {
+            <text>
+                tr[data-campus]
+                {
+                    display: none;
+                }
+
+                tr[data-campus~=@MiscellaneousHelpers.CurrentCampus.CampusCodeName.ToLower()]
+                {
+                    display: table-row;
+                }
+            </text>
+        }
+    }
+</style>
+
+<script src="/Content/2016-Q1/scripts/includes/jQSlider/jQDateRangeSlider-withRuler-min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        setupDescriptionToggle();
+        setupKeywordSearch();
+        setupCampusSearch();
+        //setupSlider();
+    });
+
+    function setupDescriptionToggle() {
+        //Setup Description Toggle
+        var selector = ".event__name";
+        var descriptionSelector = ".description";
+
+        $(selector).click(function(e) {
+            e.preventDefault();
+
+            $(this).parent().children(descriptionSelector).slideToggle();
+        });
+    }
+
+    function setupKeywordSearch() {
+        var selector = ".search-keywords";
+
+        $(selector).on("input", function() {
+            filter();
+        });
+    }
+
+    function setupCampusSearch() {
+        var selector = ".search-campus";
+
+        //Setup Initial Value
+        $(selector).val(CCChapel.CurrentCampus);
+
+        //Setup Change Event
+        $(selector).change(function() {
+            filter();
+        });
+    }
+
+    function filter() {
+        var table = ".event__table";
+        var keywordField = ".search-keywords";
+        var campusSelect = ".search-campus";
+        var rowAttribute = "data-campus";
+        var linkClass = ".event__name";
+        var campusColumnClass = "hide-col-4";
+
+        //Get Keywords
+        var keyword = formatStringForComparison($(keywordField).val());
+
+        //Get Campus
+        var campus = $(campusSelect).val().toLowerCase();
+
+        //If All Campuses, Show Campus Column
+        if (campus == "") {
+            $(table).removeClass(campusColumnClass);
+        }
+        else {
+            //If Not, Hide Campus Column
+            $(table).addClass(campusColumnClass);
+        }
+
+        //Go through each row
+        $(table).children("tbody").children("tr").each(function() {
+            //Check for campus
+            if (($(this).attr(rowAttribute) !== undefined) && ($(this).attr(rowAttribute).indexOf(campus) >=0)) {
+                //Check for keyword
+                var eventField = $(this).find(linkClass).html();
+
+                if (formatStringForComparison(eventField).indexOf(keyword) >= 0) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            }
+            else {
+                $(this).hide();
+            }
+        });
+
+        //Check for no visible rows
+        if ($(table + " > tbody tr:visible").length <= 0) {
+            showNoResultsRow();
+        }
+        else {
+            //Clean up No Results Rows
+            $(table + " > tbody tr.no-results").remove();
+        }
+
+        //Companion Functions
+        function formatStringForComparison(str) {
+            return str.replace(/[^\w\s]/, "").toLowerCase();
+        }
+
+        function showNoResultsRow() {
+            $(table + " > tbody").append('<tr class="no-results"><td colspan="4" class="accent">Sorry, no events were found.</td></tr>');
+        }
+    }
+
+    function setFocus(selector) {
+        $(selector).focus().click();
+    }
+
+    function setupSlider() {
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+        var selector = "#date-range-slider";
+
+        //Get Min (Today) & Max (+1 year)
+        var currentDate = new Date();
+        var min = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        var max = new Date(currentDate.getFullYear() + 1, currentDate.getMonth(), 1);
+        var defaultMax = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 1);
+
+        $(selector).dateRangeSlider({
+            bounds: {min: min, max: max},
+            defaultValues: {min: min, max: defaultMax },
+            scales: [{
+                first: function(value){ return value; },
+                end: function(value) {return value; },
+                next: function(value){
+                    var next = new Date(value);
+                    return new Date(next.setMonth(value.getMonth() + 1));
+                },
+                label: function(value){
+                    return months[value.getMonth()];
+                },
+                format: function(tickContainer, tickStart, tickEnd){
+                    tickContainer.addClass("drs-ticker");
+                }
+            }],
+            arrows: false,
+            valueLabels: "change",
+            //symmetricPositionning: true,
+            range:{
+                min: {months: 2},
+                max: false
+            }
+        });
+    }
+</script>

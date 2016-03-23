@@ -1,0 +1,75 @@
+﻿//**************************************************
+// INPUT
+//**************************************************/
+@mixin input-control-defaults {
+    @include form-control-defaults;
+
+    font-size: $typecsset-base-font-size;
+    
+    height: 2.5em;
+}
+
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"] {
+    @include input-control-defaults;
+
+    width: 90%;
+}
+
+input[type="button"] {
+    @include input-control-defaults;
+
+    cursor: pointer;
+        
+    font-family: $sans-serif-fonts;
+        
+    -webkit-appearance: none;
+}
+
+input[type="checkbox"]:not(".fsField") {
+    display: none;
+
+    & + label {
+        position: relative;
+        cursor: pointer;
+
+        color: $blue;
+        transition: color $transition-length $transition-function;
+
+        &:hover {
+            color: $light-blue;
+        }
+    
+        &:before {
+            //.fa
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            //font-size-adjust: 1;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+
+            //.fa-square-o:before 
+            content: "\f096";
+
+            position: absolute;
+            top: 2px;
+            left: -1.25em;
+        }
+    }
+
+
+    &:checked + label:before {
+        //.fa-check-square-o:before
+        content: "\f046";
+    }
+}

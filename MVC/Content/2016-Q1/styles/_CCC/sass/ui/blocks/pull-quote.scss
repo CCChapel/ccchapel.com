@@ -1,0 +1,41 @@
+﻿.pull-quote {
+    border-right: 2px solid $medium-gray;
+    
+    position: relative;
+    
+    //Place line in grid gutter
+    margin-right: -($gutter / 2);
+    margin-left: ($gutter / 2);
+    
+    @include grid-media-query("palm") {
+        border-right: none;
+        
+        margin-right: 0;
+        margin-left: 0;
+    }
+    
+//    &:before {
+//        border-top: 1px solid $blue;
+//
+//        content: "" !important;
+//        position: absolute !important;
+//        margin-left: 20px;                  //grid offset
+//        left: ($gutter * 2) !important;
+//        top: 0 !important;
+//
+//        height: 1px !important;
+//        width: 50% !important;
+//    }
+//    
+//    &:after {
+//        border-bottom: 1px solid $blue;
+//
+//        content: "" !important;
+//        position: absolute !important;
+//        right: ($gutter * 2) !important;
+//        bottom: 0 !important;
+//
+//        height: 1px !important;
+//        width: 50% !important;
+//    }
+}

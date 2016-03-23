@@ -1,0 +1,42 @@
+﻿.#{$ns-background-image}-layover {
+    background: none no-repeat center center/contain content-box;
+    
+    padding-top: 5% !important;
+    padding-bottom: 5% !important;
+    
+    min-height: inherit;
+    
+    &.left-justify {
+        background-position: left center;  
+        padding-right: 25%;
+    }
+    
+    &.right-justify {
+        background-position: right center;
+        padding-left: 25%;
+    }
+    
+    &.palm--center {
+        @include grid-media-query("palm") {
+            background-position: center center;
+
+            padding-left: $mobile-padding;
+            padding-right: $mobile-padding;
+        }
+    }
+}
+
+//**************************************************
+// BACKGROUND POSITIONS
+//**************************************************/
+.#{$ns-background-image}--top-center {
+    background-position: top center !important;
+}
+
+.#{$ns-background-image}--center-center {
+    background-position: center center !important;
+}
+
+.#{$ns-background-image}--bottom-center {
+    background-position: bottom center !important;
+}

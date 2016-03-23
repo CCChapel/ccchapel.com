@@ -1,0 +1,36 @@
+﻿@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+@model CCC.Models.EventsPage
+
+@{
+    CMS.DocumentEngine.Types.Page page = PageProvider.GetPage("/Pages/Events", SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+}
+
+<!-- Facebook Metadata-->
+<meta property="og:url" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, page.PageUrl))" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="@ViewBag.PageTitle" />
+<meta property="og:description" content="@page.SocialDescription" />
+<meta property="og:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(page.SocialImageFile)))" />
+<meta property="og:site_name" content="Christ Community Chapel">
+<meta property="fb:admins" content="23307166" />
+<meta property="fb:app_id" content="147696575258574" />
+
+<!-- Twitter Metadata-->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@("@ccchapel")">
+<meta name="twitter:title" content="@ViewBag.PageTitle">
+<meta name="twitter:description" content="@page.SocialDescription">
+<meta name="twitter:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(page.SocialImageFile)))">
+
+<meta name="twitter:app:id:iphone" content="653157512">
+<meta name="twitter:app:id:ipad" content="653157512">
+<meta name="twitter:app:id:googleplay" content="com.subsplash.thechurchapp.ccchapel">
+<meta name="twitter:app:url:iphone" content="subsplash://detail">
+<meta name="twitter:app:url:ipad" content="subsplash://detail">
+<meta name="twitter:app:url:googleplay" content="subsplash://detail">
+
+<!-- iOS Metadata-->
+<meta property="al:ios:url" content="subsplash://detail">
+<meta property="al:ios:app_store_id" content="653157512">
+<meta property="al:ios:app_name" content="CCChapel">

@@ -1,0 +1,293 @@
+﻿//GENERAL
+p:empty {
+    display: none;
+}
+
+.accent {
+    text-transform: uppercase;
+    font-weight: 300;           //TypeKit allows 100 (Thin) and 300 (Light)
+}
+
+small, .smaller
+{
+    @include typecsset-font-size(14px);
+}
+
+i
+{
+    font-style: italic;
+}
+
+b, em
+{
+    font-weight: bold;
+}
+
+.footnote {
+    //text-indent: -.5em;
+
+    &:before {
+        content: '*';
+
+        display: inline-block;
+        margin-left: -1em;
+
+        width: 1em;
+
+        color: currentColor;
+
+    }
+}
+
+.left-justify {
+    text-align: left !important;
+}
+
+.center {
+    text-align: center !important;
+}
+
+.right-justify {
+    text-align: right !important;
+}
+
+.palm--center {
+    @include grid-media-query("palm") {
+        text-align: center !important;
+    }
+}
+
+.palm--left-justify {
+    @include grid-media-query("palm") {
+        text-align: left !important;
+    }
+}
+
+.palm--right-justify {
+    @include grid-media-query("palm") {
+        text-align: right !important;
+    }
+}
+
+.text-fit {
+    font-size: calc(3vw + 2vh + 1vmin);
+    line-height: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    margin: 0 0 $bottom-margin 0;
+
+    @include grid-media-query("portable") {
+        @include typecsset-font-size(56px, false);
+    }
+}
+
+//HEADERS
+.primary-header {
+    @include typecsset-font-size($primary-headline-size);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.secondary-header {
+    @include typecsset-font-size($secondary-headline-size);
+    font-weight: bold;
+}
+
+h1 > a
+{
+    font-weight: normal;
+
+    &:hover
+    {
+        border-bottom: none;
+    }
+}
+
+p {
+    max-width: 32rem;
+    
+    &.full-width {
+        max-width: none;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.byline {
+    font-weight: bold;
+    
+    &:after{
+        content: "|";
+        margin: 0 10px;
+    }
+}
+
+//LINKS
+a {
+    color: $color-root;
+    font-weight: bold;
+    text-decoration: none;
+    
+    cursor: pointer;
+    
+    transition: color $transition-length $transition-function;
+    
+    &:hover,
+    &:active {
+        //text-decoration: underline;
+        color: $blue;
+    }
+    
+    &.black {
+        color: $black;
+        
+        &:hover {
+            color: $blue;
+        }
+    }
+
+    &.white {
+        color: #FFF;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+    
+    &.hvr-underline {
+        &:hover {
+            color: currentColor;
+            text-decoration: underline;
+        }
+    }
+    
+    &.hvr-light-blue {
+        color: currentColor;
+
+        &:hover {
+            color: $light-blue;
+        }
+    }
+}
+
+blockquote {
+    @include typecsset-font-size($secondary-headline-size);
+    font-weight: 800;
+    
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    
+    margin-left: 0;
+    
+//    &:before {
+//        content: open-quote;
+//    }
+    
+    &:after {
+        content: "\2013\00a0" attr(cite);
+        display: block;
+        
+        font-weight: normal;
+        text-indent: 0;
+    }
+    
+    &.no-cite:after {
+        content: none;
+    }
+    
+    @include grid-media-query("palm") {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+
+//Lists
+.horizontal-list {
+    margin-bottom: 0;
+    margin-left: 0;
+
+    & > * {
+        display: inline-block;
+        
+        &:after {
+            content: '|';
+            padding: 0 10px;
+            color: currentColor;
+        }
+
+        &:last-child:after {
+            content: '';
+            padding: 0;
+        }
+    }
+    
+    &.black > * {
+        color: $black !important;
+    }
+
+    &.white > * {
+        color: #FFF !important;
+    }
+    
+    &.palm--vertical {
+        @include grid-media-query("palm") {
+            & > * {
+                display: block !important;
+                position: relative !important;
+                padding: .5em 0 !important;
+
+                &:after {
+                    //border-bottom: 1px solid inherit !important;
+                    border-bottom-width: 1px;
+                    border-bottom-style: solid;
+
+                    content: "" !important;
+                    position: absolute !important;
+                    left: 10% !important;
+                    bottom: 0 !important;
+
+                    height: 1px !important;
+                    width: 80% !important;
+                }
+
+                &:last-child:after {
+                    border-bottom: none !important;
+                }
+            }
+        }
+    }
+
+    &.no-marker {
+        & > * {
+            padding: 0 !important;
+            
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    &.palm--no-marker {
+        @include grid-media-query("palm") {
+            & > * {
+                padding: 0 !important;
+
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+//Colors
+.font-black {
+    color: $black;
+}
+
+.font-white {
+    color: #FFF;
+}

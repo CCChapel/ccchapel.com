@@ -1,0 +1,106 @@
+﻿@using CMS.DocumentEngine;
+@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+
+@model Sermon
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = string.Format("{0} - {1}", Model.MessageSeries.SeriesTitle, Model.Fields.MessageTitle);
+}
+
+<input id="embedHtml" type="hidden" value="@Model.EmbedHtml" />
+
+<!-- #HEADER IMAGE-->
+<div class="[ header-image @Model.Background.ImageTextColor @Model.Background.ImagePositioning ] [ content-section no-bottom-margin ] [ center-vertically ] [ grid__item one-whole ]" 
+    style="background-image: url(@Url.Kentico().Attachment(Model.Background.Fields.ImageFile));">
+    <div class="content-wrapper">
+        <div class="header-image__title">
+            @Model.MessageTitle
+        </div>
+        
+    @{
+        if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
+        {
+            <div class="header-image__video-controls">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle-thin fa-stack-2x"></i>
+                    <i class="fa fa-play fa-stack-1x"></i>
+                </span>
+            </div>
+        }
+    }
+        
+    </div><!-- /content-wrapper -->
+</div><!-- /header-image --> 
+    
+<div class="header-details [ content-section transparent no-bottom-margin ] [ grid__item one-whole ]">
+    <div class="content-wrapper no-vertical">
+        <div class="grid">
+            <div class="header-details__left [ grid__item two-thirds lap--one-half palm--one-whole ]">
+                <div class="[ center-vertically left-justify ]">
+                    <ul class="horizontal-list">
+                        <li>@Model.MessageDate.ToString("M.d")</li><!--
+                     --><li>@Model.MessageSpeaker.SpeakerFullName</li><!--
+                     --><li>@Model.MessageSeries.SeriesTitle</li>
+                    </ul>
+                </div>
+            </div><!-- /header-detaisl__left --><!--
+
+         --><div class="header-details__right [ grid__item one-third lap--one-half palm--hide ]">
+                <div class="header-details__buttons">
+                    @{
+                        //Audio Download
+                        if (!string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
+                        {
+                            <a class="cta" href="@Model.DownloadUrlAudio" download><i class="fa fa-download"></i>&nbsp;&nbsp;Audio</a>
+                        }
+                    }
+
+                    @{
+                        //Video Download
+                        if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
+                        {
+                            <a class="cta" href="@Model.DownloadUrlVideo" download><i class="fa fa-download"></i>&nbsp;&nbsp;Video</a>
+                        }
+                    }
+                </div> <!-- /header-details__button -->
+            </div> <!-- /header-details__right -->
+                        
+            <div class="[ grid__item two-thirds palm--one-whole ] add-bottom-margin">
+                <div class="header-details__copy">
+                    @Html.Raw(Model.MessageDescription)
+                                
+                    <div class="header-details__social center-vertically grid">
+                        @{ Html.RenderPartial("_SocialSharing"); }
+                    </div>
+                </div>
+            </div><!--
+                     
+         --><div class="[ grid__item one-third palm--hide ]"></div>
+        </div> <!-- /grid -->
+    </div> <!-- /content-wrapper -->
+</div><!-- /header-details -->
+
+<div class="sermon-series__table [ content-section no-bottom-margin light-gray ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title">Other Sermons in This Series</div>
+
+        @{ Html.RenderAction("_SeriesTable", "MessageSeries", new { series = Model.MessageSeries }); }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //Play Video Click
+            $(".header-image").click(function () {
+                var html = $("#embedHtml").val();
+
+                CCChapel.showVideo({
+                    videoMarkup: html
+                });
+            });
+        });
+    </script>
+}

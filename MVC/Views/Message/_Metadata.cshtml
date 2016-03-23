@@ -1,0 +1,70 @@
+﻿@using CCC.Helpers
+@model CMS.DocumentEngine.Types.Sermon
+@{
+    bool isVideo = false;
+    Vimeo.Types.Video.File file = new Vimeo.Types.Video.File();
+
+    try
+    {
+        file = Model.Video.files.Where(f => f.quality == "hd" && f.type == "video/mp4").FirstOrDefault();
+        isVideo = true;
+    }
+    catch
+    {
+        isVideo = false;
+    }
+
+    string appDeepLink = "http://ccchapel.com/Feeds/App/Sermons/Sermon-Detail/?sermonid=479";
+}
+<!-- Facebook Metadata-->
+<meta property="og:title" content="@ViewBag.PageTitle">
+<meta property="og:description" content="@Model.Fields.MessageDescription">
+<meta property="og:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(Model.MessageSeries.Background.Fields.ImageFile)))">
+<meta property="og:site_name" content="Christ Community Chapel">
+<meta property="og:url" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Model.RouteUrl))">
+<meta property="fb:admins" content="23307166" />
+<meta property="fb:app_id" content="147696575258574" />
+
+@{
+    if (isVideo == true)
+    {
+        <meta property="og:type" content="video.other">
+        <meta property="og:video" content="@file.link">
+        <meta property="og:video:secure_url" content="@file.link_secure">
+        <meta property="og:video:type" content="application/x-shockwave-flash">
+        <meta property="og:video:width" content="@file.width">
+        <meta property="og:video:height" content="@file.height">
+        <meta property="video:duration" content="@Model.Video.duration">
+    }
+    else
+    {
+        <meta property="og:type" content="music.song">
+        <meta property="music:album:url" content="@Model.DownloadUrlAudio" />
+    }
+}
+
+
+<!-- Twitter Metadata-->
+<meta name="twitter:card" content="player">
+<meta name="twitter:site" content="@("@ccchapel")">
+<meta name="twitter:title" content="@Model.Fields.MessageTitle">
+<meta name="twitter:description" content="@Model.Fields.MessageDescription">
+<meta name="twitter:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(Model.MessageSeries.Background.Fields.ImageFile)))">
+<meta name="twitter:player" content="@Model.Video.link">
+<meta name="twitter:player:width" content="@file.width">
+<meta name="twitter:player:height" content="@file.height">
+
+<meta name="twitter:player:stream" content="@file.link">
+<meta name="twitter:player:stream:content_type" content="video/mp4">
+
+<meta name="twitter:app:id:iphone" content="653157512">
+<meta name="twitter:app:id:ipad" content="653157512">
+<meta name="twitter:app:id:googleplay" content="com.subsplash.thechurchapp.ccchapel">
+<meta name="twitter:app:url:iphone" content="@appDeepLink">
+<meta name="twitter:app:url:ipad" content="@appDeepLink">
+<meta name="twitter:app:url:googleplay" content="@appDeepLink">
+
+<!-- iOS Metadata-->
+<meta property="al:ios:url" content="subsplash://detail?link=@appDeepLink">
+<meta property="al:ios:app_store_id" content="653157512">
+<meta property="al:ios:app_name" content="CCChapel">

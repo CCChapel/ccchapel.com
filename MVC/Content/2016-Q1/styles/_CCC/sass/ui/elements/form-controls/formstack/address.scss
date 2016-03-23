@@ -1,0 +1,11 @@
+﻿.fsFieldAddress2,
+.fsFieldCity,
+.fsFieldState,
+.fsFieldZip {
+    padding-top: 10px;
+}
+
+.fsFieldState {
+    padding-left: $gutter;
+    padding-right: $gutter;
+}

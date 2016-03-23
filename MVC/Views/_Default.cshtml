@@ -1,0 +1,364 @@
+﻿@using System.Web.Optimization;
+
+@using CCC.Helpers;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- #METADATA -->
+    <title>Christ Community Chapel | @ViewBag.PageTitle </title>
+
+    <!-- Character Encoding -->
+    <meta charset="utf-8" />
+
+    <!-- Mobile Scaling -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, inital-scale=1.0">
+
+    <!-- Stop Browser Formatting -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+
+    <!-- Disable Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <!-- Link to iOS App -->
+    <meta name="apple-itunes-app" content="app-id=653157512">
+
+    @{ 
+        if (PartialViewExists(Html, "_Metadata"))
+        {
+            Html.RenderPartial("_Metadata");
+        }
+    }
+
+
+    @{ Html.RenderPartial("_FavIcon"); }
+
+    @{ Html.RenderPartial("_AppleWebApp"); }
+
+    @{ Html.RenderPartial("_TypeKit"); }
+
+    @Styles.Render("~/bundles/font-awesome")
+    @Styles.Render("~/bundles/styles")
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+
+    @Scripts.Render("~/bundles/google/maps")
+    @Scripts.Render("~/bundles/google/maps/marker")
+    @Scripts.Render("~/bundles/scripts")
+
+    <!-- Data -->
+    <input id="currentCampus" type="hidden" value="@MiscellaneousHelpers.CurrentCampus.CampusCodeName.ToLower()" />
+
+    <div class="modal">
+        <div class="modal-close">
+            <span class="center-vertically">
+                <i class="fa fa-close fa-2x"></i>
+            </span>
+        </div>
+
+        <div class="modal-content"></div>
+    </div>
+
+    <header class="header">
+        <!-- #CAMPUS SELECT -->
+        <div class="campus-select [ grid grid--center ]">
+            <div class="campus-select__options [ grid__item one-whole ]">
+                <i class="fa fa-map-marker"></i>&nbsp;&nbsp;
+                <span class="campus-select__campus-marker desk--hide" role="button">Campuses</span>
+                <ul class="campus-select__list [ horizontal-list palm--vertical ] [ portable--hide ]">
+                    <li><a class="change-campus hvr-underline" data-campus="hudson" href="#">Hudson</a></li><!--
+
+                 --><li><a class="change-campus hvr-underline" data-campus="aurora" href="#">Aurora</a></li><!--
+
+                 --><li><a class="change-campus hvr-underline" data-campus="stow" href="#">Stow</a></li><!--
+
+                 --><li><a class="change-campus hvr-underline" data-campus="highland square" href="#">Highland Square</a></li>
+                </ul> <!-- /campus-select__list -->
+            </div> <!-- /campus-select__options -->
+        </div> <!-- /campus-select -->
+        <!-- #BANNER -->
+        <div class="banner grid">
+            <div class="banner__logo [ grid__item one-fifth portable--three-quarters ]">
+                <div class="content-wrapper--mobile no-vertical">
+                    <a href="/">
+                        <span class="center-vertically left-justify--mobile">
+                            <img class="logo" src="~/Content/2016-Q1/images/logo.png" alt="" />
+                        </span>
+                    </a>
+                </div> <!-- /content-wrapper--mobile -->
+            </div><!-- /banner__logo --><!--
+
+         --><div class="banner__mobile-menu [ grid__item desk--hide portable--one-quarter ]">
+                <div class="[ content-wrapper--mobile no-vertical ] [ center-vertically right-justify ]">
+                    <div id="nav-icon" class="nav-icon" role="button" aria-label="Toggle Navigation">
+                        <span class="lines"></span>
+                    </div>
+                </div>
+            </div><!-- /banner__mobile-menu --><!--
+
+         --><div class="banner__menu [ grid__item four-fifths portable--one-whole portable--hide ]">
+                <nav class="menu [ grid grid--rev ]">
+                    <div class="menu__search [ grid__item one-tenth portable--one-whole ]">
+                        <div class="menu__search-grid grid">
+                            <div class="menu__search-field [ grid__item desk--nine-tenths desk--hide portable--one-whole ]">
+                                <span class="[ content-wrapper--mobile no-vertical ] center-vertically">
+                                    <input id="menu-search" type="search" placeholder="Search" class="one-whole" />
+                                </span>
+                            </div><!--
+
+                         --><div class="menu__search-icon [ grid__item desk--one-whole portable--hide ]">
+                                <div class="menu__item">
+                                    <span class="center-vertically">
+                                        <i class="[ fa fa-search ] [ portable--hide ]"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /menu__search --><!--
+
+                 --><div class="menu__items [ grid__item nine-tenths portable--one-whole ]">
+                        <div class="menu__grid [ grid ]">
+                            <div class="menu__item [ grid__item one-sixth lap--one-half palm--one-whole ]">
+                                <span class="center-vertically">
+                                    <a class="hvr-light-blue" href="/new-here">New Here</a>
+                                </span>
+                            </div><!--
+
+                         --><div class="menu__item [ grid__item one-sixth lap--one-half palm--one-whole ]">
+                                <span class="center-vertically">
+                                    <a class="hvr-light-blue" href="/next-steps">Next Steps</a>
+                                </span>
+                            </div><!--
+
+                         --><div class="menu__item [ grid__item one-sixth lap--one-half palm--one-whole ]">
+                                <span class="center-vertically">
+                                    <a class="hvr-light-blue" href="/church-life">Church Life</a>
+                                </span>
+                            </div><!--
+
+                         --><div class="menu__item [ grid__item one-sixth lap--one-half palm--one-whole ]">
+                                <span class="center-vertically">
+                                    <a class="hvr-light-blue" href="/messages">Messages</a>
+                                </span>
+                            </div><!--
+
+                         --><div class="menu__item [ grid__item one-sixth lap--one-half palm--one-whole ]">
+                                <span class="center-vertically">
+                                    <a class="hvr-light-blue" href="/events">Events</a>
+                                </span>
+                            </div><!--
+
+                         --><div class="menu__item [ grid__item one-sixth lap--one-half palm--one-whole ]">
+                                <span class="center-vertically">
+                                    <a class="hvr-light-blue" href="/give">Give</a>
+                                </span>
+                            </div>
+                        </div> <!-- /grid -->
+                    </div><!-- /menu__items -->
+                </nav> <!-- /menu -->
+            </div> <!-- /banner__menu -->
+        </div> <!-- /banner -->
+    </header>
+
+    <!-- #BODY -->
+    <div class="body grid">
+        @{ Html.RenderPartial("~/Views/Notification/_Notification.cshtml"); }
+
+        @RenderBody()
+    </div>
+
+    <!-- #FOOTER -->
+    <footer class="footer grid">
+        <div class="content-wrapper">
+            <div class="footer__logo [ grid__item one-whole ]">
+                <span class="center-vertically">
+                    <img class="logo--footer" src="/Content/2016-Q1/images/logo.png" alt="Christ Community Chapel" />
+                </span>
+            </div><!--
+
+         --><div class="footer__address [ grid__item one-whole ]">
+                <ul class="[ horizontal-list palm--vertical palm--no-marker ]">
+                    <li>Hudson Campus</li><!--
+                 --><li>750 W Streetsboro Street, Hudson, Ohio 44236</li><!--
+                 --><li>330.650.9533</li>
+                </ul>
+            </div><!--
+
+         --><div class="footer__campuses [ grid__item one-whole ]">
+                <ul class="horizontal-list">
+                    <li>
+                        <a class="change-campus" data-campus="hudson" href="#">Hudson</a>
+                    </li><!--
+                 --><li>
+                        <a class="change-campus" data-campus="aurora" href="#">Aurora</a>
+                    </li><!--
+                 --><li>
+                        <a class="change-campus" data-campus="stow" href="#">Stow</a>
+                    </li><!--
+                 --><li>
+                        <a class="change-campus" data-campus="highland square" href="#">Highland Square</a>
+                    </li>
+                </ul>
+            </div><!--
+
+         --><div class="footer__social [ grid__item one-whole ]">
+                <div class="grid grid--center">
+                    <div class="grid__item one-twelfth palm--one-fifth">
+                        <a class="facebook-icon" href="https://facebook.com/ccchapelhudson">
+                            <i class="fa fa-facebook fa-2x"></i>
+                        </a>
+                    </div><!--
+
+                 --><div class="grid__item one-twelfth palm--one-fifth">
+                        <a class="twitter-icon" href="http://twitter.com/ccchapelhudson">
+                            <i class="fa fa-twitter fa-2x"></i>
+                        </a>
+                    </div><!--
+
+                 --><div class="grid__item one-twelfth palm--one-fifth">
+                        <a class="youtube-icon" href="http://youtube.com/c/ccchapel">
+                            <i class="fa fa-youtube-play fa-2x"></i>
+                        </a>
+                    </div><!--
+
+                 --><div class="grid__item one-twelfth palm--one-fifth">
+                        <a class="vimeo-icon" href="http://vimeo.com/ccchapel">
+                            <i class="fa fa-vimeo fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div><!--
+
+         --><div class="footer__cta [ grid__item one-whole ]">
+                <div class="footer__buttons">
+                    <a class="cta auto" href="./contact-us">Contact Us</a>
+                    <a class="cta auto" href="https://communitychapel.ccbchurch.com">My Account</a>
+                </div>
+            </div><!--
+
+         --><div class="footer__navigation smaller [ grid__item one-whole palm--hide ]">
+                <div class="grid">
+                    <div class="grid__item one-quarter lap--one-half portable--one-half">
+                        <ul>
+                            <li><a href="./new-here">New Here</a></li>
+                            <li><a href="./">Locations</a></li>
+                            <li><a href="./">Beliefs</a></li>
+                            <li><a href="./">Staff</a></li>
+                        </ul>
+                    </div><!--
+
+                  --><div class="grid__item one-quarter lap--one-half portable--one-half">
+                        <ul>
+                            <li><a href="./next-steps">Next Steps</a></li>
+                            <li><a href="./next-steps#community-groups">Community Groups</a></li>
+                            <li><a href="./next-steps#serve">Serve</a></li>
+                            <li><a href="./next-step#baptism">Baptism</a></li>
+                            <li><a href="./next-steps#membership">Membership</a></li>
+                        </ul>
+                    </div><!--
+
+                 --><div class="grid__item one-quarter lap--one-half portable--one-half">
+                        <ul>
+                            <li><a href="./church-life">Church Life</a></li>
+                            <li><a href="./events">Events</a></li>
+                            <li><a href="./give">Give</a></li>
+                        </ul>
+                    </div><!--
+
+                 --><div class="grid__item one-quarter lap--one-half portable--one-half">
+                        <ul>
+                            <li><a href="./messages">Messages</a></li>
+                            <li><a href="./employment">Employment</a></li>
+                            <li><a href="./contact-us">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div> <!-- /grid -->
+            </div><!--
+
+         --><div class="footer__copyright smaller [ grid__item one-whole ]">
+                <ul class="horizontal-list">
+                    <li>
+                        &copy; @DateTime.Now.Year Christ Community Chapel
+                    </li><!--
+                 --><li>
+                        All Rights Reserved
+                    </li>
+                </ul>
+            </div>
+        </div> <!-- /content-wrapper -->
+    </footer> <!-- /footer -->
+
+    <script>
+        //Setup Search
+        var searchInputSelector = "#menu-search";
+        $(document).ready(function () {
+            var timer;
+            var delay = 600;
+
+            $(searchInputSelector).on('input', function () {
+                window.clearTimeout(timer);
+                timer = window.setTimeout(function () {
+                    var query = $(searchInputSelector).val();
+                    console.log(query);
+
+                    var jqxhr = CCChapel.getSearchResults(query);
+
+                    jqxhr.done(function (data) {
+                            console.log(data);
+                            displaySearchResults(data);
+                         })
+                         .fail(function () {
+                            console.log("Request Failed")
+                         });
+                }, delay);
+            });
+        });
+
+        function displaySearchResults(results) {
+            var html = "";
+
+            $.each(results, function (i, item) {
+                console.log(i);
+                html += '<a href="' + item.url + '">' + item.title + '</a>';
+            });
+
+            $(".modal-content").html(html);
+            console.log("results displayed");
+        }
+    </script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
+
+@functions {
+    public static bool PartialViewExists(HtmlHelper<dynamic> html, string name)
+    {
+        try
+        {
+            var controllerContext = html.ViewContext.Controller.ControllerContext;
+
+            ViewEngineResult result = ViewEngines.Engines.FindPartialView(controllerContext, name);
+
+            if (result.View != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        catch
+        {
+            return false;
+        }
+    }
+}

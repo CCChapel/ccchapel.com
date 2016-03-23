@@ -1,0 +1,20 @@
+﻿/* BUTTONS */
+.fsPagination .fsPreviousButton {
+    margin-right: 24px;
+}
+.fsPagination .fsNextButton {
+    float: left;
+}
+.fsSubmit input.fsSubmitButton {
+    float: left !important;
+    //padding: 6px 12px !important;
+    @extend .cta;
+    @extend .cta.auto;
+    @extend .cta.red;
+
+    font-size: 1em;
+}
+
+.fsForm .fsSubmit {
+    padding: 0 !important;
+}

@@ -1,0 +1,75 @@
+﻿cmsdefine([], function () {
+    
+    var Controller = function ($scope) {
+        this.$scope = $scope;
+        this.$scope.onChange = this.onChange.bind(this);
+    },
+        directive = function () {
+            return {
+                restrict: "E",
+                template:
+    '<div data-ng-class="{\'form-group\': true, \'has-error\': (form.$submitted || model.$dirty) && model.$invalid}" title="{{title}}" >' +
+    '<div class="editing-form-label-cell">' +
+        '<label for="{{id}}" class="control-label editing-form-label">{{label}}:<span class="required-mark" data-ng-if="required">*</span></label>' +
+    '</div>' +
+    '<div class="textarea editing-form-value-cell">' +
+        '<textarea ' +
+                'class="form-control" ' +
+                'data-ng-change="onChange()" ' +
+                'data-ng-model="value" ' +
+                'name="{{id}}" ' +
+                'data-ng-readonly="readonly" ' +
+                'data-ng-required="required" ' +
+                'data-ng-maxLength="maxlength" />' +
+        '<div class="explanation-text" data-ng-if="explanationText">{{explanationText}}</div>' +
+        '<span class="form-control-error" data-ng-if="(form.$submitted || model.$dirty) && model.$error.required">' +
+            '{{"general.requiresvalue"|resolve}}' +
+        '</span>' +
+    '</div>' +
+'</div>',
+                replace: true,
+                require: ["^form"],
+                scope: {
+                    value: '=',
+                    required: "=",
+                    maxlength: "@",
+                    id: "@",
+                    title: "@",
+                    label: "@",
+                    inputType: "@",
+                    readonly: "=",
+                    explanationText: "@",
+                },
+                controller: Controller,
+                link: function ($scope, $element, $attrs, $ctrl) {
+                    $scope.form = $ctrl[0];
+                    $scope.model = $scope.form[$scope.id];
+
+                    var $textArea = $element.find("textarea");
+                    if ($attrs.rows) {
+                        $textArea.attr("rows", $attrs.rows);
+                    }
+                }
+            };
+        };
+        
+
+    /**
+     * Keeps the value of input in required format.
+     */
+    Controller.prototype.onChange = function () {
+        var value = this.$scope.model.$viewValue;
+
+        if (this.$scope.maxlength) {
+            value = value.substring(0, this.$scope.maxlength);;
+        }
+
+        this.$scope.value = value;
+    };
+
+    Controller.$inject = [
+      '$scope'
+    ];
+
+    return [directive];
+});

@@ -1,0 +1,120 @@
+﻿//**************************************************
+// SELECT
+//**************************************************/
+/*
+* @CSS3 Metro Dropdown
+* @author Martin Ivanov
+* @website http://wemakesitesnet
+* @blog http://acidmartin.wordpress.com
+* @twitter https://twitter.com/#!/wemakesitesnet
+**/
+.css3-metro-dropdown option,
+.css3-metro-dropdown:after,
+.css3-metro-dropdown::after,
+.css3-metro-dropdown select
+{
+    color: #fff;
+}
+
+.css3-metro-dropdown select,
+.css3-metro-dropdown:after,
+.css3-metro-dropdown::after
+{
+    display: block;
+    background: #FFF;
+}
+
+.css3-metro-dropdown
+{
+    position: relative;
+    display: inline-block;
+    border: 0;
+    
+    width: 90%;
+}
+
+.css3-metro-dropdown:after
+{
+    //@extend .fa;
+    display: inline-block;
+    font-family: FontAwesome;
+    //font: normal normal normal 14px/1 FontAwesome;
+    //font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    //@extend .fa-chevron-down:before;
+    content: "\f078";
+
+    @include form-control-defaults;
+    
+    //border: 1px solid $medium-gray;
+    border-left: none;
+    //border-radius: 0 3px 3px 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    display: table-cell;
+    position: absolute;
+    padding: 0;
+    top: 0;
+    right: 0;
+
+    height: 100%;
+    width: 3em;
+
+    font-size: 1em;
+    text-align: center;
+
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    pointer-events: none;
+
+    color: $medium-gray;
+    line-height: 40px;
+    
+}
+
+.css3-metro-dropdown:active:after,
+.css3-metro-dropdown:focus:after,
+.css3-metro-dropdown:hover:after {
+    border-color: $light-blue;
+    color: $light-blue;
+}
+
+//.css3-metro-dropdown:active:after {
+    //@extend .fa-chevron-up:before;
+    //animation: rotate180 250ms linear 1 forwards;
+//}
+
+.css3-metro-dropdown select
+{
+    @include form-control-defaults;
+
+    padding: 0 .75rem;
+
+    vertical-align: middle;
+    outline: 0 none;
+
+    cursor: pointer;
+    
+    color: $black;
+    
+    height: calc(24px + 1em);
+    width: 100%;
+
+    font-size: 1em;
+}
+
+.css3-metro-dropdown option
+{
+    padding: .5em;
+
+    background: #fff;
+    color: $black;
+    
+    &:disabled {
+        color: $dark-gray;
+    }
+}

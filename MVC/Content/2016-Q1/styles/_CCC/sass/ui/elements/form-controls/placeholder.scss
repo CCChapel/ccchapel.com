@@ -1,0 +1,40 @@
+﻿//**************************************************
+// PLACEHOLDER
+//**************************************************/
+@mixin placeholder-defaults {
+    color: $dark-gray;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 200;
+}
+
+/* Safari, Chrome and Opera */
+::-webkit-input-placeholder {
+    @include placeholder-defaults;
+}
+
+/* Firefox 18- */
+:-moz-placeholder {
+    @include placeholder-defaults;
+}
+
+/* Firefox 19+ */
+::-moz-placeholder {
+    @include placeholder-defaults;
+}
+
+/* IE 10+ */
+:-ms-input-placeholder {
+    @include placeholder-defaults;
+}
+
+/* Edge */
+::-ms-input-placeholder {
+    @include placeholder-defaults;
+}
+
+/* Default Usage */
+:placeholder-shown {
+    @include placeholder-defaults;
+}

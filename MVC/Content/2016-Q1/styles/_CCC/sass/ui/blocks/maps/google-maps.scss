@@ -1,0 +1,27 @@
+﻿.google-map__info-window {
+    //Center content
+    padding: 1em 0 1em 1.5em;
+
+    font-family: $sans-serif-fonts;
+    color: $black;
+    text-align: center;
+}
+
+.google-map__location-name {
+    font-weight: bold;
+}
+
+.google-map__location-address {
+    margin-bottom: $magic-number;
+}
+
+.google-map__label {
+    @include typecsset-font-size($typecsset-base-font-size);
+
+    color: $light-blue;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #FFF;
+
+    height: 75px;
+    max-width: 25%;
+}

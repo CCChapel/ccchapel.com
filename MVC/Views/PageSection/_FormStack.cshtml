@@ -1,0 +1,14 @@
+﻿@model CMS.DocumentEngine.Types.FormStackSection
+
+<div class="@Model.SectionCssClass [ content-section @Model.SectionHeight ] [ grid__item one-whole ]" style="@Model.SectionStyles">
+    @Html.Raw(
+        Html.Kentico().ResolveUrls(
+            Model.SectionContentWithForm.ProcessForOutput()))
+</div>
+
+@*@{ 
+    ViewContext.Controller.ViewBag.JavaScript += "<script>CCChapel.formatSelectBoxes;</script>";
+}*@
+<script>
+    CCChapel.formatSelectBoxes();
+</script>

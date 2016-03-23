@@ -1,0 +1,28 @@
+﻿[Group:PerformanceBasic]
+<field column="PartialCacheMinutes" visible="true" columntype="integer" allowempty="true" columnsize="200" guid="e514e78f-24ca-4596-8718-5f4ea17804c4">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.partialcacheminutes$}</fielddescription>
+        <fieldcaption>Partial cache minutes</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>textboxcontrol</controlname>
+    </settings>
+</field>
+<field column="PartialCacheDependencies" visible="true" columntype="longtext" allowempty="true" guid="bfe08ac4-c446-480c-b340-df35232eb13e" visibility="none">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.partialcachedependencies$}</fielddescription>
+        <fieldcaption>Partial cache dependencies</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>cachedependencies</controlname>
+    </settings>
+</field>
+<field column="PreservePartialCacheOnPostback" visible="true" columntype="boolean" allowempty="true" guid="40c61552-1476-4aa6-803d-ca8cacd9e261">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.allowforpostback$}</fielddescription>
+        <fieldcaption>Preserve partial cache on postback</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>checkboxcontrol</controlname>
+    </settings>
+</field>

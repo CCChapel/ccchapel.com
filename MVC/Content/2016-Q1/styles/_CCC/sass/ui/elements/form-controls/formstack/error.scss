@@ -1,0 +1,20 @@
+﻿.fsError {
+    border-color: $red !important;
+
+    margin: 0 0 $bottom-margin 0;
+
+    font-size: 1em;
+}
+
+.fsValidationError {
+    background: none !important;
+
+    .fsLabel {
+        background: none !important;
+        color: $red !important;
+    }
+
+    input {
+        border-color: $red;
+    }
+}

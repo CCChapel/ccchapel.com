@@ -1,0 +1,44 @@
+﻿<category name="Visibility">
+    <properties>
+        <collapsedbydefault>true</collapsedbydefault>
+        <collapsible>true</collapsible>
+        <visible>true</visible>
+    </properties>
+</category>
+<field column="Visible" visible="true" columntype="boolean" guid="f384a9f6-a251-4435-b9a3-8d81f9951fe2">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.visible$}</fielddescription>
+        <defaultvalue>true</defaultvalue>
+        <fieldcaption>Visible</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>checkboxcontrol</controlname>
+    </settings>
+</field>
+<field column="HideOnSubPages" visible="true" columntype="boolean" guid="259ca89d-8094-4fa9-807f-09ece42e14f0">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.hideonsub$}</fielddescription>
+        <fieldcaption>Hide on subpages</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>checkboxcontrol</controlname>
+    </settings>
+</field>
+<field column="ShowForDocumentTypes" visible="true" columntype="text" allowempty="true" columnsize="1000" guid="1c5b0464-0e98-493d-8a1d-9add3ad63fdd">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.showfordocumenttypes$}</fielddescription>
+        <fieldcaption>{$content.showforpagetypes$}</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>selectclassnames</controlname>
+    </settings>
+</field>
+<field column="DisplayToRoles" visible="true" columntype="text" allowempty="true" columnsize="1000" guid="57f899c3-29a5-47bd-a00b-a57f1d9368a2">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.displaytoroles$}</fielddescription>
+        <fieldcaption>Display to roles</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>rolecheckboxselector</controlname>
+    </settings>
+</field>

@@ -1,0 +1,23 @@
+﻿<category name="HTML Envelope">
+    <properties>
+        <visible>true</visible>
+    </properties>
+</category>
+<field column="ContentBefore" visible="true" columntype="longtext" allowempty="true" guid="80e99300-3501-4942-a554-ca545fda2c8c">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.contentbefore$}</fielddescription>
+        <fieldcaption>Content before</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>largetextarea</controlname>
+    </settings>
+</field>
+<field column="ContentAfter" visible="true" columntype="longtext" allowempty="true" guid="5f2d51db-7b8a-4c1b-94ed-5bf58c5ab6e9">
+    <properties>
+        <fielddescription>{$documentation.webpartproperties.contentafter$}</fielddescription>
+        <fieldcaption>Content after</fieldcaption>
+    </properties>
+    <settings>
+        <controlname>largetextarea</controlname>
+    </settings>
+</field>

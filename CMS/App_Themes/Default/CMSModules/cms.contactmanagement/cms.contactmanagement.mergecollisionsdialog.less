@@ -1,0 +1,42 @@
+﻿.MergeDialog {
+    .HeaderSeparator {
+        display: none;
+    }
+
+    .PaddingPanel {
+        padding: 6px;
+    }
+
+    .BodyPanel {
+        position: fixed;
+        bottom: 40px;
+        top: 64px;
+        width: 100%;
+        z-index: 1;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .JqueryUITabs .ui-tabs-panel {
+        height: 100% !important;
+        padding: 0 !important;
+    }
+
+    .ui-tabs .ui-tabs-nav {
+        width: 100%;
+    }
+
+    .ContentPanel {
+        width: 655px;
+    }
+
+    .SelectorColumn {
+        width: 386px;
+    }
+}
+
+.DialogPageBody {
+    .MergeDialog {
+        padding-bottom: @base-unit * 2;
+    }
+}

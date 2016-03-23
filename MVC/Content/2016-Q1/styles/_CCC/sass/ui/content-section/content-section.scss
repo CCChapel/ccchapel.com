@@ -1,0 +1,205 @@
+﻿//**************************************************
+// CONTAINERS
+//**************************************************/
+.content-section {
+    //margin-bottom: $vertical-padding;
+
+    &.small {
+        $height: $height-small;
+        
+        min-height: $height;
+        
+        &--strict {
+            height: $height;
+            
+            @include grid-media-query("palm") {
+                height: $height * 2;
+            }
+        }
+    }
+
+    &.medium {
+        $height: $height-medium;
+        
+        min-height: $height;
+
+        &--strict {
+            height: $height;
+
+            @include grid-media-query("palm") {
+                height: $height * 2;
+            }
+        }
+    }
+
+    &.large {
+        $height: $height-large;
+
+        min-height: $height;
+
+        &--strict {
+            height: $height;
+
+            @include grid-media-query("palm") {
+                height: $height * 2;
+            }
+        }
+    }
+
+    &.extra-large {
+        $height: $height-extra-large;
+
+        min-height: $height;
+
+        &--strict {
+            height: $height;
+
+            @include grid-media-query("palm") {
+                height: $height * 2;
+            }
+        }
+    }
+
+    // &.transparent {
+        
+    // }
+
+    &.light-blue {
+        background: $light-blue;
+        color: #FFF;
+    }
+
+    &.light-gray {
+        background: $light-gray;
+    }
+    
+    //Handle Spacing Between Sections
+    &.image + &.transparent,
+    &.light-blue + &.transparent,
+    &.light-gray + &.transparent {
+        margin-top: $vertical-padding;
+    }
+    
+    &.transparent + &.image,
+    &.transparent + &.light-blue,
+    &.transparent + &.light-gray {
+        margin-top: $vertical-padding;
+    }
+    
+    &--noBottomBuffer,
+    &.no-bottom-margin {
+        margin-bottom: inherit;
+    }
+//    
+//    &.remove-top-margin {
+//        margin-top: inherit !important;
+//    }
+//    
+//    &.add-bottom-margin {
+//        margin-bottom: $vertical-padding;
+//    }
+}
+
+div.content-section.transparent:last-child {
+    margin-bottom: $vertical-padding;
+}
+
+.content-wrapper {
+    box-sizing: border-box;
+    height: 100%;
+
+    padding: $vertical-padding ($magic-number*2);
+
+    @include grid-media-query("portable") {
+        padding: $vertical-padding $mobile-padding;
+
+        overflow-x: hidden;
+    }
+    
+    &.lock-width {
+        margin: 0 auto;
+        max-width: 1280px;
+    }
+
+    &.no-vertical {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    &.no-mobile {
+        @include grid-media-query("portable") {
+            padding: 0;
+        }
+    }
+
+    &--mobile {
+        box-sizing: border-box;
+        height: 100%;
+
+        @include grid-media-query("portable") {
+            padding: $vertical-padding $mobile-padding;
+        }
+
+        &.no-vertical {
+            @extend .content-wrapper.no-vertical;
+        }
+    }
+}
+
+//**************************************************
+// COMMON STYLES
+//**************************************************/
+.section-title {
+    @include typecsset-font-size($secondary-headline-size);
+    font-weight: bold;
+
+    text-align: center;
+    
+    &.left-justify {
+        text-align: left;
+    }
+    &.palm--center {
+        @include grid-media-query("palm") {
+            text-align: center;
+        }
+    }
+}
+
+.section-subtitle {
+    @include typecsset-font-size($tertiary-headline-size);
+    font-weight: bold;
+
+    text-align: center;
+    
+    &.left-justify {
+        text-align: left;
+    }
+}
+
+.section-sub-subtitle {
+    @include typecsset-font-size($quaternary-headline-size);
+    font-weight: bold;
+
+    text-align: center;
+    
+    &.left-justify {
+        text-align: left;
+    }
+}
+
+.section-description {
+    margin: 0 auto 1.5rem auto;
+
+    max-width: 42em;
+
+    text-align: center;
+
+    p {
+        max-width: initial;
+    }
+
+    &.left-justify {
+        text-align: left;
+        max-width: initial;
+    }
+}

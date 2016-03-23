@@ -1,0 +1,131 @@
+﻿@using CMS.DocumentEngine;
+@using CMS.DocumentEngine.Types
+@using CCB;
+
+@model CcbEvent
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = Model.EventName;
+}
+
+<div class="event-details [ content-section transparent no-bottom-margin ] [ grid__item one-whole ]">
+    <div class="content-wrapper lock-width">
+        <div class="grid">
+            <div class="left-column [ grid__item one-third portable--one-whole ]">
+                <div class="event-details__image"
+                     style="background-image: url(@Url.Kentico().Attachment(Model.GraphicAttachment)">
+                </div>
+
+                @{ 
+                    if (Model.HasRegistration)
+                    {
+                        <div class="event-details__cta">
+                            @{
+                                if (Model.Form.IsActive)
+                                {
+                                    <a class="cta full" href="@Model.Form.Url">Register</a>
+
+                                }
+                                else
+                                {
+                                    <a class="cta full disabled">Registration Closed</a>
+                                }
+                            }
+                        </div>
+                    }
+                }
+
+                <div class="event-details__social">
+                    <div class="grid">
+                        @{ Html.RenderPartial("_SocialSharing"); }
+                    </div>
+                </div>
+            </div><!--
+
+         --><div class="right-column [ grid__item two-thirds portable--one-whole ]">
+                <div class="add-bottom-margin">
+                    <div class="event-details__name">
+                        @Model.EventName
+                    </div>
+
+                    <div class="event-details__date">
+                        @*Friday, Feb. 5, 12 &amp; 19 | 7-9:30 p.m.*@
+                        <ul class="horizontal-list">
+                            <li>@{
+                                    if (!string.IsNullOrWhiteSpace(Model.EventDateDescription))
+                                    {@Model.EventDateDescription}
+                                    else
+                                    {<text>@Model.StartDateTime.ToDateRangeString(Model.EndDateTime)</text>}
+                                }</li><!--
+                         --><li>@Html.Raw(Model.StartDateTime.ToTimeRangeString(Model.EndDateTime))</li>
+                        </ul>
+                    </div>
+
+                    <div class="event-details__location">
+                        <a href="#">
+                            @{
+                                if (!string.IsNullOrWhiteSpace(Model.EventLocationName))
+                                {
+                                    @Model.EventLocationName
+                                }
+                                else
+                                {
+                                    @Model.CcbEventData.Location.ToAddressString()
+                                }
+                            }
+                            <i class="fa fa-map"></i>
+                        </a>
+                    </div>
+
+                    <div id="event-details__map" class="event-details__map"></div>
+                </div>
+
+                <div class="event-details__details">
+                    @Html.Raw(Model.Description)
+
+                    @{
+                        if (Model.CcbEventData.Organizer.CCBID.HasValue)
+                        {
+                            <p class="accent">
+                                <a href="mailto:@Model.CcbEventData.GetOrganizer().Email">Questions?</a>
+                            </p>
+                        }
+                    }
+                </div>
+            </div>
+        </div> <!-- /grid -->
+    </div> <!-- /content-wrapper -->
+</div> <!-- /event-details -->
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".event-details__location a").click(function (e) {
+                e.preventDefault();
+
+                //Show Map Section
+                $(".event-details__map").slideToggle(250, function () {
+                    if ($(this).height() > 0) {
+                        var location = [{
+                            name: "@Model.EventLocationName",
+                            streetAddress: "@Model.CcbEventData.Location.ToAddressString()",
+                            info: CCChapel.createMapInfo(
+                                "@Model.EventLocationName",
+                                "@Model.CcbEventData.Location.ToAddressString()",
+                                "#")
+                        }];
+
+                        //Load Map
+                        CCChapel.createMap("event-details__map", {
+                            markers: location,
+                            fitAllMarkers: true
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+

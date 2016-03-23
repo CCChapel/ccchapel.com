@@ -1,0 +1,72 @@
+﻿.campaign-table-chart-container {
+    @column-width: @base-unit * 10;
+    @column-width-with-padding: @column-width + 2 * @padding-small-horizontal;
+
+    .column-chart {
+        height: @base-unit * 15;
+        padding-left: 2 * @column-width-with-padding;
+    }
+
+    .legend {
+        padding-left: 2 * @column-width-with-padding;
+        padding-bottom: @base-unit;
+        overflow: auto;
+
+        .legend-item {
+            float: left;
+            width: @column-width;
+            word-wrap: break-word;
+            white-space: normal;
+            padding: @padding-small-vertical @padding-small-horizontal;
+            text-align: center;
+        }
+    }
+
+    .table-with-fixed-column-width {
+        table-layout: fixed;
+        width: auto;
+
+        tr {
+            & th, & td {
+                @rate: 0.75;
+                width: @column-width-with-padding * @rate;
+                max-width: @column-width-with-padding * @rate;
+                min-width: @column-width-with-padding * @rate;
+                word-wrap: break-word;
+                white-space: normal;
+                text-align: right;
+                padding-left: 0;
+                padding-right: @column-width-with-padding * (1 - @rate);
+                overflow: hidden;
+                
+                // Since IE9 is not able to wrap word following style resolves this issue.
+                span {
+                    display: block;
+                    width: @column-width;
+                }
+            }
+        }
+
+        & tr:nth-child(1) th, & tr td:nth-child(1), & tr td:nth-child(2) {
+            width: @column-width;
+            max-width: @column-width;
+            min-width: @column-width;
+            padding-right: @padding-small-horizontal;
+            padding-left: @padding-small-horizontal;
+        }
+
+        & tr:nth-child(1) th {
+            text-align: center;
+        }
+
+        & tr td:nth-child(1), & tr td:nth-child(2), & tr th:nth-child(2) {
+            text-align: left;
+        }
+    }
+}
+
+.campaign-description-text {
+    font-size: @font-size-base;
+    display: block;
+    max-width: @explanation-text-max-width;
+}

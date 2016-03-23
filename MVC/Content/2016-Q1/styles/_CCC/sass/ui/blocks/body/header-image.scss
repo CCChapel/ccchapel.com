@@ -1,0 +1,138 @@
+﻿//**************************************************
+// HEADER IMAGE
+//**************************************************/
+.header-image {
+    min-height: 66vh !important;
+    
+    &.short {
+        min-height: 33vh !important;
+
+        &__title {
+            max-height: 33vh;
+        }
+    }
+
+    &__content {
+        min-width: 50%;
+    }
+
+    &__title {
+        @include typecsset-font-size($primary-headline-size);
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+
+        margin: 0 0 $bottom-margin 0;
+
+        img {
+            max-height: 66vh;
+        }
+    }
+
+    &__video-controls {
+        cursor: pointer;
+
+        font-size: 6rem;
+        text-align: center;
+        opacity: .4;
+
+        transition: opacity $transition-length $transition-function;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        .fa-stack-1x {
+            margin-left: .1em;
+        }
+    }
+
+    &__copy {
+        margin: 0 auto $bottom-margin auto;
+
+        text-align: center;
+
+        @include grid-media-query("desk") {
+            width: 50%;
+        }
+    }
+
+    &__cta {
+        @include grid-media-query("portable") {
+            & > * {
+                margin-bottom: $magic-number;
+            }
+
+            & div:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    //Remove bottom margin when there's only one item
+    div:only-child {
+        margin-bottom: 0;
+    }
+}
+
+.header-details {
+    position: relative;
+    margin-top: $magic-number;
+
+    &__left {
+        @include typecsset-font-size($tertiary-headline-size, false);
+        text-align: left;
+
+        height: 3rem;
+
+        @include grid-media-query("palm") {
+            margin-bottom: $magic-number;
+
+            text-align: center;
+
+            & > div {
+                @include justify-content(center !important);
+            }
+        }
+    }
+    
+    &__copy {
+        @include grid-media-query("palm") {
+            text-align: center;
+        }
+    }
+
+    &__social {
+        height: 100%;
+        width: 50% !important;
+        
+        @include typecsset-font-size($base-font-size, false);
+
+        @include grid-media-query("palm") {
+            width: 100% !important;
+        }
+    }
+
+    &__right {
+        text-align: right;
+
+        height: 100%;
+
+        @include grid-media-query("palm") {
+            text-align: center;
+        }
+
+        //        & > a:not(:last-child) {
+        //            margin-right: $magic-number;
+        //        }
+    }
+
+    &__buttons {
+        @include flexbox;
+        @include justify-content(space-between);
+
+        .cta {
+            @include flex-grow(1);
+        }
+    }
+}

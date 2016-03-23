@@ -1,0 +1,23 @@
+﻿@model CMS.DocumentEngine.Types.ContentSection
+
+<div class="@Model.SectionCssClass [ content-section @Model.SectionColor @Model.SectionHeight ] [ grid__item one-whole ]" style="@Model.SectionStyles">
+    @{ 
+        if (Model.SectionIncludeWrapper)
+        {
+            @:<div class="content-wrapper">
+        }
+    }
+    
+    @Html.Raw(
+        Html.Kentico().ResolveUrls(
+            Model.SectionContent.ProcessForOutput()))
+
+    @{
+        if (Model.SectionIncludeWrapper)
+        {
+            @:</div>
+        }
+    }
+</div>
+
+@Html.Raw(Model.Fields.SectionJavaScript)

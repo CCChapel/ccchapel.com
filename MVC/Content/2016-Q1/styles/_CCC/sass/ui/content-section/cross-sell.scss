@@ -1,0 +1,105 @@
+﻿//**************************************************
+// CROSS SELL
+//**************************************************/
+.cross-sell {
+    &__item {
+        margin-bottom: $magic-number;
+
+        a {
+            color: currentColor;
+        }
+    }
+
+    &__image {
+        background: $medium-gray center bottom/cover no-repeat scroll;
+
+        margin-bottom: $bottom-margin;
+
+        height: 10rem;
+
+        @include typecsset-font-size(48px, false);
+
+        @include grid-media-query("lap") {
+            height: 15rem;
+        }
+
+        //Fix Play Overlay Spacing
+        span.fa-stack {
+            i:last-child {
+                margin-left: 7px;
+            }
+        }
+    }
+
+    &__name {
+        @include typecsset-font-size($tertiary-headline-size);
+        font-weight: bold;
+    }
+
+    &__details {
+        font-weight: normal !important;
+
+        @include grid-media-query("palm") {
+            border-bottom: $dark-blue 1pt solid;
+            padding-bottom: $magic-number;
+
+            .cross-sell__item:last-child & {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+//**************************************************
+// EVENT DETAILS
+//**************************************************/
+.event-details {
+    &__image {
+        background: $medium-gray center bottom/cover no-repeat scroll;
+
+        margin-bottom: $magic-number;
+
+        height: 10em;
+
+        @include grid-media-query("lap") {
+            height: 20em;
+        }
+    }
+
+    &__cta {
+        margin-bottom: $magic-number;
+    }
+
+    &__social {
+        margin-bottom: $magic-number;
+
+        text-align: center;
+    }
+
+    &__name {
+        //.header-image__title
+        @include typecsset-font-size($primary-headline-size);
+        font-weight: bold;
+        //text-align: center;
+        text-transform: uppercase;
+        margin-left: -#{(1/16)}em;
+    }
+
+    &__date,
+    &__time {
+        @include typecsset-font-size($tertiary-headline-size);
+        font-weight: bold;
+    }
+
+    &__location {
+
+    }
+
+    &__map {
+        display: none;
+
+        height: (15 * $magic-number);
+        width: 100%;
+    }
+}

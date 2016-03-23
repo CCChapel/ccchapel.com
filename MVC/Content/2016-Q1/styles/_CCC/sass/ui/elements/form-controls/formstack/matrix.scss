@@ -1,0 +1,22 @@
+﻿/* MATRIX */
+.fsMatrix {
+    font-size: 14px !important;
+}
+.fsMatrix .fsMatrixCol1,
+.fsMatrix .fsMatrixCol2 {
+    text-align: center !important;
+}
+.fsMatrix .fsMatrixCol1 {
+    background-color: #EEE !important;
+}
+
+.fsMatrix th.fsMatrixCol1,
+.fsMatrix th.fsMatrixCol2 {
+    font-weight: bold !important;
+    background-color: transparent !important;
+}
+
+.fsMatrix td,
+.fsMatrix th {
+    padding: .5em !important;
+}
