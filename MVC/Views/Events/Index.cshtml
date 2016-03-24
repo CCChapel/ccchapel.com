@@ -29,16 +29,16 @@
 
 <div name="all-events" class="[ content-section transparent ] [ grid__item one-whole ]">
     <div class="content-wrapper">
-        <div class="section-title">All Events</div>
+        <div class="section-title">More Events</div>
         <div class="section-description">
-            Here's everything happening from @Model.List.StartDate.ToString("MMM d") to @Model.List.EndDate.ToString("MMM d").<br />
-            If you're looking for something specific, try searching for a keyword or by campus.
+            Here&rsquo;s everything happening from <a href="#">@Model.List.StartDate.ToString("MMM d") to @Model.List.EndDate.ToString("MMM d")</a>.<br />
+            If you&rsquo;re looking for something specific, try searching for a keyword or by campus.
         </div>
 
         @{ Html.RenderPartial("_EventTable", events); }
 
         <div class="section-description">
-            <a href="https://communitychapel.ccbchurch.com/w_group_list.php">Looking for something happening week-in / week-out?</a>
+            <a href="https://communitychapel.ccbchurch.com/w_group_list.php">Looking for a group that meets week-in and week-out?</a>
         </div>
     </div>
 </div>

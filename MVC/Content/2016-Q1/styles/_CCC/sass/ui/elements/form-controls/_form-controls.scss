@@ -2,7 +2,7 @@
     padding: .5rem 1rem;
     
     border: 1px solid $charcoal;
-    border-radius: 500px;
+    border-radius: $border-radius; //500px;
     
     -webkit-appearance: none;
     

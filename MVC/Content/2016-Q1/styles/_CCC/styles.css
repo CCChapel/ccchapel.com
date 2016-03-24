@@ -1381,6 +1381,10 @@ body {
   .content-wrapper.no-vertical, .content-wrapper--mobile.no-vertical {
     padding-top: 0;
     padding-bottom: 0; }
+  @media only screen and (max-width: 480px) {
+    .content-wrapper.palm--no-vertical {
+      padding-top: 0;
+      padding-bottom: 0; } }
   @media only screen and (max-width: 1023px) {
     .content-wrapper.no-mobile {
       padding: 0; } }
@@ -1425,8 +1429,11 @@ body {
 
 .section-description {
   margin: 0 auto 1.5rem auto;
-  max-width: 42em;
+  max-width: 66%;
   text-align: center; }
+  @media only screen and (max-width: 480px) {
+    .section-description {
+      max-width: 42em; } }
   .section-description p {
     max-width: initial; }
   .section-description.left-justify {
@@ -1464,6 +1471,7 @@ body {
 .cross-sell__image {
   background: #CCC center bottom/cover no-repeat scroll;
   margin-bottom: 24px;
+  padding: 10px;
   height: 10rem;
   font-size: 48px;
   font-size: 3rem; }
@@ -1549,8 +1557,28 @@ body {
     padding-top: 6rem;
     height: 100%;
     width: 100%; }
-    .modal.full + .modal-content {
+    .modal.full > .modal-content {
       padding-top: 0; }
+  .modal .search-results hr:last-of-type {
+    border: none; }
+  .modal .search-results__item {
+    color: #FFF !important; }
+    .modal .search-results__item-title {
+      font-size: 32px;
+      font-size: 2rem;
+      line-height: 1.5; }
+      @media only screen and (max-width: 1023px) {
+        .modal .search-results__item-title {
+          font-size: 24px;
+          font-size: 1.5rem;
+          line-height: 1;
+          text-align: center; } }
+    .modal .search-results__item-description {
+      font-weight: normal; }
+    .modal .search-results__item a {
+      color: #FFF; }
+      .modal .search-results__item a:hover, .modal .search-results__item a:active {
+        color: #185e94; }
 
 .header {
   position: relative;
@@ -1642,8 +1670,7 @@ body {
     height: 100%; }
   @media only screen and (max-width: 1023px) {
     .menu {
-      padding: .5em 0;
-      height: 100vh; } }
+      padding: .5em 0; } }
   .menu a {
     text-decoration: none !important; }
   @media only screen and (max-width: 1023px) {
@@ -1753,8 +1780,24 @@ body {
     min-height: 33vh !important; }
     .header-image.short__title {
       max-height: 33vh; }
+  .header-image.light {
+    color: #FFF;
+    text-shadow: 1px 1px 1px black; }
+    .header-image.light a {
+      color: #FFF; }
+  .header-image.dark {
+    color: #333333;
+    text-shadow: 1px 1px 1px white; }
+    .header-image.dark a {
+      color: #333333; }
+      .header-image.dark a:hover {
+        color: #185e94; }
   .header-image__content {
-    min-width: 50%; }
+    min-width: 50vw;
+    max-width: 66vw; }
+    @media only screen and (max-width: 480px) {
+      .header-image__content {
+        max-width: 100%; } }
   .header-image__title {
     font-size: 64px;
     font-size: 4rem;
@@ -2015,6 +2058,8 @@ body {
     text-align: left; }
     .footer__navigation a {
       font-weight: normal; }
+    .footer__navigation ul {
+      list-style: none; }
 
 .pull-quote {
   border-right: 2px solid #CCC;
@@ -2240,14 +2285,28 @@ body {
       -webkit-flex-direction: column;
       -moz-flex-direction: column;
       -ms-flex-direction: column;
-      flex-direction: column; } }
+      flex-direction: column; }
+      .flex-section.palm--stack .flex-section-bg {
+        min-height: 33vh; }
+        .flex-section.palm--stack .flex-section-bg.content-wrapper {
+          min-height: calc(33vh + 72px); } }
 
 .flex-section-bg {
-  background: transparent no-repeat scroll center center / cover; }
+  background: transparent no-repeat scroll center center / cover;
+  background-origin: content-box;
+  height: initial; }
+  @media only screen and (max-width: 480px) {
+    .flex-section-bg {
+      background-origin: padding-box; } }
+  .flex-section-bg.contain {
+    background-size: contain; }
   .flex-section-bg.left-center {
     background-position: left center; }
   .flex-section-bg.right-center {
     background-position: right center; }
+  @media only screen and (max-width: 480px) {
+    .flex-section-bg.palm--center-center {
+      background-position: center center; } }
 
 .google-map__info-window {
   padding: 1em 0 1em 1.5em;
@@ -2552,6 +2611,11 @@ tbody tr {
   width: 100%;
   object-fit: contain; }
 
+.img-contain {
+  object-fit: contain;
+  height: 100%;
+  width: 100%; }
+
 ul {
   list-style: square;
   list-style-position: inside;
@@ -2717,7 +2781,7 @@ input[type="time"],
 input[type="url"] {
   padding: .5rem 1rem;
   border: 1px solid #333333;
-  border-radius: 500px;
+  border-radius: 6px;
   -webkit-appearance: none;
   font-size: 16px;
   height: 2.5em;
@@ -2751,11 +2815,22 @@ input[type="url"] {
   input[type="url"]:active,
   input[type="url"]:focus {
     border-color: #41a5ea; }
+  input[type="date"].one-whole,
+  input[type="datetime"].one-whole,
+  input[type="email"].one-whole,
+  input[type="number"].one-whole,
+  input[type="password"].one-whole,
+  input[type="search"].one-whole,
+  input[type="tel"].one-whole,
+  input[type="text"].one-whole,
+  input[type="time"].one-whole,
+  input[type="url"].one-whole {
+    width: 100%; }
 
 input[type="button"] {
   padding: .5rem 1rem;
   border: 1px solid #333333;
-  border-radius: 500px;
+  border-radius: 6px;
   -webkit-appearance: none;
   font-size: 16px;
   height: 2.5em;
@@ -2791,13 +2866,12 @@ input[type="checkbox"]:not(".fsField") {
 textarea {
   padding: .5rem 1rem;
   border: 1px solid #333333;
-  border-radius: 500px;
+  border-radius: 6px;
   -webkit-appearance: none;
   font-size: 16px;
   height: 2.5em;
   padding-left: 1.25em;
   padding-right: 1.25em;
-  border-radius: 27px;
   height: 12rem;
   width: 90%;
   font-family: "proxima-nova", "Open Sans", Verdana, sans-serif;
@@ -2887,7 +2961,7 @@ textarea {
   content: "\f078";
   padding: .5rem 1rem;
   border: 1px solid #333333;
-  border-radius: 500px;
+  border-radius: 6px;
   -webkit-appearance: none;
   border-left: none;
   border-top-left-radius: 0;
@@ -2918,7 +2992,7 @@ textarea {
 .css3-metro-dropdown select {
   padding: .5rem 1rem;
   border: 1px solid #333333;
-  border-radius: 500px;
+  border-radius: 6px;
   -webkit-appearance: none;
   padding: 0 .75rem;
   vertical-align: middle;

@@ -50,5 +50,46 @@ namespace MVC.Controllers.WebAPI
             return list;
             //return new string[] { "value1", "value2" };
         }
+
+        public SearchResults.AjaxSearchResults Get(string query, int maxResults)
+        {
+            //int numberOfResults;
+            //var model = new SearchResults()
+            //{
+            //    Items = mService.Search(
+            //        query,
+            //        page: 0,
+            //        pageSize: PAGE_SIZE,
+            //        numberOfResults: out numberOfResults).Take(maxResults),
+            //    Query = query,
+            //    ItemCount = numberOfResults
+            //};
+
+            List<SearchResultItem> list = new List<SearchResultItem>();
+
+            var pages = CMS.DocumentEngine.Types.PageProvider.GetPages().Published().Take(maxResults);
+
+            foreach (var page in pages)
+            {
+                SearchResultItem result = new SearchResultItem();
+                result.Title = page.Fields.Name;
+                result.Content = page.Fields.SocialDescription;
+                result.ImageAttachment = page.SocialImageFile;
+                result.NodeId = page.NodeID;
+                result.PageTypeCodeName = page.ClassName;
+
+                list.Add(result);
+            }
+
+            var model = new SearchResults()
+            {
+                Items = list,
+                Query = query,
+                ItemCount = 100
+            };
+
+            return model.AjaxResults;
+            //return new string[] { "value1", "value2" };
+        }
     }
 }

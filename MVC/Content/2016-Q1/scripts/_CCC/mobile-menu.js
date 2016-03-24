@@ -1,5 +1,5 @@
 ﻿//************************************************
-// SEARCH
+// VIDEOS
 //***********************************************/
 (function (CCChapel, $, undefined) {
     //************************************************
@@ -9,24 +9,17 @@
     /************************************************
     // Private Properties
     //***********************************************/
-    var apiUrl = "api/search/";
-    var defaults = {
-        maxResults: undefined
-    }
+    var ItemClass = ".menu__items";
 
     /************************************************
     // Public Methods
     //***********************************************/
-    CCChapel.getSearchResults = function(query, options) {
-        var url = apiUrl + encodeURI(query);
+    CCChapel.hideMenuItems = function () {
+        $(ItemClass).hide();
+    }
 
-        options = $.extend({}, defaults, options);
-
-        if (options.maxResults !== undefined) {
-            url += "?maxResults=" + options.maxResults;
-        }
-
-        return $.getJSON(url);
+    CCChapel.showMenuItems = function () {
+        $(ItemClass).show();
     }
 
     //************************************************

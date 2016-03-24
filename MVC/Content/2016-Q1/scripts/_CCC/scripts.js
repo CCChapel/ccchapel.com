@@ -303,6 +303,7 @@
         //Properties
         MenuClass: ".banner__menu",
         ItemsClass: ".menu__items",
+        ItemClass: ".menu__item",
         Trigger: "#nav-icon",
 
         //Functions
@@ -316,6 +317,9 @@
             //animate icon
             $(this.Trigger).toggleClass("close");
 
+            //show items
+            $(this.ItemsClass).show();
+
             //toggle screen lock
             $("body").toggleClass("hide-overflow");
             $("body").toggleClass("lock-position");
@@ -325,12 +329,18 @@
             //toggle menu
             $(this.MenuClass).slideToggle(250, function () {
                 //blur backgrounds after menu displays
-                //$(".notifications, .body, .footer").toggleClass("blur");   
+                //$(".notifications, .body, .footer").toggleClass("blur");  
             });
+
+            //clear search
+            $("#menu-search").val("");
         },
         open: function () {
             //animate icon
             $(this.Trigger).addClass("close");
+
+            //show items
+            $(this.ItemsClass).show();
 
             //toggle screen lock
             $("body").addClass("hide-overflow");
@@ -359,6 +369,9 @@
                 //blur backgrounds after menu displays
                 //$(".notifications, .body, .footer").toggleClass("blur");   
             });
+
+            //clear search
+            $("#menu-search").val("");
         }
     }
 

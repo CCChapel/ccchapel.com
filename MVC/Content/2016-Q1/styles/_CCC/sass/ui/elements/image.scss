@@ -36,3 +36,10 @@
 
     object-fit: contain;
 }
+
+.#{$ns-image}-contain {
+    object-fit: contain;
+    
+    height: 100%;
+    width: 100%;
+}

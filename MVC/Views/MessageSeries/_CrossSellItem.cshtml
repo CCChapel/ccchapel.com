@@ -6,6 +6,8 @@
     <a href="@Url.RouteUrl(Model.RouteValues)">
         <div class="[ cross-sell__image @Model.Background.Fields.ImagePositioning) ] [ one-whole ]"
                 style="background-image: url(@Url.Kentico().Attachment(Model.Background.Fields.ImageFile))">
+
+            <img class="img-contain" src="@Url.Kentico().Attachment(Model.Fields.TitleTreatment)" alt="" />
         </div>
 
         <div class="cross-sell__name [ one-whole ]">

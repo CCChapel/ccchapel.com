@@ -126,6 +126,13 @@
         padding-bottom: 0;
     }
 
+    &.palm--no-vertical {
+        @include grid-media-query("palm") {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
     &.no-mobile {
         @include grid-media-query("portable") {
             padding: 0;
@@ -194,9 +201,13 @@
 .section-description {
     margin: 0 auto 1.5rem auto;
 
-    max-width: 42em;
+    max-width: 66%; //42em;
 
     text-align: center;
+
+    @include grid-media-query("palm") {
+        max-width: 42em;
+    }
 
     p {
         max-width: initial;

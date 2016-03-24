@@ -40,8 +40,41 @@
         height: 100%;
         width: 100%;
 
-        .modal.full + & {
+        .modal.full > & {
             padding-top: 0;
+        }
+    }
+
+    .search-results {
+        hr:last-of-type {
+            border: none;
+        }
+
+        &__item {
+            color: #FFF !important;
+
+            &-title {
+                @include typecsset-font-size($secondary-headline-size);
+
+                @include grid-media-query("portable") {
+                    @include typecsset-font-size($tertiary-headline-size);
+
+                    text-align: center;
+                }
+            }
+
+            &-description {
+                font-weight: normal;
+            }
+
+            a {
+                color: #FFF;
+
+                &:hover,
+                &:active {
+                    color: $blue;
+                }
+            }
         }
     }
 }

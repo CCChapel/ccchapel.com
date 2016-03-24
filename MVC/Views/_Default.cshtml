@@ -268,13 +268,17 @@
                  --><div class="grid__item one-quarter lap--one-half portable--one-half">
                         <ul>
                             <li><a href="./church-life">Church Life</a></li>
-                            <li><a href="./events">Events</a></li>
-                            <li><a href="./give">Give</a></li>
+                            <li><a href="./church-life/kids">Kids</a></li>
+                            <li><a href="./church-life/students">Students</a></li>
+                            <li><a href="./church-life/men">Men</a></li>
+                            <li><a href="./church-life/women">Women</a></li>
                         </ul>
                     </div><!--
 
                  --><div class="grid__item one-quarter lap--one-half portable--one-half">
                         <ul>
+                            <li><a href="./events">Events</a></li>
+                            <li><a href="./give">Give</a></li>
                             <li><a href="./messages">Messages</a></li>
                             <li><a href="./employment">Employment</a></li>
                             <li><a href="./contact-us">Contact Us</a></li>
@@ -309,42 +313,80 @@
                 window.clearTimeout(timer);
                 timer = window.setTimeout(function () {
                     query = $(searchInputSelector).val();
-                    console.log(query);
 
-                    var jqxhr = CCChapel.getSearchResults(query);
+                    if (query.length > 0) {
+                        //If Mobile, Hide Menu
+                        CCChapel.hideMenuItems();
 
-                    jqxhr.done(function (data) {
-                            console.log(data);
-                            displaySearchResults(data);
-                         })
-                         .fail(function () {
-                            console.log("Request Failed")
-                         });
+                        var jqxhr = CCChapel.getSearchResults(query, { maxResults: 3 });
+
+                        jqxhr.done(function (data) {
+                                displaySearchResults(data);
+                             })
+                             .fail(function () {
+                                console.log("Request Failed")
+                             });
+                    }
+                    else {
+                        //Show Mobile Menu
+                        CCChapel.showMenuItems();
+                    }
                 }, delay);
             });
 
             //Setup Enter to Load Search Page
-
-
             $(searchInputSelector).keyup(function (e) {
                 if (e.keyCode == 13) {
-                    window.location = "/search?query=" + encodeURI(query.replace(" ", "+"));
+                    window.location = getQueryLink(query);
                 }
             });
-
-
         });
 
-        function displaySearchResults(results) {
-            var html = "";
+        function getQueryLink(query) {
+            return "/search?query=" + encodeURI(query.replace(" ", "+"));
+        }
 
-            $.each(results, function (i, item) {
-                console.log(i);
-                html += '<a href="' + item.url + '">' + item.title + '</a>';
+        function displaySearchResults(results) {
+            //Clear out old results
+            $(".search-results").remove();
+
+            var html = $("<div></div>").addClass("search-results");
+            var contentWrapper = $("<div></div>").addClass("content-wrapper");
+
+            $.each(results.items, function (i, item) {
+                var result = $("<div></div>").addClass("search-results__item");
+
+                var link = $("<a></a>").attr("href", item.url);
+                var title = $("<div></div>").addClass("search-results__item-title").html(item.title);
+                var description = $("<div></div>").addClass("search-results__item-description").html(item.description);
+                link.append(title, description);
+
+                var horizontalRule = $("<hr />");
+
+                result.append(link);
+                contentWrapper.append(result.add(horizontalRule));
             });
 
-            $(".modal-content").html(html);
-            console.log("results displayed");
+            if (results.totalItemCount > 3) {
+                var more = $("<div></div>").addClass("center");
+                var moreLink = $("<a></a>").addClass("cta auto red").attr("href", getQueryLink(results.query)).html('More Results&nbsp;<i class="fa fa-chevron-right"></i>');
+
+                more.append(moreLink);
+                contentWrapper.append(more);
+            }
+
+            html.append(contentWrapper);
+            $(".modal-content").append(html);
+
+            console.log($(".search-results").outerHeight());
+            console.log($(window).height());
+
+            //Clean Up
+            while ($(window).height() < $(".search-results").outerHeight())
+            {
+                $(".search-results__item").last().remove();
+                $(".search-results").children(".content-wrapper").children("hr").last().remove();
+            }
         }
     </script>
     @RenderSection("Scripts", false)
