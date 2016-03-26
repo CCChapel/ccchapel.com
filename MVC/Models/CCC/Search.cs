@@ -66,6 +66,27 @@ namespace CCC.Models
                 case Page.CLASS_NAME:
                     return PageProvider.GetPage(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
                         .FirstOrDefault().PageUrl;
+                case ContentSection.CLASS_NAME:
+                    return ContentSectionProvider.GetContentSection(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
+                case ImageSection.CLASS_NAME:
+                    return ImageSectionProvider.GetImageSection(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
+                case CrossSellSection.CLASS_NAME:
+                    return CrossSellSectionProvider.GetCrossSellSection(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
+                case CcbEvent.CLASS_NAME:
+                    return CcbEventProvider.GetCcbEvent(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
+                case JobListing.CLASS_NAME:
+                    return JobListingProvider.GetJobListing(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
+                case Sermon.CLASS_NAME:
+                    return SermonProvider.GetSermon(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
+                case Series.CLASS_NAME:
+                    return SeriesProvider.GetSeries(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
                 default:
                     throw new NotImplementedException("Unknown PageType: " + input.PageTypeCodeName);
             }

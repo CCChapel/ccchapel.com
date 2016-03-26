@@ -303,44 +303,49 @@
     <script>
         //Setup Search
         var searchInputSelector = "#menu-search";
+        var query;
+
         $(document).ready(function () {
-            var timer;
-            var delay = 600;
-            var query;
-
-            //Setup AJAX Results
-            $(searchInputSelector).on('input', function () {
-                window.clearTimeout(timer);
-                timer = window.setTimeout(function () {
-                    query = $(searchInputSelector).val();
-
-                    if (query.length > 0) {
-                        //If Mobile, Hide Menu
-                        CCChapel.hideMenuItems();
-
-                        var jqxhr = CCChapel.getSearchResults(query, { maxResults: 3 });
-
-                        jqxhr.done(function (data) {
-                                displaySearchResults(data);
-                             })
-                             .fail(function () {
-                                console.log("Request Failed")
-                             });
-                    }
-                    else {
-                        //Show Mobile Menu
-                        CCChapel.showMenuItems();
-                    }
-                }, delay);
-            });
+            initializeAjaxSearch();
 
             //Setup Enter to Load Search Page
             $(searchInputSelector).keyup(function (e) {
                 if (e.keyCode == 13) {
+                    query = $(searchInputSelector).val();
                     window.location = getQueryLink(query);
                 }
             });
         });
+
+        function initializeAjaxSearch() {
+            var timer;
+            var delay = 600;
+
+            //Setup AJAX Results
+            $(searchInputSelector).on('input', function () {
+                if (CCChapel.isMobile() != true) {
+                    window.clearTimeout(timer);
+
+                    timer = window.setTimeout(function () {
+                        query = $(searchInputSelector).val();
+
+                        if (query.length > 0) {
+                            var jqxhr = CCChapel.getSearchResults(query, { maxResults: 3 });
+
+                            jqxhr.done(function (data) {
+                                displaySearchResults(data);
+                            })
+                                 .fail(function () {
+                                     console.log("Request Failed")
+                                 });
+                        }
+                        else {
+                            $(".search-results").remove();
+                        }
+                    }, delay);
+                }
+            });
+        }
 
         function getQueryLink(query) {
             return "/search?query=" + encodeURI(query.replace(" ", "+"));

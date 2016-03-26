@@ -79,5 +79,26 @@ namespace CMS.DocumentEngine.Types
                 }
             }
         }
+
+        /// <summary>
+        /// Get a URL to the ImageSection
+        /// </summary>
+        public string RouteUrl
+        {
+            get
+            {
+                //Get Parent Page
+                Page page = PageProvider.GetPage(
+                    this.Parent.NodeGUID,
+                    SiteHelpers.SiteCulture,
+                    SiteHelpers.SiteName);
+                string url = page.PageUrl;
+
+                //Add anchor
+                url += string.Format("#{0}", NodeAlias.ToLower());
+
+                return url;
+            }
+        }
     }
 }

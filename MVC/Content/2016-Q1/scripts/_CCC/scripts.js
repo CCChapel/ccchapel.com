@@ -103,6 +103,9 @@
             //Toggle Banner Height
             $(this.BannerClass).toggleClass("fullHeight");
 
+            //Clear Search Field
+            $(this.FieldClass).val("");
+
             //Toggle Search Field
             $(this.FieldClass).toggleClass("show");
 
@@ -127,6 +130,9 @@
 
             //Set Banner Height
             $(this.BannerClass).addClass("fullHeight");
+
+            //Clear Search Field
+            $(this.FieldClass).val("");
 
             //Show Search Field
             $(this.FieldClass).addClass("show");
@@ -156,6 +162,9 @@
 
             //Hide Search Field
             $(this.FieldClass).removeClass("show");
+
+            //Clear Search Field
+            $(this.FieldClass).val("");
         }
     }
 
