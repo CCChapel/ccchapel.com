@@ -312,7 +312,10 @@
             $(searchInputSelector).keyup(function (e) {
                 if (e.keyCode == 13) {
                     query = $(searchInputSelector).val();
-                    window.location = getQueryLink(query);
+
+                    if (query.length > 0) {
+                        window.location = getQueryLink(query);
+                    }
                 }
             });
         });
