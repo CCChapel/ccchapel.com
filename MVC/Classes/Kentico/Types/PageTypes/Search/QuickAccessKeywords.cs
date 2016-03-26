@@ -20,7 +20,8 @@ namespace CMS.DocumentEngine.Types
                 {
                     controller = "Search",
                     action = "Index",
-                    query = HttpUtility.UrlEncode(Keywords)
+                    query = Keywords
+                    //query = HttpUtility.UrlEncode(Keywords)
                 };
             }
         }

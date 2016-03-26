@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 using Kentico.Search;
@@ -25,6 +26,8 @@ namespace MVC.Controllers.WebAPI
         // GET api/<controller>
         public IEnumerable<object> Get(string query)
         {
+            query = HttpUtility.UrlDecode(query);
+
             int numberOfResults;
             var model = new SearchResults()
             {
@@ -53,6 +56,8 @@ namespace MVC.Controllers.WebAPI
 
         public SearchResults.AjaxSearchResults Get(string query, int maxResults)
         {
+            query = HttpUtility.UrlDecode(query);
+
             //int numberOfResults;
             //var model = new SearchResults()
             //{

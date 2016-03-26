@@ -77,6 +77,10 @@
                 DesktopSearch.toggle();
             });
 
+            $(".modal").click(function () {
+                DesktopSearch.close();
+            })
+
             //            //Field Loses Focus
             //            $(this.SearchField).focusout(function() {
             //                if (!$(DesktopSearch.IconClass).is(":focus")) {
