@@ -1,11 +1,7 @@
 ﻿@using CMS.CustomTables.Types;
 @using CMS.DocumentEngine.Types;
 
-@using Newtonsoft.Json;
-
-@using Vimeo.Types;
 @using CCC.Helpers;
-@using CCB;
 
 @{
     Layout = "~/Views/_Default.cshtml";
@@ -28,8 +24,9 @@
 
             <div class="section-description">
                 We&rsquo;ll get to work fixing that, but in the meantime, why don&rsquo;t you
-                try a search to find what you&rsquo;re looking for. Or, feel free to
-                <a href="/contact-us">contact us</a> with any questions.
+                <a onclick="CCChapel.openSearch()">try a search</a> to find what you&rsquo;re 
+                looking for. Or, feel free to <a href="/contact-us">contact us</a> with any 
+                questions.
             </div>
         </div>
     </div>

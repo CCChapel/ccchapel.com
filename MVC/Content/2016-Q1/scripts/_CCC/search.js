@@ -13,6 +13,11 @@
     var defaults = {
         maxResults: undefined
     }
+    var itemClass = ".menu__search";
+    var fieldClass = ".menu__search-field";
+    var searchField = "#menu-search";
+    var iconClass = ".menu__search-icon";
+    var bannerClass = ".banner";
 
     /************************************************
     // Public Methods
@@ -27,6 +32,15 @@
         }
 
         return $.getJSON(url);
+    }
+
+    CCChapel.openSearch = function () {
+        if (CCChapel.isMobile() == true) {
+            CCChapel.openMobileMenu();
+        }
+        else {
+            $(iconClass).click();
+        }
     }
 
     //************************************************

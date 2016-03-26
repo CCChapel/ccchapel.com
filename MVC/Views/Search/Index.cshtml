@@ -6,32 +6,35 @@
     Layout = "~/Views/_Default.cshtml";
 }
 
-@if (Model.Items == null)
-{
-    if (!string.IsNullOrWhiteSpace(Model.Query))
-    {
-        <h2>No results found for @Model.Query</h2>
-    }
-}
-else
-{
-    <h2>Found @Model.ItemCount results.</h2>
-    foreach (var item in Model.Items)
-    {
-        <a href="@GetUrl(item.PageTypeCodeName, item.NodeId)">@item.Title</a>
-    }
-}
+<div class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        @if (Model.Items == null)
+        {
+            if (!string.IsNullOrWhiteSpace(Model.Query))
+            {
+                <div class="section-title">
+                    Hmm&hellip; We didn&rsquo;t find anything for <i>@Model.Query</i>
+                </div>
 
-@helper GetUrl(string pageTypeCodeName, int nodeId)
-{
-    switch (pageTypeCodeName)
-    {
-        case "MVCSite.Article":
-                @Url.Action("Show", "Articles", new { id = nodeId })
-            break;
-        default:
-            throw new NotImplementedException("Unknown PageType: " + pageTypeCodeName);
-    }
-}
+                <div class="section-description">
+                    Maybe try <a onclick="CCChapel.openSearch()">searching for something else</a>, 
+                    or feel free to <a href="/contact-us">contact us directly</a>.
+                </div>
+            }
+        }
+        else
+        {
+            <div class="section-title">
+                We found @Model.ItemCount 
+                result@{ if (Model.ItemCount > 1) { <text>s</text> } }
+                for <i>@Model.Query</i>
+            </div>
 
+            foreach (var item in Model.Items)
+            {
+                <a href="@item.ItemUrl()">@item.Title</a>
+            }
+        }
+    </div>
+</div>
 
