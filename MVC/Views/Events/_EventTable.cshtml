@@ -60,18 +60,18 @@
 
                             @Html.Raw(DocumentHelpers.LineBreaksToParagraphs(ev.EventDescription))
 
-                            <div class="event-details__cta">
+                            <div class="event-details__cta [ flex-section inline ]">
                                 @{
                                     if (ev.EventInfo().HasRegistration())
                                     {
                                         if (ev.EventInfo().GetForm().IsActive)
                                         {
-                                            <a class="cta auto" href="@ev.EventInfo().GetForm().Url">Register</a>
+                                            <a class="[ cta auto ] add-right-margin" href="@ev.EventInfo().GetForm().Url">Register</a>
 
                                         }
                                         else
                                         {
-                                            <a class="cta auto disabled">Registration Closed</a>
+                                            <a class="[ cta auto disabled ] add-right-margin">Registration Closed</a>
                                         }
                                     }
                                 }
@@ -79,9 +79,9 @@
                                 @{
                                     if (ev.EventInfo().Organizer.CCBID.HasValue)
                                     {
-                                        <p class="accent">
+                                        <span class="accent">
                                             <a href="mailto:@ev.EventInfo().GetOrganizer().Email">Questions?</a>
-                                        </p>
+                                        </span>
                                     }
                                 }
                             </div>
@@ -121,9 +121,8 @@
 <script>
     $(document).ready(function() {
         setupDescriptionToggle();
-        setupKeywordSearch();
         setupCampusSearch();
-        //setupSlider();
+        setupKeywordSearch();
     });
 
     function setupDescriptionToggle() {
@@ -141,9 +140,18 @@
     function setupKeywordSearch() {
         var selector = ".search-keywords";
 
+        //Setup Change Event
         $(selector).on("input", function() {
             filter();
         });
+
+        //Setup Initial Value
+        var qs = getQueryString();
+
+        if (qs["keywords"] !== undefined) {
+            $(selector).val(qs["keywords"]);
+            filter();
+        }
     }
 
     function setupCampusSearch() {
@@ -202,7 +210,7 @@
 
         //Check for no visible rows
         if ($(table + " > tbody tr:visible").length <= 0) {
-            showNoResultsRow();
+            showNoResultsRow({ keyword: keyword, campus: campus });
         }
         else {
             //Clean up No Results Rows
@@ -214,49 +222,38 @@
             return str.replace(/[^\w\s]/, "").toLowerCase();
         }
 
-        function showNoResultsRow() {
-            $(table + " > tbody").append('<tr class="no-results"><td colspan="4" class="accent">Sorry, no events were found.</td></tr>');
+        function showNoResultsRow(options) {
+            var defaults = {
+                keyword: undefined,
+                campus: undefined
+            };
+
+            options = $.extend({}, defaults, options);
+
+            var html = "Sorry, no events were found ";
+            if (keyword !== "") {
+                html += "with the word <i>" + keyword + "</i> ";
+            }
+
+            var dateRange = $("#calendar-change option:selected").html();
+            html += "between " + dateRange.trim();
+
+            if (campus !== "") {
+                html += " for " + campus + " Campus."
+            }
+            else {
+                html += ".";
+            }
+
+            var tr = $("<tr></tr>").addClass("no-results");
+            var td = $("<td></td>").addClass("accent").attr("colspan", "4").html(html);
+
+            $(tr).append(td);
+            $(table + " > tbody").append(tr);
         }
     }
 
     function setFocus(selector) {
         $(selector).focus().click();
-    }
-
-    function setupSlider() {
-        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
-        var selector = "#date-range-slider";
-
-        //Get Min (Today) & Max (+1 year)
-        var currentDate = new Date();
-        var min = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-        var max = new Date(currentDate.getFullYear() + 1, currentDate.getMonth(), 1);
-        var defaultMax = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 1);
-
-        $(selector).dateRangeSlider({
-            bounds: {min: min, max: max},
-            defaultValues: {min: min, max: defaultMax },
-            scales: [{
-                first: function(value){ return value; },
-                end: function(value) {return value; },
-                next: function(value){
-                    var next = new Date(value);
-                    return new Date(next.setMonth(value.getMonth() + 1));
-                },
-                label: function(value){
-                    return months[value.getMonth()];
-                },
-                format: function(tickContainer, tickStart, tickEnd){
-                    tickContainer.addClass("drs-ticker");
-                }
-            }],
-            arrows: false,
-            valueLabels: "change",
-            //symmetricPositionning: true,
-            range:{
-                min: {months: 2},
-                max: false
-            }
-        });
     }
 </script>

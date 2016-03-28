@@ -115,6 +115,15 @@
 
         overflow-x: hidden;
     }
+
+    &.right-justify {
+        text-align: right;
+        direction: rtl;
+
+        & > * {
+            direction: ltr;
+        }
+    }
     
     &.lock-width {
         margin: 0 auto;

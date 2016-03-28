@@ -1,13 +1,24 @@
 ﻿/* SECTIONS */
+.fsSection {
+    border-bottom: 1px solid $blue;
+    padding-bottom: $vertical-padding / 2;
+    margin-bottom: $vertical-padding / 2;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+}
+
 .fsSectionHeader {
     margin: 0 !important;
     background: none !important;
 }
 
 .fsBody .fsForm .fsSectionHeading {
+    @extend .accent;
+
     font-family: inherit;
-    font-size: 22px;
-    font-weight: inherit;
-    line-height: 24px;
-    color: #3C617A;
+    color: $dark-blue;
 }

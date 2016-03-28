@@ -78,10 +78,29 @@ namespace CCB
         {
             if (input.Organizer.CCBID.HasValue)
             {
-                return Api.Client.People.Individuals.Get((int)input.Organizer.CCBID);
+                string cacheID = CachingHelpers.CachingID("CcbIndividual", input.Organizer.CCBID);
+
+                if (CachingHelpers.Cache.Contains(cacheID))
+                {
+                    //Get Data From Cache
+                    ChurchCommunityBuilder.Api.People.Entity.Individual i =
+                        (ChurchCommunityBuilder.Api.People.Entity.Individual)CachingHelpers.Cache.Get(cacheID);
+
+                    return i;
+                }
+                else
+                {
+                    //Get Data From CCB & Add to Cache
+                    ChurchCommunityBuilder.Api.People.Entity.Individual i =
+                        Api.Client.People.Individuals.Get((int)input.Organizer.CCBID);
+
+                    CachingHelpers.Cache.Add(cacheID, i, CachingHelpers.Policy);
+
+                    return i;
+                }
             }
             else
-            {
+            { 
                 return new ChurchCommunityBuilder.Api.People.Entity.Individual();
             }
         }

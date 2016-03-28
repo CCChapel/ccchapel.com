@@ -4,7 +4,7 @@
 .fsBody .fsForm .fsMatrixLabel,
 .fsBody .fsForm .fsLabel {
     display: block;
-    padding-left: 1rem;
+    //padding-left: 1rem;
 
     @include typecsset-font-size($tertiary-headline-size);
     font-weight: normal;
@@ -16,7 +16,7 @@
 
 .fsBody .fsForm .fsSupporting {
     font-weight: normal;
-    padding-left: 1rem;
+    //padding-left: 1rem;
 }
 
 .fsBody .fsLabelHorizontal > label {

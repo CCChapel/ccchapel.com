@@ -6,6 +6,7 @@ using System.Web;
 using CMS.Helpers;
 
 using ChurchCommunityBuilder.Api.Events.Entity;
+using CCC.Helpers;
 
 namespace CCB
 {
@@ -19,7 +20,26 @@ namespace CCB
             {
                 try
                 {
-                    return Api.Client.Events.Forms.Get(_Form.ID);
+                    string cacheID = CachingHelpers.CachingID("CcbForm", _Form.ID);
+
+                    if (CachingHelpers.Cache.Contains(cacheID))
+                    {
+                        //Get Data From Cache
+                        ChurchCommunityBuilder.Api.Events.Entity.Form form =
+                            (ChurchCommunityBuilder.Api.Events.Entity.Form)CachingHelpers.Cache.Get(cacheID);
+
+                        return form;
+                    }
+                    else
+                    {
+                        //Get Data From CCB & Add to Cache
+                        ChurchCommunityBuilder.Api.Events.Entity.Form form =
+                            Api.Client.Events.Forms.Get(_Form.ID);
+
+                        CachingHelpers.Cache.Add(cacheID, form, CachingHelpers.Policy);
+
+                        return form;
+                    }
                 }
                 catch
                 {

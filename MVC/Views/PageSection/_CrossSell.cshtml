@@ -3,6 +3,10 @@
 
 @model CrossSellSection
 
+@{ 
+    string[] content = Model.SectionContent.Split(new string[] { "{CrossSell}" }, StringSplitOptions.None);
+}
+
 <div class="@Model.SectionCssClass [ content-section @Model.SectionColor @Model.SectionHeight ] [ grid__item one-whole ]" style="@Model.SectionStyles">
     @{
         if (Model.SectionIncludeWrapper)
@@ -11,10 +15,13 @@
         }
     }
 
-    @*Render Section Content*@
-    @Html.Raw(
-            Html.Kentico().ResolveUrls(
-                Model.SectionContent.ProcessForOutput()))
+    @{
+        //Render Section Content
+        if (content.Length > 0)
+        {
+            @: @Html.Raw(Html.Kentico().ResolveUrls(content[0].ProcessForOutput()))
+        }
+    }
 
     <div class="grid grid--center"><!--
     @{
@@ -57,6 +64,13 @@
         }
     }
     --></div>
+
+    @{
+        if (content.Length > 1)
+        {
+            @: @Html.Raw(Html.Kentico().ResolveUrls(content[1].ProcessForOutput()))
+        }
+    }
 
     @{
         if (Model.SectionIncludeWrapper)

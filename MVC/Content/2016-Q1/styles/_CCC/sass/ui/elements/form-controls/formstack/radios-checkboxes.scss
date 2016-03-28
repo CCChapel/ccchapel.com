@@ -1,6 +1,11 @@
 ﻿/* RADIOS & CHECKBOXES */
 .fsOptionLabel {
     margin-left: 24px !important;
+
+    &.horizontal {
+        position: relative;
+        top: -.5em;
+    }
 }
 
 .fsOptionLabel .fsField {
@@ -10,6 +15,11 @@
 .fsFieldRow input[type="checkbox"], 
 .fsFieldRow input[type="radio"] {
     margin-top: .45em !important;
+
+    &.horizontal {
+        position: relative;
+        top: 1.75em;
+    }
 }
 
 .fsFieldRow input.vertical[type="checkbox"], .fsFieldRow input.vertical[type="radio"] {

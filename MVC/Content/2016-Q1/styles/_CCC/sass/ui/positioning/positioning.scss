@@ -6,6 +6,10 @@
     margin-bottom: $magic-number;
 }
 
+.add-right-margin {
+    margin-right: $gutter !important;
+}
+
 .portable--add-bottom-margin {
     @include grid-media-query("portable") {
         margin-bottom: $magic-number;

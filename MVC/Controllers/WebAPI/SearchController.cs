@@ -28,27 +28,42 @@ namespace MVC.Controllers.WebAPI
         {
             query = HttpUtility.UrlDecode(query);
 
-            int numberOfResults;
+            //int numberOfResults;
+            //var model = new SearchResults()
+            //{
+            //    Items = mService.Search(
+            //        query,
+            //        page: 0,
+            //        pageSize: PAGE_SIZE,
+            //        numberOfResults: out numberOfResults),
+            //    Query = query,
+            //    ItemCount = numberOfResults
+            //};
+
+            #region testing
+            List<SearchResultItem> list = new List<SearchResultItem>();
+
+            var pages = CMS.DocumentEngine.Types.PageProvider.GetPages().Published();
+
+            foreach (var page in pages)
+            {
+                SearchResultItem result = new SearchResultItem();
+                result.Title = page.Fields.Name;
+                result.Content = page.Fields.SocialDescription;
+                result.ImageAttachment = page.SocialImageFile;
+                result.NodeId = page.NodeID;
+                result.PageTypeCodeName = page.ClassName;
+
+                list.Add(result);
+            }
+
             var model = new SearchResults()
             {
-                Items = mService.Search(
-                    query,
-                    page: 0,
-                    pageSize: PAGE_SIZE,
-                    numberOfResults: out numberOfResults),
+                Items = list,
                 Query = query,
-                ItemCount = numberOfResults
+                ItemCount = 100
             };
-
-            List<object> list = new List<object>();
-
-            for (int i = 0; i < 5; i++)
-            {
-                string _title = string.Format("Page {0}", i);
-                string _url = string.Format("/my/url/{0}", i);
-
-                list.Add(new { title = _title, url = _url });
-            }
+            #endregion
 
             return list;
             //return new string[] { "value1", "value2" };
@@ -70,6 +85,7 @@ namespace MVC.Controllers.WebAPI
             //    ItemCount = numberOfResults
             //};
 
+            #region testing
             List<SearchResultItem> list = new List<SearchResultItem>();
 
             var pages = CMS.DocumentEngine.Types.PageProvider.GetPages().Published().Take(maxResults);
@@ -92,7 +108,7 @@ namespace MVC.Controllers.WebAPI
                 Query = query,
                 ItemCount = 100
             };
-
+            #endregion
             return model.AjaxResults;
             //return new string[] { "value1", "value2" };
         }

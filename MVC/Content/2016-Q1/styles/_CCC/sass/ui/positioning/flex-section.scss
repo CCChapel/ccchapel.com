@@ -24,6 +24,11 @@
             }
         }   
     }
+
+    &.inline {
+        @include inline-flex();
+        @include align-items(center);
+    }
 }
     
 .flex-section-bg {

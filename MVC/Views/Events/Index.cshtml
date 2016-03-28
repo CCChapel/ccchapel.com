@@ -1,5 +1,6 @@
 ﻿@using CMS.DocumentEngine.Types
 @using CCC.Helpers
+@using CCC.Models
 
 @model CCC.Models.EventsPage
 
@@ -31,7 +32,31 @@
     <div class="content-wrapper">
         <div class="section-title">More Events</div>
         <div class="section-description">
-            Here&rsquo;s everything happening from <a href="#">@Model.List.StartDate.ToString("MMM d") to @Model.List.EndDate.ToString("MMM d")</a>.<br />
+            Here&rsquo;s everything happening from 
+            <a id="calendar-select" href="#">@Model.List.StartDate.ToString("MMM d") to @Model.List.EndDate.ToString("MMM d").</a>
+            <span id="calendar-range" class="[ css3-metro-dropdown auto ] hidden">
+                <select id="calendar-change">
+                    @{
+                        DateTime optionStartDate = new DateTime();
+                        DateTime optionEndDate = DateTime.Now;
+
+                        for (int i = 0; i < 12; i++)
+                        {
+                            optionStartDate = optionEndDate;
+                            optionEndDate = optionStartDate.Add(EventsPage.EventList.defaultSpan);
+
+                            string url = string.Format("/events/{0}/{1}",
+                                optionStartDate.ToString("yyyy-MM-dd"),
+                                optionEndDate.ToString("yyyy-MM-dd"));
+
+                            <option value="@url" @{ if (optionStartDate.Date == Model.List.StartDate.Date) { <text>selected</text> } }>
+                                @optionStartDate.ToString("MMM d") to @optionEndDate.ToString("MMM d")
+                            </option>
+                        }
+                    }
+                </select>
+            </span>
+            <br />
             If you&rsquo;re looking for something specific, try searching for a keyword or by campus.
         </div>
 
@@ -42,3 +67,28 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        var triggerSelector = "#calendar-select";
+        var selectSelector = "#calendar-range";
+        var calendarSelectSelector = "#calendar-change";
+
+        $(document).ready(function() {
+            //Trigger Select Box Reveal
+            $(triggerSelector).click(function(e) {
+                e.preventDefault();
+
+                $(this).hide();
+
+                $(selectSelector).css("display", "inline-block");
+            });
+
+            //Trigger New Page
+            $(calendarSelectSelector).change(function() {
+                var url = location.protocol + "//" + location.hostname + $(calendarSelectSelector).val();
+                window.location = url;
+            });
+        });
+    </script>
+}

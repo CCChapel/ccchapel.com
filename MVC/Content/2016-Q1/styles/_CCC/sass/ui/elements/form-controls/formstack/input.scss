@@ -4,16 +4,16 @@
     }
 }
 
+div.fsSubField {
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
+}
+
 div.fsSubField:first-child {
-    input:not(".fsFieldCity") {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
+    padding-left: 0;
 }
 
 div.fsSubField:last-child {
-    input:not(".fsFieldZip") {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
+    padding-left: $gutter / 2;
+    padding-right: 0;
 }

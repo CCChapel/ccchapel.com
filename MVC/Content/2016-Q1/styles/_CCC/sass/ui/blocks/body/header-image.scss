@@ -83,6 +83,11 @@
 
         text-align: center;
 
+        p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         @include grid-media-query("desk") {
             //max-width: 66%;
         }
