@@ -43,3 +43,15 @@
     height: 100%;
     width: 100%;
 }
+
+.#{$ns-image}-cover {
+    object-fit: cover;
+    
+    height: 100%;
+    width: 100%;
+}
+
+
+.#{$ns-image}-size--horizontal {
+    padding: 1.5rem;
+}

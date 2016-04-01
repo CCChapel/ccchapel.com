@@ -1,0 +1,22 @@
+﻿.search-results {
+    hr:last-of-type {
+        border: none;
+    }
+
+    &__item {
+        &-title {
+            @include typecsset-font-size($secondary-headline-size);
+
+            @include grid-media-query("portable") {
+                @include typecsset-font-size($tertiary-headline-size);
+
+                text-align: center;
+            }
+        }
+
+        &-description {
+            font-weight: normal;
+            color: $black;
+        }
+    }
+}

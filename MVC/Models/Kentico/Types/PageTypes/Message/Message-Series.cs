@@ -80,6 +80,23 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
+        /// Description.
+        /// </summary>
+        [DatabaseField]
+        public string SeriesDescription
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("SeriesDescription"), "");
+            }
+            set
+            {
+                SetValue("SeriesDescription", value);
+            }
+        }
+
+
+        /// <summary>
         /// Title Treatment.
         /// </summary>
         [DatabaseField]
@@ -157,6 +174,22 @@ namespace CMS.DocumentEngine.Types
                 set
                 {
                     mInstance.SeriesTitle = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Description.
+            /// </summary>
+            public string Description
+            {
+                get
+                {
+                    return mInstance.SeriesDescription;
+                }
+                set
+                {
+                    mInstance.SeriesDescription = value;
                 }
             }
 

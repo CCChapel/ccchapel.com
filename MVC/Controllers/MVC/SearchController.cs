@@ -13,29 +13,12 @@ namespace MVC.Controllers
 {
     public class SearchController : Controller
     {
-        // Adds the smart search indexes that will be used when performing a search 
-        private static string index = string.Format("{0}.{1}", SiteHelpers.SiteName, "CCChapel");
-        public static readonly string[] searchIndexes = new string[] { index };
-        private const int PAGE_SIZE = 10;
-
-        private readonly SearchService mService = 
-            new SearchService(searchIndexes, SiteHelpers.SiteCulture, SiteHelpers.SiteName, false);
-
         // GET: Search
         [ValidateInput(false)]
         public ActionResult Index(string query)
         {
-            int numberOfResults;
-            var model = new SearchResults()
-            {
-                Items = mService.Search(
-                    query,
-                    page: 0,
-                    pageSize: PAGE_SIZE,
-                    numberOfResults: out numberOfResults),
-                Query = query,
-                ItemCount = numberOfResults
-            };
+            var model = new SearchResults(query);
+
             return View(model);
         }
     }

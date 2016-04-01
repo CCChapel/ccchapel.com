@@ -80,6 +80,23 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
+        /// Items Path.
+        /// </summary>
+        [DatabaseField]
+        public string SectionItemsPath
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("SectionItemsPath"), "");
+            }
+            set
+            {
+                SetValue("SectionItemsPath", value);
+            }
+        }
+
+
+        /// <summary>
         /// Include Content Wrapper.
         /// </summary>
         [DatabaseField]
@@ -259,6 +276,22 @@ namespace CMS.DocumentEngine.Types
                 set
                 {
                     mInstance.SectionContent = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Items Path.
+            /// </summary>
+            public string SectionItemsPath
+            {
+                get
+                {
+                    return mInstance.SectionItemsPath;
+                }
+                set
+                {
+                    mInstance.SectionItemsPath = value;
                 }
             }
 

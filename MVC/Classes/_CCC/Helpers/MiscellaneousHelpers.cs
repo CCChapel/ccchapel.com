@@ -21,7 +21,7 @@ namespace CCC.Helpers
 
                 //Check Subdomain
                 string subdomain = UrlHelpers.CurrentSubdomain;
-                if (!String.IsNullOrWhiteSpace(subdomain))
+                if (!string.IsNullOrWhiteSpace(subdomain))
                 {
                     //check for beta
                     if (subdomain != "beta")
@@ -33,7 +33,7 @@ namespace CCC.Helpers
                 //Check QueryString
                 if (QueryHelper.Contains("campus"))
                 {
-                    currentCampus = QueryHelper.GetString("campus", "");
+                    currentCampus = QueryHelper.GetString("campus", "").Replace("-", " ");
                 }
 
                 //Check Cookie

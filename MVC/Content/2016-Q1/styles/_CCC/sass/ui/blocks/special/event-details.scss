@@ -1,0 +1,52 @@
+﻿//**************************************************
+// EVENT DETAILS
+//**************************************************/
+.event-details {
+    &__image {
+        background: $medium-gray center center/cover no-repeat scroll;
+
+        margin-bottom: $magic-number;
+
+        height: 10em;
+
+        @include grid-media-query("lap") {
+            height: 20em;
+        }
+    }
+
+    &__cta {
+        margin-bottom: $magic-number;
+    }
+
+    &__social {
+        margin-bottom: $magic-number;
+
+        text-align: center;
+    }
+
+    &__name {
+        //.header-image__title
+        @include typecsset-font-size($primary-headline-size);
+        font-weight: bold;
+        //text-align: center;
+        text-transform: uppercase;
+        margin-left: -#{(1/16)}em;
+    }
+
+    &__date,
+    &__time {
+        @include typecsset-font-size($tertiary-headline-size);
+        font-weight: bold;
+    }
+
+    &__location {
+
+    }
+
+    &__map {
+        display: none;
+
+        height: (15 * $magic-number);
+        width: 100%;
+    }
+}

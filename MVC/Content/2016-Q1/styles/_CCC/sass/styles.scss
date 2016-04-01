@@ -17,6 +17,7 @@
 @import "ui/content-section/image.scss";
 @import "ui/content-section/cross-sell.scss";
 
+@import "ui/blocks/search-results.scss";
 @import "ui/blocks/modal.scss";
 @import "ui/blocks/header/header.scss";
 @import "ui/blocks/header/menu.scss";
@@ -26,6 +27,7 @@
 @import "ui/blocks/body/header-image.scss";
 @import "ui/blocks/body/dividing-line.scss";
 @import "ui/blocks/special/campus-info.scss";
+@import "ui/blocks/special/event-details.scss";
 //@import "ui/body/search.scss";                        //UNNECESSARY RULES
 //@import "ui/body/message.scss";                       //UNNECESSARY RULES
 
@@ -48,6 +50,7 @@
 @import "ui/elements/image.scss";
 @import "ui/elements/lists.scss";
 @import "ui/elements/horizontal-rule.scss";
+@import "ui/elements/blockquote.scss";
 @import "ui/elements/form-controls/_form-controls.scss";
 
 //Hacks

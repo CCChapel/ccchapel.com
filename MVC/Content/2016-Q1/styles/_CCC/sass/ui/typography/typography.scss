@@ -173,37 +173,6 @@ a {
     }
 }
 
-blockquote {
-    @include typecsset-font-size($secondary-headline-size);
-    font-weight: 800;
-    
-    quotes: "\201C" "\201D" "\2018" "\2019";
-    
-    margin-left: 0;
-    
-//    &:before {
-//        content: open-quote;
-//    }
-    
-    &:after {
-        content: "\2013\00a0" attr(cite);
-        display: block;
-        
-        font-weight: normal;
-        text-indent: 0;
-    }
-    
-    &.no-cite:after {
-        content: none;
-    }
-    
-    @include grid-media-query("palm") {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-}
-
-
 //Lists
 .horizontal-list {
     margin-bottom: 0;

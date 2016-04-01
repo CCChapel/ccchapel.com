@@ -620,6 +620,7 @@
     <Compile Include="Classes\Extensions\DateTime.cs" />
     <Compile Include="Classes\Extensions\String.cs" />
     <Compile Include="Classes\FormStack\FormStack.cs" />
+    <Compile Include="Classes\Kentico\Types\BuiltInTypes\Attachment.cs" />
     <Compile Include="Classes\Kentico\Types\CustomTables\CampusesItem.cs" />
     <Compile Include="Classes\Kentico\Types\CustomTables\CCB\GroupsItem.cs" />
     <Compile Include="Classes\Kentico\Types\CustomTables\LocationsItem.cs" />
@@ -635,6 +636,9 @@
     <Compile Include="Classes\Kentico\Types\PageTypes\Page\Page-CrossSellSection.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Page\Page-ImageSection.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Page\Page.cs" />
+    <Compile Include="Classes\Kentico\Types\PageTypes\People\Person.cs" />
+    <Compile Include="Classes\Kentico\Types\PageTypes\People\StaffTeam.cs" />
+    <Compile Include="Classes\Kentico\Types\PageTypes\People\StaffTeamMember.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Search\QuickAccessKeywords.cs" />
     <Compile Include="Classes\_CCC\Helpers\BrandingHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\CachingHelpers.cs" />
@@ -656,6 +660,7 @@
     <Compile Include="Controllers\MVC\PageController.cs" />
     <Compile Include="Controllers\MVC\PageSectionController.cs" />
     <Compile Include="Controllers\MVC\SearchController.cs" />
+    <Compile Include="Controllers\MVC\StaffTeamController.cs" />
     <Compile Include="Controllers\WebAPI\SearchController.cs" />
     <Compile Include="Controllers\WebAPI\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -700,6 +705,12 @@
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page-CrossSellSection.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page-ImageSection.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\People\Person.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\People\Providers\Person.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\People\Providers\StaffTeam.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\People\Providers\StaffTeamMember.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\People\StaffTeam.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\People\StaffTeamMember.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Search\Providers\QuickAccessKeywords.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Search\QuickAccessKeywords.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -800,6 +811,12 @@
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\lists.scss" />
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\horizontal-rule.scss" />
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\positioning\flex-section.scss" />
+    <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\blocks\special\event-details.scss" />
+    <Content Include="Views\Search\_SearchResult.cshtml" />
+    <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\blocks\search-results.scss" />
+    <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\blockquote.scss" />
+    <Content Include="Views\StaffTeam\_GridItem.cshtml" />
+    <Content Include="Views\StaffTeam\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

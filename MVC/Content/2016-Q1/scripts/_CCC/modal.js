@@ -50,7 +50,7 @@
         $(options.cssClass).fadeOut(options.transitionDuration);
 
         //Clean out content
-        $(modalContentSelector).html("");
+        this.clearModalContent();
 
         CCChapel.unlockViewport();
 
@@ -67,6 +67,10 @@
         else {
             CCChapel.openModal(options);
         }
+    }
+
+    CCChapel.clearModalContent = function() {
+        $(modalContentSelector).html("");
     }
 
     CCChapel.setupModal = function () {

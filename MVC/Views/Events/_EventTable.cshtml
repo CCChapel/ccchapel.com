@@ -239,7 +239,7 @@
             html += "between " + dateRange.trim();
 
             if (campus !== "") {
-                html += " for " + campus + " Campus."
+                html += " for " + campus.replace("-", " ") + " Campus."
             }
             else {
                 html += ".";

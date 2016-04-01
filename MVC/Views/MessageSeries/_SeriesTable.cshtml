@@ -19,18 +19,29 @@
     <tbody>
         @{
             //Get Sermons in Series
-            foreach (Sermon sermon in Model.GetSermons())
+            var sermons = Model.GetSermons();
+
+            if (sermons.Any())
             {
-                <tr data-campus="@sermon.CampusDataAttribute">
-                    <td>@sermon.MessageDate.ToString(BrandingHelpers.DateFormat())</td>
-                    <td>
-                        @Html.RouteLink(sermon.MessageTitle, sermon.RouteValues)
-                        
-                        <div class="accent desk--hide">
-                            @sermon.MessageSpeaker.SpeakerFullName
-                        </div>
-                    </td>
-                    <td>@sermon.MessageSpeaker.SpeakerFullName</td>
+                foreach (Sermon sermon in Model.GetSermons())
+                {
+                    <tr data-campus="@sermon.CampusDataAttribute">
+                        <td>@sermon.MessageDate.ToString(BrandingHelpers.DateFormat())</td>
+                        <td>
+                            @Html.RouteLink(sermon.MessageTitle, sermon.RouteValues)
+
+                            <div class="accent desk--hide">
+                                @sermon.MessageSpeaker.SpeakerFullName
+                            </div>
+                        </td>
+                        <td>@sermon.MessageSpeaker.SpeakerFullName</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3"><span class="accent">Sorry, no messages were found for this series.</span></td>
                 </tr>
             }
         }

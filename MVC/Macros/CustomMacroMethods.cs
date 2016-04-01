@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 
+using MVC;
+
 using CMS;
 using CMS.Helpers;
 using CMS.MacroEngine;
@@ -178,6 +180,31 @@ public class CustomMacroMethods : MacroMethodContainer
                         select q);
 
         return keywords.ToHtmlString();
+    }
+
+    public static DocumentQuery<StaffTeamMember> StaffTeamMembers(string staffTeamName)
+    {
+        //Get the team
+        var teams = (from t in StaffTeamProvider.GetStaffTeams().Published()
+                    where t.TeamName.ToLower() == staffTeamName.ToLower()
+                    select t);
+
+        if (teams.Any())
+        {
+            return teams.FirstOrDefault().TeamMembers;
+        }
+
+        throw new NullReferenceException();
+    }
+
+    public static Person GetPerson(int nodeID)
+    {
+        return PersonProvider.GetPerson(nodeID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+    }
+
+    public static string SeriesImageSizingClass(Series series)
+    {
+        return series.Fields.TitleTreatment.ImageSizingClass();
     }
     #endregion
 
@@ -407,6 +434,42 @@ public class CustomMacroMethods : MacroMethodContainer
         {
             case 0:
                 return LatestSeriesBackground();
+            default:
+                throw new NotSupportedException();
+        }
+    }
+
+    [MacroMethod(typeof(string), "Gets an enumerable object of team members for the specified team.", 1)]
+    public static object StaffTeamMembers(EvaluationContext context, params object[] parameters)
+    {
+        switch (parameters.Length)
+        {
+            case 1:
+                return StaffTeamMembers(ValidationHelper.GetString(parameters[0], string.Empty));
+            default:
+                throw new NotSupportedException();
+        }
+    }
+
+    [MacroMethod(typeof(string), "Gets the Person object by Node ID.", 1)]
+    public static object GetPerson(EvaluationContext context, params object[] parameters)
+    {
+        switch (parameters.Length)
+        {
+            case 1:
+                return GetPerson(ValidationHelper.GetInteger(parameters[0], 0));
+            default:
+                throw new NotSupportedException();
+        }
+    }
+
+    [MacroMethod(typeof(Attachment), "Gets the Image Sizing Class property from the attachment.", 1)]
+    public static object SeriesImageSizingClass(EvaluationContext context, params object[] parameters)
+    {
+        switch (parameters.Length)
+        {
+            case 1:
+                return SeriesImageSizingClass((Series)parameters[0]);
             default:
                 throw new NotSupportedException();
         }

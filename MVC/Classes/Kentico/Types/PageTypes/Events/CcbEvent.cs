@@ -35,6 +35,14 @@ namespace CMS.DocumentEngine.Types
             }
         }
 
+        public bool IsEventDataInCache
+        {
+            get
+            {
+                return CCB.Event.IsEventInCache(EventCcbID);
+            }
+        }
+
         public DateTime StartDateTime
         {
             get

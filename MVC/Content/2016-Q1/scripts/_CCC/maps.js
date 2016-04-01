@@ -183,6 +183,10 @@
     /// <param name="min">The minimum zoom level</param>
     /// <param name="max">The maximum zoom level</param>
     function checkZoom(min, max) {
+        console.log("zoom: " + map.getZoom());
+        console.log("min: " + min);
+        console.log("max: " + max);
+
         if (map.getZoom() > max) {
             map.setZoom(max);
         }

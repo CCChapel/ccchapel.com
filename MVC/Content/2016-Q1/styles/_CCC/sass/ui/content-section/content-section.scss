@@ -226,4 +226,8 @@
         text-align: left;
         max-width: initial;
     }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }

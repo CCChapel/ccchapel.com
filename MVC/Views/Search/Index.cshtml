@@ -4,37 +4,69 @@
 
 @{
     Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = "Search";
+    ViewData["searchQuery"] = Model.Query;
 }
 
 <div class="[ content-section transparent ] [ grid__item one-whole ]">
     <div class="content-wrapper">
-        @if (Model.Items == null)
-        {
-            if (!string.IsNullOrWhiteSpace(Model.Query))
+        @{
+            if (Model.Items == null)
+            {
+                if (!string.IsNullOrWhiteSpace(Model.Query))
+                {
+                    <div class="section-title">
+                        Hmm&hellip; We didn&rsquo;t find anything for <i>@Model.Query</i>
+                    </div>
+
+                    <div class="section-description">
+                        Maybe try <a onclick="CCChapel.openSearch()">searching for something else</a>, 
+                        or feel free to <a href="/contact-us">contact us directly</a>.
+                    </div>
+                }
+            }
+            else
             {
                 <div class="section-title">
-                    Hmm&hellip; We didn&rsquo;t find anything for <i>@Model.Query</i>
+                    We found @Model.ItemCount 
+                    @{ 
+                        if (Model.ItemCount > 1)
+                        {
+                            @:results
+                        }
+                        else
+                        {
+                            @:result
+                        }
+                    }
+                    for <i>@Model.Query</i>
                 </div>
 
-                <div class="section-description">
-                    Maybe try <a onclick="CCChapel.openSearch()">searching for something else</a>, 
-                    or feel free to <a href="/contact-us">contact us directly</a>.
+                <div class="search-results">
+                    @{
+                        foreach (var item in Model.Items)
+                        {
+                            try
+                            {
+                                Html.RenderPartial("_SearchResult", item);
+
+                                <hr />
+                            }
+                            catch (NotImplementedException ex)
+                            {
+                                //Skip the Result
+                                //To show, edit the ItemUrl extension in Search.cs
+                            }
+                        }
+                    }
                 </div>
             }
         }
-        else
-        {
-            <div class="section-title">
-                We found @Model.ItemCount 
-                result@{ if (Model.ItemCount > 1) { <text>s</text> } }
-                for <i>@Model.Query</i>
-            </div>
 
-            foreach (var item in Model.Items)
-            {
-                <a href="@item.ItemUrl()">@item.Title</a>
-            }
-        }
+        <div class="section-description">
+            Didn&rsquo;t find what you were looking for? 
+            See a full list of <a href="https://communitychapel.ccbchurch.com/w_group_list.php">groups</a> or <a href="/events#all-events">events</a>. 
+        </div>
     </div>
 </div>
 

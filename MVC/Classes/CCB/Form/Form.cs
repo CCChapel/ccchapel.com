@@ -84,6 +84,19 @@ namespace CCB
         {
             get
             {
+                //Check if Disabled
+                if (Data.Disabled == true)
+                {
+                    return false;
+                }
+
+                //Check if Published
+                if (Data.Published != true)
+                {
+                    return false;
+                }
+
+                //Check End Date
                 if (Data.End.HasValue)
                 {
                     if (DateTime.Now < Data.End.Value)

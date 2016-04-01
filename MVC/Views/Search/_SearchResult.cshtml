@@ -1,0 +1,49 @@
+﻿@using CMS.DocumentEngine.Types
+@using Kentico.Search
+@using CCC.Models
+
+@model SearchResultItem
+@{ 
+    string query = CMS.Helpers.ValidationHelper.GetString(ViewData["searchQuery"], "");
+
+    string faIcon = "fa-file-o";
+
+    switch (Model.PageTypeCodeName)
+    {
+        case CMS.DocumentEngine.Types.Page.CLASS_NAME:
+            faIcon = "fa-file-text-o";
+            break;
+
+        case CcbEvent.CLASS_NAME:
+            faIcon = "fa-calendar-o";
+            break;
+
+        case Sermon.CLASS_NAME:
+            faIcon = "fa-file-video-o";
+            break;
+
+        case Series.CLASS_NAME:
+            faIcon = "fa-file-video-o";
+            break;
+
+        case JobListing.CLASS_NAME:
+            faIcon = "fa-user";
+            break;
+
+        default:
+            faIcon = "fa-file-text-o";
+            break;
+    }
+}
+
+<div class="search-results__item">
+    <a href="@Model.ItemUrl()">
+        <div class="search-results__item-title">
+            <i class="fa @faIcon"></i> @Model.Title
+        </div>
+        
+        <div class="search-results__item-description">
+            @Html.Raw(Model.ModifiedContent(query))
+        </div>
+    </a>
+</div>

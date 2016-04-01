@@ -1,0 +1,63 @@
+﻿@using CMS.DocumentEngine.Types
+
+@model StaffTeam
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = "Staff";
+}
+
+<div class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title add-bottom-margin">Staff</div>
+
+        <div class="justify-content">
+            <div class="section-subtitle left-justify">@Model.TeamName</div>
+
+            <div class="right-justify">
+                <span class="add-right-margin">Select a team:</span>
+
+                <span class="css3-metro-dropdown auto">
+                    <select id="teamSelection">
+                        @{
+                            var teams = StaffTeamProvider.GetStaffTeams().Published();
+
+                            foreach (var team in teams)
+                            {
+                                <option value="@team.RouteUrl">
+                                    @team.TeamName
+                                </option>
+                            }
+                        }
+                    </select>
+                </span>
+            </div>
+        </div>
+    
+        <div class="grid">
+            <!--
+            @{
+                foreach (var member in Model.TeamMembers)
+                {
+                    Html.RenderPartial("_GridItem", member);
+                }
+            }
+            -->
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var select = "#teamSelection";
+
+        $(document).ready(function () {
+            //Setup Initial Value
+            $(select).val("@Model.RouteUrl");
+
+            $(select).change(function () {
+                window.location = $(this).val();
+            });
+        });
+    </script>
+}

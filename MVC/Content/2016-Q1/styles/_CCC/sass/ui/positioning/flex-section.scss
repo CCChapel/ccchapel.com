@@ -25,9 +25,37 @@
         }   
     }
 
+    &.center-vertically {
+        @include align-items(center);
+    }
+
     &.inline {
         @include inline-flex();
         @include align-items(center);
+    }
+
+    &.use-gutter > * {
+        margin-right: $gutter;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &.small {
+        height: $height-small;
+    }
+
+    &.medium {
+        height: $height-medium;
+    }
+
+    &.large {
+        height: $height-large;
+    }
+    
+    &.extra-large {
+        height: $height-extra-large;
     }
 }
     

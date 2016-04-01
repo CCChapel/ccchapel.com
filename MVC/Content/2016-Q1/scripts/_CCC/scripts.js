@@ -395,6 +395,7 @@
         //Initialize Current Campus Value
         CCChapel.CurrentCampus = $(currentCampusSelector).val();
 
+        CCChapel.initializeSearch();
 
         CCChapel.setupCampusLinks();
 

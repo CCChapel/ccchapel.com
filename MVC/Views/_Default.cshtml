@@ -195,16 +195,16 @@
          --><div class="footer__campuses [ grid__item one-whole ]">
                 <ul class="horizontal-list">
                     <li>
-                        <a class="change-campus" data-campus="hudson" href="#">Hudson</a>
+                        <a class="change-campus" data-campus="hudson" href="/new-here/hudson">Hudson</a>
                     </li><!--
                  --><li>
-                        <a class="change-campus" data-campus="aurora" href="#">Aurora</a>
+                        <a class="change-campus" data-campus="aurora" href="/new-here/aurora">Aurora</a>
                     </li><!--
                  --><li>
-                        <a class="change-campus" data-campus="stow" href="#">Stow</a>
+                        <a class="change-campus" data-campus="stow" href="/new-here/stow">Stow</a>
                     </li><!--
                  --><li>
-                        <a class="change-campus" data-campus="highland square" href="#">Highland Square</a>
+                        <a class="change-campus" data-campus="highland square" href="/new-here/highland-square">Highland Square</a>
                     </li>
                 </ul>
             </div><!--
@@ -212,13 +212,13 @@
          --><div class="footer__social [ grid__item one-whole ]">
                 <div class="grid grid--center">
                     <div class="grid__item one-twelfth palm--one-fifth">
-                        <a class="facebook-icon" href="https://facebook.com/ccchapelhudson">
+                        <a class="facebook-icon" href="https://facebook.com/ccchapel">
                             <i class="fa fa-facebook fa-2x"></i>
                         </a>
                     </div><!--
 
                  --><div class="grid__item one-twelfth palm--one-fifth">
-                        <a class="twitter-icon" href="http://twitter.com/ccchapelhudson">
+                        <a class="twitter-icon" href="http://twitter.com/ccchapel">
                             <i class="fa fa-twitter fa-2x"></i>
                         </a>
                     </div><!--
@@ -249,9 +249,8 @@
                     <div class="grid__item one-quarter lap--one-half portable--one-half">
                         <ul>
                             <li><a href="/new-here">New Here</a></li>
-                            <li><a href="/">Locations</a></li>
                             <li><a href="/new-here#beliefs-purpose">Beliefs</a></li>
-                            <li><a href="/">Staff</a></li>
+                            <li><a href="/staff">Staff</a></li>
                         </ul>
                     </div><!--
 
@@ -299,104 +298,7 @@
             </div>
         </div> <!-- /content-wrapper -->
     </footer> <!-- /footer -->
-
-    <script>
-        //Setup Search
-        var searchInputSelector = "#menu-search";
-        var query;
-
-        $(document).ready(function () {
-            initializeAjaxSearch();
-
-            //Setup Enter to Load Search Page
-            $(searchInputSelector).keyup(function (e) {
-                if (e.keyCode == 13) {
-                    query = $(searchInputSelector).val();
-
-                    if (query.length > 0) {
-                        window.location = getQueryLink(query);
-                    }
-                }
-            });
-        });
-
-        function initializeAjaxSearch() {
-            var timer;
-            var delay = 600;
-
-            //Setup AJAX Results
-            $(searchInputSelector).on('input', function () {
-                if (CCChapel.isMobile() != true) {
-                    window.clearTimeout(timer);
-
-                    timer = window.setTimeout(function () {
-                        query = $(searchInputSelector).val();
-
-                        if (query.length > 0) {
-                            var jqxhr = CCChapel.getSearchResults(query, { maxResults: 3 });
-
-                            jqxhr.done(function (data) {
-                                displaySearchResults(data);
-                            })
-                                 .fail(function () {
-                                     console.log("Request Failed")
-                                 });
-                        }
-                        else {
-                            $(".search-results").remove();
-                        }
-                    }, delay);
-                }
-            });
-        }
-
-        function getQueryLink(query) {
-            return "/search?query=" + encodeURI(query.replace(" ", "+"));
-        }
-
-        function displaySearchResults(results) {
-            //Clear out old results
-            $(".search-results").remove();
-
-            var html = $("<div></div>").addClass("search-results");
-            var contentWrapper = $("<div></div>").addClass("content-wrapper");
-
-            $.each(results.items, function (i, item) {
-                var result = $("<div></div>").addClass("search-results__item");
-
-                var link = $("<a></a>").attr("href", item.url);
-                var title = $("<div></div>").addClass("search-results__item-title").html(item.title);
-                var description = $("<div></div>").addClass("search-results__item-description").html(item.description);
-                link.append(title, description);
-
-                var horizontalRule = $("<hr />");
-
-                result.append(link);
-                contentWrapper.append(result.add(horizontalRule));
-            });
-
-            if (results.totalItemCount > 3) {
-                var more = $("<div></div>").addClass("center");
-                var moreLink = $("<a></a>").addClass("cta auto red").attr("href", getQueryLink(results.query)).html('More Results&nbsp;<i class="fa fa-chevron-right"></i>');
-
-                more.append(moreLink);
-                contentWrapper.append(more);
-            }
-
-            html.append(contentWrapper);
-            $(".modal-content").append(html);
-
-            console.log($(".search-results").outerHeight());
-            console.log($(window).height());
-
-            //Clean Up
-            while ($(window).height() < $(".search-results").outerHeight())
-            {
-                $(".search-results__item").last().remove();
-                $(".search-results").children(".content-wrapper").children("hr").last().remove();
-            }
-        }
-    </script>
+    
     @RenderSection("Scripts", false)
 </body>
 </html>

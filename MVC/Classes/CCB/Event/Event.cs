@@ -12,9 +12,18 @@ namespace CCB
 {
     public partial class Event
     {
+        public static readonly string CACHING_PREFIX = "CcbEventData";
+        
+        public static bool IsEventInCache(int id)
+        {
+            string cacheID = CachingHelpers.CachingID(CACHING_PREFIX, id);
+
+            return CachingHelpers.Cache.Contains(cacheID);
+        }
+
         public static ChurchCommunityBuilder.Api.Events.Entity.Event GetEvent(int id)
         {
-            string cacheID = CachingHelpers.CachingID("CcbEventData", id);
+            string cacheID = CachingHelpers.CachingID(CACHING_PREFIX, id);
 
             if (CachingHelpers.Cache.Contains(cacheID))
             {

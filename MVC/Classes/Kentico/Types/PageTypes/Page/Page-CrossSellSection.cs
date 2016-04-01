@@ -21,10 +21,17 @@ namespace CMS.DocumentEngine.Types
         {
             get
             {
+                string path = NodeAliasPath;
+
+                if (!string.IsNullOrWhiteSpace(SectionItemsPath))
+                {
+                    path = SectionItemsPath;
+                }
+
                 //Get Cross Sell Items
                 return CrossSellItemProvider.GetCrossSellItems()
                     .OnCurrentSite()
-                    .Path(NodeAliasPath, PathTypeEnum.Children)
+                    .Path(path, PathTypeEnum.Children)
                     .NestingLevel(1)
                     .OrderBy(DatabaseHelpers.OrderByCmsTree)
                     .Published()

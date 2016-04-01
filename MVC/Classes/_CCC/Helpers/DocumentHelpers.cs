@@ -51,6 +51,16 @@ namespace CCC.Helpers
             }
         }
 
+        public static string RemoveMacroExpressions(string html)
+        {
+            return Regex.Replace(html, @"{%.*%}", string.Empty);
+        }
+
+        public static string RemoveHtmlTags(string html)
+        {
+            return Regex.Replace(html, @"<[^>]*>", string.Empty);
+        }
+
         public static string RemoveExcessWhiteSpace(string html)
         {
             Regex REGEX_BETWEEN_TAGS = new Regex(@">\s+<", RegexOptions.Compiled);
