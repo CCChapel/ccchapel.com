@@ -206,6 +206,11 @@ public class CustomMacroMethods : MacroMethodContainer
     {
         return series.Fields.TitleTreatment.ImageSizingClass();
     }
+
+    public static string CurrentRoute()
+    {
+        return UrlHelpers.CurrentRoute;
+    }
     #endregion
 
 
@@ -470,6 +475,18 @@ public class CustomMacroMethods : MacroMethodContainer
         {
             case 1:
                 return SeriesImageSizingClass((Series)parameters[0]);
+            default:
+                throw new NotSupportedException();
+        }
+    }
+
+    [MacroMethod(typeof(string), "Gets the current route.", 0)]
+    public static object CurrentRoute(EvaluationContext context, params object[] parameters)
+    {
+        switch (parameters.Length)
+        {
+            case 0:
+                return CurrentRoute();
             default:
                 throw new NotSupportedException();
         }

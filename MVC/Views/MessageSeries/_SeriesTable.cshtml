@@ -31,10 +31,10 @@
                             @Html.RouteLink(sermon.MessageTitle, sermon.RouteValues)
 
                             <div class="accent desk--hide">
-                                @sermon.MessageSpeaker.SpeakerFullName
+                                @sermon.MessageSpeaker.FullName
                             </div>
                         </td>
-                        <td>@sermon.MessageSpeaker.SpeakerFullName</td>
+                        <td>@sermon.MessageSpeaker.FullName</td>
                     </tr>
                 }
             }

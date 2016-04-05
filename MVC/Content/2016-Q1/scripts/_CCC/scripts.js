@@ -238,8 +238,8 @@
             this.StartingCampus = this.DetailsClass + campusSelector;
             $(this.StartingCampus).show();
 
-            //Hide Current Campus in Other List
-            $(this.ListClass).children("li").children(campusSelector).parent().hide();
+            //Remove Current Campus in Other List
+            $(this.ListClass).children("li").children(campusSelector).parent().remove();
 
             //Setup Hover Effect
             $(this.CampusesClass).hover(

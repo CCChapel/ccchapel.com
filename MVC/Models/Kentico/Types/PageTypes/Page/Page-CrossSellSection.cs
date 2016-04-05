@@ -97,6 +97,40 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
+        /// Override Current Campus?.
+        /// </summary>
+        [DatabaseField]
+        public bool SectionCampusOverride
+        {
+            get
+            {
+                return ValidationHelper.GetBoolean(GetValue("SectionCampusOverride"), false);
+            }
+            set
+            {
+                SetValue("SectionCampusOverride", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Show Items for:.
+        /// </summary>
+        [DatabaseField]
+        public string SectionCampusSelection
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("SectionCampusSelection"), "");
+            }
+            set
+            {
+                SetValue("SectionCampusSelection", value);
+            }
+        }
+
+
+        /// <summary>
         /// Include Content Wrapper.
         /// </summary>
         [DatabaseField]
@@ -292,6 +326,38 @@ namespace CMS.DocumentEngine.Types
                 set
                 {
                     mInstance.SectionItemsPath = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Override Current Campus?.
+            /// </summary>
+            public bool SectionCampusOverride
+            {
+                get
+                {
+                    return mInstance.SectionCampusOverride;
+                }
+                set
+                {
+                    mInstance.SectionCampusOverride = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Show Items for:.
+            /// </summary>
+            public string SectionCampusSelection
+            {
+                get
+                {
+                    return mInstance.SectionCampusSelection;
+                }
+                set
+                {
+                    mInstance.SectionCampusSelection = value;
                 }
             }
 

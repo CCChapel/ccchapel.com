@@ -1380,6 +1380,9 @@ body {
     direction: rtl; }
     .content-wrapper.right-justify > * {
       direction: ltr; }
+  .content-wrapper.auto {
+    height: auto;
+    overflow: visible; }
   .content-wrapper.lock-width {
     margin: 0 auto;
     max-width: 1280px; }
@@ -1392,7 +1395,8 @@ body {
       padding-bottom: 0; } }
   @media only screen and (max-width: 1023px) {
     .content-wrapper.no-mobile {
-      padding: 0; } }
+      padding: 0;
+      overflow-x: visible; } }
   .content-wrapper--mobile {
     box-sizing: border-box;
     height: 100%; }
@@ -1801,7 +1805,8 @@ body {
       margin-left: .1em; }
   .header-image__copy {
     margin: 0 auto 24px auto;
-    text-align: center; }
+    text-align: center;
+    font-weight: bold; }
     .header-image__copy p {
       margin-left: auto;
       margin-right: auto; }
@@ -2311,10 +2316,19 @@ body {
       -moz-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column; }
+      .flex-section.palm--stack.reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: vertical;
+        -webkit-flex-direction: column-reverse;
+        -moz-flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse; }
       .flex-section.palm--stack .flex-section-bg {
         min-height: 33vh; }
         .flex-section.palm--stack .flex-section-bg.content-wrapper {
-          min-height: calc(33vh + 72px); } }
+          min-height: calc(33vh + 72px); }
+      .flex-section.palm--stack > * {
+        height: 50%; } }
   .flex-section.center-vertically, .flex-section.cta, .fsSubmit input.flex-section.fsSubmitButton {
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -2331,19 +2345,37 @@ body {
     -ms-flex-align: center;
     -webkit-align-items: center;
     -moz-align-items: center;
-    align-items: center; }
+    align-items: center;
+    width: auto; }
   .flex-section.use-gutter > * {
     margin-right: 24px; }
     .flex-section.use-gutter > *:last-child {
       margin-right: 0; }
+  .flex-section.extra-small {
+    height: 12rem; }
+    @media only screen and (max-width: 480px) {
+      .flex-section.extra-small.palm-stack {
+        height: 24rem; } }
   .flex-section.small {
     height: 18rem; }
+    @media only screen and (max-width: 480px) {
+      .flex-section.small.palm-stack {
+        height: 36rem; } }
   .flex-section.medium {
     height: 24rem; }
+    @media only screen and (max-width: 480px) {
+      .flex-section.medium.palm-stack {
+        height: 48rem; } }
   .flex-section.large {
     height: 30rem; }
+    @media only screen and (max-width: 480px) {
+      .flex-section.large.palm-stack {
+        height: 60rem; } }
   .flex-section.extra-large {
     height: 36rem; }
+    @media only screen and (max-width: 480px) {
+      .flex-section.extra-large.palm-stack {
+        height: 72rem; } }
 
 .flex-section-bg {
   background: transparent no-repeat scroll center center / cover;
@@ -2496,48 +2528,6 @@ a {
     a.hvr-light-blue:hover {
       color: #41a5ea; }
 
-.horizontal-list {
-  margin-bottom: 0;
-  margin-left: 0; }
-  .horizontal-list > * {
-    display: inline-block; }
-    .horizontal-list > *:after {
-      content: '|';
-      padding: 0 10px;
-      color: currentColor; }
-    .horizontal-list > *:last-child:after {
-      content: '';
-      padding: 0; }
-  .horizontal-list.black > * {
-    color: #333 !important; }
-  .horizontal-list.white > * {
-    color: #FFF !important; }
-  @media only screen and (max-width: 480px) {
-    .horizontal-list.palm--vertical > * {
-      display: block !important;
-      position: relative !important;
-      padding: .5em 0 !important; }
-      .horizontal-list.palm--vertical > *:after {
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        content: "" !important;
-        position: absolute !important;
-        left: 10% !important;
-        bottom: 0 !important;
-        height: 1px !important;
-        width: 80% !important; }
-      .horizontal-list.palm--vertical > *:last-child:after {
-        border-bottom: none !important; } }
-  .horizontal-list.no-marker > * {
-    padding: 0 !important; }
-    .horizontal-list.no-marker > *:after {
-      display: none; }
-  @media only screen and (max-width: 480px) {
-    .horizontal-list.palm--no-marker > * {
-      padding: 0 !important; }
-      .horizontal-list.palm--no-marker > *:after {
-        display: none; } }
-
 .font-black {
   color: #333; }
 
@@ -2668,11 +2658,56 @@ li {
   margin-left: 1rem;
   text-indent: -1rem; }
 
+.horizontal-list {
+  margin-bottom: 0;
+  margin-left: 0; }
+  .horizontal-list > * {
+    display: inline-block; }
+    .horizontal-list > *:after {
+      content: '|';
+      padding: 0 10px;
+      color: currentColor; }
+    .horizontal-list > *:last-child:after {
+      content: '';
+      padding: 0; }
+  .horizontal-list.black > * {
+    color: #333 !important; }
+  .horizontal-list.white > * {
+    color: #FFF !important; }
+  @media only screen and (max-width: 480px) {
+    .horizontal-list.palm--vertical > * {
+      display: block !important;
+      position: relative !important;
+      padding: .5em 0 !important; }
+      .horizontal-list.palm--vertical > *:after {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        content: "" !important;
+        position: absolute !important;
+        left: 10% !important;
+        bottom: 0 !important;
+        height: 1px !important;
+        width: 80% !important; }
+      .horizontal-list.palm--vertical > *:last-child:after {
+        border-bottom: none !important; } }
+  .horizontal-list.no-marker > * {
+    padding: 0 !important; }
+    .horizontal-list.no-marker > *:after {
+      display: none; }
+  @media only screen and (max-width: 480px) {
+    .horizontal-list.palm--no-marker > * {
+      padding: 0 !important; }
+      .horizontal-list.palm--no-marker > *:after {
+        display: none; } }
+
 hr {
   border: 1px solid #185e94;
   margin-top: 36px;
   margin-bottom: 36px;
   width: 66%; }
+  @media only screen and (max-width: 480px) {
+    hr {
+      width: 100%; } }
 
 blockquote {
   font-size: 48px;
@@ -2712,7 +2747,6 @@ blockquote {
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
-  text-shadow: none;
   white-space: nowrap;
   text-overflow: hidden;
   overflow: hidden;
@@ -2911,16 +2945,16 @@ input[type="button"] {
   input[type="button"]:hover, input[type="button"]:active, input[type="button"]:focus {
     border-color: #41a5ea; }
 
-input[type="checkbox"]:not(".fsField") {
+input[type="checkbox"]:not(.fsField) {
   display: none; }
-  input[type="checkbox"]:not(".fsField") + label {
+  input[type="checkbox"]:not(.fsField) + label {
     position: relative;
     cursor: pointer;
     color: #185e94;
     transition: color 250ms linear; }
-    input[type="checkbox"]:not(".fsField") + label:hover {
+    input[type="checkbox"]:not(.fsField) + label:hover {
       color: #41a5ea; }
-    input[type="checkbox"]:not(".fsField") + label:before {
+    input[type="checkbox"]:not(.fsField) + label:before {
       display: inline-block;
       font: normal normal normal 14px/1 FontAwesome;
       font-size: inherit;
@@ -2931,7 +2965,7 @@ input[type="checkbox"]:not(".fsField") {
       position: absolute;
       top: 2px;
       left: -1.25em; }
-  input[type="checkbox"]:not(".fsField"):checked + label:before {
+  input[type="checkbox"]:not(.fsField):checked + label:before {
     content: "\f046"; }
 
 textarea {
@@ -3341,6 +3375,41 @@ img.fsCreditCardLogo {
   left: 10px !important;
   bottom: auto !important; }
 
+.height--extra-small {
+  height: 12rem !important; }
+
+.height--small {
+  height: 18rem !important; }
+
+.height--medium {
+  height: 24rem !important; }
+
+.height--large {
+  height: 30rem !important; }
+
+.height--extra-large {
+  height: 36rem !important; }
+
+@media only screen and (max-width: 480px) {
+  .height--palm--extra-small {
+    height: 12rem !important; } }
+
+@media only screen and (max-width: 480px) {
+  .height--palm--small {
+    height: 18rem !important; } }
+
+@media only screen and (max-width: 480px) {
+  .height--palm--medium {
+    height: 24rem !important; } }
+
+@media only screen and (max-width: 480px) {
+  .height--palm--large {
+    height: 30rem !important; } }
+
+@media only screen and (max-width: 480px) {
+  .height--palm--extra-large {
+    height: 36rem !important; } }
+
 .hidden {
   display: none; }
 
@@ -3359,6 +3428,10 @@ img.fsCreditCardLogo {
 @media only screen and (min-width: 1024px) {
   .desk--hide {
     display: none; } }
+
+@media only screen and (max-width: 480px) {
+  .palm--auto-height {
+    height: auto !important; } }
 
 .hide-overflow {
   overflow: hidden;

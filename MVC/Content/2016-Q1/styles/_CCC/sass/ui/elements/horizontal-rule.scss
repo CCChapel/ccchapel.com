@@ -4,4 +4,8 @@
     margin-bottom: $vertical-padding / 2;
 
     width: 66%;
+
+    @include grid-media-query("palm") {
+        width: 100%;
+    }
 }

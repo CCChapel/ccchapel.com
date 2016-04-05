@@ -38,7 +38,7 @@ input[type="button"] {
     -webkit-appearance: none;
 }
 
-input[type="checkbox"]:not(".fsField") {
+input[type="checkbox"]:not(.fsField) {
     display: none;
 
     & + label {

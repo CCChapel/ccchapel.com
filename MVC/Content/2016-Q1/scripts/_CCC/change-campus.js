@@ -22,7 +22,7 @@
             var newCampus = $(this).attr(dataAttr);
 
             if (newCampus !== undefined) {
-                newCampus = newCampus.replace(" ", "").toLowerCase();
+                newCampus = newCampus.replace(" ", "").replace("-", "").toLowerCase();
 
                 //Break Into Pieces
                 var pieces = currentDomain.split(".");

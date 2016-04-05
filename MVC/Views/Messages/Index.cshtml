@@ -20,7 +20,7 @@
     }
 
     //Get Series
-    var series = SeriesProvider.GetSeries();
+    var series = SeriesProvider.GetSeries().OrderBy(DatabaseHelpers.OrderByCmsTree);
 }
 
 <div class="[ content-section transparent ] [ grid__item one-whole ]">

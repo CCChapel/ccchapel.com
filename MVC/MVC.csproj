@@ -572,6 +572,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\mimetypes.txt" />
+    <Content Include="Content\2016-Q1\compiled-scripts\scripts.js" />
+    <Content Include="Content\2016-Q1\compiled-styles\styles.css" />
     <Content Include="Content\2016-Q1\scripts\google\maps\markerwithlabel.js" />
     <Content Include="Content\2016-Q1\scripts\jquery\jquery-2.2.1.min.js" />
     <Content Include="Content\2016-Q1\scripts\jquery\jquery-ui-1.11.4.min.js" />
@@ -643,6 +645,7 @@
     <Compile Include="Classes\_CCC\Helpers\BrandingHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\CachingHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\ConfigurationHelper.cs" />
+    <Compile Include="Classes\_CCC\Helpers\CookieHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\DatabaseHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\DocumentHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\MiscellaneousHelpers.cs" />

@@ -15,12 +15,20 @@
         @include grid-media-query("palm") {
             @include flex-direction(column);
 
+            &.reverse {
+                @include flex-direction(column-reverse);
+            }
+
             .flex-section-bg {
                 min-height: 33vh;
 
                 &.content-wrapper {
                     min-height: calc(33vh + #{$vertical-padding});
                 }
+            }
+
+            & > * {
+                height: 50%;
             }
         }   
     }
@@ -32,6 +40,8 @@
     &.inline {
         @include inline-flex();
         @include align-items(center);
+
+        width: auto;
     }
 
     &.use-gutter > * {
@@ -42,20 +52,64 @@
         }
     }
 
+    &.extra-small {
+        $height: $height-extra-small;
+
+        height: $height;
+
+        @include grid-media-query("palm") {
+            &.palm-stack {
+                height: $height * 2;
+            }
+        }
+    }
+
     &.small {
-        height: $height-small;
+        $height: $height-small;
+
+        height: $height;
+
+        @include grid-media-query("palm") {
+            &.palm-stack {
+                height: $height * 2;
+            }
+        }
     }
 
     &.medium {
-        height: $height-medium;
+        $height: $height-medium;
+
+        height: $height;
+
+        @include grid-media-query("palm") {
+            &.palm-stack {
+                height: $height * 2;
+            }
+        }
     }
 
     &.large {
-        height: $height-large;
+        $height: $height-large;
+        
+        height: $height;
+
+        @include grid-media-query("palm") {
+            &.palm-stack {
+                height: $height * 2;
+            }
+        }
     }
     
     &.extra-large {
-        height: $height-extra-large;
+        $height: $height-extra-large;
+        
+        height: $height;
+
+        @include grid-media-query("palm") {
+            &.palm-stack {
+                height: $height * 2;
+            }
+        }
     }
 }
     

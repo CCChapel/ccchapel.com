@@ -124,6 +124,11 @@
             direction: ltr;
         }
     }
+
+    &.auto {
+        height: auto;
+        overflow: visible;
+    }
     
     &.lock-width {
         margin: 0 auto;
@@ -145,6 +150,7 @@
     &.no-mobile {
         @include grid-media-query("portable") {
             padding: 0;
+            overflow-x: visible;
         }
     }
 

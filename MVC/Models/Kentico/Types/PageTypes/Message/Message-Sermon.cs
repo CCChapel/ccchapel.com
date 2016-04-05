@@ -80,18 +80,18 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
-        /// Speaker.
+        /// The NodeID representing the People.Person object.
         /// </summary>
         [DatabaseField]
-        public int MessageSpeakerID
+        public int MessageSpeakerNodeID
         {
             get
             {
-                return ValidationHelper.GetInteger(GetValue("MessageSpeakerID"), 1);
+                return ValidationHelper.GetInteger(GetValue("MessageSpeakerNodeID"), 330);
             }
             set
             {
-                SetValue("MessageSpeakerID", value);
+                SetValue("MessageSpeakerNodeID", value);
             }
         }
 
@@ -247,17 +247,17 @@ namespace CMS.DocumentEngine.Types
 
 
             /// <summary>
-            /// Speaker.
+            /// The NodeID representing the People.Person object.
             /// </summary>
-            public int MessageSpeakerID
+            public int MessageSpeakerNodeID
             {
                 get
                 {
-                    return mInstance.MessageSpeakerID;
+                    return mInstance.MessageSpeakerNodeID;
                 }
                 set
                 {
-                    mInstance.MessageSpeakerID = value;
+                    mInstance.MessageSpeakerNodeID = value;
                 }
             }
 

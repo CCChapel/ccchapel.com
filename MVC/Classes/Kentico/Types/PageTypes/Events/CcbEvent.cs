@@ -7,9 +7,10 @@ using System.Web;
 using ChurchCommunityBuilder.Api;
 using ChurchCommunityBuilder.Api.Events.Entity;
 
-//using CCB;
-
+using CCB;
+using CMS.CustomTables.Types;
 using CCC.Helpers;
+using CMS.CustomTables;
 
 namespace CMS.DocumentEngine.Types
 {
@@ -27,7 +28,7 @@ namespace CMS.DocumentEngine.Types
             }
         }
 
-        public Event CcbEventData
+        public ChurchCommunityBuilder.Api.Events.Entity.Event CcbEventData
         {
             get
             {
@@ -165,6 +166,19 @@ namespace CMS.DocumentEngine.Types
                 input.City,
                 input.State,
                 input.Zip);
+        }
+
+        public static CampusesItem CampusInfo(this CcbEvent input)
+        {
+            //Start with Group
+            int groupID = input.CcbEventData.Group.CCBID ?? default(int);
+
+            //Get Group
+            var group = Groups.GetGroup(groupID);
+
+            return CustomTableItemProvider.GetItems<CampusesItem>()
+                .Where(c => c.CampusCcbID == group.CampusCcbID)
+                .FirstOrDefault();
         }
     }
 }

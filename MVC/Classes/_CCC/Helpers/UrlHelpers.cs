@@ -29,13 +29,21 @@ namespace CCC.Helpers
                     string host = url.Host;
 
                     var nodes = host.Split('.');
-                    int startNode = 0;
-                    if (nodes[0] == "www")
+                    if (nodes.Length < 3)
                     {
-                        startNode = 1;
+                        //No Subdomain
+                        subdomain = null;
                     }
+                    else
+                    {
+                        int startNode = 0;
+                        if (nodes[0] == "www")
+                        {
+                            startNode = 1;
+                        }
 
-                    subdomain = string.Format("{0}", nodes[startNode]).ToLower();
+                        subdomain = string.Format("{0}", nodes[startNode]).ToLower();
+                    }
                 }
 
                 return subdomain;
@@ -54,6 +62,21 @@ namespace CCC.Helpers
                         uri.Scheme,
                         Uri.SchemeDelimiter,
                         uri.Host);
+                }
+
+                return null;
+            }
+        }
+
+        public static string CurrentRoute
+        {
+            get
+            {
+                Uri uri = CMS.Helpers.RequestContext.URL;
+
+                if (uri.HostNameType == UriHostNameType.Dns)
+                {
+                    return uri.AbsolutePath;
                 }
 
                 return null;

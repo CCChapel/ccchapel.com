@@ -4,6 +4,16 @@
 
 @{
     Layout = null;
+
+    //Try adding cookie
+    try
+    {
+        if (!string.IsNullOrWhiteSpace(MiscellaneousHelpers.CurrentCampusName))
+        {
+            CookieHelpers.SetGlobalCookie(MiscellaneousHelpers.CurrentCampus.ItemID);
+        }
+    }
+    catch { }
 }
 
 <!DOCTYPE html>
@@ -45,17 +55,24 @@
 
     @Styles.Render("~/bundles/font-awesome")
     @Styles.Render("~/bundles/styles")
+    @*<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/2016-Q1/compiled-styles/styles.css" rel="stylesheet" />*@
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jquery-ui")
+    @*<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>*@
 
     @Scripts.Render("~/bundles/google/maps")
     @Scripts.Render("~/bundles/google/maps/marker")
     @Scripts.Render("~/bundles/scripts")
+    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz-PEj0orqPeMuXxor8KRCanI843fOYJY"></script>
+    <script src="~/Content/2016-Q1/scripts/google/maps/markerwithlabel.js"></script>
+    <script src="~/Content/2016-Q1/compiled-scripts/scripts.js"></script>*@
 
     <!-- Data -->
-    <input id="currentCampus" type="hidden" value="@MiscellaneousHelpers.CurrentCampus.CampusCodeName.ToLower()" />
+    <input id="currentCampus" type="hidden" value="@MiscellaneousHelpers.CurrentCampusCodeName.ToLower()" />
 
     <div class="modal">
         <div class="modal-close">

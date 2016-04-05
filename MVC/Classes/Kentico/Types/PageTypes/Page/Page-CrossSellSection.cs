@@ -23,21 +23,43 @@ namespace CMS.DocumentEngine.Types
             {
                 string path = NodeAliasPath;
 
+                //Check for Path Override
                 if (!string.IsNullOrWhiteSpace(SectionItemsPath))
                 {
                     path = SectionItemsPath;
                 }
 
+
                 //Get Cross Sell Items
-                return CrossSellItemProvider.GetCrossSellItems()
+                var items = CrossSellItemProvider.GetCrossSellItems()
                     .OnCurrentSite()
                     .Path(path, PathTypeEnum.Children)
                     .NestingLevel(1)
                     .OrderBy(DatabaseHelpers.OrderByCmsTree)
                     .Published()
-                    .Where(c => ((DocumentHelpers.ResolveMacroCondition(c.MacroCondition)) &&
-                                 (c.ClassName == CrossSellItem.CLASS_NAME)))
-                    .Take(MaxItems);
+                    .Where(c => c.ClassName == CrossSellItem.CLASS_NAME);
+
+
+                //Check for Current Campus Override
+                if (SectionCampusOverride == true)
+                {
+                    //Swap out campus name if overriding
+                    string campusName = string.Format(@"""{0}""", SectionCampusSelection);
+
+                    items = (from i in items
+                             where DocumentHelpers.ResolveMacroCondition(
+                                 i.MacroCondition.Replace("CurrentCampus()", campusName))
+                             select i);
+                }
+                else
+                {
+                    items = (from i in items
+                             where DocumentHelpers.ResolveMacroCondition(i.MacroCondition)
+                             select i);
+                }
+
+                    //.Where(c => ((DocumentHelpers.ResolveMacroCondition(macroCondition))
+                return items.Take(MaxItems);
             }
         }
 

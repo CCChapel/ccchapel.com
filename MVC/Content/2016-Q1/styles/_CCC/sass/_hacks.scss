@@ -1,4 +1,56 @@
-﻿//Hide Elements
+﻿//Sizes
+.height--extra-small {
+    height: $height-extra-small !important;
+}
+
+.height--small {
+    height: $height-small !important;
+}
+
+.height--medium {
+    height: $height-medium !important;
+}
+
+.height--large {
+    height: $height-large !important;
+}
+
+.height--extra-large {
+    height: $height-extra-large !important;
+}
+
+//Palm Sizes
+.height--palm--extra-small {
+    @include grid-media-query("palm") {
+        height: $height-extra-small !important;
+    }
+}
+
+.height--palm--small {
+    @include grid-media-query("palm") {
+        height: $height-small !important;
+    }
+}
+
+.height--palm--medium {
+    @include grid-media-query("palm") {
+        height: $height-medium !important;
+    }
+}
+
+.height--palm--large {
+    @include grid-media-query("palm") {
+        height: $height-large !important;
+    }
+}
+
+.height--palm--extra-large {
+    @include grid-media-query("palm") {
+        height: $height-extra-large !important;
+    }
+}
+
+//Hide Elements
 .hidden {
     display: none;
 }
@@ -32,6 +84,12 @@
     @include grid-media-query("desk")
     {
         display: none;
+    }
+}
+
+&.palm--auto-height {
+    @include grid-media-query("palm") {
+        height: auto !important;
     }
 }
 

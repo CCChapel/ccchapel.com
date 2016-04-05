@@ -21,11 +21,11 @@ namespace CMS.DocumentEngine.Types
         /// <summary>
         /// The Speaker of the Sermon
         /// </summary>
-        public SpeakersItem MessageSpeaker
+        public Person MessageSpeaker
         {
             get
             {
-                return CustomTableItemProvider.GetItem<SpeakersItem>(this.MessageSpeakerID);
+                return PersonProvider.GetPerson(MessageSpeakerNodeID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
             }
         }
 
@@ -60,14 +60,18 @@ namespace CMS.DocumentEngine.Types
             get
             {
                 //Setup default
-                string campusName = "Hudson";
+                string campusCodeName = "Hudson";
 
-                if (!string.IsNullOrWhiteSpace(MiscellaneousHelpers.CurrentCampusName))
+                try
                 {
-                    campusName = MiscellaneousHelpers.CurrentCampus.CampusSQLCodeName;
+                    if (!string.IsNullOrWhiteSpace(MiscellaneousHelpers.CurrentCampusCodeName))
+                    {
+                        campusCodeName = MiscellaneousHelpers.CurrentCampus.CampusCodeName;
+                    }
                 }
+                catch { }
 
-                return LatestForCampus(campusName);
+                return LatestForCampus(campusCodeName);
             }
         }
 
@@ -76,10 +80,10 @@ namespace CMS.DocumentEngine.Types
         /// </summary>
         /// <param name="campusName">Campus to look for Message in</param>
         /// <returns>Latest Message for specified campus</returns>
-        public static Sermon LatestForCampus(string campusName = "Hudson")
+        public static Sermon LatestForCampus(string campusCodeName = "Hudson")
         {
             //Get Campus
-            CampusesItem campus = CampusesItem.GetFromName(campusName);
+            CampusesItem campus = CampusesItem.GetFromCodeName(campusCodeName);
 
             string where = string.Format("Message{0}Date IS NOT NULL", campus.CampusSQLCodeName);
             string orderby = string.Format("Message{0}Date", campus.CampusSQLCodeName);
