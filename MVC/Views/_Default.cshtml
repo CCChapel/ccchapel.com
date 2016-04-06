@@ -55,24 +55,27 @@
 
     @Styles.Render("~/bundles/font-awesome")
     @Styles.Render("~/bundles/styles")
-    @*<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/2016-Q1/compiled-styles/styles.css" rel="stylesheet" />*@
 </head>
-<body>
+
+<body @if (Request.Browser.IsMobileDevice) { <text>class="mobile"</text>}>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jquery-ui")
-    @*<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>*@
 
     @Scripts.Render("~/bundles/google/maps")
     @Scripts.Render("~/bundles/google/maps/marker")
     @Scripts.Render("~/bundles/scripts")
-    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz-PEj0orqPeMuXxor8KRCanI843fOYJY"></script>
-    <script src="~/Content/2016-Q1/scripts/google/maps/markerwithlabel.js"></script>
-    <script src="~/Content/2016-Q1/compiled-scripts/scripts.js"></script>*@
 
     <!-- Data -->
-    <input id="currentCampus" type="hidden" value="@MiscellaneousHelpers.CurrentCampusCodeName.ToLower()" />
+    @{
+        try
+        {
+            <input id="currentCampus" type="hidden" value="@MiscellaneousHelpers.CurrentCampusCodeName.ToLower()" />
+        }
+        catch
+        {
+            <input id="currentCampus" type="hidden" value="" />
+        }
+    }
 
     <div class="modal">
         <div class="modal-close">
@@ -203,8 +206,7 @@
 
          --><div class="footer__address [ grid__item one-whole ]">
                 <ul class="[ horizontal-list palm--vertical palm--no-marker ]">
-                    <li>Hudson Campus</li><!--
-                 --><li>750 W Streetsboro Street, Hudson, Ohio 44236</li><!--
+                    <li>750 W Streetsboro Street, Hudson, Ohio 44236</li><!--
                  --><li>330.650.9533</li>
                 </ul>
             </div><!--
@@ -276,7 +278,7 @@
                             <li><a href="/next-steps">Next Steps</a></li>
                             <li><a href="/next-steps#community-groups">Community Groups</a></li>
                             <li><a href="/next-steps#serve">Serve</a></li>
-                            <li><a href="/next-step#baptism">Baptism</a></li>
+                            <li><a href="/next-steps#baptism">Baptism</a></li>
                             <li><a href="/next-steps#membership">Membership</a></li>
                         </ul>
                     </div><!--

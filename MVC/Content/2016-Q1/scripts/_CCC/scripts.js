@@ -266,6 +266,17 @@
             );
         },
         portableSetup: function () {
+            var campusSelector = "[data-campus='" + CCChapel.CurrentCampus + "']";
+
+            //Show Current Campus Details
+            $(this.DetailsClass).hide();
+            this.StartingCampus = this.DetailsClass + campusSelector;
+            $(this.StartingCampus).show();
+
+            //Remove Current Campus in Other List
+            $(this.ListClass).children("li").children(campusSelector).parent().remove();
+
+            //Setup click event
             $(this.TitleClass).click(function () {
                 $(".campus-info__other-list").slideToggle();
             });

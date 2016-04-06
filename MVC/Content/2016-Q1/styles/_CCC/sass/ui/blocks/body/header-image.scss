@@ -48,7 +48,8 @@
     }
 
     &__title {
-        @include typecsset-font-size($primary-headline-size);
+        @include typecsset-font-size($primary-headline-size, false);
+        line-height: 1em;
         font-weight: bold;
         text-align: center;
         text-transform: uppercase;
@@ -61,6 +62,11 @@
 
         .img-size--horizontal {
             max-width: 33vw;
+
+            @include grid-media-query("palm") {
+                padding: 0;
+                max-width: 100%;
+            }
         }
     }
 

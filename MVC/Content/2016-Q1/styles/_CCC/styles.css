@@ -1373,7 +1373,7 @@ body {
   padding: 72px 48px; }
   @media only screen and (max-width: 1023px) {
     .content-wrapper {
-      padding: 72px 10px;
+      padding: 72px 20px;
       overflow-x: hidden; } }
   .content-wrapper.right-justify {
     text-align: right;
@@ -1402,12 +1402,12 @@ body {
     height: 100%; }
     @media only screen and (max-width: 1023px) {
       .content-wrapper--mobile {
-        padding: 72px 10px; } }
+        padding: 72px 20px; } }
 
 .section-title {
   font-size: 32px;
   font-size: 2rem;
-  line-height: 1.5;
+  line-height: 1;
   font-weight: bold;
   text-align: center; }
   .section-title.left-justify {
@@ -1425,12 +1425,14 @@ body {
   text-align: center; }
   .section-subtitle.left-justify {
     text-align: left; }
+  .section-subtitle.extra-line-height {
+    line-height: 1.5; }
 
 .section-sub-subtitle {
   margin-bottom: 24px;
   font-size: 20px;
   font-size: 1.25rem;
-  line-height: 1.2;
+  line-height: 1;
   font-weight: bold;
   text-align: center; }
   .section-sub-subtitle.left-justify {
@@ -1457,7 +1459,10 @@ body {
     color: #FFF;
     text-shadow: 1px 1px 1px black; }
     .content-section.image.light a, .light.content-section.sub-image a {
-      color: #FFF; }
+      color: #FFF;
+      /*&:hover {
+                //color: $blue;
+            }*/ }
   .content-section.image.dark, .dark.content-section.sub-image {
     color: #333333;
     text-shadow: 1px 1px 1px white; }
@@ -1467,9 +1472,11 @@ body {
         color: #185e94; }
   .content-section.image.parallax, .parallax.content-section.sub-image {
     background-attachment: fixed; }
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 1023px) {
       .content-section.image.parallax, .parallax.content-section.sub-image {
         background-attachment: scroll; } }
+    .mobile .content-section.image.parallax, .mobile .parallax.content-section.sub-image {
+      background-attachment: scroll; }
 
 .content-section.sub-image {
   height: 100%; }
@@ -1784,7 +1791,7 @@ body {
   .header-image__title {
     font-size: 64px;
     font-size: 4rem;
-    line-height: 1.125;
+    line-height: 1em;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -1793,6 +1800,10 @@ body {
       max-height: 66vh; }
     .header-image__title .img-size--horizontal {
       max-width: 33vw; }
+      @media only screen and (max-width: 480px) {
+        .header-image__title .img-size--horizontal {
+          padding: 0;
+          max-width: 100%; } }
   .header-image__video-controls {
     cursor: pointer;
     font-size: 6rem;
@@ -2103,6 +2114,9 @@ body {
 .add-bottom-margin {
   margin-bottom: 24px; }
 
+.add-bottom-margin--2x {
+  margin-bottom: 48px; }
+
 .add-right-margin {
   margin-right: 24px !important; }
 
@@ -2123,6 +2137,10 @@ body {
 .full-height {
   height: 100%;
   min-height: inherit; }
+
+@media only screen and (max-width: 480px) {
+  .palm--height-auto {
+    height: auto !important; } }
 
 .height-small {
   min-height: 18rem; }
@@ -2315,8 +2333,12 @@ body {
       -webkit-flex-direction: column;
       -moz-flex-direction: column;
       -ms-flex-direction: column;
-      flex-direction: column; }
-      .flex-section.palm--stack.reverse {
+      flex-direction: column;
+      /* EDIT: 4.5 - Removed for mobile Safari browsing */
+      /*& > * {
+                height: 50%;
+            }*/ }
+      .flex-section.palm--stack.reverse:not(.palm--no-reverse) {
         -webkit-box-direction: reverse;
         -webkit-box-orient: vertical;
         -webkit-flex-direction: column-reverse;
@@ -2327,8 +2349,8 @@ body {
         min-height: 33vh; }
         .flex-section.palm--stack .flex-section-bg.content-wrapper {
           min-height: calc(33vh + 72px); }
-      .flex-section.palm--stack > * {
-        height: 50%; } }
+      .flex-section.palm--stack.use-gutter > * {
+        margin-right: 0 !important; } }
   .flex-section.center-vertically, .flex-section.cta, .fsSubmit input.flex-section.fsSubmitButton {
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -2603,8 +2625,8 @@ tbody tr {
   @media only screen and (max-width: 480px) {
     .bg-layover.palm--center {
       background-position: center center;
-      padding-left: 10px;
-      padding-right: 10px; } }
+      padding-left: 20px;
+      padding-right: 20px; } }
 
 .bg--top-center {
   background-position: top center !important; }
@@ -2640,6 +2662,8 @@ tbody tr {
   object-fit: contain;
   height: 100%;
   width: 100%; }
+  .img-contain.one-half, .img-contain.two-quarters, .img-contain.three-sixths, .img-contain.four-eighths, .img-contain.five-tenths, .img-contain.six-twelfths {
+    width: 50%; }
 
 .img-cover {
   object-fit: cover;
@@ -2728,10 +2752,6 @@ blockquote {
   /*&.no-cite:after {
         content: none;
     }*/ }
-  @media only screen and (max-width: 480px) {
-    blockquote {
-      padding-left: 1rem;
-      padding-right: 1rem; } }
   blockquote .accent, blockquote th, blockquote .fsBody .fsForm .fsSectionHeading, .fsBody .fsForm blockquote .fsSectionHeading {
     font-size: 32px;
     font-size: 2rem;
@@ -2781,7 +2801,8 @@ blockquote {
   .content-section.light-gray input.fsSubmitButton {
     background-color: rgba(202, 55, 55, 0.8);
     border: none;
-    color: #FFF; }
+    color: #FFF;
+    text-shadow: none; }
     .content-section.transparent .cta:hover, .content-section.transparent .fsSubmit input.fsSubmitButton:hover, .fsSubmit .content-section.transparent input.fsSubmitButton:hover, .content-section.transparent .cta.active, .content-section.transparent .fsSubmit input.active.fsSubmitButton, .fsSubmit .content-section.transparent input.active.fsSubmitButton,
     .content-section.light-gray .cta:hover,
     .content-section.light-gray .fsSubmit input.fsSubmitButton:hover, .fsSubmit
@@ -2854,7 +2875,8 @@ blockquote {
   .cta.red, .fsSubmit input.fsSubmitButton {
     background-color: rgba(202, 55, 55, 0.8) !important;
     border: none !important;
-    color: #FFF !important; }
+    color: #FFF !important;
+    text-shadow: none !important; }
     .cta.red:hover, .fsSubmit input.fsSubmitButton:hover, .cta.red.active, .fsSubmit input.active.fsSubmitButton {
       background-color: #b82b2b !important;
       color: #FFF !important; }

@@ -172,7 +172,8 @@
 // COMMON STYLES
 //**************************************************/
 .section-title {
-    @include typecsset-font-size($secondary-headline-size);
+    @include typecsset-font-size($secondary-headline-size, false);
+    line-height: 1;
     font-weight: bold;
 
     text-align: center;
@@ -190,7 +191,8 @@
 .section-subtitle {
     margin-bottom: $bottom-margin;
     
-    @include typecsset-font-size($tertiary-headline-size);
+    @include typecsset-font-size($tertiary-headline-size, false);
+    line-height: 1;
     font-weight: bold;
 
     text-align: center;
@@ -198,12 +200,17 @@
     &.left-justify {
         text-align: left;
     }
+
+    &.extra-line-height {
+        line-height: 1.5;
+    }
 }
 
 .section-sub-subtitle {
     margin-bottom: $bottom-margin;
 
-    @include typecsset-font-size($quaternary-headline-size);
+    @include typecsset-font-size($quaternary-headline-size, false);
+    line-height: 1;
     font-weight: bold;
 
     text-align: center;

@@ -12,6 +12,7 @@
     border: none#{$add};
 
     color: #FFF#{$add};
+    text-shadow: none#{$add};
 
     &:hover,
     &.active {
@@ -31,18 +32,19 @@
 
 @mixin cta--transparent($important: false) {
     $add: "" !default;
+    $color: $blue;
     @if $important == true {
         $add: " !important";
     }
     
     background-color: transparent#{$add};
-    border-color: $blue#{$add};
+    border-color: $color#{$add}; //$blue#{$add};
 
     color: #FFF#{$add};
 
     &:hover,
     &.active {
-        background-color: $blue#{$add};
+        background-color: $color#{$add}; //$blue#{$add};
         color: #FFF#{$add};
     }
     

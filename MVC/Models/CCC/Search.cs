@@ -183,12 +183,19 @@ namespace CCC.Models
                 else
                 {
                     int index = content.IndexOfAny(punctuation, finalSize);
-                    return string.Format("{0}&hellip;", content.Remove(index));
+
+                    if (index >= 0)
+                    {
+                        return string.Format("{0}&hellip;", content.Remove(index));
+                    }
+                    else
+                    {
+                        return string.Format("{0}", content);
+                    }
                 }
             }
             else
             {
-
                 //Get index of search query
                 int index = content.IndexOf(query);
 

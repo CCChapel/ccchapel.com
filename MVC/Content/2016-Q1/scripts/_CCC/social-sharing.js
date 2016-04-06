@@ -3,9 +3,20 @@
 //***********************************************/
 (function (CCChapel, $, undefined) {
     //************************************************
+    // Private Methods
+    //***********************************************/
+    function setupEmail() {
+        emailSelector = selector + emailAttribute;
+        emailUrl = "mailto:?subject=Check%20This%20Out&body=" +
+                        encodeURIComponent(location.href);
+        $(emailSelector).attr("href", emailUrl);
+    }
+
+    //************************************************
     // Public Methods
     //***********************************************/
     var selector = "[data-type='social-share']";
+    var emailAttribute = "[data-service='email']";
 
     var shareUrl;
     var width;
@@ -14,9 +25,13 @@
 
     CCChapel.setupSocialSharing = function () {
         $(document).ready(function () {
-            $(selector).click(function (e) {
-                e.preventDefault();
+            //Setup Email
+            setupEmail();
 
+            //Setup Others
+            $(selector).not(emailAttribute).click(function (e) {
+                e.preventDefault();
+                
                 var service = $(this).attr("data-service").toLowerCase();
 
                 switch (service) {
@@ -54,9 +69,6 @@
                             "&media=" + encodeURIComponent($("meta[property='og:image']").attr("content"));
                         break;
                     case "email":
-                        shareUrl = "mailto:?subject=Check%20This%20Out&body=" +
-                            encodeURIComponent(location.href);
-                        $(this).attr("href", shareUrl);
                         return;
                         break;
                 }

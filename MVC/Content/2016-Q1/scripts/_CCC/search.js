@@ -159,7 +159,10 @@
         var sectionDescription =
             $("<div></div>")
                 .addClass("section-description font-white")
-                .html('Maybe try searching for something else, or feel free to <a class="font-white" href="/contact-us">contact us directly</a>.');
+                .html('Maybe try searching for something else, ' +
+                      'browse our <a class="font-white" href="https://communitychapel.ccbchurch.com/w_group_list.php">groups</a> ' +
+                      'and <a class="font-white" href="/events#all-events">events</a> ' +
+                      'or feel free to <a class="font-white" href="/contact-us">contact us directly</a>.');
         contentWrapper.append(sectionDescription);
 
         html.append(contentWrapper);
@@ -193,6 +196,22 @@
 
             more.append(moreLink);
             contentWrapper.append(more);
+        }
+        else {
+            //Add link to Group Finder & Events
+            /*
+            <div class="section-description">
+                Didn&rsquo;t find what you were looking for? 
+                See a full list of <a href="https://communitychapel.ccbchurch.com/w_group_list.php">groups</a> or <a href="/events#all-events">events</a>. 
+            </div>
+            */
+            var links = $("<div></div>").addClass("section-description font-white");
+            var linksHtml = 'Didn&rsquo;t find what you were looking for? ' +
+                            'See a full list of <a class="font-white" href="https://communitychapel.ccbchurch.com/w_group_list.php">groups</a> ' +
+                            'and <a class="font-white" href="/events#all-events">events</a>.';
+            
+            links.append(linksHtml);
+            contentWrapper.append(links);
         }
 
         html.append(contentWrapper);

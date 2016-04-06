@@ -25,10 +25,10 @@
         content: none;
     }*/
     
-    @include grid-media-query("palm") {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
+    //@include grid-media-query("palm") {
+        //padding-left: 1rem;
+        //padding-right: 1rem;
+    //}
 
     .accent {
         @include typecsset-font-size($secondary-headline-size);

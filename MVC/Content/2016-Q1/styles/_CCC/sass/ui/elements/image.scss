@@ -42,6 +42,10 @@
     
     height: 100%;
     width: 100%;
+
+    &.one-half {
+        width: 50%;
+    }
 }
 
 .#{$ns-image}-cover {
