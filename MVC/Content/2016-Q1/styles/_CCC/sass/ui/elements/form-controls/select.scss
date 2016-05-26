@@ -33,8 +33,21 @@
     width: 90%;
 
     &.auto {
-        padding-right: 10px;
         width: auto;
+
+        option {
+            padding-right: 1em;
+        }
+        
+        &.palm--full {
+            @include grid-media-query("palm") {
+                width: 100%;
+
+                option {
+                    padding-right: 0;
+                }
+            }
+        }
     }
 }
 

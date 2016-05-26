@@ -4972,6 +4972,7 @@
     <Content Include="App_Themes\Default\CMSModules\cms.webanalytics\cms.autosaveform.less" />
     <Content Include="App_Themes\Default\CMSModules\cms.webanalytics\modal-dialog.less" />
     <None Include="App_Themes\Default\CMSModules\cms.webanalytics\page-analytics-settings.less" />
+    <None Include="Properties\PublishProfiles\GoDaddy.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
   </ItemGroup>
   <ItemGroup>

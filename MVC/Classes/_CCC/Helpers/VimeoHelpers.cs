@@ -57,6 +57,10 @@ namespace CCC.Helpers
                 return Client.GetVideo(vimeoID);
             }
 
+            public static string GetVideoDownloadUrl(long vimeoID)
+            {
+                return Client.GetVideoDownloadUrl(vimeoID);
+            }
         }
 
         public static string CustomEmbedHtml(string embedHtml)

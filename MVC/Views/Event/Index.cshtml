@@ -14,27 +14,10 @@
         <div class="grid">
             <div class="left-column [ grid__item one-third portable--one-whole ]">
                 <div class="event-details__image"
-                     style="background-image: url(@Url.Kentico().Attachment(Model.GraphicAttachment)">
+                     style="background-image: url(@Url.Kentico().Attachment(Model.GraphicAttachment))">
                 </div>
 
-                @{ 
-                    if (Model.HasRegistration)
-                    {
-                        <div class="event-details__cta">
-                            @{
-                                if (Model.Form.IsActive)
-                                {
-                                    <a class="cta full" href="@Model.Form.Url">Register</a>
-
-                                }
-                                else
-                                {
-                                    <a class="cta full disabled">Registration Closed</a>
-                                }
-                            }
-                        </div>
-                    }
-                }
+                @{ Html.RenderPartial("_RegistrationButton"); }
 
                 <div class="event-details__social">
                     <div class="grid">

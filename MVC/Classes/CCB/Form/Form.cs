@@ -99,7 +99,7 @@ namespace CCB
                 //Check End Date
                 if (Data.End.HasValue)
                 {
-                    if (DateTime.Now < Data.End.Value)
+                    if (DateTime.Now.Date <= Data.End.Value.Date)
                     {
                         return true;
                     }

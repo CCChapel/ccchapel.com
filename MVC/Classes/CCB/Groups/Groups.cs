@@ -3,13 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using CCC.Helpers;
+
 using CMS.CustomTables;
 using CMS.CustomTables.Types;
+using ChurchCommunityBuilder.Api.Groups.Entity;
 
 namespace CCB
 {
     public static partial class Groups
     {
+        public static readonly string CACHING_PREFIX = "CcbGroupDetails";
+
+        public static bool IsGroupInCache(int id)
+        {
+            string cacheID = CachingHelpers.CachingID(CACHING_PREFIX, id);
+
+            return CachingHelpers.Cache.Contains(cacheID);
+        }
+
+        /// <summary>
+        /// Get the full CCB Group Data
+        /// </summary>
+        /// <param name="ccbID">The ID of the group</param>
+        /// <returns>A Group object representing all group data</returns>
+        public static Group GetGroupDetails(int ccbID)
+        {
+            string cacheID = CachingHelpers.CachingID(CACHING_PREFIX, ccbID);
+
+            if (CachingHelpers.Cache.Contains(cacheID))
+            {
+                //Get Data From Cache
+                Group group =
+                    (Group)CachingHelpers.Cache.Get(cacheID);
+
+                return group;
+            }
+            else
+            {
+                //Get Data From CCB & Add to Cache
+                Group group = Api.Client.Groups.GroupProfiles.Get(ccbID);
+
+                CachingHelpers.Cache.Add(cacheID, group, CachingHelpers.Policy);
+
+                return group;
+            }
+        }
+
         /// <summary>
         /// Get Group information
         /// </summary>
@@ -25,16 +65,24 @@ namespace CCB
             else
             {
                 //Group Doesn't Exist in Kentio -> Get Group from CCB
-                ChurchCommunityBuilder.Api.Groups.Entity.Group group = Api.Client.Groups.GroupProfiles.Get(ccbID);
+                Group group = Api.Client.Groups.GroupProfiles.Get(ccbID);
 
                 //Add Group to Kentico
                 group.AddToKentico();
             }
 
             //Get & Return Kentico Item
-            return CustomTableItemProvider.GetItems<GroupsItem>()
-                    .Where(g => g.CcbID == ccbID)
-                    .First();
+            var groupInfo = CustomTableItemProvider.GetItems<GroupsItem>()
+                    .Where(g => g.CcbID == ccbID);
+
+            if (groupInfo.Any())
+            {
+                return groupInfo.First();
+            }
+            else
+            {
+                return new GroupsItem();
+            }
         }
     }
 

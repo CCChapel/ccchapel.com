@@ -326,7 +326,7 @@ namespace Vimeo.Types
             public string link { get; set; }
             public string created_time { get; set; }
             public int fps { get; set; }
-            public int size { get; set; }
+            public long size { get; set; }
             public string md5 { get; set; }
         }
 
@@ -431,6 +431,36 @@ namespace Vimeo.Types
 
             return JsonConvert.DeserializeObject<Video>(client.RequestJSON(url, null, "GET"));
         }
+
+        public static string GetVideoDownloadUrl(this VimeoClient client, long vimeoID)
+        {
+            string url = string.Format("/videos/{0}", vimeoID);
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("fields", "download");
+
+            string json = client.RequestJSON(url, parameters, "GET");
+
+            //Trim the JSON string into an array
+            char[] trim = { '}' };
+            json = json.Substring(12).TrimEnd(trim);
+
+            //return json;
+
+            List<Video.Download> download = JsonConvert.DeserializeObject<List<Video.Download>>(json);
+
+            if (download.Any())
+            {
+                return download.Where(d => d.quality == "hd")
+                               .FirstOrDefault()
+                               .link;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
+
     #endregion
 }

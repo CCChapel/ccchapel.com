@@ -5,4 +5,35 @@
 
     height: 24px;
     width: 24px;
+
+    @include grid-media-query("portable") {
+        display: none;
+    }
+}
+
+.ui-datepicker {
+    background: #FFF;
+
+    padding: 1em;
+    z-index: 101 !important;
+
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+.ui-datepicker-header {
+    padding: 1em $gutter;
+}
+
+.ui-datepicker-prev {
+    float: left;
+}
+.ui-datepicker-next {
+    float: right;
+}
+
+.ui-datepicker-title {
+    text-align: center;
+
+    font-weight: bold;
 }

@@ -65,7 +65,7 @@
     }
 }
 
-<div class="@Model.Fields.SectionCssClass [ content-section image @imageTextColor @Model.SectionHeight @{ if (Model.Fields.SectionIsParallax) { <text>parallax</text> } } ] [ center-vertically ] [ grid__item one-whole ] [ @imagePositioning ]" style="background-image: url(@imageUrl);@Model.Fields.SectionStyles">
+<div class="@Model.Fields.SectionCssClass [ content-section image @imageTextColor @Model.SectionHeight @{ if (Model.Fields.SectionIsParallax) { <text>parallax</text> } } ] [ center-vertically ] [ grid__item one-whole ] [ @imagePositioning ]" style="background-image: url('@imageUrl');@Model.Fields.SectionStyles">
     @{
         if (Model.SectionIncludeWrapper)
         {

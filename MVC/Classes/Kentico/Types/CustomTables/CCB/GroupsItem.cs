@@ -55,6 +55,7 @@ namespace CMS.CustomTables.Types
 
             return false;
         }
+
         #endregion
 
         #region Constructor
@@ -68,5 +69,23 @@ namespace CMS.CustomTables.Types
             CampusCcbID = campusCcbID;
         }
         #endregion
+    }
+
+    public static partial class Extensions
+    {
+        public static CampusesItem CampusInfo(this GroupsItem input)
+        {
+            var campusInfo = CustomTableItemProvider.GetItems<CampusesItem>()
+                .Where(c => c.CampusCcbID == input.Fields.CampusCcbID);
+
+            if (campusInfo.Any())
+            {
+                return campusInfo.First();
+            }
+            else
+            {
+                return new CampusesItem();
+            }
+        }
     }
 }

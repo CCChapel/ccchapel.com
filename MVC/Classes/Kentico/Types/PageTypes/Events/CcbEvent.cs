@@ -104,13 +104,29 @@ namespace CMS.DocumentEngine.Types
             {
                 try
                 {
-                    if (!string.IsNullOrWhiteSpace(Form.Url))
+                    //Check for non-CCB Registration
+                    if (EventRegistrationOverride == true)
                     {
-                        return true;
+                        if (!string.IsNullOrWhiteSpace(EventRegistrationForm))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
-                        return false;
+                        //Check for CCB Form
+                        if (!string.IsNullOrWhiteSpace(Form.Url))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                 }
                 catch
@@ -176,9 +192,7 @@ namespace CMS.DocumentEngine.Types
             //Get Group
             var group = Groups.GetGroup(groupID);
 
-            return CustomTableItemProvider.GetItems<CampusesItem>()
-                .Where(c => c.CampusCcbID == group.CampusCcbID)
-                .FirstOrDefault();
+            return group.CampusInfo();
         }
     }
 }

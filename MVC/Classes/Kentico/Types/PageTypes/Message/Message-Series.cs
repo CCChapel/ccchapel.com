@@ -13,6 +13,9 @@ namespace CMS.DocumentEngine.Types
     public partial class Series : TreeNode
     {
         #region Public Properties
+        public static readonly string SERMONS_PATH = "/Messages/Sermons";
+        public static readonly string SPECIAL_EVENTS_PATH = "/Messages/Special-Events";
+
         /// <summary>
         /// Returns the Series with the most recent Sermon
         /// </summary>

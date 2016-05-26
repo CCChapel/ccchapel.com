@@ -16,6 +16,19 @@ namespace API
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "DownloadVideoApi",
+                routeTemplate: "download/video/{id}",
+                defaults: new { controller = "DownloadVideo" },
+                constraints: new { id = @"^[0-9]*$" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "PodcastApi",
+                routeTemplate: "feeds/podcast/{media}",
+                defaults: new { controller = "Podcast", media = "video" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "SearchApi",
                 routeTemplate: "api/search/{query}",
                 defaults: new { controller = "Search", query = RouteParameter.Optional }
@@ -29,6 +42,9 @@ namespace API
 
             //Return JSON, not XML
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
+            //var xml = GlobalConfiguration.Configuration.Formatters.XmlFormatter;
+            //xml.UseXmlSerializer = true;
 
             // WebAPI when dealing with JSON & JavaScript!
             // Setup json serialization to serialize classes to camel (std. Json format)

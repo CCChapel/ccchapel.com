@@ -114,6 +114,23 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
+        /// Employment Status.
+        /// </summary>
+        [DatabaseField]
+        public string JobEmploymentStatus
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("JobEmploymentStatus"), "Part-time");
+            }
+            set
+            {
+                SetValue("JobEmploymentStatus", value);
+            }
+        }
+
+
+        /// <summary>
         /// Position Summary.
         /// </summary>
         [DatabaseField]
@@ -138,12 +155,7 @@ namespace CMS.DocumentEngine.Types
         {
             get
             {
-                return ValidationHelper.GetString(GetValue("JobResponsibilities"), 
-                    @"<ul>
-                        <li>Use</li>
-                        <li>a</li>
-                        <li>list</li>
-                      </ul>");
+                return ValidationHelper.GetString(GetValue("JobResponsibilities"), "");
 
             }
             set
@@ -161,12 +173,8 @@ namespace CMS.DocumentEngine.Types
         {
             get
             {
-                return ValidationHelper.GetString(GetValue("JobQualifications"),
-                    @"<ul>
-                        <li>Use</li>
-                        <li>a</li>
-                        <li>list</li>
-                      </ul>");
+                return ValidationHelper.GetString(GetValue("JobQualifications"), "");
+
             }
             set
             {
@@ -183,15 +191,8 @@ namespace CMS.DocumentEngine.Types
         {
             get
             {
-                return ValidationHelper.GetString(GetValue("JobCharacter"), 
-                    @"<ul>
-                          <li>
-                            This person should be a member of Christ Community Chapel or in agreement with <a href=""/new-here#beliefs-core-values"">Christ Community Chapel doctrine and DNA</a>
-                          </li>
-                          <li>This person should attend regularly and support Christ Community Chapel weekly services/ministry</li>
-                          <li>This person is expected to hold weekly office hours (TBD)</li>
-                          <li>This person is expected to attend the Christ Community Chapel All Staff Meeting</li>
-                      </ul>");
+                return ValidationHelper.GetString(GetValue("JobCharacter"), "");
+
             }
             set
             {
@@ -310,6 +311,22 @@ namespace CMS.DocumentEngine.Types
                 set
                 {
                     mInstance.DirectReport = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Employment Status.
+            /// </summary>
+            public string JobEmploymentStatus
+            {
+                get
+                {
+                    return mInstance.JobEmploymentStatus;
+                }
+                set
+                {
+                    mInstance.JobEmploymentStatus = value;
                 }
             }
 

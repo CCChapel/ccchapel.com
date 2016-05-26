@@ -49,7 +49,7 @@
     </Reference>
     <Reference Include="ChurchCommunityBuilder.Api, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Users\admemr\Downloads\ccb-api-csharp-master(1)\ccb-api-csharp-master\src\ChurchCommunityBuilder.Api\bin\Debug\ChurchCommunityBuilder.Api.dll</HintPath>
+      <HintPath>..\..\..\Users\admemr\Downloads\ccb-api-csharp-master(2)\ccb-api-csharp-master\src\ChurchCommunityBuilder.Api\bin\Debug\ChurchCommunityBuilder.Api.dll</HintPath>
     </Reference>
     <Reference Include="CMS.AmazonStorage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
       <HintPath>..\packages\Kentico.Libraries.9.0.11\lib\net45\CMS.AmazonStorage.dll</HintPath>
@@ -572,8 +572,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\mimetypes.txt" />
-    <Content Include="Content\2016-Q1\compiled-scripts\scripts.js" />
-    <Content Include="Content\2016-Q1\compiled-styles\styles.css" />
+    <Content Include="Content\2016-Q1\scripts\angular\angular-1.5.5.min.js" />
     <Content Include="Content\2016-Q1\scripts\google\maps\markerwithlabel.js" />
     <Content Include="Content\2016-Q1\scripts\jquery\jquery-2.2.1.min.js" />
     <Content Include="Content\2016-Q1\scripts\jquery\jquery-ui-1.11.4.min.js" />
@@ -618,6 +617,7 @@
     <Compile Include="Classes\CCB\Event\Event.cs" />
     <Compile Include="Classes\CCB\Form\Form.cs" />
     <Compile Include="Classes\CCB\Groups\Groups.cs" />
+    <Compile Include="Classes\CCB\Groups\PublicGroup.cs" />
     <Compile Include="Classes\CCB\PublicCalendar\PublicCalendar.cs" />
     <Compile Include="Classes\Extensions\DateTime.cs" />
     <Compile Include="Classes\Extensions\String.cs" />
@@ -654,6 +654,7 @@
     <Compile Include="Classes\_CCC\Helpers\VimeoHelpers.cs" />
     <Compile Include="Controllers\MVC\EventController.cs" />
     <Compile Include="Controllers\MVC\EventsController.cs" />
+    <Compile Include="Controllers\MVC\GroupFinderController.cs" />
     <Compile Include="Controllers\MVC\HttpErrorsController.cs" />
     <Compile Include="Controllers\MVC\JobsController.cs" />
     <Compile Include="Controllers\MVC\MessageController.cs" />
@@ -664,6 +665,8 @@
     <Compile Include="Controllers\MVC\PageSectionController.cs" />
     <Compile Include="Controllers\MVC\SearchController.cs" />
     <Compile Include="Controllers\MVC\StaffTeamController.cs" />
+    <Compile Include="Controllers\WebAPI\DownloadVideoController.cs" />
+    <Compile Include="Controllers\WebAPI\PodcastController.cs" />
     <Compile Include="Controllers\WebAPI\SearchController.cs" />
     <Compile Include="Controllers\WebAPI\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -672,6 +675,11 @@
     <Compile Include="Macros\CustomMacroMethods.cs" />
     <Compile Include="Macros\SampleMacroModule.cs" />
     <Compile Include="Models\CCC\EventsPage.cs" />
+    <Compile Include="Models\CCC\Podcast\Feed.cs" />
+    <Compile Include="Models\CCC\Podcast\FeedEmailAddress.cs" />
+    <Compile Include="Models\CCC\Podcast\FeedItem.cs" />
+    <Compile Include="Models\CCC\Podcast\FeedItemEnclosure.cs" />
+    <Compile Include="Models\CCC\Podcast\Test.cs" />
     <Compile Include="Models\CCC\Search.cs" />
     <Compile Include="Models\Kentico\Types\CustomTables\CampusesItem.cs" />
     <Compile Include="Models\Kentico\Types\CustomTables\CCB\GroupsItem.cs" />
@@ -820,6 +828,11 @@
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\blockquote.scss" />
     <Content Include="Views\StaffTeam\_GridItem.cshtml" />
     <Content Include="Views\StaffTeam\Index.cshtml" />
+    <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
+    <None Include="Properties\PublishProfiles\GoDaddy - MVC.pubxml" />
+    <Content Include="Views\GroupFinder\Index.cshtml" />
+    <Content Include="Views\GroupFinder\_PublicGroupTable.cshtml" />
+    <Content Include="Views\Event\_RegistrationButton.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -830,6 +843,7 @@
   <ItemGroup>
     <Folder Include="Classes\Vimeo\" />
     <Folder Include="Content\2016-Q1\images\" />
+    <Folder Include="Views\Podcast\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VimeoDotNet3\VimeoAPI.csproj">

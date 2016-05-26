@@ -20,7 +20,7 @@
         </div>
         
     @{
-        if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
+        if (Model.HasVideo)
         {
             <div class="header-image__video-controls">
                 <span class="fa-stack fa-lg">
@@ -84,7 +84,7 @@
 
 <div class="sermon-series__table [ content-section no-bottom-margin light-gray ] [ grid__item one-whole ]">
     <div class="content-wrapper">
-        <div class="section-title">Other Sermons in This Series</div>
+        <div class="section-title">Other Messages in This Series</div>
 
         @{ Html.RenderAction("_SeriesTable", "MessageSeries", new { series = Model.MessageSeries }); }
     </div>

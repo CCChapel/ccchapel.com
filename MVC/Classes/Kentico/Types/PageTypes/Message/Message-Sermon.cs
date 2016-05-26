@@ -176,6 +176,35 @@ namespace CMS.DocumentEngine.Types
         }
 
         /// <summary>
+        /// Gets the Vimeo ID of the attached media. If no Vimeo video is available, -1 is returned.
+        /// </summary>
+        public long VimeoID
+        {
+            get
+            {
+                //Check for Video Attachments
+                var media = Fields.MessageMedia.Where(v => v.ClassName == VimeoVideo.CLASS_NAME);
+
+                if (media.Any())
+                {
+                    var videos = VimeoVideoProvider.GetVimeoVideo(
+                        media.First().NodeGUID,
+                        SiteHelpers.SiteCulture,
+                        SiteHelpers.SiteName);
+
+                    if (videos.Any())
+                    {
+                        var video = videos.First();
+
+                        return video.VimeoID;
+                    }
+                }
+
+                return -1;
+            }
+        }
+
+        /// <summary>
         /// Gets the Vimeo Video Related to this Sermon or returns and empty object if no video was found
         /// </summary>
         public Vimeo.Types.Video Video
@@ -184,34 +213,62 @@ namespace CMS.DocumentEngine.Types
             {
                 try
                 {
-                    var video = VimeoVideoProvider.GetVimeoVideo(
-                        Fields.MessageMedia.Where(v => v.ClassName == VimeoVideo.CLASS_NAME).FirstOrDefault().NodeGUID,
-                        SiteHelpers.SiteCulture,
-                        SiteHelpers.SiteName).First();
-
-                    //Check Cache for Video
-                    string cacheID = CachingHelpers.CachingID("VimeoVideo", video.VimeoID);
-
-                    if (CachingHelpers.Cache.Contains(cacheID))
+                    if (VimeoID > 0)
                     {
-                        //Get Data From Cache
-                        Vimeo.Types.Video vimeo = (Vimeo.Types.Video)CachingHelpers.Cache.Get(cacheID);
 
-                        return vimeo;
+                        //Check Cache for Video
+                        string cacheID = CachingHelpers.CachingID("VimeoVideo", VimeoID);
+
+                        if (CachingHelpers.Cache.Contains(cacheID))
+                        {
+                            //Get Data From Cache
+                            Vimeo.Types.Video vimeo = (Vimeo.Types.Video)CachingHelpers.Cache.Get(cacheID);
+
+                            return vimeo;
+                        }
+                        else
+                        {
+                            //Get Data From Vimeo & Add to Cache
+                            Vimeo.Types.Video vimeo = VimeoHelpers.Api.GetVideo(VimeoID);
+
+                            CachingHelpers.Cache.Add(cacheID, vimeo, CachingHelpers.Policy);
+
+                            return vimeo;
+                        }
                     }
-                    else
-                    {
-                        //Get Data From CCB & Add to Cache
-                        Vimeo.Types.Video vimeo = VimeoHelpers.Api.GetVideo(video.VimeoID);
 
-                        CachingHelpers.Cache.Add(cacheID, vimeo, CachingHelpers.Policy);
-
-                        return vimeo;
-                    }
+                    return new Vimeo.Types.Video();
                 }
                 catch
                 {
                     return new Vimeo.Types.Video();
+                }
+            }
+        }
+
+        public bool HasVideo
+        {
+            get
+            {
+                try
+                {
+                    var video = VimeoVideoProvider.GetVimeoVideo(
+                                    Fields.MessageMedia.Where(v => v.ClassName == VimeoVideo.CLASS_NAME).FirstOrDefault().NodeGUID,
+                                    SiteHelpers.SiteCulture,
+                                    SiteHelpers.SiteName);
+
+                    if (video.Any())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch
+                {
+                    return false;
                 }
             }
         }
@@ -240,12 +297,16 @@ namespace CMS.DocumentEngine.Types
                 //Start by looking for Vimeo
                 try
                 {
-                    if (!string.IsNullOrWhiteSpace(Video.name))
+                    if (VimeoID > 0)
                     {
-                        return Video.download
-                            .Where(d => d.quality == "hd")
-                            .FirstOrDefault()
-                            .link;
+                        //download/video/164987098
+
+                        object apiRoute = new {
+                                controller = "DownloadVideo",
+                                id = VimeoID
+                            };
+
+                        return UrlHelpers.UrlHelper.HttpRouteUrl("DownloadVideoApi", apiRoute);
                     }
                 }
                 catch
@@ -302,6 +363,23 @@ namespace CMS.DocumentEngine.Types
             {
                 return UrlHelpers.UrlHelper.RouteUrl(RouteValues);
             }
+        }
+        
+        public CCC.Models.Podcast.FeedItem ToVideoFeedItem()
+        {
+            return new CCC.Models.Podcast.FeedItem(MessageTitle, RouteUrl)
+            {
+                Description = MessageDescription,
+                PublishDate = MessageDate,
+                Author = new CCC.Models.Podcast.FeedEmailAddress(
+                    //MessageSpeaker.Email ?? "info@ccchapel.com",
+                    "info@ccchapel.com",
+                    MessageSpeaker.FullName),
+                Enclosure = new CCC.Models.Podcast.FeedItemEnclosure(
+                    DownloadUrlVideo,
+                    "video/mp4",
+                    Video.duration)
+            };
         }
         #endregion
     }

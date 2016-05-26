@@ -93,6 +93,14 @@
     }
 }
 
+body.mobile .mobile--hide {
+    display: none !important;
+}
+
+body:not(.mobile) .desktop--hide {
+    display: none !important;
+}
+
 //Control scrolling
 .hide-overflow {
     overflow: hidden;

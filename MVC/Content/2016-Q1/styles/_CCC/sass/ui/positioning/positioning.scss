@@ -44,8 +44,8 @@
 // HEIGHTS
 //**************************************************/
 .full-height {
-    height: 100%;
-    min-height: inherit
+    height: 100% !important;
+    min-height: inherit !important;
 }
 
 .palm--height-auto {
@@ -196,6 +196,22 @@
     @include justify-content(space-between); 
     @include align-items(baseline); 
     @include align-content(flex-start);
+
+    &.use-gutter {
+        & > * {
+            margin-right: $gutter;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &.palm--stack {
+        @include grid-media-query("palm") {
+            display: block;
+        }
+    }
 }
 
 @import "flex-section.scss";

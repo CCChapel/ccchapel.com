@@ -7,6 +7,11 @@
 div.fsSubField {
     padding-left: $gutter / 2;
     padding-right: $gutter / 2;
+
+    @include grid-media-query("palm") {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 div.fsSubField:first-child {
@@ -16,4 +21,29 @@ div.fsSubField:first-child {
 div.fsSubField:last-child {
     padding-left: $gutter / 2;
     padding-right: 0;
+
+    @include grid-media-query("palm") {
+        padding-left: 0;
+    }
+}
+
+.fsCurrency {
+    display: inline-flex;
+    width: 1%;
+
+    @include grid-media-query("palm") {
+        width: 5%;
+    }
+
+    & + input {
+        display: inline-flex;
+    }
+}
+
+input + span:empty {
+    display: none;
+}
+
+input[type=number] {
+    width: auto;
 }

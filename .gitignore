@@ -30,6 +30,13 @@ local.properties
 
 
 #################
+## Kentico
+#################
+
+#Ignore Temp Cache Folders
+CMS/App_Data/CMSTemp/
+
+#################
 ## Visual Studio
 #################
 
@@ -217,3 +224,4 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.zip

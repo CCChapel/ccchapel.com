@@ -13,26 +13,28 @@
             <div class="header-image__title">Staff</div>
         </div>
 
-        <div class="justify-content">
-            <div class="section-title left-justify add-bottom-margin">@Model.TeamName</div>
+        <div class="justify-content palm--stack add-bottom-margin">
+            <div class="section-title left-justify palm--add-bottom-margin">@Model.TeamName</div>
 
             <div class="right-justify">
-                <span class="add-right-margin">Select a team:</span>
+                <div class="justify-content use-gutter palm--stack">
+                    <div class="left-justify">Select a team:</div>
 
-                <span class="css3-metro-dropdown auto">
-                    <select id="teamSelection">
-                        @{
-                            var teams = StaffTeamProvider.GetStaffTeams().Published();
+                    <div class="css3-metro-dropdown auto palm--full">
+                        <select id="teamSelection">
+                            @{
+                                var teams = StaffTeamProvider.GetStaffTeams().Published();
 
-                            foreach (var team in teams)
-                            {
-                                <option value="@team.RouteUrl">
-                                    @team.TeamName
-                                </option>
+                                foreach (var team in teams)
+                                {
+                                    <option value="@team.RouteUrl">
+                                        @team.TeamName
+                                    </option>
+                                }
                             }
-                        }
-                    </select>
-                </span>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     

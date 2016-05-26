@@ -75,9 +75,14 @@ namespace CCC.Helpers
         public static string LineBreaksToParagraphs(string html)
         {
             string breaks = string.Format("<br />\n<br />\n");
+            string breaks2 = string.Format("\n");
             string paragraphs = "</p><p>";
 
-            return string.Format("<p>{0}</p>", html.Replace(breaks, paragraphs).Replace("<p></p>", string.Empty));
+            return string.Format("<p>{0}</p>", 
+                html
+                    .Replace(breaks, paragraphs)
+                    .Replace(breaks2, paragraphs)
+                    .Replace("<p></p>", string.Empty));
         }
     }
 }

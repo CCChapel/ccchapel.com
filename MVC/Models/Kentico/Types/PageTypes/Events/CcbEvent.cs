@@ -148,6 +148,57 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
+        /// Override Event Registration?.
+        /// </summary>
+        [DatabaseField]
+        public bool EventRegistrationOverride
+        {
+            get
+            {
+                return ValidationHelper.GetBoolean(GetValue("EventRegistrationOverride"), false);
+            }
+            set
+            {
+                SetValue("EventRegistrationOverride", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Registration Form.
+        /// </summary>
+        [DatabaseField]
+        public string EventRegistrationForm
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("EventRegistrationForm"), "");
+            }
+            set
+            {
+                SetValue("EventRegistrationForm", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Registration End Date.
+        /// </summary>
+        [DatabaseField]
+        public DateTime EventRegistrationEndDate
+        {
+            get
+            {
+                return ValidationHelper.GetDateTime(GetValue("EventRegistrationEndDate"), DateTimeHelper.ZERO_TIME);
+            }
+            set
+            {
+                SetValue("EventRegistrationEndDate", value);
+            }
+        }
+
+
+        /// <summary>
         /// CSS Class.
         /// </summary>
         [DatabaseField]
@@ -323,6 +374,54 @@ namespace CMS.DocumentEngine.Types
                 set
                 {
                     mInstance.EventDateDescription = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Override Event Registration?.
+            /// </summary>
+            public bool EventRegistrationOverride
+            {
+                get
+                {
+                    return mInstance.EventRegistrationOverride;
+                }
+                set
+                {
+                    mInstance.EventRegistrationOverride = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Registration Form.
+            /// </summary>
+            public string EventRegistrationForm
+            {
+                get
+                {
+                    return mInstance.EventRegistrationForm;
+                }
+                set
+                {
+                    mInstance.EventRegistrationForm = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Registration End Date.
+            /// </summary>
+            public DateTime EventRegistrationEndDate
+            {
+                get
+                {
+                    return mInstance.EventRegistrationEndDate;
+                }
+                set
+                {
+                    mInstance.EventRegistrationEndDate = value;
                 }
             }
 

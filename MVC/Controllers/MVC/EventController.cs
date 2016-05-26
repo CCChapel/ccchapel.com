@@ -89,7 +89,7 @@ namespace MVC.Controllers
                 //We haven't found an event with that name and date
                 throw new HttpException(404, "Page Not Found");
             }
-            catch (InvalidOperationException ex)
+            catch (InvalidOperationException)
             {
                 //test += string.Format("Exception: {0}", ex.Message);
                 throw new HttpException(404, "Event Not Found");

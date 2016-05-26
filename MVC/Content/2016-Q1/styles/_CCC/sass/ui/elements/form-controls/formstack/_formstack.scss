@@ -32,11 +32,21 @@
     .css3-metro-dropdown {
         width: 100%;
     }
+
+    p {
+        max-width: initial;
+    }
 }
 
 .fieldset-content .css3-metro-dropdown {
     padding-right: 1em;
     width: auto;
+
+    @include grid-media-query("palm") {
+        width: 100%;
+
+        margin-bottom: $bottom-margin;
+    }
 }
 
 .fsRow {
@@ -45,10 +55,26 @@
 
 .fsSubFieldGroup {
     @include flexbox;
+
+    @include grid-media-query("palm") {
+        flex-direction: column;
+    }
 }
 
 .fsSubField {
     @include flex-grow(1);
+
+    @include grid-media-query("palm") {
+        margin-bottom: $bottom-margin / 2;
+    }
+}
+
+legend + .fieldset-content {
+    padding-left: $gutter;
+
+    @include grid-media-query("palm") {
+        padding-left: 0;
+    }
 }
 
 /* RESPONSE MESSAGE */

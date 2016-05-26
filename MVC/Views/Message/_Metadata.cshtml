@@ -1,21 +1,30 @@
 ﻿@using CCC.Helpers
-@model CMS.DocumentEngine.Types.Sermon
+@using CMS.DocumentEngine.Types
+@model Sermon
 @{
-    bool isVideo = false;
-    Vimeo.Types.Video.File file = new Vimeo.Types.Video.File();
-
-    try
-    {
-        file = Model.Video.files.Where(f => f.quality == "hd" && f.type == "video/mp4").FirstOrDefault();
-        isVideo = true;
-    }
-    catch
-    {
-        isVideo = false;
-    }
-
     string appDeepLink = "http://ccchapel.com/Feeds/App/Sermons/Sermon-Detail/?sermonid=479";
+
+    //Get Vimeo ID
+    string vimeoID = "";
+    var media = Model.Fields.MessageMedia.Where(v => v.ClassName == VimeoVideo.CLASS_NAME);
+
+    if (media.Any())
+    {
+        var videos = VimeoVideoProvider.GetVimeoVideo(
+            media.First().NodeGUID,
+            SiteHelpers.SiteCulture,
+            SiteHelpers.SiteName);
+
+        if (videos.Any())
+        {
+            var video = videos.First();
+
+            //Check Cache for Video
+            vimeoID = video.VimeoID.ToString();
+        }
+    }
 }
+
 <!-- Facebook Metadata-->
 <meta property="og:title" content="@ViewBag.PageTitle">
 <meta property="og:description" content="@Model.Fields.MessageDescription">
@@ -26,14 +35,16 @@
 <meta property="fb:app_id" content="147696575258574" />
 
 @{
-    if (isVideo == true)
+    if (Model.HasVideo)
     {
+        string link = string.Format("vimeo.com/moogaloop.swf?clip_id={0}&amp;autoplay=1", vimeoID);
+
         <meta property="og:type" content="video.other">
-        <meta property="og:video" content="@file.link">
-        <meta property="og:video:secure_url" content="@file.link_secure">
+        <meta property="og:video" content="http://@link">
+        <meta property="og:video:secure_url" content="https://@link">
         <meta property="og:video:type" content="application/x-shockwave-flash">
-        <meta property="og:video:width" content="@file.width">
-        <meta property="og:video:height" content="@file.height">
+        <meta property="og:video:width" content="@Model.Video.width">
+        <meta property="og:video:height" content="@Model.Video.height">
         <meta property="video:duration" content="@Model.Video.duration">
     }
     else
@@ -43,19 +54,27 @@
     }
 }
 
-
 <!-- Twitter Metadata-->
 <meta name="twitter:card" content="player">
 <meta name="twitter:site" content="@("@ccchapel")">
 <meta name="twitter:title" content="@Model.Fields.MessageTitle">
 <meta name="twitter:description" content="@Model.Fields.MessageDescription">
 <meta name="twitter:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(Model.MessageSeries.Background.Fields.ImageFile)))">
-<meta name="twitter:player" content="@Model.Video.link">
-<meta name="twitter:player:width" content="@file.width">
-<meta name="twitter:player:height" content="@file.height">
 
-<meta name="twitter:player:stream" content="@file.link">
-<meta name="twitter:player:stream:content_type" content="video/mp4">
+@{
+    if (Model.HasVideo)
+    {
+        string link = string.Format("vimeo.com/moogaloop.swf?clip_id={0}&amp;autoplay=1", vimeoID);
+
+        <meta name="twitter:player" content="https://@link">
+        <meta name="twitter:player:width" content="@Model.Video.width">
+        <meta name="twitter:player:height" content="@Model.Video.height">
+
+        <meta name="twitter:player:stream" content="https://@link">
+        <meta name="twitter:player:stream:content_type" content="video/mp4">
+    }
+}
+
 
 <meta name="twitter:app:id:iphone" content="653157512">
 <meta name="twitter:app:id:ipad" content="653157512">

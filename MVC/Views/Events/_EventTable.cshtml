@@ -1,7 +1,7 @@
 ﻿@using CMS.DocumentEngine.Types
 @using CCC.Helpers
-@using ChurchCommunityBuilder.Api.Events.Entity;
-@using CCB;
+@using ChurchCommunityBuilder.Api.Events.Entity
+@using CCB
 
 @model CalendarCollection
 
@@ -24,8 +24,6 @@
             </span>
         </div>
     </div>
-
-    <div id="date-range-slider"></div>
 </div>
 
 <table class="event__table [ palm--hide-col-3 palm--hide-col-4 palm--hide-col-5 ]">
@@ -115,8 +113,6 @@
         }
     }
 </style>
-
-<script src="/Content/2016-Q1/scripts/includes/jQSlider/jQDateRangeSlider-withRuler-min.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -230,13 +226,13 @@
 
             options = $.extend({}, defaults, options);
 
-            var html = "Sorry, no events were found ";
+            var html = "Sorry, no events were found";
             if (keyword !== "") {
-                html += "with the word <i>" + keyword + "</i> ";
+                html += " with the word <i>" + keyword + "</i>";
             }
 
             var dateRange = $("#calendar-change option:selected").html();
-            html += "between " + dateRange.trim();
+            html += " between " + dateRange.trim();
 
             if (campus !== "") {
                 html += " for " + campus.replace("-", " ") + " Campus."

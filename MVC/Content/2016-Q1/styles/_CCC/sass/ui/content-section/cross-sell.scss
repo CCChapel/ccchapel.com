@@ -24,6 +24,24 @@
             height: 15rem;
         }
 
+        /*&.light {
+            color: #FFF;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+        }
+
+        &.dark {
+            color: $charcoal;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+
+            a {
+                color: $charcoal;
+
+                &:hover {
+                    color: $blue;
+                }
+            }
+        }*/
+
         //Fix Play Overlay Spacing
         span.fa-stack {
             i:last-child {

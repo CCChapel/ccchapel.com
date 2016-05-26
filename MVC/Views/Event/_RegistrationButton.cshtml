@@ -1,0 +1,47 @@
+﻿@using CMS.DocumentEngine.Types
+@model CcbEvent
+
+@{
+    //Check for registration
+    if (Model.HasRegistration)
+    {
+        string formUrl = "";
+        bool isActive = true;
+
+        //Non-CCB Registration
+        if (Model.EventRegistrationOverride == true)
+        {
+            formUrl = Model.EventRegistrationForm;
+
+            if (DateTime.Now <= Model.EventRegistrationEndDate.Date)
+            {
+                isActive = true;
+            }
+            else
+            {
+                isActive = false;
+            }
+        }
+        //CCB Registration
+        else
+        {
+            formUrl = Model.Form.Url;
+            isActive = Model.Form.IsActive;
+        }
+
+        <div class="event-details__cta">
+            @{
+                if (isActive == true)
+                {
+                    <a class="cta full" href="@formUrl">Register</a>
+
+                }
+                else
+                {
+                    <a class="cta full disabled">Registration Closed</a>
+                }
+            }
+        </div>
+    }
+}
+

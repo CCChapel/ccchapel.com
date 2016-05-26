@@ -1,0 +1,28 @@
+﻿@using CMS.DocumentEngine.Types
+
+@model StaffTeamMember
+
+
+--><div class="add-bottom-margin [ grid__item one-quarter lap--one-half palm--one-whole ]">
+    <div class="profile-photo">
+        @{
+            if (!(Guid.Empty == Model.Person.Photo))
+            {
+                <img class="img-cover" alt="" src="@Url.Kentico().Attachment(Model.Person.Fields.Photo)" />
+            }
+        }
+    </div>
+    <div class="justify-content">
+        <div>
+            <div class="section-subtitle left-justify no-bottom-margin">
+                @Model.Person.FullName
+            </div>
+            <div>
+                @Model.Title
+            </div>
+        </div>
+        <div>
+            <a href="mailto:@Model.Person.Email"><i class="fa fa-envelope fa-2x"></i></a>
+        </div>
+    </div>
+</div><!--

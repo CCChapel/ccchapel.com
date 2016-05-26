@@ -57,7 +57,7 @@
     @Styles.Render("~/bundles/styles")
 </head>
 
-<body @if (Request.Browser.IsMobileDevice) { <text>class="mobile"</text>}>
+<body class="@Request.Browser.Browser.ToLower() @if (Request.Browser.IsMobileDevice) { <text>mobile</text>}">
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jquery-ui")
 
@@ -206,7 +206,8 @@
 
          --><div class="footer__address [ grid__item one-whole ]">
                 <ul class="[ horizontal-list palm--vertical palm--no-marker ]">
-                    <li>750 W Streetsboro Street, Hudson, Ohio 44236</li><!--
+                    <li>Central Office</li><!--
+                 --><li>750 W Streetsboro Street, Hudson, Ohio 44236</li><!--
                  --><li>330.650.9533</li>
                 </ul>
             </div><!--
@@ -319,6 +320,8 @@
     </footer> <!-- /footer -->
     
     @RenderSection("Scripts", false)
+
+    @{ Html.RenderPartial("_GoogleAnalytics"); }
 </body>
 </html>
 

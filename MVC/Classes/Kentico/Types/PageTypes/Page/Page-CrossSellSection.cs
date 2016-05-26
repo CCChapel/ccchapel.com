@@ -34,7 +34,6 @@ namespace CMS.DocumentEngine.Types
                 var items = CrossSellItemProvider.GetCrossSellItems()
                     .OnCurrentSite()
                     .Path(path, PathTypeEnum.Children)
-                    .NestingLevel(1)
                     .OrderBy(DatabaseHelpers.OrderByCmsTree)
                     .Published()
                     .Where(c => c.ClassName == CrossSellItem.CLASS_NAME);

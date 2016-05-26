@@ -1,0 +1,17 @@
+﻿@using CCB
+@model ChurchCommunityBuilder.Api.Groups.Entity.PublicGroupCollection
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = "Groups";
+}
+
+<div class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="content-wrapper">
+            <div class="header-image__title">Groups</div>
+        </div>
+
+        @{ Html.RenderPartial("_PublicGroupTable", Model); }
+    </div>
+</div>

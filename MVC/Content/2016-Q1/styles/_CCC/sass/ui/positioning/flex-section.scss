@@ -22,6 +22,8 @@
             .flex-section-bg {
                 min-height: 33vh;
 
+                
+
                 &.content-wrapper {
                     min-height: calc(33vh + #{$vertical-padding});
                 }
@@ -116,6 +118,11 @@
             }
         }
     }
+
+    & > center-center {
+        @include flexbox;
+        @include align-items(center);
+    }
 }
     
 .flex-section-bg {
@@ -148,4 +155,8 @@
             background-position: center center;
         }
     }
+}
+
+.safari.mobile .flex-section-bg.full-height {
+    height: 50% !important;
 }

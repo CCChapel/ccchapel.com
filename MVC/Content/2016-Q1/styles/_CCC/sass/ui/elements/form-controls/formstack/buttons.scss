@@ -1,18 +1,76 @@
 ﻿/* BUTTONS */
+.fsPagination .fsFull {
+    justify-content: center;
+}
+
 .fsPagination .fsPreviousButton {
     margin-right: 24px;
+
+    .fsFull:before {
+        //@extend .fa;
+        display: inline-block;
+        font-family: FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    
+        //@extend .fa-chevron-left:before;
+        content: "\f053";
+
+        font-size: 1em;
+        line-height: 1.4em;
+
+        padding-right: 10px;
+    }
 }
+
 .fsPagination .fsNextButton {
-    float: left;
+    .fsFull:after {
+        //@extend .fa;
+        display: inline-block;
+        font-family: FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    
+        //@extend .fa-chevron-right:before;
+        content: "\f054";
+
+        font-size: 1em;
+        line-height: 1.4em;
+
+        padding-left: 10px;
+    }
 }
+
 .fsSubmit input.fsSubmitButton {
-    float: left !important;
+    float: right;
+}
+
+.fsPagination .fsPreviousButton,
+.fsPagination .fsNextButton,
+.fsSubmit input.fsSubmitButton {
+    //float: left !important;
     //padding: 6px 12px !important;
     @extend .cta;
-    @extend .cta.auto;
+    //@extend .cta.auto;
     @extend .cta.red;
 
+    display: inline-flex;
+    margin-left: 0;
+    padding: 0 $magic-number;
+
+    width: auto;
+        
+    @include grid-media-query("palm") {
+        width: 100%;
+    }
+
     font-size: 1em;
+
+    .fsSlim {
+        display: none;
+    }
 }
 
 .fsForm .fsSubmit {

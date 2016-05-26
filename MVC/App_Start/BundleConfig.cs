@@ -15,6 +15,12 @@ namespace MVC
             /**********************************************************
              * SCRIPTS
              **********************************************************/
+            #region AngularJS 
+            //var angularCdnPath = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js";
+
+            //bundles.Add(new ScriptBundle("~/bundles/angular", angularCdnPath).Include("~/Content/2016-Q1/scripts/angular/angular-{version}.min.js"));
+            #endregion
+
             #region jQuery
             //Add link to jQuery on the CDN
             var jqueryCdnPath = "http://code.jquery.com/jquery-2.2.0.min.js";

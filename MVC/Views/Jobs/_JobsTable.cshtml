@@ -10,7 +10,7 @@
     <tbody>
         @{
             //Get Jobs
-            foreach (JobListing job in JobListingProvider.GetJobListings().Published())
+            foreach (JobListing job in JobListingProvider.GetJobListings().Published().OrderBy(CCC.Helpers.DatabaseHelpers.OrderByCmsTree))
             {
                 <tr>
                     <td><a href="@job.RouteUrl">@job.JobTitle</a></td>

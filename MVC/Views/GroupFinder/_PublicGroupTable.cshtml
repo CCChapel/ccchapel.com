@@ -1,0 +1,268 @@
+﻿@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+@using CCB
+
+@model ChurchCommunityBuilder.Api.Groups.Entity.PublicGroupCollection
+
+<!-- Table Controls -->
+<div class="event__table-controls">
+    <div class="grid">
+        <div class="[ palm--add-bottom-margin palm--center ] [ grid__item one-third palm--one-whole ]">
+            <input class="search-keywords" type="search" placeholder="Search Keywords">
+        </div><!--
+
+     --><div class="[ palm--add-bottom-margin palm--center ] [ grid__item one-third palm--one-whole ]">
+            <span class="css3-metro-dropdown">
+                <select class="search-ministry">
+                    <option value="">All Ministries</option>
+                    <option value="kids">Kids</option>
+                    <option value="students">Students</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <option value="care">Care &amp; Support</option>
+                    <option value="sports">Sports</option>
+                </select>
+            </span>
+        </div><!--
+
+     --><div class="[ palm--add-bottom-margin palm--center ] [ grid__item one-third palm--one-whole ]">
+            <span class="css3-metro-dropdown">
+                <select class="search-campus">
+                    <option value="">All Campuses</option>
+                    <option value="hudson">Hudson Campus</option>
+                    <option value="aurora">Aurora Campus</option>
+                    <option value="stow">Stow Campus</option>
+                    <option value="highland-square">Highland Square Campus</option>
+                </select>
+            </span>
+        </div>
+    </div>
+</div>
+
+<table class="groups__table [ palm--hide-col-3 ]">
+    <thead>
+        <tr>
+            <th class="two-fifths palm--three-quarters">Name</th>
+            <th class="one-fifth palm--hide">Day</th>
+            <th class="one-fifth palm--hide">Time</th>
+            <th class="one-fifth palm--hide">Campus</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var group in Model.Items)
+            {
+                <tr data-campus="@group.CampusInfo().CampusCodeName.ToLower()" data-ministry="@group.GroupTypeName.ToLower().Replace("Web: ", string.Empty)">
+                    <td>
+                        <a class="group__name" href="#">@group.Name</a>
+                        <div class="description hidden">
+                            @Html.Raw(DocumentHelpers.LineBreaksToParagraphs(group.Description))
+
+                            @{
+                                if (!string.IsNullOrWhiteSpace(group.OwnerEmailPrimary))
+                                {
+                                    <div class="event-details__cta [ flex-section inline ]">
+                                        <a class="[ cta auto ]" href="@group.OwnerEmailPrimary">Contact @group.OwnerName.Value</a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </td>
+                    <td>@group.MeetDayName</td>
+                    <td>@group.MeetTimeName</td>
+                    <td>@group.CampusInfo().CampusName</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<style>
+    @{
+        //Show only current campus sermons
+        if (!string.IsNullOrWhiteSpace(MiscellaneousHelpers.CurrentCampusName))
+        {
+            <text>
+                tr[data-campus]
+                {
+                    display: none;
+                }
+
+                tr[data-campus~=@MiscellaneousHelpers.CurrentCampus.CampusCodeName.ToLower()]
+                {
+                    display: table-row;
+                }
+            </text>
+        }
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        setupDescriptionToggle();
+        setupMinistrySearch();
+        setupCampusSearch();
+        setupKeywordSearch();
+    });
+
+    function setupDescriptionToggle() {
+        //Setup Description Toggle
+        var selector = ".group__name";
+        var descriptionSelector = ".description";
+
+        $(selector).click(function(e) {
+            e.preventDefault();
+
+            $(this).parent().children(descriptionSelector).slideToggle();
+        });
+    }
+
+    function setupKeywordSearch() {
+        var selector = ".search-keywords";
+
+        //Setup Change Event
+        $(selector).on("input", function() {
+            filter();
+        });
+
+        //Setup Initial Value
+        var qs = getQueryString();
+
+        if (qs["keywords"] !== undefined) {
+            $(selector).val(qs["keywords"]);
+            filter();
+        }
+    }
+
+    function setupMinistrySearch() {
+        var selector = ".search-ministry";
+
+        //Setup Initial Value
+        var qs = getQueryString();
+
+        if (qs["ministry"] !== undefined) {
+            $(selector).val(qs["ministry"]);
+            filter();
+        }
+
+        //Setup Change Event
+        $(selector).change(function () {
+            filter();
+        });
+    }
+
+    function setupCampusSearch() {
+        var selector = ".search-campus";
+
+        //Setup Initial Value
+        $(selector).val(CCChapel.CurrentCampus);
+
+        //Setup Change Event
+        $(selector).change(function() {
+            filter();
+        });
+    }
+
+    function filter() {
+        var table = ".groups__table";
+        var keywordField = ".search-keywords";
+        var ministrySelect = ".search-ministry";
+        var campusSelect = ".search-campus";
+        var campusAttribute = "data-campus";
+        var ministryAttribute = "data-ministry";
+        var linkClass = ".group__name";
+        var campusColumnClass = "hide-col-4";
+
+        //Get Keywords
+        var keyword = formatStringForComparison($(keywordField).val());
+
+        //Get Ministry
+        var ministry = new RegExp("\\b" + $(ministrySelect).val().toLowerCase() + "\\b");
+
+        //Get Campus
+        var campus = $(campusSelect).val().toLowerCase();
+
+        //If All Campuses, Show Campus Column
+        if (campus == "") {
+            $(table).removeClass(campusColumnClass);
+        }
+        else {
+            //If Not, Hide Campus Column
+            $(table).addClass(campusColumnClass);
+        }
+
+        //Go through each row
+        $(table).children("tbody").children("tr").each(function () {
+            //Check for campus
+            if (($(this).attr(campusAttribute) !== undefined) && ($(this).attr(campusAttribute).indexOf(campus) >= 0)) {
+                //Check for ministry
+                if (($(this).attr(ministryAttribute) !== undefined) && ($(this).attr(ministryAttribute).search(ministry) >= 0)) {
+                    //Check for keyword
+                    var groupField = $(this).find(linkClass).html();
+
+                    if (formatStringForComparison(groupField).indexOf(keyword) >= 0) {
+                        $(this).show();
+                    }
+                    else {
+                        $(this).hide();
+                    }
+                }
+                else {
+                    $(this).hide();
+                }
+            }
+            else {
+                $(this).hide();
+            }
+        });
+
+        //Check for no visible rows
+        if ($(table + " > tbody tr:visible").length <= 0) {
+            showNoResultsRow({ keyword: keyword, campus: campus });
+        }
+        else {
+            //Clean up No Results Rows
+            $(table + " > tbody tr.no-results").remove();
+        }
+
+        //Companion Functions
+        function formatStringForComparison(str) {
+            return str.replace(/[^\w\s]/, "").toLowerCase();
+        }
+
+        function showNoResultsRow(options) {
+            var defaults = {
+                keyword: undefined,
+                campus: undefined
+            };
+
+            options = $.extend({}, defaults, options);
+
+            var html = "Sorry, no groups ";
+            
+            if (ministry !== "") {
+                html += "for <i>" + ministry + "</i> ";
+            }
+            
+            html += "were found";
+
+            if (keyword !== "") {
+                html += " with the word <i>" + keyword + "</i>";
+            }
+
+            if (campus !== "") {
+                html += " for " + campus.replace("-", " ") + " Campus.";
+            }
+            else {
+                html += ".";
+            }
+
+            var tr = $("<tr></tr>").addClass("no-results");
+            var td = $("<td></td>").addClass("accent").attr("colspan", "4").html(html);
+
+            $(tr).append(td);
+            $(table + " > tbody").append(tr);
+        }
+    }
+</script>

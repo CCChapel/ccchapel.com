@@ -2,14 +2,14 @@
 
 @model Sermon
 
---><div class="[ cross-sell__item cross-sell--@Model.NodeAlias ] [ grid__item one-third lap--one-half palm--one-whole ]">
-    <input id="embedHtml--@Model.NodeAlias" type="hidden" value="@Model.EmbedHtml" />
+--><div class="[ cross-sell__item ] [ grid__item one-third lap--one-half palm--one-whole ]">
+    <input id="embedHtml--@Model.NodeGUID" type="hidden" value="@Model.EmbedHtml" />
 
-    <a href="@Url.RouteUrl(Model.RouteValues)">
-        <div class="[ cross-sell__image @Model.MessageSeries.Background.Fields.ImagePositioning ] [ one-whole ]"
-                style="background-image: url(@Url.Kentico().Attachment(Model.MessageSeries.Background.Fields.ImageFile))">
+    <a href="@Url.RouteUrl(Model.RouteValues)" class="cross-sell--@Model.NodeGUID" @{ if (Model.HasVideo) { <text>data-isVideo="true"</text>} }>
+        <div class="[ cross-sell__image @Model.MessageSeries.Background.Fields.ImagePositioning ] [ one-whole ] [ @Model.MessageSeries.Background.Fields.ImageTextColor ]"
+            style="background-image: url(@Url.Kentico().Attachment(Model.MessageSeries.Background.Fields.ImageFile))">
             @{
-                if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
+                if (Model.HasVideo)
                 {
                     <div class="center-vertically">
                         <span class="fa-stack fa-lg">
@@ -20,7 +20,9 @@
                 }
             }
         </div>
+    </a>
 
+    <a href="@Url.RouteUrl(Model.RouteValues)">
         <div class="cross-sell__name [ one-whole ]">
             @ViewData["crossSellTitle"]
         </div>
@@ -30,14 +32,13 @@
         </div>
     </a>
 
-
     <script>
         $(document).ready(function () {
             //Play Video Click
-            $(".cross-sell--@Model.NodeAlias").click(function (e) {
+            $(".cross-sell--@Model.NodeGUID" + "[data-isVideo='true']").click(function (e) {
                 e.preventDefault();
 
-                var html = $("#embedHtml--@Model.NodeAlias").val();
+                var html = $("#embedHtml--@Model.NodeGUID").val();
 
                 CCChapel.showVideo({
                     videoMarkup: html
