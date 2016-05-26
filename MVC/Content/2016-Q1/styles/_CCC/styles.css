@@ -1812,6 +1812,7 @@ body {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+    word-wrap: break-word;
     margin: 0 0 24px 0; }
     .header-image__title .img-size--vertical {
       max-height: 66vh; }
@@ -2868,9 +2869,7 @@ blockquote {
     .fsSubmit input.fsSubmitButton + .cta, .fsPagination .cta + .fsPreviousButton, .fsPagination .fsPreviousButton + .fsPreviousButton, .fsPagination .fsNextButton + .fsPreviousButton,
     .fsSubmit .fsPagination input.fsSubmitButton + .fsPreviousButton, .fsPagination
     .fsSubmit input.fsSubmitButton + .fsPreviousButton,
-    .fsPagination .cta + .fsNextButton,
-    .fsPagination .fsPreviousButton + .fsNextButton,
-    .fsPagination .fsNextButton + .fsNextButton,
+    .fsPagination .cta + .fsNextButton, .fsPagination .fsPreviousButton + .fsNextButton, .fsPagination .fsNextButton + .fsNextButton,
     .fsSubmit
     .fsPagination input.fsSubmitButton + .fsNextButton,
     .fsPagination
@@ -2881,8 +2880,7 @@ blockquote {
     .fsPagination
     .fsSubmit .fsNextButton + input.fsSubmitButton,
     .fsSubmit
-    .fsPagination .fsNextButton + input.fsSubmitButton,
-    .fsSubmit input.fsSubmitButton + input.fsSubmitButton,
+    .fsPagination .fsNextButton + input.fsSubmitButton, .fsSubmit input.fsSubmitButton + input.fsSubmitButton,
     .cta + input[type="submit"], .fsPagination .fsPreviousButton + input[type="submit"],
     .fsPagination .fsNextButton + input[type="submit"],
     .fsSubmit input.fsSubmitButton + input[type="submit"] {
@@ -2893,9 +2891,7 @@ blockquote {
     .fsSubmit input.fsSubmitButton + .cta, .fsPagination .cta + .fsPreviousButton, .fsPagination .fsPreviousButton + .fsPreviousButton, .fsPagination .fsNextButton + .fsPreviousButton,
     .fsSubmit .fsPagination input.fsSubmitButton + .fsPreviousButton, .fsPagination
     .fsSubmit input.fsSubmitButton + .fsPreviousButton,
-    .fsPagination .cta + .fsNextButton,
-    .fsPagination .fsPreviousButton + .fsNextButton,
-    .fsPagination .fsNextButton + .fsNextButton,
+    .fsPagination .cta + .fsNextButton, .fsPagination .fsPreviousButton + .fsNextButton, .fsPagination .fsNextButton + .fsNextButton,
     .fsSubmit
     .fsPagination input.fsSubmitButton + .fsNextButton,
     .fsPagination
@@ -2906,8 +2902,7 @@ blockquote {
     .fsPagination
     .fsSubmit .fsNextButton + input.fsSubmitButton,
     .fsSubmit
-    .fsPagination .fsNextButton + input.fsSubmitButton,
-    .fsSubmit input.fsSubmitButton + input.fsSubmitButton,
+    .fsPagination .fsNextButton + input.fsSubmitButton, .fsSubmit input.fsSubmitButton + input.fsSubmitButton,
     .cta + input[type="submit"], .fsPagination .fsPreviousButton + input[type="submit"],
     .fsPagination .fsNextButton + input[type="submit"],
     .fsSubmit input.fsSubmitButton + input[type="submit"] {
