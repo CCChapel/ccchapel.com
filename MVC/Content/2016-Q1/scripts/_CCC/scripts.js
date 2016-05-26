@@ -438,6 +438,9 @@
             //Mobile Campus List
             CampusSelect.setup();
 
+            //Desktop Sticky Menu
+            DesktopStickyMenu.setup();
+
             //Mobile Menu
             MobileMenu.setup();
 
