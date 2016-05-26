@@ -45,9 +45,9 @@
                      --><li>@Model.MessageSeries.SeriesTitle</li>
                     </ul>
                 </div>
-            </div><!-- /header-detaisl__left --><!--
+            </div><!-- /header-details__left --><!--
 
-         --><div class="header-details__right [ grid__item one-third lap--one-half palm--hide ]">
+         --><div class="header-details__right [ grid__item one-third lap--one-half mobile--hide ]">
                 <div class="header-details__buttons">
                     @{
                         //Audio Download
@@ -65,7 +65,18 @@
                         }
                     }
                 </div> <!-- /header-details__button -->
-            </div> <!-- /header-details__right -->
+            </div><!--
+                      
+         -->@{
+                 if (string.IsNullOrWhiteSpace(Model.DownloadUrlVideo) && !string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
+                 {
+                    <div class="header-details__right add-bottom-margin [ grid__item desktop--hide palm--one-whole ]">
+                        <div class="header-details__buttons">
+                            <a class="cta" href="@Model.DownloadUrlAudio" download><i class="fa fa-play"></i>&nbsp;&nbsp;Audio</a>
+                        </div>
+                    </div>
+                 }
+            }<!-- /header-details__right -->
                         
             <div class="[ grid__item two-thirds palm--one-whole ] add-bottom-margin">
                 <div class="header-details__copy">
