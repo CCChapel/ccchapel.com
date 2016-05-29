@@ -663,6 +663,7 @@
     <Compile Include="Controllers\MVC\NotificationController.cs" />
     <Compile Include="Controllers\MVC\PageController.cs" />
     <Compile Include="Controllers\MVC\PageSectionController.cs" />
+    <Compile Include="Controllers\MVC\RobotsController.cs" />
     <Compile Include="Controllers\MVC\SearchController.cs" />
     <Compile Include="Controllers\MVC\StaffTeamController.cs" />
     <Compile Include="Controllers\WebAPI\DownloadVideoController.cs" />
@@ -833,6 +834,7 @@
     <Content Include="Views\GroupFinder\Index.cshtml" />
     <Content Include="Views\GroupFinder\_PublicGroupTable.cshtml" />
     <Content Include="Views\Event\_RegistrationButton.cshtml" />
+    <Content Include="Views\Robots\Robots.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
