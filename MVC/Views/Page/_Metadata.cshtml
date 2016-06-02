@@ -1,10 +1,6 @@
 ﻿@using CCC.Helpers
 @model CMS.DocumentEngine.Types.Page
-@{
-    //var file = Model.Video.files.Where(f => f.quality == "hd" && f.type == "video/mp4").FirstOrDefault();
 
-    //string appDeepLink = "http://ccchapel.com/Feeds/App/Sermons/Sermon-Detail/?sermonid=479";
-}
 <!-- Facebook Metadata-->
 <meta property="og:url" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Model.PageUrl))" />
 <meta property="og:type" content="article" />

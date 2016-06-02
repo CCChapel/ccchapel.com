@@ -36,8 +36,8 @@ namespace CMS.DocumentEngine.Types
             get
             {
                 var links = (from l in DocumentHelper.GetDocuments().Published()
-                            where l.ClassName.StartsWith("image")
-                            select l);
+                             where l.NodeGUID == new Guid(SocialImage)
+                             select l);
 
                 if (links.Any())
                 {

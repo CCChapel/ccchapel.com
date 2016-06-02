@@ -6,7 +6,7 @@
 <meta property="og:url" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Model.RouteUrl))" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="@ViewBag.PageTitle" />
-<meta property="og:description" content="@Model.CcbEventData.Description" />
+<meta property="og:description" content="@DocumentHelpers.RemoveExcessWhiteSpace(DocumentHelpers.RemoveHtmlTags(Model.CcbEventData.Description))" />
 <meta property="og:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(Model.GraphicAttachment)))" />
 <meta property="og:site_name" content="Christ Community Chapel">
 <meta property="fb:admins" content="23307166" />
