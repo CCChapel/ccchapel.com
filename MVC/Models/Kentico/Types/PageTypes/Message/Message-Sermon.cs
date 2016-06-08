@@ -182,6 +182,23 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
+        /// Transcript.
+        /// </summary>
+        [DatabaseField]
+        public Guid MessageTranscript
+        {
+            get
+            {
+                return ValidationHelper.GetGuid(GetValue("MessageTranscript"), Guid.Empty);
+            }
+            set
+            {
+                SetValue("MessageTranscript", value);
+            }
+        }
+
+
+        /// <summary>
         /// Gets an object that provides extended API for working with Sermon fields.
         /// </summary>
         public SermonFields Fields
@@ -350,6 +367,18 @@ namespace CMS.DocumentEngine.Types
                 get
                 {
                     return mInstance.GetRelatedDocuments("MessageMedia");
+                }
+            }
+
+
+            /// <summary>
+            /// Transcript.
+            /// </summary>
+            public Attachment MessageTranscript
+            {
+                get
+                {
+                    return mInstance.GetFieldAttachment("MessageTranscript");
                 }
             }
 

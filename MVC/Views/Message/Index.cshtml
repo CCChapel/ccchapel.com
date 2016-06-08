@@ -48,23 +48,38 @@
             </div><!-- /header-details__left --><!--
 
          --><div class="header-details__right [ grid__item one-third lap--one-half palm--hide mobile--hide ]">
-                <div class="header-details__buttons">
-                    @{
-                        //Audio Download
-                        if (!string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
-                        {
-                            <a class="cta" href="@Model.DownloadUrlAudio" download><i class="fa fa-download"></i>&nbsp;&nbsp;Audio</a>
+                <div class="flex-section one-whole center-vertically">
+                        <div>Download: </div>
+                        @{
+                            //Audio Download
+                            if (!string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
+                            {
+                                <div>
+                                    <a href="@Model.DownloadUrlAudio" title="Download Audio" download><i class="fa fa-2x fa-file-audio-o"></i></a>
+                                </div>
+                            }
                         }
-                    }
 
-                    @{
-                        //Video Download
-                        if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
-                        {
-                            <a class="cta" href="@Model.DownloadUrlVideo" download><i class="fa fa-download"></i>&nbsp;&nbsp;Video</a>
+                        @{
+                            //Video Download
+                            if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
+                            {
+                                <div>
+                                    <a href="@Model.DownloadUrlVideo" title="Download Video" download><i class="fa fa-2x fa-file-video-o"></i></a>
+                                </div>
+                            }
                         }
-                    }
-                </div> <!-- /header-details__button -->
+
+                        @{
+                            //Transcript Download
+                            if (Model.MessageTranscript != default(Guid))
+                            {
+                                <div>
+                                    <a href="@Url.Kentico().Attachment(Model.Fields.MessageTranscript)" title="Download Transcript" download><i class="fa fa-2x fa-file-text-o "></i></a>
+                                </div>
+                            }
+                        }
+                    </div> <!-- /header-details__button -->
             </div><!--
                       
          -->@{

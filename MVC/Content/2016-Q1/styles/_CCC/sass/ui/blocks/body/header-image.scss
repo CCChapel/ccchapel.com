@@ -169,18 +169,5 @@
         @include grid-media-query("palm") {
             text-align: center;
         }
-
-        //        & > a:not(:last-child) {
-        //            margin-right: $magic-number;
-        //        }
-    }
-
-    &__buttons {
-        @include flexbox;
-        @include justify-content(space-between);
-
-        .cta {
-            @include flex-grow(1);
-        }
     }
 }

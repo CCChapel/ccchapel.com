@@ -1882,27 +1882,6 @@ body {
     @media only screen and (max-width: 480px) {
       .header-details__right {
         text-align: center; } }
-  .header-details__buttons {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    justify-content: space-between; }
-    .header-details__buttons .cta, .header-details__buttons .fsPagination .fsPreviousButton, .fsPagination .header-details__buttons .fsPreviousButton, .header-details__buttons
-    .fsPagination .fsNextButton,
-    .fsPagination .header-details__buttons .fsNextButton, .header-details__buttons
-    .fsSubmit input.fsSubmitButton,
-    .fsSubmit .header-details__buttons input.fsSubmitButton {
-      -webkit-box-flex: 1;
-      -webkit-flex-grow: 1;
-      -moz-flex-grow: 1;
-      -ms-flex-positive: 1;
-      flex-grow: 1; }
 
 .dividing-line--left {
   border-left: 2px solid #CCC;
