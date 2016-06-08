@@ -828,7 +828,7 @@
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\blocks\search-results.scss" />
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\blockquote.scss" />
     <Content Include="Views\StaffTeam\_GridItem.cshtml" />
-    <Content Include="Views\StaffTeam\Index.cshtml" />
+    <Content Include="Views\StaffTeam\Teams.cshtml" />
     <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
     <None Include="Properties\PublishProfiles\GoDaddy - MVC.pubxml" />
     <Content Include="Views\GroupFinder\Index.cshtml" />

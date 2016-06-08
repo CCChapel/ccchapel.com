@@ -13,7 +13,7 @@ namespace MVC.Controllers.MVC
     public class StaffTeamController : Controller
     {
         // GET: StaffTeam
-        public ActionResult Index(string staffTeam)
+        public ActionResult Teams(string staffTeam)
         {
             //Load Campus Leadership Team By Default
             if (string.IsNullOrWhiteSpace(staffTeam))

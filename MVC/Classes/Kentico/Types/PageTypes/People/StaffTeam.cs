@@ -38,7 +38,7 @@ namespace CMS.DocumentEngine.Types
                 return new
                 {
                     controller = "StaffTeam",
-                    action = "Index",
+                    action = "Teams",
                     staffTeam = NodeAlias
                 };
             }

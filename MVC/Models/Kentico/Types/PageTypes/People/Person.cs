@@ -114,6 +114,23 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
+        /// Bio.
+        /// </summary>
+        [DatabaseField]
+        public string Bio
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("Bio"), "");
+            }
+            set
+            {
+                SetValue("Bio", value);
+            }
+        }
+
+
+        /// <summary>
         /// Photo.
         /// </summary>
         [DatabaseField]
@@ -126,6 +143,23 @@ namespace CMS.DocumentEngine.Types
             set
             {
                 SetValue("Photo", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Background Photo.
+        /// </summary>
+        [DatabaseField]
+        public Guid BackgroundPhoto
+        {
+            get
+            {
+                return ValidationHelper.GetGuid(GetValue("BackgroundPhoto"), Guid.Empty);
+            }
+            set
+            {
+                SetValue("BackgroundPhoto", value);
             }
         }
 
@@ -245,6 +279,22 @@ namespace CMS.DocumentEngine.Types
 
 
             /// <summary>
+            /// Bio.
+            /// </summary>
+            public string Bio
+            {
+                get
+                {
+                    return mInstance.Bio;
+                }
+                set
+                {
+                    mInstance.Bio = value;
+                }
+            }
+
+
+            /// <summary>
             /// Photo.
             /// </summary>
             public Attachment Photo
@@ -252,6 +302,18 @@ namespace CMS.DocumentEngine.Types
                 get
                 {
                     return mInstance.GetFieldAttachment("Photo");
+                }
+            }
+
+
+            /// <summary>
+            /// Background Photo.
+            /// </summary>
+            public Attachment BackgroundPhoto
+            {
+                get
+                {
+                    return mInstance.GetFieldAttachment("BackgroundPhoto");
                 }
             }
 
