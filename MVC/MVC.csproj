@@ -835,6 +835,7 @@
     <Content Include="Views\GroupFinder\_PublicGroupTable.cshtml" />
     <Content Include="Views\Event\_RegistrationButton.cshtml" />
     <Content Include="Views\Robots\Robots.cshtml" />
+    <Content Include="Views\StaffTeam\Person.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

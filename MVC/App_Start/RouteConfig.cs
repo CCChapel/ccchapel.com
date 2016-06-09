@@ -38,8 +38,8 @@ namespace MVC
             //Staff
             routes.MapRoute(
                 name: "StaffTeam",
-                url: "staff/{action}/{staffTeam}",
-                defaults: new { controller = "StaffTeam", action = "Teams", staffTeam = UrlParameter.Optional }
+                url: "staff/{action}/{name}",
+                defaults: new { controller = "StaffTeam", action = "Teams", name = UrlParameter.Optional }
             );
 
             //Jobs

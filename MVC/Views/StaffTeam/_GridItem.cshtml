@@ -4,18 +4,20 @@
 
 
 --><div class="add-bottom-margin [ grid__item one-quarter lap--one-half palm--one-whole ]">
-    <div class="profile-photo">
-        @{
-            if (!(Guid.Empty == Model.Person.Photo))
-            {
-                <img class="img-cover" alt="" src="@Url.Kentico().Attachment(Model.Person.Fields.Photo)" />
+    <a href="@Model.Person.RouteUrl">
+        <div class="profile-photo">
+            @{
+                if (!(Guid.Empty == Model.Person.Photo))
+                {
+                    <img class="img-cover" alt="" src="@Url.Kentico().Attachment(Model.Person.Fields.Photo)" />
+                }
             }
-        }
-    </div>
+        </div>
+    </a>
     <div class="justify-content">
         <div>
             <div class="section-subtitle left-justify no-bottom-margin">
-                @Model.Person.FullName
+                <a href="@Model.Person.RouteUrl">@Model.Person.FullName</a>
             </div>
             <div>
                 @Model.Title

@@ -1,0 +1,115 @@
+﻿@using CMS.DocumentEngine.Types
+
+@model Person
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = Model.FullName;
+
+    string backgroundUrl = "";
+    string sectionType = "transparent";
+
+    if (Guid.Empty != Model.BackgroundPhoto)
+    {
+        backgroundUrl = Url.Kentico().Attachment(Model.Fields.BackgroundPhoto);
+        sectionType = "image header-image auto light";
+    }
+}
+
+<div class="header-image [ content-section @sectionType ] [ center-vertically ] [ grid__item one-whole ] [ bg--center-center ]" 
+     style="background-image: url('@backgroundUrl');">
+
+    <div class="content-wrapper">
+        <div class="header-image__content">
+            <div class="header-image__title">@Model.FullName</div>
+
+            <div class="header-image__copy">
+                <p>
+                    <ul class="horizontal-list">
+                        @{
+                            foreach (string title in Model.Titles)
+                            {
+                                <li>@title</li>
+                            }
+                        }
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="header-image__title"></div>
+        <div class="header-image__copy"></div>
+    </div>
+</div>
+
+<div class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="grid">
+            <div class="grid__item one-third portable--one-whole">
+                <div class="profile-photo add-bottom-margin">
+                    @{
+                        if (!(Guid.Empty == Model.Photo))
+                        {
+                            <img class="img-cover" alt="" src="@Url.Kentico().Attachment(Model.Fields.Photo)" />
+                        }
+                    }
+                </div>
+
+                <div class="flex-section one-whole center">
+                    @{
+                        //Facebook
+                        if (!string.IsNullOrWhiteSpace(Model.FacebookUsername))
+                        {
+                            <div class="one-quarter">
+                                <a class="facebook-icon" href="https://facebook.com/@Model.FacebookUsername"><!--
+                                 --><i class="fa fa-facebook fa-2x"></i><!--
+                             --></a>
+                            </div>
+                        }
+                    }
+
+                    @{
+                        //Twitter
+                        if (!string.IsNullOrWhiteSpace(Model.TwitterUsername))
+                        {
+                            <div class="one-quarter">
+                                <a class="twitter-icon" href="https://twitter.com/@Model.TwitterUsername"><!--
+                                 --><i class="fa fa-twitter fa-2x"></i><!--
+                             --></a>
+                            </div>
+                        }
+                    }
+
+                    @{
+                        //Instagram
+                        if (!string.IsNullOrWhiteSpace(Model.InstagramUsername))
+                        {
+                            <div class="one-quarter">
+                                <a class="instagram-icon" href="https://twitter.com/@Model.InstagramUsername"><!--
+                                 --><i class="fa fa-instagram fa-2x"></i><!--
+                             --></a>
+                            </div>
+                        }
+                    }
+
+                    @{
+                        //Email
+                        if (!string.IsNullOrWhiteSpace(Model.Email))
+                        {
+                            <div class="one-quarter">
+                                <a class="email-icon" href="mailto:@Model.Email"><!--
+                                 --><i class="fa fa-envelope fa-2x"></i><!--
+                             --></a>
+                            </div>
+                        }
+                    }
+                </div>
+            </div><!--
+
+         --><div class="grid__item two-thirds portable--one-whole">
+                @Html.Raw(Model.Fields.Bio)
+            </div>
+        </div>
+    </div>
+</div>
+

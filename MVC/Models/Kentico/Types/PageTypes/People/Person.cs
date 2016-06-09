@@ -97,23 +97,6 @@ namespace CMS.DocumentEngine.Types
 
 
         /// <summary>
-        /// Email.
-        /// </summary>
-        [DatabaseField]
-        public string Email
-        {
-            get
-            {
-                return ValidationHelper.GetString(GetValue("Email"), "");
-            }
-            set
-            {
-                SetValue("Email", value);
-            }
-        }
-
-
-        /// <summary>
         /// Bio.
         /// </summary>
         [DatabaseField]
@@ -126,6 +109,74 @@ namespace CMS.DocumentEngine.Types
             set
             {
                 SetValue("Bio", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Facebook Username.
+        /// </summary>
+        [DatabaseField]
+        public string FacebookUsername
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("FacebookUsername"), "");
+            }
+            set
+            {
+                SetValue("FacebookUsername", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Twitter Username.
+        /// </summary>
+        [DatabaseField]
+        public string TwitterUsername
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("TwitterUsername"), "");
+            }
+            set
+            {
+                SetValue("TwitterUsername", value);
+            }
+        }
+
+
+        /// <summary>
+        /// InstagramUsername.
+        /// </summary>
+        [DatabaseField]
+        public string InstagramUsername
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("InstagramUsername"), "");
+            }
+            set
+            {
+                SetValue("InstagramUsername", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Email.
+        /// </summary>
+        [DatabaseField]
+        public string Email
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("Email"), "");
+            }
+            set
+            {
+                SetValue("Email", value);
             }
         }
 
@@ -263,22 +314,6 @@ namespace CMS.DocumentEngine.Types
 
 
             /// <summary>
-            /// Email.
-            /// </summary>
-            public string Email
-            {
-                get
-                {
-                    return mInstance.Email;
-                }
-                set
-                {
-                    mInstance.Email = value;
-                }
-            }
-
-
-            /// <summary>
             /// Bio.
             /// </summary>
             public string Bio
@@ -290,6 +325,70 @@ namespace CMS.DocumentEngine.Types
                 set
                 {
                     mInstance.Bio = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Facebook Username.
+            /// </summary>
+            public string FacebookUsername
+            {
+                get
+                {
+                    return mInstance.FacebookUsername;
+                }
+                set
+                {
+                    mInstance.FacebookUsername = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Twitter Username.
+            /// </summary>
+            public string TwitterUsername
+            {
+                get
+                {
+                    return mInstance.TwitterUsername;
+                }
+                set
+                {
+                    mInstance.TwitterUsername = value;
+                }
+            }
+
+
+            /// <summary>
+            /// InstagramUsername.
+            /// </summary>
+            public string InstagramUsername
+            {
+                get
+                {
+                    return mInstance.InstagramUsername;
+                }
+                set
+                {
+                    mInstance.InstagramUsername = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Email.
+            /// </summary>
+            public string Email
+            {
+                get
+                {
+                    return mInstance.Email;
+                }
+                set
+                {
+                    mInstance.Email = value;
                 }
             }
 

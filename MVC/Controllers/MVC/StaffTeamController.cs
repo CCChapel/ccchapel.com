@@ -13,39 +13,61 @@ namespace MVC.Controllers.MVC
     public class StaffTeamController : Controller
     {
         // GET: StaffTeam
-        public ActionResult Teams(string staffTeam)
+        public ActionResult Teams(string name)
         {
             //Load Campus Leadership Team By Default
-            if (string.IsNullOrWhiteSpace(staffTeam))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 switch (MiscellaneousHelpers.CurrentCampusName)
                 {
                     case "Hudson":
-                        staffTeam = "hudson-campus-leadership";
+                        name = "hudson-campus-leadership";
                         break;
                     case "Aurora":
-                        staffTeam = "aurora-campus-leadership";
+                        name = "aurora-campus-leadership";
                         break;
                     case "Stow":
-                        staffTeam = "stow-campus-leadership";
+                        name = "stow-campus-leadership";
                         break;
                     case "Highland Square":
-                        staffTeam = "highland-square-campus-leadership";
+                        name = "highland-square-campus-leadership";
                         break;
                     default:
-                        staffTeam = "hudson-campus-leadership";
+                        name = "hudson-campus-leadership";
                         break;
                 }
             }
 
             //Get Staff Team
             var team = (from t in StaffTeamProvider.GetStaffTeams().Published()
-                        where t.NodeAlias.ToLower() == staffTeam.ToLower()
+                        where t.NodeAlias.ToLower() == name.ToLower()
                         select t);
 
             if (team.Any())
             {
                 return View(team.First());
+            }
+            else
+            {
+                throw new HttpException(404, "Page Not Found");
+            }
+        }
+
+        public ActionResult People(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                //If no name is specified, redirect to teams page
+                RedirectToAction("Teams");
+            }
+
+            var person = (from p in PersonProvider.GetPeople().Published()
+                            where p.NodeAlias.ToLower() == name.ToLower()
+                            select p);
+
+            if (person.Any())
+            {
+                return View("Person", person.First());
             }
             else
             {

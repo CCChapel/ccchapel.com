@@ -39,7 +39,7 @@ namespace CMS.DocumentEngine.Types
                 {
                     controller = "StaffTeam",
                     action = "Teams",
-                    staffTeam = NodeAlias
+                    name = NodeAlias
                 };
             }
         }
