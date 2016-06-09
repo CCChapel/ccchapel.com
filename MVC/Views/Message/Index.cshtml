@@ -55,7 +55,12 @@
                             if (!string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
                             {
                                 <div>
-                                    <a href="@Model.DownloadUrlAudio" title="Download Audio" download><i class="fa fa-2x fa-file-audio-o"></i></a>
+                                    <a class="red" href="@Model.DownloadUrlAudio" title="Download Audio" download>
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-volume-up fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
                                 </div>
                             }
                         }
@@ -65,7 +70,12 @@
                             if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
                             {
                                 <div>
-                                    <a href="@Model.DownloadUrlVideo" title="Download Video" download><i class="fa fa-2x fa-file-video-o"></i></a>
+                                    <a class="red" href="@Model.DownloadUrlVideo" title="Download Video" download>
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
                                 </div>
                             }
                         }
@@ -75,7 +85,12 @@
                             if (Model.MessageTranscript != default(Guid))
                             {
                                 <div>
-                                    <a href="@Url.Kentico().Attachment(Model.Fields.MessageTranscript)" title="Download Transcript" download><i class="fa fa-2x fa-file-text-o "></i></a>
+                                    <a class="red" href="@Url.Kentico().Attachment(Model.Fields.MessageTranscript)" title="Download Transcript" download>
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
                                 </div>
                             }
                         }

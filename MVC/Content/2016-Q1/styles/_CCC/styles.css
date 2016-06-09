@@ -2588,6 +2588,10 @@ a {
     color: #FFF; }
     a.white:hover {
       color: #185e94; }
+  a.red {
+    color: #ca3737; }
+    a.red:hover {
+      color: #b82b2b; }
   a.hvr-underline:hover {
     color: currentColor;
     text-decoration: underline; }

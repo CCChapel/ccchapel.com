@@ -156,6 +156,14 @@ a {
             color: $blue;
         }
     }
+
+    &.red {
+        color: $red;
+
+        &:hover {
+            color: $dark-red;
+        }
+    }
     
     &.hvr-underline {
         &:hover {
