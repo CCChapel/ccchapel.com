@@ -636,6 +636,7 @@
     <Compile Include="Classes\Kentico\Types\PageTypes\Notifications\Notification.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Page\Page-ContentSection.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Page\Page-CrossSellSection.cs" />
+    <Compile Include="Classes\Kentico\Types\PageTypes\Page\Page-ExternalLink.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Page\Page-ImageSection.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Page\Page.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\People\Person.cs" />
@@ -654,6 +655,7 @@
     <Compile Include="Classes\_CCC\Helpers\VimeoHelpers.cs" />
     <Compile Include="Controllers\MVC\EventController.cs" />
     <Compile Include="Controllers\MVC\EventsController.cs" />
+    <Compile Include="Controllers\MVC\ExternalLinkController.cs" />
     <Compile Include="Controllers\MVC\GroupFinderController.cs" />
     <Compile Include="Controllers\MVC\HttpErrorsController.cs" />
     <Compile Include="Controllers\MVC\JobsController.cs" />
@@ -707,6 +709,7 @@
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Page-ContentSection.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Page-CrossSellItem.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Page-CrossSellSection.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\Page\Page-ExternalLink.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Page-ImageSection.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Page.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Image\Providers\Image-Background.cs" />
@@ -715,6 +718,7 @@
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page-ContentSection.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page-CrossSellItem.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page-CrossSellSection.cs" />
+    <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page-ExternalLink.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page-ImageSection.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\Page\Providers\Page.cs" />
     <Compile Include="Models\Kentico\Types\PageTypes\People\Person.cs" />
@@ -846,6 +850,7 @@
   <ItemGroup>
     <Folder Include="Classes\Vimeo\" />
     <Folder Include="Content\2016-Q1\images\" />
+    <Folder Include="Views\ExternalLink\" />
     <Folder Include="Views\Podcast\" />
   </ItemGroup>
   <ItemGroup>

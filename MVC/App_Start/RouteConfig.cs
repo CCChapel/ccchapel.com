@@ -22,10 +22,18 @@ namespace MVC
             // Maps routes to Kentico HTTP handlers first as some Kentico URLs be matched by the default ASP.NET MVC route, resulting in displaying pages without images.
             routes.Kentico().MapRoutes();
 
+            //Robots.txt
             routes.MapRoute(
                 "Robots.txt",
                 "robots.txt",
                 new { controller = "Robots", action = "Index" }
+            );
+
+            //External Links
+            routes.MapRoute(
+                name: "ExternalLinks",
+                url: "link",
+                defaults: new { controller = "ExternalLink", action = "Index" }
             );
 
             //Group Finder

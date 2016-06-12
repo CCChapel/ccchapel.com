@@ -282,6 +282,9 @@ namespace CCC.Models
                 case Series.CLASS_NAME:
                     return SeriesProvider.GetSeries(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
                         .FirstOrDefault().RouteUrl;
+                case ExternalLink.CLASS_NAME:
+                    return ExternalLinkProvider.GetExternalLink(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
                 default:
                     throw new NotImplementedException("Unknown PageType: " + input.PageTypeCodeName);
             }
