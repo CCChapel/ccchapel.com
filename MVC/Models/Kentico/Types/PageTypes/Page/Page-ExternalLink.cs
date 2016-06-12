@@ -10,186 +10,62 @@
 //--------------------------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Data;
 
-using CMS;
-using CMS.Helpers;
+using CMS.Base;
 using CMS.DataEngine;
-using CMS.DocumentEngine.Types;
 using CMS.DocumentEngine;
-
-[assembly: RegisterDocumentType(ExternalLink.CLASS_NAME, typeof(ExternalLink))]
+using CMS.Helpers;
 
 namespace CMS.DocumentEngine.Types
 {
     /// <summary>
-    /// Represents a content item of type ExternalLink.
+    /// Provides methods for retrieving pages of type ExternalLink.
     /// </summary>
-    public partial class ExternalLink : TreeNode
+    public partial class ExternalLinkProvider
     {
-        #region "Constants and variables"
-
         /// <summary>
-        /// The name of the data class.
+        /// Returns a query that selects published pages of type ExternalLink.
         /// </summary>
-        public const string CLASS_NAME = "pages.externalLink";
-
-
-        /// <summary>
-        /// The instance of the class that provides extended API for working with ExternalLink fields.
-        /// </summary>
-        private readonly ExternalLinkFields mFields;
-
-        #endregion
-
-
-        #region "Properties"
-
-        /// <summary>
-        /// ExternalLinkID.
-        /// </summary>
-        [DatabaseIDField]
-        public int ExternalLinkID
+        public static DocumentQuery<ExternalLink> GetExternalLinks()
         {
-            get
-            {
-                return ValidationHelper.GetInteger(GetValue("ExternalLinkID"), 0);
-            }
-            set
-            {
-                SetValue("ExternalLinkID", value);
-            }
+            return DocumentHelper.GetDocuments<ExternalLink>().PublishedVersion().Published();
         }
 
 
         /// <summary>
-        /// URL.
+        /// Returns a published page of type ExternalLink that matches the specified criteria.
         /// </summary>
-        [DatabaseField]
-        public string URL
+        /// <param name="nodeId">The identifier of the content tree node that represents the page.</param>
+        /// <param name="siteName">The name of the site where the page belongs.</param>
+        /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
+        public static DocumentQuery<ExternalLink> GetExternalLink(int nodeId, string cultureName, string siteName)
         {
-            get
-            {
-                return ValidationHelper.GetString(GetValue("URL"), "");
-            }
-            set
-            {
-                SetValue("URL", value);
-            }
+            return GetExternalLinks().OnSite(siteName).Culture(cultureName).WhereEquals("NodeID", nodeId);
         }
 
 
         /// <summary>
-        /// Keywords.
+        /// Returns a published page of type ExternalLink that matches the specified criteria.
         /// </summary>
-        [DatabaseField]
-        public string Keywords
+        /// <param name="nodeGuid">The globally unique identifier of the content tree node that represents the page.</param>
+        /// <param name="siteName">The name of the site where the page belongs.</param>
+        /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
+        public static DocumentQuery<ExternalLink> GetExternalLink(Guid nodeGuid, string cultureName, string siteName)
         {
-            get
-            {
-                return ValidationHelper.GetString(GetValue("Keywords"), "");
-            }
-            set
-            {
-                SetValue("Keywords", value);
-            }
+            return GetExternalLinks().OnSite(siteName).Culture(cultureName).WhereEquals("NodeGUID", nodeGuid);
         }
 
 
         /// <summary>
-        /// Gets an object that provides extended API for working with ExternalLink fields.
+        /// Returns a published page of type ExternalLink that matches the specified criteria.
         /// </summary>
-        public ExternalLinkFields Fields
+        /// <param name="nodeAliasPath">The alias path to the content tree node that represents the page.</param>
+        /// <param name="siteName">The name of the site where the page belongs.</param>
+        /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
+        public static DocumentQuery<ExternalLink> GetExternalLink(string nodeAliasPath, string cultureName, string siteName)
         {
-            get
-            {
-                return mFields;
-            }
+            return GetExternalLinks().OnSite(siteName).Culture(cultureName).Path(nodeAliasPath);
         }
-
-
-        /// <summary>
-        /// Provides extended API for working with ExternalLink fields.
-        /// </summary>
-        public partial class ExternalLinkFields
-        {
-            /// <summary>
-            /// The content item of type ExternalLink that is a target of the extended API.
-            /// </summary>
-            private readonly ExternalLink mInstance;
-
-
-            /// <summary>
-            /// Initializes a new instance of the <see cref="ExternalLinkFields" /> class with the specified content item of type ExternalLink.
-            /// </summary>
-            /// <param name="instance">The content item of type ExternalLink that is a target of the extended API.</param>
-            public ExternalLinkFields(ExternalLink instance)
-            {
-                mInstance = instance;
-            }
-
-
-            /// <summary>
-            /// ExternalLinkID.
-            /// </summary>
-            public int ID
-            {
-                get
-                {
-                    return mInstance.ExternalLinkID;
-                }
-                set
-                {
-                    mInstance.ExternalLinkID = value;
-                }
-            }
-
-
-            /// <summary>
-            /// URL.
-            /// </summary>
-            public string URL
-            {
-                get
-                {
-                    return mInstance.URL;
-                }
-                set
-                {
-                    mInstance.URL = value;
-                }
-            }
-
-
-            /// <summary>
-            /// Keywords.
-            /// </summary>
-            public string Keywords
-            {
-                get
-                {
-                    return mInstance.Keywords;
-                }
-                set
-                {
-                    mInstance.Keywords = value;
-                }
-            }
-        }
-
-        #endregion
-
-
-        #region "Constructors"
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ExternalLink" /> class.
-        /// </summary>
-        public ExternalLink() : base(CLASS_NAME)
-        {
-            mFields = new ExternalLinkFields(this);
-        }
-
-        #endregion
     }
 }
