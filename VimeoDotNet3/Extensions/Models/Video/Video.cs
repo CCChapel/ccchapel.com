@@ -325,7 +325,7 @@ namespace Vimeo.Types
             public string expires { get; set; }
             public string link { get; set; }
             public string created_time { get; set; }
-            public int fps { get; set; }
+            public double fps { get; set; }
             public long size { get; set; }
             public string md5 { get; set; }
         }
@@ -338,7 +338,7 @@ namespace Vimeo.Types
             public int height { get; set; }
             public string link { get; set; }
             public string created_time { get; set; }
-            public int fps { get; set; }
+            public double fps { get; set; }
             public int size { get; set; }
             public string md5 { get; set; }
             public string link_secure { get; set; }
