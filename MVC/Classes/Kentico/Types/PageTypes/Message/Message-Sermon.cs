@@ -211,8 +211,8 @@ namespace CMS.DocumentEngine.Types
         {
             get
             {
-                //try
-                //{
+                try
+                {
                     if (VimeoID > 0)
                     {
 
@@ -238,11 +238,11 @@ namespace CMS.DocumentEngine.Types
                     }
 
                     return new Vimeo.Types.Video();
-                //}
-                //catch
-                //{
-                //    return new Vimeo.Types.Video();
-                //}
+                }
+                catch
+                {
+                    return new Vimeo.Types.Video();
+                }
             }
         }
 
