@@ -103,7 +103,8 @@
                             var err = textStatus + ", " + error;
                             console.log("Request Failed: " + err);
 
-                            displayNoResults();
+                            //displayNoResults();
+                            displayPressEnter();
                         });
                     }
                     else {
@@ -169,6 +170,23 @@
         $(".modal-content").append(html);
     }
 
+    function displayPressEnter() {
+        //Clear out old results
+        CCChapel.clearModalContent();
+
+        var html = $("<div></div>").addClass("search-results");
+        var contentWrapper = $("<div></div>").addClass("content-wrapper");
+
+        var sectionTitle =
+            $("<div></div>")
+                .addClass("section-title font-white")
+                .html("Press Enter");
+        contentWrapper.append(sectionTitle);
+
+        html.append(contentWrapper);
+        $(".modal-content").append(html);
+    }
+
     function displaySearchResults(results) {
         //Clear out old results
         CCChapel.clearModalContent();
@@ -207,7 +225,7 @@
             */
             var links = $("<div></div>").addClass("section-description font-white");
             var linksHtml = 'Didn&rsquo;t find what you were looking for? ' +
-                            'See a full list of <a class="font-white" href="https://communitychapel.ccbchurch.com/w_group_list.php">groups</a> ' +
+                            'See a full list of <a class="font-white" href="/groups">groups</a> ' +
                             'and <a class="font-white" href="/events#all-events">events</a>.';
             
             links.append(linksHtml);

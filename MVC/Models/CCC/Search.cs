@@ -39,16 +39,29 @@ namespace CCC.Models
         #region Constructors
         public SearchResults(string query, int page = 0)
         {
-            int numberOfResults;
+            try
+            {
+                int numberOfResults;
 
-            Items = mService.Search(
-                        query,
-                        page: page,
-                        pageSize: PAGE_SIZE,
-                        numberOfResults: out numberOfResults)
-                    .ProcessResults();
-            Query = query;
-            ItemCount = Items.Count();
+                Items = mService.Search(
+                            query,
+                            page: page,
+                            pageSize: PAGE_SIZE,
+                            numberOfResults: out numberOfResults)
+                        .ProcessResults();
+
+                Query = query;
+
+                if (Items.Any())
+                {
+                    ItemCount = Items.Count();
+                }
+                else
+                {
+                    ItemCount = 0;
+                }
+            }
+            catch { }
         }
 
         public SearchResults() { }
@@ -92,71 +105,79 @@ namespace CCC.Models
         /// <returns></returns>
         public static IEnumerable<SearchResultItem> ProcessResults(this IEnumerable<SearchResultItem> input)
         {
-            //Convert to List
-            var list = input.ToList();
-
-            for (int i = 0; i < list.Count; i++)
+            try
             {
-                //Get Item
-                var item = list[i];
-
-                //Check Item Class
-                if (
-                    (item.PageTypeCodeName == ContentSection.CLASS_NAME) ||
-                    (item.PageTypeCodeName == ImageSection.CLASS_NAME) ||
-                    (item.PageTypeCodeName == CrossSellSection.CLASS_NAME)
-                   )
+                //Check for any results
+                if (input.Any())
                 {
-                    //Get Parent Page
-                    int parentID = CMS.DocumentEngine.DocumentHelper.GetDocuments(item.PageTypeCodeName).WhereEquals("NodeId", item.NodeId).FirstOrDefault().NodeParentID;
-                    Page parentPage = PageProvider.GetPage(parentID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+                    //Convert to List
+                    var list = input.ToList();
 
-                    //Create new SearchResultItem for Parent
-                    SearchResultItem newItem = new SearchResultItem()
+                    for (int i = 0; i < list.Count; i++)
                     {
-                        Title = parentPage.Fields.Name,
-                        Content = item.Content,
-                        Date = item.Date,
-                        NodeId = parentID,
-                        PageTypeCodeName = parentPage.NodeClassName,
-                        PageTypeDispayName = parentPage.ClassName,
-                        ImageAttachment = item.ImageAttachment
-                    };
+                        //Get Item
+                        var item = list[i];
 
-                    //Remove original item and replace with new item
-                    list.Remove(item);
-                    list.Insert(i, newItem);
-                }
-                else if (item.PageTypeCodeName == CcbEvent.CLASS_NAME)
-                {
-                    //Get Event
-                    CcbEvent ev = CcbEventProvider.GetCcbEvent(item.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
-
-                    //Check if event is in Cache
-                    if (ev.IsEventDataInCache == true)
-                    {
-                        //Create new SearchResultItem for Parent
-                        SearchResultItem newItem = new SearchResultItem()
+                        //Check Item Class
+                        if (
+                            (item.PageTypeCodeName == ContentSection.CLASS_NAME) ||
+                            (item.PageTypeCodeName == ImageSection.CLASS_NAME) ||
+                            (item.PageTypeCodeName == CrossSellSection.CLASS_NAME)
+                           )
                         {
-                            Title = item.Title,
-                            Content = ev.CcbEventData.Description,
-                            Date = item.Date,
-                            NodeId = item.NodeId,
-                            PageTypeCodeName = item.PageTypeCodeName,
-                            PageTypeDispayName = item.PageTypeDispayName,
-                            ImageAttachment = item.ImageAttachment
-                        };
+                            //Get Parent Page
+                            int parentID = CMS.DocumentEngine.DocumentHelper.GetDocuments(item.PageTypeCodeName).WhereEquals("NodeId", item.NodeId).FirstOrDefault().NodeParentID;
+                            Page parentPage = PageProvider.GetPage(parentID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
 
-                        //Remove original item and replace with new item
-                        list.Remove(item);
-                        list.Insert(i, newItem);
+                            //Create new SearchResultItem for Parent
+                            SearchResultItem newItem = new SearchResultItem()
+                            {
+                                Title = parentPage.Fields.Name,
+                                Content = item.Content,
+                                Date = item.Date,
+                                NodeId = parentID,
+                                PageTypeCodeName = parentPage.NodeClassName,
+                                PageTypeDispayName = parentPage.ClassName,
+                                ImageAttachment = item.ImageAttachment
+                            };
+
+                            //Remove original item and replace with new item
+                            list.Remove(item);
+                            list.Insert(i, newItem);
+                        }
+                        else if (item.PageTypeCodeName == CcbEvent.CLASS_NAME)
+                        {
+                            //Get Event
+                            CcbEvent ev = CcbEventProvider.GetCcbEvent(item.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                            //Check if event is in Cache
+                            if (ev.IsEventDataInCache == true)
+                            {
+                                //Create new SearchResultItem for Parent
+                                SearchResultItem newItem = new SearchResultItem()
+                                {
+                                    Title = item.Title,
+                                    Content = ev.CcbEventData.Description,
+                                    Date = item.Date,
+                                    NodeId = item.NodeId,
+                                    PageTypeCodeName = item.PageTypeCodeName,
+                                    PageTypeDispayName = item.PageTypeDispayName,
+                                    ImageAttachment = item.ImageAttachment
+                                };
+
+                                //Remove original item and replace with new item
+                                list.Remove(item);
+                                list.Insert(i, newItem);
+                            }
+                        }
                     }
+
+                    //Remove duplicates and return list
+                    input = list.GroupBy(g => g.NodeId)
+                                .Select(g => g.First());
                 }
             }
-
-            //Remove duplicates and return list
-            input = list.GroupBy(g => g.NodeId)
-                        .Select(g => g.First());
+            catch { }
 
             return input;
         }
@@ -284,6 +305,9 @@ namespace CCC.Models
                         .FirstOrDefault().RouteUrl;
                 case ExternalLink.CLASS_NAME:
                     return ExternalLinkProvider.GetExternalLink(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
+                        .FirstOrDefault().RouteUrl;
+                case Person.CLASS_NAME:
+                    return PersonProvider.GetPerson(input.NodeId, SiteHelpers.SiteCulture, SiteHelpers.SiteName)
                         .FirstOrDefault().RouteUrl;
                 default:
                     throw new NotImplementedException("Unknown PageType: " + input.PageTypeCodeName);
