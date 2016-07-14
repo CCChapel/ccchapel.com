@@ -51,6 +51,11 @@ namespace API
             var formatter = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
             formatter.SerializerSettings.ContractResolver =
                 new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+
+            ////XmlSerializer enabled 
+            config.Formatters.XmlFormatter.UseXmlSerializer = true;
+            var xmlFormatter = new CCC.Formatters.Xml.NamespacedXmlMediaTypeFormatter();
+            GlobalConfiguration.Configuration.Formatters.Insert(0, xmlFormatter);
         }
     }
 }
