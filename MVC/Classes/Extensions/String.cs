@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -39,6 +40,19 @@ namespace MVC
         public static string ProcessForOutput(this string input)
         {
             return input.ResolveMacros().RemoveWhitespace();
+        }
+
+        /// <summary>
+        /// Removes HTML tags from the string.
+        /// </summary>
+        /// <param name="input">String to remove HTML from</param>
+        /// <returns>Plain text</returns>
+        public static string RemoveHtml(this string input)
+        {
+            input = Regex.Replace(input, @"<[^>]*(>|$)", " ");
+            input = Regex.Replace(input, @"[\r\n]+", string.Empty);
+
+            return input.Trim();
         }
     }
 }
