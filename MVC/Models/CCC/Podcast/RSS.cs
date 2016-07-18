@@ -212,7 +212,7 @@ namespace CCC.Models.Podcast
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("itunes:category", Namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")]
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")]
         public category[] category
         {
             get

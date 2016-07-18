@@ -643,6 +643,7 @@
     <Compile Include="Classes\Kentico\Types\PageTypes\People\StaffTeam.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\People\StaffTeamMember.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Search\QuickAccessKeywords.cs" />
+    <Compile Include="Classes\_CCC\Formatters\Xml\NamespacedXmlMediaTypeFormatter .cs" />
     <Compile Include="Classes\_CCC\Helpers\BrandingHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\CachingHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\ConfigurationHelper.cs" />
@@ -678,11 +679,7 @@
     <Compile Include="Macros\CustomMacroMethods.cs" />
     <Compile Include="Macros\SampleMacroModule.cs" />
     <Compile Include="Models\CCC\EventsPage.cs" />
-    <Compile Include="Models\CCC\Podcast\Feed.cs" />
-    <Compile Include="Models\CCC\Podcast\FeedEmailAddress.cs" />
-    <Compile Include="Models\CCC\Podcast\FeedItem.cs" />
-    <Compile Include="Models\CCC\Podcast\FeedItemEnclosure.cs" />
-    <Compile Include="Models\CCC\Podcast\Test.cs" />
+    <Compile Include="Models\CCC\Podcast\RSS.cs" />
     <Compile Include="Models\CCC\Search.cs" />
     <Compile Include="Models\Kentico\Types\CustomTables\CampusesItem.cs" />
     <Compile Include="Models\Kentico\Types\CustomTables\CCB\GroupsItem.cs" />
