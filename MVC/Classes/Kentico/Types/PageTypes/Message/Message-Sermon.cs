@@ -365,22 +365,22 @@ namespace CMS.DocumentEngine.Types
             }
         }
         
-        public CCC.Models.Podcast.FeedItem ToVideoFeedItem()
-        {
-            return new CCC.Models.Podcast.FeedItem(MessageTitle, RouteUrl)
-            {
-                Description = MessageDescription,
-                PublishDate = MessageDate,
-                Author = new CCC.Models.Podcast.FeedEmailAddress(
-                    //MessageSpeaker.Email ?? "info@ccchapel.com",
-                    "info@ccchapel.com",
-                    MessageSpeaker.FullName),
-                Enclosure = new CCC.Models.Podcast.FeedItemEnclosure(
-                    DownloadUrlVideo,
-                    "video/mp4",
-                    Video.duration)
-            };
-        }
+        //public CCC.Models.Podcast.FeedItem ToVideoFeedItem()
+        //{
+        //    return new CCC.Models.Podcast.FeedItem(MessageTitle, RouteUrl)
+        //    {
+        //        Description = MessageDescription,
+        //        PublishDate = MessageDate,
+        //        Author = new CCC.Models.Podcast.FeedEmailAddress(
+        //            //MessageSpeaker.Email ?? "info@ccchapel.com",
+        //            "info@ccchapel.com",
+        //            MessageSpeaker.FullName),
+        //        Enclosure = new CCC.Models.Podcast.FeedItemEnclosure(
+        //            DownloadUrlVideo,
+        //            "video/mp4",
+        //            Video.duration)
+        //    };
+        //}
         #endregion
     }
 }
