@@ -26,8 +26,8 @@ namespace MVC.Controllers.WebAPI
             {
                 title = string.Format("Christ Community Chapel ({0})", media.ToLower()),
                 subtitle = "",
-                description = "Welcome to the weekly podcast of Christ Community Chapel. Here you will find our Sunday morning sermons for the past ten weeks. For more sermons, please visit our website.",
-                summary = "Welcome to the weekly podcast of Christ Community Chapel. Here you will find our Sunday morning sermons for the past ten weeks. For more sermons, please visit our website.",
+                description = "There’s more to God than a religious experience. It’s about connecting with him, not just going through the motions. Check out our most recent weekly messages here. If you like what you hear and want more, visit our website. In addition to more messages, there’s a bunch of info about who we are, visiting our church, getting plugged in.",
+                summary = "There’s more to God than a religious experience. It’s about connecting with him, not just going through the motions. Check out our most recent weekly messages here. If you like what you hear and want more, visit our website. In addition to more messages, there’s a bunch of info about who we are, visiting our church, getting plugged in.",
                 author = "Christ Community Chapel",
                 language = "en-us",
                 copyright = string.Format("&#xA9; {0} Christ Community Chapel", DateTime.Now.Year),
