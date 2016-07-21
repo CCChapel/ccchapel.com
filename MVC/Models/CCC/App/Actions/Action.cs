@@ -25,10 +25,20 @@ namespace CCC.Models.App.Actions
             Content
         };
 
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum Handlers
+        {
+            [EnumMember(Value = "list")]
+            List,
+
+            [EnumMember(Value = "mediaDetail")]
+            MediaDetial
+        };
+
         /// <summary>
         /// The name of the Handler invoked by this action. Any handler name is syntactically valid, though all handlers may not be supported in all contexts. Common values include list and mediaDetail.
         /// </summary>
-        public string Handler { get; set; }
+        public Handlers Handler { get; set; }
 
         ///// <summary>
         ///// Legacy value valid only on iOS. When this value is TRUE the provided handler in a smaller popover window on tablet devices.

@@ -682,12 +682,15 @@
     <Compile Include="Macros\SampleMacroModule.cs" />
     <Compile Include="Models\CCC\App\Actions\Action.cs" />
     <Compile Include="Models\CCC\App\Actions\ListAction.cs" />
+    <Compile Include="Models\CCC\App\Handlers\DetailHandler.cs" />
     <Compile Include="Models\CCC\App\Handlers\Handler.cs" />
     <Compile Include="Models\CCC\App\Handlers\ListHandler.cs" />
+    <Compile Include="Models\CCC\App\Handlers\MediaDetailHandler.cs" />
     <Compile Include="Models\CCC\App\Items\Item.cs" />
     <Compile Include="Models\CCC\App\Items\ListItem.cs" />
     <Compile Include="Models\CCC\App\Objects\Header.cs" />
     <Compile Include="Models\CCC\App\Objects\Image.cs" />
+    <Compile Include="Models\CCC\App\Objects\Media.cs" />
     <Compile Include="Models\CCC\EventsPage.cs" />
     <Compile Include="Models\CCC\Podcast\RSS.cs" />
     <Compile Include="Models\CCC\Search.cs" />

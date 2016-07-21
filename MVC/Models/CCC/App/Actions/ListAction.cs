@@ -24,7 +24,7 @@ namespace CCC.Models.App.Actions
             Carousel,
 
             [EnumMember(Value = "reader")]
-            Reader,
+            Reader
         }
 
         /// <summary>
