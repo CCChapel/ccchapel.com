@@ -23,6 +23,12 @@ namespace API
             );
 
             config.Routes.MapHttpRoute(
+                name: "AppApi",
+                routeTemplate: "feeds/app/{controller}/{action}",
+                defaults: new { controller = "Messages", action = "Index" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "PodcastApi",
                 routeTemplate: "feeds/podcast/{media}",
                 defaults: new { controller = "Podcast", media = "video" }
