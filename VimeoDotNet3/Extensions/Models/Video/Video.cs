@@ -432,7 +432,7 @@ namespace Vimeo.Types
             return JsonConvert.DeserializeObject<Video>(client.RequestJSON(url, null, "GET"));
         }
 
-        public static string GetVideoDownloadUrl(this VimeoClient client, long vimeoID)
+        public static string GetVideoDownloadUrl(this VimeoClient client, long vimeoID, string quality = "hd")
         {
             string url = string.Format("/videos/{0}", vimeoID);
 
@@ -451,7 +451,7 @@ namespace Vimeo.Types
 
             if (download.Any())
             {
-                return download.Where(d => d.quality == "hd")
+                return download.Where(d => d.quality == quality)
                                .FirstOrDefault()
                                .link;
             }
