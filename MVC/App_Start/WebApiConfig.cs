@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CCC.Formatters.JSON;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
 
@@ -46,19 +48,18 @@ namespace API
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            //Return JSON, not XML
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            //Set JSON Formatter
+            var jsonFormatter = new JsonMediaTypeFormatter();
 
-            //var xml = GlobalConfiguration.Configuration.Formatters.XmlFormatter;
-            //xml.UseXmlSerializer = true;
-
-            // WebAPI when dealing with JSON & JavaScript!
-            // Setup json serialization to serialize classes to camel (std. Json format)
-            var formatter = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
-            formatter.SerializerSettings.ContractResolver =
+            //Set Camel Case Properties
+            jsonFormatter.SerializerSettings.ContractResolver =
                 new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
 
-            ////XmlSerializer enabled 
+            //Replace Standard JSON Formatter with Custom for proper Content Type
+            config.Services.Replace(typeof(IContentNegotiator), new JsonContentNegotiator(jsonFormatter));
+
+
+            //XmlSerializer enabled 
             config.Formatters.XmlFormatter.UseXmlSerializer = true;
             var xmlFormatter = new CCC.Formatters.Xml.NamespacedXmlMediaTypeFormatter();
             GlobalConfiguration.Configuration.Formatters.Insert(0, xmlFormatter);
