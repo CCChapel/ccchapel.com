@@ -620,6 +620,8 @@
     <Compile Include="Classes\CCB\Groups\Groups.cs" />
     <Compile Include="Classes\CCB\Groups\PublicGroup.cs" />
     <Compile Include="Classes\CCB\PublicCalendar\PublicCalendar.cs" />
+    <Compile Include="Classes\Extensions\App\Message-Series.cs" />
+    <Compile Include="Classes\Extensions\App\Message.cs" />
     <Compile Include="Classes\Extensions\DateTime.cs" />
     <Compile Include="Classes\Extensions\String.cs" />
     <Compile Include="Classes\FormStack\FormStack.cs" />
@@ -644,6 +646,7 @@
     <Compile Include="Classes\Kentico\Types\PageTypes\People\StaffTeam.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\People\StaffTeamMember.cs" />
     <Compile Include="Classes\Kentico\Types\PageTypes\Search\QuickAccessKeywords.cs" />
+    <Compile Include="Classes\_CCC\Formatters\JSON\JsonContentNegotiator.cs" />
     <Compile Include="Classes\_CCC\Formatters\Xml\NamespacedXmlMediaTypeFormatter .cs" />
     <Compile Include="Classes\_CCC\Helpers\BrandingHelpers.cs" />
     <Compile Include="Classes\_CCC\Helpers\CachingHelpers.cs" />

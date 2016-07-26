@@ -6,13 +6,14 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
+using CCC.Helpers;
+using CCC.Models.App;
 using CCC.Models.App.Handlers;
 using CCC.Models.App.Items;
 using CCC.Models.App.Objects;
-using CCC.Models.App.Actions;
 
+using CMS.DocumentEngine;
 using CMS.DocumentEngine.Types;
-using Kentico.Web.Mvc;
 
 namespace MVC.Controllers.WebAPI.App
 {
@@ -49,32 +50,10 @@ namespace MVC.Controllers.WebAPI.App
 
             //Get Items
             List<ListItem> items = new List<ListItem>();
-
-            foreach (var s in SeriesProvider.GetSeries().Published())
+            var serieses = SeriesProvider.GetSeries().Path(CMS.DocumentEngine.Types.Series.SERMONS_PATH, PathTypeEnum.Children).Published().OrderByDescending(DatabaseHelpers.OrderByCmsTree);
+            foreach (var s in serieses)
             {
-                //Create Action
-                ListAction action = new ListAction()
-                {
-                    Type = CCC.Models.App.Actions.Action.ActionTypes.Navigation,
-                    Handler = CCC.Models.App.Actions.Action.Handlers.List,
-                    Style = ListAction.Styles.Grid,
-                    Url = string.Format("{0}{1}/series?seriesAlias={2}",
-                        CCC.Helpers.UrlHelpers.CurrentDomainName,
-                        CCC.Helpers.UrlHelpers.CurrentRoute,
-                        s.NodeAlias)
-                };
-                var actions = new List<ListAction>();
-                actions.Add(action);
-
-                //Create List Item
-                ListItem li = new ListItem()
-                {
-                    Title = s.Fields.Title,
-                    Images = images,
-                    Actions = actions
-                };
-
-                items.Add(li);
+                items.Add(s.ListItem());
             }
 
             //Create Banner Items
@@ -117,49 +96,22 @@ namespace MVC.Controllers.WebAPI.App
             {
                 var series = serieses.FirstOrDefault();
 
-                //Setup Images
-                var image = new Image()
-                {
-                    Url = string.Format("{0}{1}",
-                        CCC.Helpers.UrlHelpers.CurrentDomainName,
-                        series.Background.Fields.ImageFile.GetRoute()),
-                    Width = series.Background.Fields.ImageFile.ImageWidth
-                };
-                var images = new List<Image>();
-                images.Add(image);
-
                 //Set Header Items
                 var headerItems = new List<Item>();
                 headerItems.Add(new Item()
                 {
                     Title = series.Fields.Title,
-                    Images = images
+                    Images = series.ImageSet()
                 });
 
                 //Get Items
                 var items = new List<Item>();
+                int i = 1;
                 foreach (var s in series.GetSermons())
                 {
-                    //Create Action
-                    List<CCC.Models.App.Actions.Action> actions = new List<CCC.Models.App.Actions.Action>();
-                    actions.Add(new CCC.Models.App.Actions.Action()
-                    {
-                        Handler = CCC.Models.App.Actions.Action.Handlers.MediaDetial,
-                        Type = CCC.Models.App.Actions.Action.ActionTypes.Navigation,
-                        Url = string.Format("{0}{1}/message?messageAlias={2}",
-                                CCC.Helpers.UrlHelpers.CurrentDomainName,
-                                CCC.Helpers.UrlHelpers.CurrentRoute.Replace("/series", string.Empty),
-                                s.NodeAlias)
-                    });
+                    items.Add(s.ListItem());
 
-                    //Create Item
-                    items.Add(new Item()
-                    {
-                        Title = s.Fields.MessageTitle,
-                        Subtitle = s.MessageDate.ToShortDateString(),
-                        Images = images,
-                        Actions = actions
-                    });
+                    i++;
                 }
 
                 //Create Handler
@@ -207,10 +159,14 @@ namespace MVC.Controllers.WebAPI.App
                     {
                         //Video
                         SapID = message.DocumentGUID,
-                        Url = message.DownloadUrlVideo,
+                        Url = string.Format("{0}{1}",
+                                UrlHelpers.CurrentDomainName,
+                                message.DownloadUrlVideo),
                         Format = Media.Formats.MP4,
-                        Downloadable = true
-                        //Images
+                        Downloadable = true,
+                        Duration = message.Video.duration,
+                        Width = message.Video.width,
+                        Images = message.MessageSeries.ImageSet()
                     });
                 }
 
@@ -235,10 +191,10 @@ namespace MVC.Controllers.WebAPI.App
                     Title = message.MessageTitle,
                     Subtitle = message.MessageDate.ToShortDateString(),
                     Body = message.MessageDescription.RemoveHtml(),
-                    //Images
+                    Date = message.MessageDate,
+                    Media = media,
+                    Images = message.MessageSeries.ImageSet(),
                     //ActionSheet
-                    Media = media
-
                 };
 
                 return handler;
