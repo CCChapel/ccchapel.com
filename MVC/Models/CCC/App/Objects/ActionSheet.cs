@@ -22,6 +22,30 @@ namespace CCC.Models.App.Objects
                 _items = value;
             }
         }
+
+        public static ActionSheet Create(string plainTextBody, string url, string htmlBody)
+        {
+            ActionSheetActions defaultShare = new ActionSheetActions();
+            defaultShare.Actions.Add(new Actions.ShareAction()
+            {
+                Handler = Actions.ShareAction.Handlers.DefaultShare,
+                Body = plainTextBody,
+                Url = url
+            });
+
+            ActionSheetActions htmlShare = new ActionSheetActions();
+            htmlShare.Actions.Add(new Actions.ShareAction()
+            {
+                Handler = Actions.ShareAction.Handlers.HtmlShare,
+                Body = string.Format("<html>{0}</html>", htmlBody)
+            });
+
+            ActionSheet actionSheet = new ActionSheet();
+            actionSheet.Items.Add(defaultShare);
+            actionSheet.Items.Add(htmlShare);
+
+            return actionSheet;
+        }
     }
 
     public partial class ActionSheetActions

@@ -157,21 +157,6 @@ namespace MVC.Controllers.WebAPI.App
             {
                 var message = messages.First();
 
-                ActionSheetActions asActions1 = new ActionSheetActions();
-                asActions1.Actions.Add(new CCC.Models.App.Actions.ShareAction()
-                {
-                    Handler = CCC.Models.App.Actions.ShareAction.Handlers.DefaultShare,
-                    Body = "Share Text",
-                    Url = "http://www.google.com"
-                });
-
-                ActionSheetActions asActions2 = new ActionSheetActions();
-                asActions2.Actions.Add(new CCC.Models.App.Actions.ShareAction()
-                {
-                    Handler = CCC.Models.App.Actions.ShareAction.Handlers.HtmlShare,
-                    Body = "<html>This is <b>HTML Share Text</b> that links to <a href='http://www.google.com'>Google</a></html>"
-                });
-
                 //Create Handler
                 MediaDetailHandler handler = new MediaDetailHandler()
                 {
@@ -184,10 +169,9 @@ namespace MVC.Controllers.WebAPI.App
                     Body = message.MessageDescription.RemoveHtml().ReplaceHtmlSpecialCharacters(),
                     Date = message.MessageDate,
                     Media = message.MediaItems(),
-                    Images = message.MessageSeries.ImageSet()
+                    Images = message.MessageSeries.ImageSet(),
+                    ActionSheet = message.ActionSheet()
                 };
-                handler.ActionSheet.Items.Add(asActions1);
-                handler.ActionSheet.Items.Add(asActions2);
 
                 return handler;
             }

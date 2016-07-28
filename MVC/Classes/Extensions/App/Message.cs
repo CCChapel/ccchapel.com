@@ -13,6 +13,14 @@ namespace CCC.Models.App
 {
     public static partial class Message
     {
+        public static ActionSheet ActionSheet(this Sermon input)
+        {
+            return Objects.ActionSheet.Create(
+                plainTextBody: "Check out this message!",
+                url: input.RouteUrl,
+                htmlBody: string.Format("Check out this message! {0}", input.RouteUrl));
+        }
+
         /// <summary>
         /// Returns the message as a ListItem, usable in the app
         /// </summary>
