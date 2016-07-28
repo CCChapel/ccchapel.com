@@ -620,6 +620,7 @@
     <Compile Include="Classes\CCB\Groups\Groups.cs" />
     <Compile Include="Classes\CCB\Groups\PublicGroup.cs" />
     <Compile Include="Classes\CCB\PublicCalendar\PublicCalendar.cs" />
+    <Compile Include="Classes\Extensions\App\CampusesItem.cs" />
     <Compile Include="Classes\Extensions\App\Message-Series.cs" />
     <Compile Include="Classes\Extensions\App\Message.cs" />
     <Compile Include="Classes\Extensions\DateTime.cs" />
@@ -673,6 +674,7 @@
     <Compile Include="Controllers\MVC\RobotsController.cs" />
     <Compile Include="Controllers\MVC\SearchController.cs" />
     <Compile Include="Controllers\MVC\StaffTeamController.cs" />
+    <Compile Include="Controllers\WebAPI\App\EventsController.cs" />
     <Compile Include="Controllers\WebAPI\App\MessagesController.cs" />
     <Compile Include="Controllers\WebAPI\DownloadVideoController.cs" />
     <Compile Include="Controllers\WebAPI\PodcastController.cs" />
@@ -685,12 +687,14 @@
     <Compile Include="Macros\SampleMacroModule.cs" />
     <Compile Include="Models\CCC\App\Actions\Action.cs" />
     <Compile Include="Models\CCC\App\Actions\ListAction.cs" />
+    <Compile Include="Models\CCC\App\Actions\ShareAction.cs" />
     <Compile Include="Models\CCC\App\Handlers\DetailHandler.cs" />
     <Compile Include="Models\CCC\App\Handlers\Handler.cs" />
     <Compile Include="Models\CCC\App\Handlers\ListHandler.cs" />
     <Compile Include="Models\CCC\App\Handlers\MediaDetailHandler.cs" />
     <Compile Include="Models\CCC\App\Items\Item.cs" />
     <Compile Include="Models\CCC\App\Items\ListItem.cs" />
+    <Compile Include="Models\CCC\App\Objects\ActionSheet.cs" />
     <Compile Include="Models\CCC\App\Objects\Header.cs" />
     <Compile Include="Models\CCC\App\Objects\Image.cs" />
     <Compile Include="Models\CCC\App\Objects\Media.cs" />
