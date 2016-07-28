@@ -35,16 +35,19 @@ namespace CCC.Models.App.Objects
         /// If style == featured, the first two ITEMs in the LIST will be used to populate the two half-width Featured Items.
         /// If list is null or empty, this value is ignored.
         /// </summary>
-        public HeaderStyles Style { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public HeaderStyles? Style { get; set; }
 
         /// <summary>
         /// The array of items which compose the HEADER.
         /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<Items.Item> Items { get; set; }
 
         /// <summary>
         /// Hex string defining a background color for the HEADER item.
         /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Color { get; set; }
     }
 }

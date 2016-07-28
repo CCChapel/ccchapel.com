@@ -43,15 +43,9 @@ namespace CCC.Models.App.Objects
         }
 
         /// <summary>
-        /// Specifies whether this media item can be downloaded and stored locally for offline consumption.
-        /// Note: this value is overridden to false for streaming media.
+        /// String describing the location of the media content.
         /// </summary>
-        public bool Downloadable { get; set; }
-
-        /// <summary>
-        /// Specifies the total duration of this media item in milliseconds. Though optional, this property is important for media items with a variable bit rate, since the duration computation for VBR media is not handled correctly or uniformly by all operating systems and devices.
-        /// </summary>
-        public int Duration { get; set; }
+        public string Url { get; set; }
 
         /// <summary>
         /// Format for the provided media, which is often the same as the media file extension. Not all formats will be supported on every platform.
@@ -66,9 +60,11 @@ namespace CCC.Models.App.Objects
         public Formats Format { get; set; }
 
         /// <summary>
-        /// An array of IMAGE objects corresponding to the media item. This is commonly a screenshot or title photo (for video content), or album art (for audio content).
+        /// Specifies whether this media item can be downloaded and stored locally for offline consumption.
+        /// Note: this value is overridden to false for streaming media.
         /// </summary>
-        public IEnumerable<Image> Images { get; set; }
+        //[JsonConverter(typeof(StringEnumConverter))]
+        public bool Downloadable { get; set; }
 
         /// <summary>
         /// Arbitrary id string which identifies this media item. Using a GUID (Globally unique identifier) value is recommened (to guarantee proper tracking). While optional, to take advantage of Subsplash's play-tracking analytics system a sapId is required.
@@ -76,13 +72,20 @@ namespace CCC.Models.App.Objects
         public Guid SapID { get; set; }
 
         /// <summary>
-        /// String describing the location of the media content.
+        /// An array of IMAGE objects corresponding to the media item. This is commonly a screenshot or title photo (for video content), or album art (for audio content).
         /// </summary>
-        public string Url { get; set; }
+        public IEnumerable<Image> Images { get; set; }
+
+        /// <summary>
+        /// Specifies the total duration of this media item in milliseconds. Though optional, this property is important for media items with a variable bit rate, since the duration computation for VBR media is not handled correctly or uniformly by all operating systems and devices.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public int? Duration { get; set; }
 
         /// <summary>
         /// Describes the size of video content. When multiple video MEDIA items are provided, an appropriately-sized video can be automatically selected for the current device and visual context.
         /// </summary>
-        public int Width { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public int? Width { get; set; }
     }
 }

@@ -61,10 +61,9 @@ namespace CCC.Models.App
         {
             if (string.IsNullOrWhiteSpace(url))
             {
-                url = string.Format("{0}{1}/series?seriesAlias={2}",
+                url = string.Format("{0}{1}",
                         Helpers.UrlHelpers.CurrentDomainName,
-                        Helpers.UrlHelpers.CurrentRoute,
-                        input.NodeAlias);
+                        input.AppRouteUrl());
             }
 
             ListAction action = new ListAction()
@@ -78,6 +77,38 @@ namespace CCC.Models.App
             actions.Add(action);
 
             return actions;
+        }
+
+        public static Item HeaderItem(this Series input)
+        {
+            return new Item()
+            {
+                Title = input.Fields.Title,
+                Images = input.ImageSet()
+            };
+        }
+
+        /// <summary>
+        /// Route Values for the Series
+        /// </summary>
+        private static object AppRouteValues(this Series input)
+        {
+            return new
+            {
+                controller = "Messages",
+                action = "Series",
+                seriesAlias = input.NodeAlias
+            };
+        }
+
+        /// <summary>
+        /// Returns the Route URL, usable for loading information in the app
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>Route URL</returns>
+        public static string AppRouteUrl(this Series input)
+        {
+            return Helpers.UrlHelpers.UrlHelper.HttpRouteUrl("AppApi", input.AppRouteValues());
         }
     }
 }

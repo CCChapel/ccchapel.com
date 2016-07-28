@@ -40,28 +40,31 @@ namespace CCC.Models.App.Handlers
         /// <summary>
         /// An array of ITEM objects to be displayed to the user. These items will be rendered according to the style specified in the LISTACTION object used to trigger this feed.
         /// </summary>
+        [JsonProperty(Order = 10)]
         public string Title { get; set; }
 
         /// <summary>
         /// Some list styles such as reader include support for locally tracking which items a user has visited in the past, and representing these items in a visually distinct way. Setting trackViewedItems = true enables this tracking behavior.
         /// </summary>
+        [JsonProperty(Order = 11)]
         public bool TrackViewedItems { get; set; }
 
         /// <summary>
         /// An array of ITEM objects to be displayed to the user. These items will be rendered according to the style specified in the LISTACTION object used to trigger this feed.
         /// </summary>
+        [JsonProperty(Order = 12)]
         public IEnumerable<Items.Item> Items { get; set; }
 
         /// <summary>
         /// This property is valid only when the triggering LISTACTION style = grid. At this time, the only valid value is square.
         /// </summary>
-        [JsonProperty(PropertyName = "grid-layout")]
+        [JsonProperty(PropertyName = "grid-layout", Order = 13)]
         public GridLayouts GridLayout { get; set; }
 
         /// <summary>
         /// This property is valid only when the triggering LISTACTION style = grid.
         /// </summary>
-        [JsonProperty(PropertyName = "grid-titleposition")]
+        [JsonProperty(PropertyName = "grid-titleposition", Order = 14)]
         public GridTitlePositions GridTitlePosition { get; set; }
     }
 }

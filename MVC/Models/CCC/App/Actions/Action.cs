@@ -48,7 +48,8 @@ namespace CCC.Models.App.Actions
         /// <summary>
         /// Defines the Action Type. Can be navigation or content.
         /// </summary>
-        public ActionTypes Type { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public ActionTypes? Type { get; set; }
 
         /// <summary>
         /// Provides the source of content for this Action object. This parameter is required for all Handlers which access remote data (the common case).

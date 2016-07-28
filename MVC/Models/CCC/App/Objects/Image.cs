@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using Newtonsoft.Json;
+
 namespace CCC.Models.App.Objects
 {
     public partial class Image
@@ -10,6 +12,7 @@ namespace CCC.Models.App.Objects
         /// <summary>
         /// Hex string defining an associated color for the IMAGE. This is often the pre-computed average color of the image, and may be used as a background while the image loads or as a semi-transparent overlay.
         /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Color { get; set; }
 
         /// <summary>

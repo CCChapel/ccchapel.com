@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using Newtonsoft.Json;
+
 using CCC.Models.App.Objects;
 
 namespace CCC.Models.App.Items
@@ -17,6 +19,7 @@ namespace CCC.Models.App.Items
         /// <summary>
         /// An array of IMAGE objects defining image resources for the item. If more than one image object is provided, the device will choose the image size which is most appropriate for the current visual context on that specific device.
         /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<Image> Images { get; set; }
 
         /// <summary>
