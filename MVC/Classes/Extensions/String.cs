@@ -54,5 +54,20 @@ namespace MVC
 
             return input.Trim();
         }
+
+        /// <summary>
+        /// Removes an HTML special characters and replaces them with their plain text equivilent.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>Plain text string</returns>
+        public static string ReplaceHtmlSpecialCharacters(this string input)
+        {
+            return input.Replace("&rsquo;", "'")
+                        .Replace("&lsquo;", "'")
+                        .Replace("&rdquo;", "\"")
+                        .Replace("&ldquo;", "\"")
+                        .Replace("&ndash;", "-")
+                        .Replace("&hellip;", "...");
+        }
     }
 }
