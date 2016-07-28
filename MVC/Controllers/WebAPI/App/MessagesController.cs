@@ -57,12 +57,26 @@ namespace MVC.Controllers.WebAPI.App
             }
 
             //Create Banner Items
+            List<CCC.Models.App.Actions.Action> actions = new List<CCC.Models.App.Actions.Action>();
+            actions.Add(new CCC.Models.App.Actions.Action
+            {
+                Handler = CCC.Models.App.Actions.Action.Handlers.List,
+                Type = CCC.Models.App.Actions.Action.ActionTypes.Navigation,
+                Url = "http://beta.ccchapel.com/feeds/app/messages/series?seriesAlias=The-Promise"
+            });
             List<Item> bannerItems = new List<Item>();
             bannerItems.Add(new Item()
             {
                 Images = images,
-                Title = "Banner"
+                Title = "Banner",
+                Actions = actions
             });
+            //bannerItems.Add(new Item()
+            //{
+            //    Images = images,
+            //    Title = "Banner 2",
+            //    Actions = actions
+            //});
 
             //Create Handler
             ListHandler handler = new ListHandler()
@@ -70,7 +84,7 @@ namespace MVC.Controllers.WebAPI.App
                 Header = new Header()
                 {
                     Title = "Messages",
-                    Style = Header.HeaderStyles.Banner,
+                    Style = Header.HeaderStyles.Featured,
                     Items = bannerItems
                 },
                 Items = items,
@@ -98,20 +112,13 @@ namespace MVC.Controllers.WebAPI.App
 
                 //Set Header Items
                 var headerItems = new List<Item>();
-                headerItems.Add(new Item()
-                {
-                    Title = series.Fields.Title,
-                    Images = series.ImageSet()
-                });
+                headerItems.Add(series.HeaderItem());
 
                 //Get Items
                 var items = new List<Item>();
-                int i = 1;
                 foreach (var s in series.GetSermons())
                 {
-                    items.Add(s.ListItem());
-
-                    i++;
+                    items.Add(s.ListItem(useDate: true));
                 }
 
                 //Create Handler
@@ -150,36 +157,20 @@ namespace MVC.Controllers.WebAPI.App
             {
                 var message = messages.First();
 
-                //Setup Media
-                List<Media> media = new List<Media>();
-
-                if (message.HasVideo)
+                ActionSheetActions asActions1 = new ActionSheetActions();
+                asActions1.Actions.Add(new CCC.Models.App.Actions.ShareAction()
                 {
-                    media.Add(new Media()
-                    {
-                        //Video
-                        SapID = message.DocumentGUID,
-                        Url = string.Format("{0}{1}",
-                                UrlHelpers.CurrentDomainName,
-                                message.DownloadUrlVideo),
-                        Format = Media.Formats.MP4,
-                        Downloadable = true,
-                        Duration = message.Video.duration,
-                        Width = message.Video.width,
-                        Images = message.MessageSeries.ImageSet()
-                    });
-                }
+                    Handler = CCC.Models.App.Actions.ShareAction.Handlers.DefaultShare,
+                    Body = "Share Text",
+                    Url = "http://www.google.com"
+                });
 
-                if (!string.IsNullOrWhiteSpace(message.DownloadUrlAudio))
+                ActionSheetActions asActions2 = new ActionSheetActions();
+                asActions2.Actions.Add(new CCC.Models.App.Actions.ShareAction()
                 {
-                    media.Add(new Media()
-                    {
-                        SapID = message.DocumentGUID,
-                        Url = message.DownloadUrlAudio,
-                        Format = Media.Formats.MP3,
-                        Downloadable = true
-                    });
-                }
+                    Handler = CCC.Models.App.Actions.ShareAction.Handlers.HtmlShare,
+                    Body = "<html>This is <b>HTML Share Text</b> that links to <a href='http://www.google.com'>Google</a></html>"
+                });
 
                 //Create Handler
                 MediaDetailHandler handler = new MediaDetailHandler()
@@ -189,13 +180,14 @@ namespace MVC.Controllers.WebAPI.App
                         Title = message.Fields.MessageTitle
                     },
                     Title = message.MessageTitle,
-                    Subtitle = message.MessageDate.ToShortDateString(),
-                    Body = message.MessageDescription.RemoveHtml(),
+                    ExtraSubtitles = new string[] { message.MessageSpeaker.FullName },
+                    Body = message.MessageDescription.RemoveHtml().ReplaceHtmlSpecialCharacters(),
                     Date = message.MessageDate,
-                    Media = media,
-                    Images = message.MessageSeries.ImageSet(),
-                    //ActionSheet
+                    Media = message.MediaItems(),
+                    Images = message.MessageSeries.ImageSet()
                 };
+                handler.ActionSheet.Items.Add(asActions1);
+                handler.ActionSheet.Items.Add(asActions2);
 
                 return handler;
             }
