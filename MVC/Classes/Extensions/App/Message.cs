@@ -17,8 +17,8 @@ namespace CCC.Models.App
         {
             return Objects.ActionSheet.Create(
                 plainTextBody: "Check out this message!",
-                url: input.RouteUrl,
-                htmlBody: string.Format("Check out this message! {0}", input.RouteUrl));
+                url: UrlHelpers.CurrentDomainName + input.RouteUrl,
+                htmlBody: string.Format("Check out this message! {0}{1}", UrlHelpers.CurrentDomainName, input.RouteUrl));
         }
 
         /// <summary>
