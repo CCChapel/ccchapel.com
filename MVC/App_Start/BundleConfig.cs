@@ -23,8 +23,8 @@ namespace MVC
 
             #region jQuery
             //Add link to jQuery on the CDN
-            var jqueryCdnPath = "http://code.jquery.com/jquery-2.2.0.min.js";
-            var jqueryUiCdnPath = "http://code.jquery.com/ui/1.11.4/jquery-ui.min.js";
+            var jqueryCdnPath = "https://code.jquery.com/jquery-2.2.0.min.js";
+            var jqueryUiCdnPath = "https://code.jquery.com/ui/1.11.4/jquery-ui.min.js";
 
             bundles.Add(new ScriptBundle("~/bundles/jquery", jqueryCdnPath).Include("~/Content/2016-Q1/scripts/jquery/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery-ui", jqueryUiCdnPath).Include("~/Content/2016-Q1/scripts/jquery/jquery-ui-{version}.js"));
