@@ -55,6 +55,7 @@ namespace CCC.Models.App.Actions
         /// Provides the source of content for this Action object. This parameter is required for all Handlers which access remote data (the common case).
         /// This parameter is optional only for Actions which do not access remote data, such as the phone handler.
         /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Url { get; set; }
     }
 }
