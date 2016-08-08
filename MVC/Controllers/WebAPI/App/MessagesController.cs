@@ -58,9 +58,10 @@ namespace MVC.Controllers.WebAPI.App
 
             //Create Banner Items
             List<CCC.Models.App.Actions.Action> actions = new List<CCC.Models.App.Actions.Action>();
-            actions.Add(new CCC.Models.App.Actions.Action
+            actions.Add(new CCC.Models.App.Actions.ListAction
             {
                 Handler = CCC.Models.App.Actions.Action.Handlers.List,
+                Style = CCC.Models.App.Actions.ListAction.Styles.Carousel,
                 Type = CCC.Models.App.Actions.Action.ActionTypes.Navigation,
                 Url = "http://beta.ccchapel.com/feeds/app/messages/series?seriesAlias=The-Promise"
             });

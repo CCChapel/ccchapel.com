@@ -621,6 +621,7 @@
     <Compile Include="Classes\CCB\Groups\PublicGroup.cs" />
     <Compile Include="Classes\CCB\PublicCalendar\PublicCalendar.cs" />
     <Compile Include="Classes\Extensions\App\CampusesItem.cs" />
+    <Compile Include="Classes\Extensions\App\CCB\Calendar.cs" />
     <Compile Include="Classes\Extensions\App\Message-Series.cs" />
     <Compile Include="Classes\Extensions\App\Message.cs" />
     <Compile Include="Classes\Extensions\DateTime.cs" />
@@ -686,8 +687,10 @@
     <Compile Include="Macros\CustomMacroMethods.cs" />
     <Compile Include="Macros\SampleMacroModule.cs" />
     <Compile Include="Models\CCC\App\Actions\Action.cs" />
+    <Compile Include="Models\CCC\App\Actions\BrowserAction.cs" />
     <Compile Include="Models\CCC\App\Actions\ListAction.cs" />
     <Compile Include="Models\CCC\App\Actions\ShareAction.cs" />
+    <Compile Include="Models\CCC\App\Content\Content.cs" />
     <Compile Include="Models\CCC\App\Handlers\DetailHandler.cs" />
     <Compile Include="Models\CCC\App\Handlers\Handler.cs" />
     <Compile Include="Models\CCC\App\Handlers\ListHandler.cs" />

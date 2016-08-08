@@ -11,6 +11,18 @@ namespace CCC.Models.App.Items
 {
     public partial class Item
     {
+
+        /// <summary>
+        /// Title string value displayed for this item.
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Subtitle string value displayed for this item. The subtitle may or may not appear in the UI depending on the visual context for this item.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string Subtitle { get; set; }
+
         /// <summary>
         /// An array of ACTION objects which define the action to take when the user clicks on this item. Most items will contain only one action.
         /// </summary>
@@ -21,15 +33,5 @@ namespace CCC.Models.App.Items
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<Image> Images { get; set; }
-
-        /// <summary>
-        /// Title string value displayed for this item.
-        /// </summary>
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Subtitle string value displayed for this item. The subtitle may or may not appear in the UI depending on the visual context for this item.
-        /// </summary>
-        public string Subtitle { get; set; }
     }
 }
