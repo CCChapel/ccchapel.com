@@ -25,6 +25,9 @@
 
     //Get Special Events
     var specialEvents = SermonProvider.GetSermons().Path(Series.SPECIAL_EVENTS_PATH, PathTypeEnum.Children).Published().OrderBy(DatabaseHelpers.OrderByCmsTree);
+
+    //Get Miscellaneous
+    var miscellaneous = SermonProvider.GetSermons().Path(Series.MISCELLANEOUS_PATH, PathTypeEnum.Children).Published().OrderBy(DatabaseHelpers.OrderByCmsTree);
 }
 
 <a name="weekend-messages"></a>
@@ -75,3 +78,26 @@
         </div>
     </div>
 </div>
+
+<a name="miscellaneous"></a>
+<div class="[ content-section transparent ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title">Miscellaneous</div>
+
+        <div class="grid">            
+            <!--
+               @{
+                   //Render Cross Sell Items
+                   foreach (var s in miscellaneous)
+                   {
+                       //Get Linked Page Type
+                       if (s.ClassName == Sermon.CLASS_NAME)
+                       {
+                           Html.RenderAction("CrossSell", "Message", new { guid = s.NodeGUID, title = s.Fields.MessageTitle, description = "" });
+                       }
+                   }
+               }
+            -->
+        </div>
+    </div>
+</div> 

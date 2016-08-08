@@ -15,6 +15,7 @@ namespace CMS.DocumentEngine.Types
         #region Public Properties
         public static readonly string SERMONS_PATH = "/Messages/Sermons";
         public static readonly string SPECIAL_EVENTS_PATH = "/Messages/Special-Events";
+        public static readonly string MISCELLANEOUS_PATH = "/Messages/Miscellaneous";
 
         /// <summary>
         /// Returns the Series with the most recent Sermon
