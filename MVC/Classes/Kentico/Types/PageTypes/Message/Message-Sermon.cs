@@ -88,7 +88,7 @@ namespace CMS.DocumentEngine.Types
             string where = string.Format("Message{0}Date IS NOT NULL", campus.CampusSQLCodeName);
             string orderby = string.Format("Message{0}Date", campus.CampusSQLCodeName);
 
-            var sermon = SermonProvider.GetSermons().Published()
+            var sermon = SermonProvider.GetSermons().Path(Series.SERMONS_PATH, PathTypeEnum.Children).Published()
                             .Where(where)
                             .OrderByDescending(orderby)
                             .FirstOrDefault();
