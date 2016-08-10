@@ -29,7 +29,10 @@
                         @{
                             foreach (string title in Model.Titles)
                             {
-                                <li>@title</li>
+                                if (!string.IsNullOrWhiteSpace(title))
+                                {
+                                    <li>@title</li>
+                                }
                             }
                         }
                     </ul>
