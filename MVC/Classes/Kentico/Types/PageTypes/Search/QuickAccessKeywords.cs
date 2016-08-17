@@ -35,27 +35,34 @@ namespace CMS.DocumentEngine.Types
         }
         public override string ToString()
         {
-            string path = "";
-
-            if (!string.IsNullOrWhiteSpace(Fields.LinkedPage))
+            try
             {
-                //Link to Page
-                Page page = PageProvider.GetPage(
-                    new Guid(Fields.LinkedPage), SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+                string path = "";
 
-                path = UrlHelpers.UrlHelper.RouteUrl(page.RouteValues);
+                if (!string.IsNullOrWhiteSpace(Fields.LinkedPage))
+                {
+                    //Link to Page
+                    Page page = PageProvider.GetPage(
+                        new Guid(Fields.LinkedPage), SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                    path = UrlHelpers.UrlHelper.RouteUrl(page.RouteValues);
+                }
+                else
+                {
+                    //Link to Search with keywords
+                    path = RouteUrl;
+                }
+
+                string html = string.Format("<a href=\"{0}\">{1}</a>",
+                    path,
+                    Fields.Keywords);
+
+                return html;
             }
-            else
+            catch
             {
-                //Link to Search with keywords
-                path = RouteUrl;
+                return null;
             }
-
-            string html = string.Format("<a href=\"{0}\">{1}</a>",
-                path,
-                Fields.Keywords);
-
-            return html;
         }
     }
 
