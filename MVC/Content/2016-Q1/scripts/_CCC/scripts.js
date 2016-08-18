@@ -77,9 +77,9 @@
                 DesktopSearch.toggle();
             });
 
-            $(".modal").click(function () {
-                DesktopSearch.close();
-            })
+            //$(".modal").click(function () {
+            //    DesktopSearch.close();
+            //})
 
             //            //Field Loses Focus
             //            $(this.SearchField).focusout(function() {
@@ -94,31 +94,39 @@
             //            });
         },
         toggle: function () {
-            //Toggle Icon
-            $(this.IconClass).toggleClass("open");
+            ////Toggle Icon
+            //$(this.IconClass).toggleClass("open");
 
-            //Toggle Menu
-            $(this.MenuItemsClass).toggle();
+            ////Toggle Menu
+            //$(this.MenuItemsClass).toggle();
 
-            //Toggle Width
-            $(this.ItemClass).toggleClass("one-tenth").toggleClass("one-whole");
-            $(this.IconClass).toggleClass("desk--one-whole").toggleClass("desk--one-tenth");
+            ////Toggle Width
+            //$(this.ItemClass).toggleClass("one-tenth").toggleClass("one-whole");
+            //$(this.IconClass).toggleClass("desk--one-whole").toggleClass("desk--one-tenth");
 
-            //Toggle Banner Height
-            $(this.BannerClass).toggleClass("fullHeight");
+            ////Toggle Banner Height
+            //$(this.BannerClass).toggleClass("fullHeight");
 
-            //Clear Search Field
-            $(this.FieldClass).val("");
+            ////Clear Search Field
+            //$(this.FieldClass).val("");
 
-            //Toggle Search Field
-            $(this.FieldClass).toggleClass("show");
+            ////Toggle Search Field
+            //$(this.FieldClass).toggleClass("show");
 
-            //Toggle Modal
-            CCChapel.toggleModal();
+            ////Toggle Modal
+            //CCChapel.toggleModal();
 
-            //Set focus if visible
+            ////Set focus if visible
+            //if ($(this.FieldClass).hasClass("show")) {
+            //    $(this.SearchField).focus();
+            //}
+
+            //If class show, we're open
             if ($(this.FieldClass).hasClass("show")) {
-                $(this.SearchField).focus();
+                this.close();
+            }
+            else {
+                this.open();
             }
         },
         open: function () {
@@ -146,6 +154,10 @@
 
             //Set focus
             $(this.SearchField).focus();
+
+            $(".modal").click(function () {
+                DesktopSearch.close();
+            })
         },
         close: function () {
             //Hide Icon
@@ -169,6 +181,8 @@
 
             //Clear Search Field
             $(this.FieldClass).val("");
+
+            $(".modal").unbind("click");
         }
     }
 
