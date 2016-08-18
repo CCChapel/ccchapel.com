@@ -40,6 +40,14 @@
         }   
     }
 
+    &.wrap {
+        @include flex-wrap(wrap);
+    }
+
+    &.center-content {
+        @include align-content(center);
+    }
+
     &.center-vertically {
         @include align-items(center);
     }

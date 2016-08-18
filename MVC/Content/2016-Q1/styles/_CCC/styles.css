@@ -1491,8 +1491,12 @@ body {
   margin-bottom: 24px;
   padding: 10px;
   height: 10rem;
+  height: 30vmin;
   font-size: 48px;
   font-size: 3rem;
+  /*@include grid-media-query("lap") {
+            height: 15rem;
+        }*/
   /*&.light {
             color: #FFF;
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
@@ -1510,9 +1514,9 @@ body {
                 }
             }
         }*/ }
-  @media only screen and (min-width: 481px) and (max-width: 1023px) {
+  @media only screen and (max-width: 480px) {
     .cross-sell__image {
-      height: 15rem; } }
+      height: 45vmin; } }
   .cross-sell__image span.fa-stack i:last-child {
     margin-left: 7px; }
 
@@ -2381,6 +2385,16 @@ body {
           min-height: calc(33vh + 72px); }
       .flex-section.palm--stack.use-gutter > * {
         margin-right: 0 !important; } }
+  .flex-section.wrap {
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+  .flex-section.center-content {
+    -webkit-align-content: center;
+    -moz-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center; }
   .flex-section.center-vertically, .flex-section.cta, .fsPagination .flex-section.fsPreviousButton,
   .fsPagination .flex-section.fsNextButton,
   .fsSubmit input.flex-section.fsSubmitButton {
