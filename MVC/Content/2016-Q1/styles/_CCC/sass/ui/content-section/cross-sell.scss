@@ -17,12 +17,17 @@
         padding: 10px;
 
         height: 10rem;
+        height: 30vmin;
+
+        @include grid-media-query("palm") {
+            height: 45vmin;
+        }
 
         @include typecsset-font-size(48px, false);
 
-        @include grid-media-query("lap") {
+        /*@include grid-media-query("lap") {
             height: 15rem;
-        }
+        }*/
 
         /*&.light {
             color: #FFF;
