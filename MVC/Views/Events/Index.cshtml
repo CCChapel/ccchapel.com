@@ -38,7 +38,7 @@
                 <select id="calendar-change">
                     @{
                         DateTime optionStartDate = new DateTime();
-                        DateTime optionEndDate = DateTime.Now.AddMonths(-2).AddDays(-1);                    //Give the option to go back once
+                        DateTime optionEndDate = DateTime.Now.Subtract(EventsPage.EventList.defaultSpan);                    //Give the option to go back once
 
                         for (int i = 0; i < 13; i++)
                         {
