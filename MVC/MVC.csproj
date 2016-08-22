@@ -860,6 +860,7 @@
     <Content Include="Views\Event\_RegistrationButton.cshtml" />
     <Content Include="Views\Robots\Robots.cshtml" />
     <Content Include="Views\StaffTeam\Person.cshtml" />
+    <Content Include="Views\Shared\_HotJar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
