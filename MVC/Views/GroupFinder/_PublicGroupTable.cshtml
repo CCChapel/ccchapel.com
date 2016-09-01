@@ -104,6 +104,9 @@
         setupMinistrySearch();
         setupCampusSearch();
         setupKeywordSearch();
+
+        //Do Initial Filter
+        filter();
     });
 
     function setupDescriptionToggle() {
@@ -138,6 +141,11 @@
     function setupMinistrySearch() {
         var selector = ".search-ministry";
 
+        //Setup Change Event
+        $(selector).change(function () {
+            filter();
+        });
+
         //Setup Initial Value
         var qs = getQueryString();
 
@@ -145,23 +153,18 @@
             $(selector).val(qs["ministry"]);
             filter();
         }
-
-        //Setup Change Event
-        $(selector).change(function () {
-            filter();
-        });
     }
 
     function setupCampusSearch() {
         var selector = ".search-campus";
 
-        //Setup Initial Value
-        $(selector).val(CCChapel.CurrentCampus);
-
         //Setup Change Event
-        $(selector).change(function() {
+        $(selector).change(function () {
             filter();
         });
+
+        //Setup Initial Value
+        $(selector).val(CCChapel.CurrentCampus);
     }
 
     function filter() {

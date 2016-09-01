@@ -15,6 +15,7 @@ namespace MVC.Controllers
     public class EventsController : Controller
     {
         // GET: Events
+        [OutputCache(Duration = 900, VaryByParam = "startDate;endDate")]
         public ActionResult Index(string startDate, string endDate)
         {
             DateTime start = DateTime.Now;
