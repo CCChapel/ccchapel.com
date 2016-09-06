@@ -36,7 +36,7 @@ namespace CCC.Models
 
         public partial class EventList
         {
-            public static TimeSpan defaultSpan = DateTime.Now.AddMonths(2).Subtract(DateTime.Now);      //Two months
+            public static TimeSpan defaultSpan = new TimeSpan(60, 0, 0, 0, 0); // DateTime.Now.AddMonths(2).Subtract(DateTime.Now);      //Two months
             public DateTime StartDate { get; set; }
             public DateTime EndDate { get; set; }
 
