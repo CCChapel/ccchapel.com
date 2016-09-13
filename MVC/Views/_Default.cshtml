@@ -52,9 +52,6 @@
     @{ Html.RenderPartial("_AppleWebApp"); }
 
     @{ Html.RenderPartial("_TypeKit"); }
-
-    @Styles.Render("~/bundles/font-awesome")
-    @Styles.Render("~/bundles/styles")
 </head>
 
 <body class="@Request.Browser.Browser.ToLower() @if (Request.Browser.IsMobileDevice) { <text>mobile</text>}">
@@ -327,6 +324,9 @@
 
     @{ Html.RenderPartial("_GoogleAnalytics"); }
     @{ Html.RenderPartial("_HotJar"); }
+
+    @Styles.Render("~/bundles/font-awesome")
+    @Styles.Render("~/bundles/styles")
 </body>
 </html>
 
