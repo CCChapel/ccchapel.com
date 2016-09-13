@@ -13,6 +13,7 @@ namespace MVC.Controllers.MVC
     public class StaffTeamController : Controller
     {
         // GET: StaffTeam
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Teams(string name)
         {
             //Load Campus Leadership Team By Default
@@ -53,6 +54,7 @@ namespace MVC.Controllers.MVC
             }
         }
 
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult People(string name)
         {
             if (string.IsNullOrWhiteSpace(name))

@@ -12,6 +12,7 @@ namespace MVC.Controllers
     public class MessageSeriesController : Controller
     {
         // GET: MessageSeries
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index(string seriesTitle)
         {
             //Get Sermon

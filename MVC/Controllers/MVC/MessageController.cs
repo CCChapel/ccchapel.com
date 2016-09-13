@@ -12,6 +12,7 @@ namespace MVC.Controllers
     public class MessageController : Controller
     {
         // GET: Message
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index(int year, int month, int day, string seriesTitle, string sermonTitle)
         {
             //Create DateTime

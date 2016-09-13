@@ -12,6 +12,7 @@ namespace MVC.Controllers.MVC
     public class GroupFinderController : Controller
     {
         // GET: GroupFinder
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index()
         {
             var qo = new ChurchCommunityBuilder.Api.Groups.QueryObject.PublicGroupQO();

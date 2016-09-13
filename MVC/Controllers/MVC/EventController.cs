@@ -12,6 +12,7 @@ namespace MVC.Controllers
     public class EventController : Controller
     {
         // GET: Event
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index(int year, int month, int day, string eventName)
         //public string Index(int year, int month, int day, string eventName)
         {
@@ -100,6 +101,7 @@ namespace MVC.Controllers
 
         [ChildActionOnly]
         [ActionName("CrossSell")]
+        [OutputCache(CacheProfile = "Cache15min")]
         public ViewResult CrossSell(string guid, string title, string description)
         {
             //Store Extra Data

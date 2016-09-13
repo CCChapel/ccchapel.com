@@ -15,6 +15,7 @@ namespace MVC.Controllers
     {
         // GET: Search
         [ValidateInput(false)]
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index(string query)
         {
             var model = new SearchResults(query);

@@ -9,6 +9,7 @@ namespace MVC.Controllers.MVC
     public class ExternalLinkController : Controller
     {
         // GET: ExternalLink
+        [OutputCache(CacheProfile = "Cache15min")]
         public RedirectResult Index(string url)
         {
             //Encode URL and Redirect

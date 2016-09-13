@@ -12,7 +12,8 @@ namespace MVC.Controllers
     public class PageController : Controller
     {
         // GET: Page
-        [OutputCache(Duration = 900, VaryByParam = "path")]
+        //[OutputCache(Duration = 900, VaryByParam = "path")]
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index(string path)
         {
             //Get Page
@@ -37,7 +38,6 @@ namespace MVC.Controllers
 
         [ChildActionOnly]
         [ActionName("CrossSell")]
-        [OutputCache(Duration = 900, VaryByParam = "guid")]
         public ViewResult CrossSell(string guid, string title, string description)
         {
             //Store Extra Data

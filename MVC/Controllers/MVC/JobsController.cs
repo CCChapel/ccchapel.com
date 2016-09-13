@@ -11,6 +11,7 @@ namespace MVC.Controllers
     public class JobsController : Controller
     {
         // GET: Jobs
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index(string jobTitle)
         {
             if (string.IsNullOrWhiteSpace(jobTitle))

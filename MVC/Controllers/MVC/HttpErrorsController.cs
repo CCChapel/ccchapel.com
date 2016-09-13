@@ -9,6 +9,7 @@ namespace MVC.Controllers
     public class HttpErrorsController : Controller
     {
         // GET: HttpErrors
+        [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult NotFound()
         {
             Response.StatusCode = 404;
