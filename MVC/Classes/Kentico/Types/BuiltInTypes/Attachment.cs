@@ -19,6 +19,12 @@ namespace MVC
         /// <returns>Class name based on attachment's dimensions</returns>
         public static string ImageSizingClass(this Attachment input)
         {
+            //Catch SVGs
+            if (input.Extension.ToLower() == ".svg")
+            {
+                return "img-size--horizontal img-size--vertical";
+            }
+
             if (input.ImageHeight > input.ImageWidth)
             {
                 return "img-size--vertical";
