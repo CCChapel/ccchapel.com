@@ -15,6 +15,9 @@ namespace MVC
             /**********************************************************
              * SCRIPTS
              **********************************************************/
+            ////Setup Default Formatting
+            //Scripts.DefaultTagFormat = @"<script async href=""{0}""></script>";
+
             #region AngularJS 
             //var angularCdnPath = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js";
 
