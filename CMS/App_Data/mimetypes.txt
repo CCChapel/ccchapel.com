@@ -148,6 +148,7 @@ sti,application/vnd.sun.xml.impress.template
 stw,application/vnd.sun.xml.writer.template
 sv4cpio,application/x-sv4cpio
 sv4crc,application/x-sv4crc
+svg,image/svg+xml
 swf,application/x-shockwave-flash
 sxc,application/vnd.sun.xml.calc
 sxd,application/vnd.sun.xml.draw
