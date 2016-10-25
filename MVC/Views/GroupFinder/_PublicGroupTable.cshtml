@@ -53,7 +53,7 @@
         @{
             foreach (var group in Model.Items)
             {
-                <tr data-campus="@group.CampusInfo().CampusCodeName.ToLower()" data-ministry="@group.GroupTypeName.ToLower().Replace("Web: ", string.Empty)">
+                <tr data-campus="@group.CampusInfo().CampusCodeName.ToLower()" data-test="@group.GroupDetails().Campus.Value" data-ministry="@group.GroupTypeName.ToLower().Replace("web: ", string.Empty)">
                     <td>
                         <a class="group__name" href="#">@group.Name</a>
                         <div class="description hidden">
