@@ -24,10 +24,10 @@
     var series = SeriesProvider.GetSeries().Path(Series.SERMONS_PATH, PathTypeEnum.Children).Published().OrderByDescending(DatabaseHelpers.OrderByCmsTree);
 
     //Get Special Events
-    var specialEvents = SermonProvider.GetSermons().Path(Series.SPECIAL_EVENTS_PATH, PathTypeEnum.Children).Published().OrderBy(DatabaseHelpers.OrderByCmsTree);
+    var specialEvents = SermonProvider.GetSermons().Path(Series.SPECIAL_EVENTS_PATH, PathTypeEnum.Children).Published().OrderByDescending(DatabaseHelpers.OrderByCmsTree);
 
     //Get Miscellaneous
-    var miscellaneous = SermonProvider.GetSermons().Path(Series.MISCELLANEOUS_PATH, PathTypeEnum.Children).Published().OrderBy(DatabaseHelpers.OrderByCmsTree);
+    var miscellaneous = SermonProvider.GetSermons().Path(Series.MISCELLANEOUS_PATH, PathTypeEnum.Children).Published().OrderByDescending(DatabaseHelpers.OrderByCmsTree);
 }
 
 <a name="weekend-messages"></a>
