@@ -127,6 +127,10 @@
         }
     }
 
+    &.auto-height {
+        height: auto;
+    }
+
     & > center-center {
         @include flexbox;
         @include align-items(center);

@@ -2444,6 +2444,8 @@ body {
     @media only screen and (max-width: 480px) {
       .flex-section.extra-large.palm-stack {
         height: 72rem; } }
+  .flex-section.auto-height {
+    height: auto; }
   .flex-section > center-center {
     display: -webkit-box;
     display: -webkit-flex;
