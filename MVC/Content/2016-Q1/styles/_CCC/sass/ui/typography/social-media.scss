@@ -60,6 +60,14 @@
     }
 }
 
+.podcast-icon {
+    @extend %social-media-icon;
+
+    &:hover {
+        color: $podcast !important;
+    }
+}
+
 .email-icon {
     @extend %social-media-icon;
 
