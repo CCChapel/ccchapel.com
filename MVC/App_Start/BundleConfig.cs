@@ -48,7 +48,7 @@ namespace MVC
              * STYLES
              **********************************************************/
             #region FontAwesome
-            var fontAwesomeCdnPath = "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css";
+            var fontAwesomeCdnPath = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
             bundles.Add(new StyleBundle("~/bundles/font-awesome", fontAwesomeCdnPath).Include("~/Content/2016-Q1/styles/font-awesome/font-awesome-{version}.css"));
             #endregion
 
