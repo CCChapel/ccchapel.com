@@ -29,11 +29,11 @@ div.fsSubField:last-child {
 
 .fsCurrency {
     display: inline-flex;
-    width: 1%;
+    //width: 1%;
 
-    @include grid-media-query("palm") {
-        width: 5%;
-    }
+    //@include grid-media-query("palm") {
+        //width: 5%;
+    //}
 
     & + input {
         display: inline-flex;

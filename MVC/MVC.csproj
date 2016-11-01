@@ -854,6 +854,7 @@
     <Content Include="Views\StaffTeam\_GridItem.cshtml" />
     <Content Include="Views\StaffTeam\Teams.cshtml" />
     <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
+    <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\form-controls\formstack\product.scss" />
     <None Include="Properties\PublishProfiles\GoDaddy - MVC.pubxml" />
     <Content Include="Views\GroupFinder\Index.cshtml" />
     <Content Include="Views\GroupFinder\_PublicGroupTable.cshtml" />

@@ -3620,11 +3620,7 @@ div.fsSubField:last-child {
       padding-left: 0; } }
 
 .fsCurrency {
-  display: inline-flex;
-  width: 1%; }
-  @media only screen and (max-width: 480px) {
-    .fsCurrency {
-      width: 5%; } }
+  display: inline-flex; }
   .fsCurrency + input {
     display: inline-flex; }
 
@@ -3842,6 +3838,36 @@ img.fsCreditCardLogo {
 .fsFieldState,
 .fsFieldZip {
   padding-top: 5px; }
+
+.fsProductField__info {
+  font-weight: normal; }
+
+.fsProductField__fields__quantity {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  width: 50%; }
+  @media only screen and (max-width: 1023px) {
+    .fsProductField__fields__quantity {
+      width: 100%; } }
+  .fsProductField__fields__quantity .css3-metro-dropdown {
+    margin-left: 10px;
+    width: auto !important; }
+    @media only screen and (max-width: 1023px) {
+      .fsProductField__fields__quantity .css3-metro-dropdown {
+        width: 100% !important; } }
 
 @media screen and (-webkit-min-device-pixal-ratio: 0) {
   select,

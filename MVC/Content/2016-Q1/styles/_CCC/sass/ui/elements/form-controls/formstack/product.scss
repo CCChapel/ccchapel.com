@@ -1,0 +1,24 @@
+﻿.fsProductField__info {
+    font-weight: normal;
+}
+
+.fsProductField__fields__quantity {
+    @include inline-flex();
+    @include align-items(center);
+    @include justify-content(flex-end);
+
+    width: 50%;
+
+    @include grid-media-query("portable") {
+        width: 100%;
+    }
+
+    .css3-metro-dropdown {
+        margin-left: 10px;
+        width: auto !important;
+
+        @include grid-media-query("portable") {
+            width: 100% !important;   
+        }
+    }
+}
