@@ -2622,7 +2622,7 @@ a {
 .font-white {
   color: #FFF; }
 
-.facebook-icon, .twitter-icon, .youtube-icon, .vimeo-icon, .instagram-icon, .pinterest-icon, .google-plus-icon, .podcast-icon, .email-icon {
+.facebook-icon, .twitter-icon, .youtube-icon, .vimeo-icon, .instagram-icon, .pinterest-icon, .google-plus-icon, .podcast-icon, .spotify-icon, .email-icon {
   color: currentColor;
   transition: color 250ms linear; }
 
@@ -2649,6 +2649,9 @@ a {
 
 .podcast-icon:hover {
   color: #ac4ddf !important; }
+
+.spotify-icon:hover {
+  color: #1ed760 !important; }
 
 .email-icon:hover {
   color: #185e94 !important; }

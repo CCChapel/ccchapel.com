@@ -68,6 +68,14 @@
     }
 }
 
+.spotify-icon {
+    @extend %social-media-icon;
+
+    &:hover {
+        color: $spotify !important;
+    }
+}
+
 .email-icon {
     @extend %social-media-icon;
 
