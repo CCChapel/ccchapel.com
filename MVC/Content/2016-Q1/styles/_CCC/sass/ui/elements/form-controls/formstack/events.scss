@@ -2,7 +2,8 @@
 .fsProductField__info,
 .fsProductField__fields,
 .fsProductField__fields__fixed-amount,
-.fsProductField__fields__quantity {
+.fsProductField__fields__quantity,
+fsProductField__fields__sold-out {
     display: inline-block;
     box-sizing: border-box;
 }
