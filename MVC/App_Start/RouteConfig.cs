@@ -63,7 +63,7 @@ namespace MVC
             );
             routes.MapRoute(
                 name: "TwoYearInternApplication",
-                url: "employment/two-year-inter-application",
+                url: "employment/two-year-intern-application",
                 defaults: new { controller = "Page", action = "Index", path = "employment/two-year-intern-application" }
             );
             routes.MapRoute(
