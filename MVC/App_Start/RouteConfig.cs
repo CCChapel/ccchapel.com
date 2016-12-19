@@ -62,6 +62,11 @@ namespace MVC
                 defaults: new { controller = "Page", action = "Index", path = "employment/intern-application" }
             );
             routes.MapRoute(
+                name: "TwoYearInternApplication",
+                url: "employment/two-year-inter-application",
+                defaults: new { controller = "Page", action = "Index", path = "employment/two-year-intern-application" }
+            );
+            routes.MapRoute(
                 name: "Jobs",
                 url: "employment/{jobTitle}",
                 defaults: new { controller = "Jobs", action = "Index", jobTitle = UrlParameter.Optional }
