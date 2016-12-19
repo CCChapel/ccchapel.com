@@ -1,4 +1,21 @@
-﻿.fsSubFieldGroup {
+﻿.fsBody .fsForm input[type=text].fsField,
+//.fsBody .fsForm input[type=file].fsField,
+.fsBody .fsForm input[type=number].fsField,
+.fsBody .fsForm input[type=email].fsField,
+.fsBody .fsForm input[type=tel].fsField,
+.fsBody .fsForm textarea.fsField,
+.fsBody .fsForm select.fsField,
+.fsBody .fsForm input[type=text].fsRequired,
+//.fsBody .fsForm input[type=file].fsRequired,
+.fsBody .fsForm input[type=number].fsRequired,
+.fsBody .fsForm input[type=email].fsRequired,
+.fsBody .fsForm input[type=tel].fsRequired,
+.fsBody .fsForm textarea.fsRequired,
+.fsBody .fsForm select.fsRequired {
+    border: 1px solid $charcoal;
+}
+
+.fsSubFieldGroup {
     input {
         width: 100%;
     }

@@ -3568,10 +3568,10 @@ textarea {
     .fsSubField {
       margin-bottom: 12px; } }
 
-legend + .fieldset-content {
+legend:not(.fsLabelVertical) + .fieldset-content {
   padding-left: 24px; }
   @media only screen and (max-width: 480px) {
-    legend + .fieldset-content {
+    legend:not(.fsLabelVertical) + .fieldset-content {
       padding-left: 0; } }
 
 /* RESPONSE MESSAGE */
@@ -3600,6 +3600,20 @@ legend + .fieldset-content {
 .fsBody .fsForm .fsSectionHeading {
   font-family: inherit;
   color: #0b4673; }
+
+.fsBody .fsForm input[type=text].fsField,
+.fsBody .fsForm input[type=number].fsField,
+.fsBody .fsForm input[type=email].fsField,
+.fsBody .fsForm input[type=tel].fsField,
+.fsBody .fsForm textarea.fsField,
+.fsBody .fsForm select.fsField,
+.fsBody .fsForm input[type=text].fsRequired,
+.fsBody .fsForm input[type=number].fsRequired,
+.fsBody .fsForm input[type=email].fsRequired,
+.fsBody .fsForm input[type=tel].fsRequired,
+.fsBody .fsForm textarea.fsRequired,
+.fsBody .fsForm select.fsRequired {
+  border: 1px solid #333333; }
 
 .fsSubFieldGroup input {
   width: 100%; }

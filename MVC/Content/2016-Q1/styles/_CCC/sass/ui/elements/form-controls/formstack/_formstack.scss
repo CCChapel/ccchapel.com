@@ -69,7 +69,7 @@
     }
 }
 
-legend + .fieldset-content {
+legend:not(.fsLabelVertical) + .fieldset-content {
     padding-left: $gutter;
 
     @include grid-media-query("palm") {
