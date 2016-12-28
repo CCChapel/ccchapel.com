@@ -40,11 +40,11 @@
         },
         {
             name: 'Christ Community Chapel &ndash; Highland Square Campus',
-            coordinates: { lat: 41.095619, lng: -81.544334 },
+            coordinates: { lat: 41.089439, lng: -81.543468 },
             info: CCChapel.createMapInfo(
                 "Christ Community Chapel &ndash; Highland Square Campus",
-                "<div class='accent'>Meeting at Portage Path Community Learning Center</div> 55 S Portage Path | Akron, Ohio",
-                "https://www.google.com/maps/dir//Portage+Path+CLC+Elementary+School,+55+S+Portage+Path,+Akron,+OH+44303/@41.0955219,-81.5465821,17z/data=!4m12!1m3!3m2!1s0x8830d7b3e1a79a8d:0x436ee5a6712ac32c!2sPortage+Path+CLC+Elementary+School!4m7!1m0!1m5!1m1!1s0x8830d7b3e1a79a8d:0x436ee5a6712ac32c!2m2!1d-81.5443934!2d41.0955219")
+                "<div class='accent'>Meeting at</div> 350 S Portage Path | Akron, Ohio",
+                "https://www.google.com/maps/place/350+S+Portage+Path,+Akron,+OH+44320/@41.0895443,-81.5456814,17z/data=!3m1!4b1!4m5!3m4!1s0x8830d64ca1f7e641:0x2a2efc7da261ab95!8m2!3d41.0895681!4d-81.5436877")
         }
     ];
 
