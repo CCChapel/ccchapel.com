@@ -1496,27 +1496,31 @@ body {
   font-size: 3rem;
   /*@include grid-media-query("lap") {
             height: 15rem;
-        }*/
-  /*&.light {
-            color: #FFF;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-        }
-
-        &.dark {
-            color: $charcoal;
-            text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
-
-            a {
-                color: $charcoal;
-
-                &:hover {
-                    color: $blue;
-                }
-            }
         }*/ }
   @media only screen and (max-width: 480px) {
     .cross-sell__image {
       height: 45vmin; } }
+  .cross-sell__image.light {
+    color: #FFF;
+    text-shadow: 1px 1px 1px black; }
+  .cross-sell__image.dark {
+    color: #333333;
+    text-shadow: 1px 1px 1px white; }
+    .cross-sell__image.dark a {
+      color: #333333; }
+      .cross-sell__image.dark a:hover {
+        color: #185e94; }
+  .cross-sell__image .cross-sell__video-controls {
+    cursor: pointer;
+    /*font-size: 6rem;
+            text-align: center;*/
+    opacity: .4;
+    transition: opacity 250ms linear;
+    /*.fa-stack-1x {
+                margin-left: .1em;
+            }*/ }
+    .cross-sell__image .cross-sell__video-controls:hover {
+      opacity: 1; }
   .cross-sell__image span.fa-stack i:last-child {
     margin-left: 7px; }
 

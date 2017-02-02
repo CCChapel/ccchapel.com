@@ -29,7 +29,7 @@
             height: 15rem;
         }*/
 
-        /*&.light {
+        &.light {
             color: #FFF;
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
         }
@@ -45,7 +45,25 @@
                     color: $blue;
                 }
             }
-        }*/
+        }
+
+        .cross-sell__video-controls {
+            cursor: pointer;
+
+            /*font-size: 6rem;
+            text-align: center;*/
+            opacity: .4;
+
+            transition: opacity $transition-length $transition-function;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            /*.fa-stack-1x {
+                margin-left: .1em;
+            }*/
+        }
 
         //Fix Play Overlay Spacing
         span.fa-stack {
