@@ -136,7 +136,8 @@
     {
         @:<div class="[content-section no-bottom-margin transparent ] [ grid__item one-whole ]">
            @:<div class="content-wrapper">
-             @:<div class="section-title add-bottom-margin">You Might Also Be Interested In&hellip;</div><!--
+             @:<div class="section-title add-bottom-margin">You Might Also Be Interested In&hellip;</div>
+                @:<div class="grid grid--center"><!--
 
         //Add Items
         foreach (var item in Model.Fields.MessageRelatedItems)
@@ -217,7 +218,8 @@
             }
         }
 
-            @:--></div>
+                @:--></div>
+            @:</div>
         @:</div>
     }
 }
