@@ -1,6 +1,7 @@
 ﻿@using CMS.DocumentEngine;
 @using CMS.DocumentEngine.Types
 @using CCB;
+@using CCC.Helpers
 
 @model CcbEvent
 
@@ -80,6 +81,99 @@
         </div> <!-- /grid -->
     </div> <!-- /content-wrapper -->
 </div> <!-- /event-details -->
+
+@{ 
+    if (Model.Fields.EventRelatedItems.Any())
+    {
+        @:<div class="[ content-section no-bottom-margin light-gray ] [ grid__item one-whole ]">
+           @:<div class="content-wrapper">
+             @:<div class="section-title add-bottom-margin">You Might Also Be Interested In&hellip;</div>
+                @:<div class="grid grid--center"><!--
+
+        //Add Items
+        foreach (var item in Model.Fields.EventRelatedItems)
+        {
+            var controller = "";
+            var guid = "";
+            var title = "";
+            var description = "";
+
+            //Get Page by Type
+            if (item.ClassName == Sermon.CLASS_NAME)
+            {
+                var csItem = SermonProvider.GetSermon(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "Message";
+                    guid = page.NodeGUID.ToString();
+                    title = String.Format("{0} - {1}", page.MessageSeries.SeriesTitle, page.Fields.MessageTitle);
+                    description = page.MessageDate.ToShortDateString();
+                }
+            }
+            else if (item.ClassName == Series.CLASS_NAME)
+            {
+                var csItem = SeriesProvider.GetSeries(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "MessageSeries";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.Title;
+                    description = page.Fields.Description;
+                }
+            }
+            else if (item.ClassName == CcbEvent.CLASS_NAME)
+            {
+                var csItem = CcbEventProvider.GetCcbEvent(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+                    controller = "Event";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.EventName;
+
+                    if (!string.IsNullOrWhiteSpace(page.EventDateDescription))
+                    {
+                        description = page.EventDateDescription;
+                    }
+                    else
+                    {
+                        description = page.StartDateTime.ToDateRangeString(page.EndDateTime);
+                    }
+                }
+            }
+            else if (item.ClassName == CMS.DocumentEngine.Types.Page.CLASS_NAME)
+            {
+                var csItem = PageProvider.GetPage(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "Page";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.Name;
+                    description = page.Fields.SocialDescription;
+                }
+            }
+
+            if (!String.IsNullOrWhiteSpace(controller))
+            {
+                Html.RenderAction("CrossSell", controller, new { guid = guid, title = title, description = description });
+            }
+        }
+
+                @:--></div>
+            @:</div>
+        @:</div>
+    }
+}
 
 @section Scripts {
     <script>

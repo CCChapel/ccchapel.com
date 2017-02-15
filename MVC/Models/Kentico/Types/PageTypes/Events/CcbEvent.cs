@@ -347,6 +347,18 @@ namespace CMS.DocumentEngine.Types
 
 
             /// <summary>
+            /// Attach related items here for event's cross sell section.
+            /// </summary>
+            public IEnumerable<TreeNode> EventRelatedItems
+            {
+                get
+                {
+                    return mInstance.GetRelatedDocuments("EventRelatedItems");
+                }
+            }
+
+
+            /// <summary>
             /// Location Name.
             /// </summary>
             public string EventLocationName
