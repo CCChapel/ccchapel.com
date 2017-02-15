@@ -98,14 +98,14 @@
             </div><!--
                       
          -->@{
-                 if (string.IsNullOrWhiteSpace(Model.DownloadUrlVideo) && !string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
-                 {
+             if (string.IsNullOrWhiteSpace(Model.DownloadUrlVideo) && !string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
+             {
                     <div class="header-details__right add-bottom-margin [ grid__item desktop--hide palm--one-whole ]">
                         <div class="header-details__buttons">
                             <a class="cta" href="@Model.DownloadUrlAudio" download><i class="fa fa-play"></i>&nbsp;&nbsp;Audio</a>
                         </div>
                     </div>
-                 }
+             }
             }<!-- /header-details__right -->
                         
             <div class="[ grid__item two-thirds palm--one-whole ] add-bottom-margin">
@@ -130,6 +130,97 @@
         @{ Html.RenderAction("_SeriesTable", "MessageSeries", new { series = Model.MessageSeries }); }
     </div>
 </div>
+
+@{ 
+    if (Model.Fields.MessageRelatedItems.Any())
+    {
+        @:<div class="[content-section no-bottom-margin transparent ] [ grid__item one-whole ]">
+           @:<div class="content-wrapper">
+             @:<div class="section-title add-bottom-margin">You Might Also Be Interested In&hellip;</div><!--
+
+        //Add Items
+        foreach (var item in Model.Fields.MessageRelatedItems)
+        {
+            var controller = "";
+            var guid = "";
+            var title = "";
+            var description = "";
+
+            //Get Page by Type
+            if (item.ClassName == Sermon.CLASS_NAME)
+            {
+                var csItem = SermonProvider.GetSermon(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "Message";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.MessageTitle;
+                    description = page.MessageDate.ToShortDateString();
+                }
+            }
+            else if (item.ClassName == Series.CLASS_NAME)
+            {
+                var csItem = SeriesProvider.GetSeries(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "MessageSeries";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.Title;
+                    description = page.Fields.Description;
+                }
+            }
+            else if (item.ClassName == CcbEvent.CLASS_NAME)
+            {
+                var csItem = CcbEventProvider.GetCcbEvent(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+                    controller = "Event";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.EventName;
+
+                    if (!string.IsNullOrWhiteSpace(page.EventDateDescription))
+                    {
+                        description = page.EventDateDescription;
+                    }
+                    else
+                    {
+                        description = page.StartDateTime.ToDateRangeString(page.EndDateTime);
+                    }
+                }
+            }
+            else if (item.ClassName == CMS.DocumentEngine.Types.Page.CLASS_NAME)
+            {
+                var csItem = PageProvider.GetPage(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "Page";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.Name;
+                    description = page.Fields.SocialDescription;
+                }
+            }
+
+            if (!String.IsNullOrWhiteSpace(controller))
+            {
+                Html.RenderAction("CrossSell", controller, new { guid = guid, title = title, description = description });
+            }
+        }
+
+            @:--></div>
+        @:</div>
+    }
+}
 
 @section Scripts {
     <script>
