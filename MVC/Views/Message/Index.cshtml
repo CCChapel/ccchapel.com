@@ -134,7 +134,7 @@
 @{ 
     if (Model.Fields.MessageRelatedItems.Any())
     {
-        @:<div class="[content-section no-bottom-margin transparent ] [ grid__item one-whole ]">
+        @:<div class="[ content-section no-bottom-margin transparent ] [ grid__item one-whole ]">
            @:<div class="content-wrapper">
              @:<div class="section-title add-bottom-margin">You Might Also Be Interested In&hellip;</div>
                 @:<div class="grid grid--center"><!--
@@ -158,7 +158,7 @@
 
                     controller = "Message";
                     guid = page.NodeGUID.ToString();
-                    title = page.Fields.MessageTitle;
+                    title = String.Format("{0} - {1}", page.MessageSeries.SeriesTitle, page.Fields.MessageTitle);
                     description = page.MessageDate.ToShortDateString();
                 }
             }
