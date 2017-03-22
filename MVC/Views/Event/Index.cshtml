@@ -42,7 +42,9 @@
                                     else
                                     {<text>@Model.StartDateTime.ToDateRangeString(Model.EndDateTime)</text>}
                                 }</li><!--
-                         --><li>@Html.Raw(Model.StartDateTime.ToTimeRangeString(Model.EndDateTime))</li>
+                         -->@{ if (!string.IsNullOrWhiteSpace(Model.StartDateTime.ToTimeRangeString(Model.EndDateTime)))
+                             {<li>@Html.Raw(Model.StartDateTime.ToTimeRangeString(Model.EndDateTime))</li>}
+                            }
                         </ul>
                     </div>
 
@@ -52,7 +54,7 @@
                                 if (!string.IsNullOrWhiteSpace(Model.EventLocationName))
                                 {
                                     @Model.EventLocationName
-                                }
+                                 }
                                 else
                                 {
                                     @Model.CcbEventData.Location.ToAddressString()
@@ -82,9 +84,9 @@
     </div> <!-- /content-wrapper -->
 </div> <!-- /event-details -->
 
-@{ 
-    if (Model.Fields.EventRelatedItems.Any())
-    {
+@{
+                                 if (Model.Fields.EventRelatedItems.Any())
+                                 {
         @:<div class="[ content-section no-bottom-margin light-gray ] [ grid__item one-whole ]">
            @:<div class="content-wrapper">
              @:<div class="section-title add-bottom-margin">You Might Also Be Interested In&hellip;</div>
