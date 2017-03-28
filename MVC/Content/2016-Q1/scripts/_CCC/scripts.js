@@ -202,16 +202,19 @@
         //Functions
         desktopSetup: function () {
             $(this.CssClass).click(function () {
-                DesktopSearch.open();
+                //DesktopSearch.open();
+                $(".menu__search-icon").click();
             });
         },
         portableSetup: function () {
             $(this.CssClass).click(function () {
-                //Open Menu
-                MobileMenu.open();
+                ////Open Menu
+                //MobileMenu.open();
 
-                //Setup Focus
-                $(DesktopSearch.SearchField).focus();
+                ////Setup Focus
+                //$(DesktopSearch.SearchField).focus();
+
+                $(".menu__search-icon").click();
             });
         }
     }
