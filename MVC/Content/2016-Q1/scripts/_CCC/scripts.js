@@ -225,7 +225,7 @@
             var windowPosition = $(window).scrollTop();
             var offset = Math.round(bodyOffet - windowPosition);
 
-            if (offset <= 0) {
+            if (offset < 0) {
                 $(this.HeaderClass).addClass("sticky")
             }
             else {
