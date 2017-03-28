@@ -440,6 +440,9 @@
             //Desktop Sticky Menu
             DesktopStickyMenu.setup();
 
+            //Mobile Menu
+            MobileMenu.setup();
+
             //Homepage Campus Section
             HomepageCampusSection.desktopSetup();
 

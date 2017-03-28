@@ -19,7 +19,7 @@
     // Public Methods
     //***********************************************/
     CCChapel.openMobileMenu = function () {
-        if (CCChapel.isMobile() == true) {
+        //if (CCChapel.isMobile() == true) {
             //animate icon
             $(trigger).addClass("close");
 
@@ -37,7 +37,7 @@
                 //blur backgrounds after menu displays
                 //$(".notifications, .body, .footer").toggleClass("blur");   
             });
-        }
+        //}
     }
 
     CCChapel.hideMenuItems = function () {
