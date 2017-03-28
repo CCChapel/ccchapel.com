@@ -64,12 +64,18 @@
     }*/
     
     &__item {
+            
+        @include typecsset-font-size($primary-headline-size);
+        
+        text-align: left;
         text-transform: uppercase;
         white-space: nowrap;
         
         @include grid-media-query("portable") {
             @include typecsset-font-size($tertiary-headline-size);
             
+            text-align: center;
+
             height: 3rem !important;
         }
     }

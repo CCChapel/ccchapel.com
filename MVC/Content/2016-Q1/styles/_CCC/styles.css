@@ -1732,6 +1732,10 @@ body {
       .menu__search-icon.open {
         color: #41a5ea; }
   .menu__item {
+    font-size: 64px;
+    font-size: 4rem;
+    line-height: 1.125;
+    text-align: left;
     text-transform: uppercase;
     white-space: nowrap; }
     @media only screen and (max-width: 1023px) {
@@ -1739,6 +1743,7 @@ body {
         font-size: 24px;
         font-size: 1.5rem;
         line-height: 1;
+        text-align: center;
         height: 3rem !important; } }
 
 .logo {
