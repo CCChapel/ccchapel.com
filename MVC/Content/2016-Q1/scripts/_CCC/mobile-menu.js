@@ -41,12 +41,12 @@
         //}
     }
 
-    CCChapel.hideMenuItems = function () {
-        $(ItemClass).hide();
+    CCChapel.hideMenuItems = function (options) {
+        $(ItemClass).fadeOut(options);
     }
 
-    CCChapel.showMenuItems = function () {
-        $(ItemClass).show();
+    CCChapel.showMenuItems = function (options) {
+        $(ItemClass).fadeIn(options);
     }
 
     //************************************************

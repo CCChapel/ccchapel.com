@@ -70,10 +70,10 @@
         var loading = false;
 
         $(searchField).on('focus', function () {
-            CCChapel.hideMenuItems();
+            CCChapel.hideMenuItems({ duration: 250 });
         });
         $(searchField).on('blur', function () {
-            CCChapel.showMenuItems();
+            CCChapel.showMenuItems({ duration: 250 });
         });
 
         //Setup AJAX Results
