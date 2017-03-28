@@ -105,7 +105,8 @@ $header-z-index: 100;
     }
 
     &__menu {
-        height: 100%;
+        padding-top: 4rem;
+        overflow-y: auto;
     }
     
     &__mobile-menu {

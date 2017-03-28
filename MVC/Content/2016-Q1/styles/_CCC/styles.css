@@ -1581,6 +1581,9 @@ body {
     .modal-close:hover {
       background: #b82b2b; }
   .modal-content {
+    position: absolute;
+    top: 0;
+    left: 0;
     padding-top: 6rem;
     height: 100%;
     width: 100%; }
@@ -1677,7 +1680,8 @@ body {
   .banner__logo {
     height: 100%; }
   .banner__menu {
-    height: 100%; }
+    padding-top: 4rem;
+    overflow-y: auto; }
   .banner__mobile-menu {
     height: 100%;
     color: #FFF; }

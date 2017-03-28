@@ -35,6 +35,9 @@
     }
     
     &-content {
+        position: absolute;
+        top: 0;
+        left: 0;
         padding-top: 6rem;
 
         height: 100%;
