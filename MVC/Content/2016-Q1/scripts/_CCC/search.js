@@ -72,8 +72,12 @@
         $(searchField).on('focus', function () {
             CCChapel.hideMenuItems({ duration: 250 });
         });
+
         $(searchField).on('blur', function () {
-            CCChapel.showMenuItems({ duration: 250 });
+            //Only show the Menu Items if the Search is empty
+            if (this.val().length <= 0) {
+                CCChapel.showMenuItems({ duration: 250 });
+            }
         });
 
         //Setup AJAX Results
