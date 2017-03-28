@@ -22,7 +22,7 @@ $header-z-index: 100;
 //**************************************************
 // CAMPUS SELECT
 //**************************************************/
-.campus-select {
+/*.campus-select {
     min-height: 2em;
     overflow: hidden;
     
@@ -40,14 +40,6 @@ $header-z-index: 100;
     }
     
     &__list {
-//        display: inline;
-//        
-//        @include grid-media-query("portable") {
-//            //display: block;
-//            
-//            //padding: .5em 0;
-//        }
-        
         display: inline;
 
         @include grid-media-query("desk") {
@@ -94,7 +86,7 @@ $header-z-index: 100;
             }
         }
     }
-}
+}*/
 
 //**************************************************
 // BANNER

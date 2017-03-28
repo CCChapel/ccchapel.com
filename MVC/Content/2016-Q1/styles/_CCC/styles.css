@@ -1605,50 +1605,71 @@ body {
     .header.sticky:hover {
       font-size: 1rem; }
 
-.campus-select {
-  min-height: 2em;
-  overflow: hidden;
-  background-color: #185e94; }
-  .campus-select__options {
-    padding-top: .25em;
-    padding-bottom: .25em;
-    height: 100%;
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 1.71429;
-    color: #FFF;
-    text-align: center !important; }
-  .campus-select__list {
-    display: inline; }
-    @media only screen and (min-width: 1024px) {
-      .campus-select__list a {
-        font-weight: normal; } }
-    @media only screen and (max-width: 1023px) {
-      .campus-select__list {
-        display: block; }
-        .campus-select__list > * {
-          font-size: 24px;
-          font-size: 1.5rem;
-          line-height: 1; }
-          .campus-select__list > *:after {
-            border-bottom-color: #0b4673; } }
-  .campus-select__campus-marker {
-    cursor: pointer; }
-  .campus-select__campus {
-    display: inline; }
-    @media only screen and (min-width: 1024px) {
-      .campus-select__campus a {
-        font-weight: normal; } }
-    @media only screen and (max-width: 1023px) {
-      .campus-select__campus {
-        display: block; }
-        .campus-select__campus > * {
-          font-size: 24px;
-          font-size: 1.5rem;
-          line-height: 1; }
-          .campus-select__campus > *:after {
-            border-bottom-color: #0b4673; } }
+/*.campus-select {
+    min-height: 2em;
+    overflow: hidden;
+    
+    background-color: $blue;
+    
+    &__options {
+        padding-top: .25em;
+        padding-bottom: .25em;
+        
+        height: 100%;
+        
+        @include typecsset-font-size(14px);
+        color: #FFF;
+        text-align: center !important;
+    }
+    
+    &__list {
+        display: inline;
 
+        @include grid-media-query("desk") {
+            a {
+                font-weight: normal;
+            }
+        }
+
+        @include grid-media-query("portable") {
+            display: block;
+
+            & > * {
+                @include typecsset-font-size($tertiary-headline-size);
+
+                &:after {
+                    border-bottom-color: $dark-blue;
+                }
+            }
+        }
+    }
+    
+    &__campus-marker {
+        cursor: pointer;
+    }
+    
+    &__campus {
+        display: inline;
+        
+        @include grid-media-query("desk") {
+            a {
+                font-weight: normal;
+            }
+        }
+        
+        @include grid-media-query("portable") {
+            display: block;
+
+            & > * {
+                @include typecsset-font-size($tertiary-headline-size);
+
+                &:after {
+                    border-bottom-color: $dark-blue;
+                }
+            }
+        }
+    }
+}*/
 .banner {
   height: 4em;
   background-color: #0b4673;
