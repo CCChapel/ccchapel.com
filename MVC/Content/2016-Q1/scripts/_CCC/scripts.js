@@ -74,126 +74,13 @@
         setup: function () {
             //Icon Click
             $(this.IconClass).click(function () {
-                //DesktopSearch.toggle();
-
                 //Open Mobile Menu
                 CCChapel.openMobileMenu(function () {
                     //Set focus to search field
                     $("#menu-search").focus();
                 });
-
-                ////Set focus to search field
-                //$(this.SearchField).click();
             });
-
-            //$(".modal").click(function () {
-            //    DesktopSearch.close();
-            //})
-
-            //            //Field Loses Focus
-            //            $(this.SearchField).focusout(function() {
-            //                if (!$(DesktopSearch.IconClass).is(":focus")) {
-            //                    console.log( $(DesktopSearch.IconClass).is(":focus") );
-            //                    
-            //                    DesktopSearch.close(); 
-            //                }
-            //                else {
-            //                    console.log("icon clicked");
-            //                }
-            //            });
-        },
-        //toggle: function () {
-        //    //////Toggle Icon
-        //    ////$(this.IconClass).toggleClass("open");
-
-        //    //////Toggle Menu
-        //    ////$(this.MenuItemsClass).toggle();
-
-        //    //////Toggle Width
-        //    ////$(this.ItemClass).toggleClass("one-tenth").toggleClass("one-whole");
-        //    ////$(this.IconClass).toggleClass("desk--one-whole").toggleClass("desk--one-tenth");
-
-        //    //////Toggle Banner Height
-        //    ////$(this.BannerClass).toggleClass("fullHeight");
-
-        //    //////Clear Search Field
-        //    ////$(this.FieldClass).val("");
-
-        //    //////Toggle Search Field
-        //    ////$(this.FieldClass).toggleClass("show");
-
-        //    //////Toggle Modal
-        //    ////CCChapel.toggleModal();
-
-        //    //////Set focus if visible
-        //    ////if ($(this.FieldClass).hasClass("show")) {
-        //    ////    $(this.SearchField).focus();
-        //    ////}
-
-        //    ////If class show, we're open
-        //    //if ($(this.FieldClass).hasClass("show")) {
-        //    //    this.close();
-        //    //}
-        //    //else {
-        //    //    this.open();
-        //    //}
-
-        //},
-        //open: function () {
-        //    //Show Icon
-        //    $(this.IconClass).addClass("open");
-
-        //    //Show Menu
-        //    $(this.MenuItemsClass).hide();
-
-        //    //Set Width
-        //    $(this.ItemClass).removeClass("one-tenth").addClass("one-whole");
-        //    $(this.IconClass).removeClass("desk--one-whole").addClass("desk--one-tenth");
-
-        //    //Set Banner Height
-        //    $(this.BannerClass).addClass("fullHeight");
-
-        //    //Clear Search Field
-        //    $(this.FieldClass).val("");
-
-        //    //Show Search Field
-        //    $(this.FieldClass).addClass("show");
-
-        //    //Show Modal
-        //    CCChapel.openModal();
-
-        //    //Set focus
-        //    $(this.SearchField).focus();
-
-        //    $(".modal").click(function () {
-        //        DesktopSearch.close();
-        //    })
-        //},
-        //close: function () {
-        //    //Hide Icon
-        //    $(this.IconClass).removeClass("open");
-
-        //    //Show Menu
-        //    $(this.MenuItemsClass).show();
-
-        //    //Hide Width
-        //    $(this.ItemClass).addClass("one-tenth").removeClass("one-whole");
-        //    $(this.IconClass).addClass("desk--one-whole").removeClass("desk--one-tenth");
-
-        //    //Hide Banner Height
-        //    $(this.BannerClass).removeClass("fullHeight");
-
-        //    //Hide Modal
-        //    CCChapel.closeModal();
-
-        //    //Hide Search Field
-        //    $(this.FieldClass).removeClass("show");
-
-        //    //Clear Search Field
-        //    $(this.FieldClass).val("");
-
-        //    $(".modal").unbind("click");
-        //}
+        }
     }
 
     /*** DESKTOP STICKY MENU ***/
