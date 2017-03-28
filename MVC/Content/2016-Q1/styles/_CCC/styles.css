@@ -1660,6 +1660,9 @@ body {
   .banner__mobile-menu {
     height: 100%;
     color: #FFF; }
+    .banner__mobile-menu-icon {
+      padding-left: 24px;
+      padding-right: 24px; }
   .sticky .banner {
     background-color: rgba(11, 70, 115, 0.8);
     position: fixed;
@@ -1716,7 +1719,9 @@ body {
         height: 3rem !important; } }
 
 .logo {
-  height: 85%; }
+  height: 75%;
+  padding-left: 24px;
+  padding-right: 24px; }
 
 /* Based on code originally by @bennettfeely, and updated by @SaraSoueidan (https://github.com/SaraSoueidan/navicon-transformicons) */
 .nav-icon {
