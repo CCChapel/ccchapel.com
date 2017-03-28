@@ -75,7 +75,7 @@
 
         $(searchField).on('blur', function () {
             //Only show the Menu Items if the Search is empty
-            if (this.val().length <= 0) {
+            if ($(searchField).val().length <= 0) {
                 CCChapel.showMenuItems({ duration: 250 });
             }
         });
@@ -134,17 +134,17 @@
         var html = $("<div></div>").addClass("search-results");
         var contentWrapper = $("<div></div>").addClass("content-wrapper");
 
-        var searching = $("<div></div>").html("Searching&hellip;");
+        var searching = $("<div></div>").html("<i class='fa fa-circle-o-notch fa-spin'></i> Searching&hellip;");
 
-        var spinnerContainer = $("<div></div>");
-        var spinner = $("<i></i>").addClass("fa fa-circle-o-notch fa-spin fa-2x");
-        spinnerContainer.append(spinner);
+        //var spinnerContainer = $("<div></div>");
+        //var spinner = $("<i></i>").addClass("fa fa-circle-o-notch fa-spin fa-2x");
+        //spinnerContainer.append(spinner);
 
         var sectionTitle =
             $("<div></div>")
                 .addClass("section-title font-white")
-                .append(searching)
-                .append(spinner);
+                .append(searching);
+                //.append(spinner);;;
 
         contentWrapper.append(sectionTitle);
         html.append(contentWrapper);
