@@ -16,6 +16,8 @@
     
     &-close {
         background: $red;
+
+        z-index: 10000;
         
         display: inline-block;
         position: absolute;

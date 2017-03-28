@@ -1570,6 +1570,7 @@ body {
     z-index: 1000; }
   .modal-close {
     background: #ca3737;
+    z-index: 10000;
     display: inline-block;
     position: absolute;
     top: 10px;
