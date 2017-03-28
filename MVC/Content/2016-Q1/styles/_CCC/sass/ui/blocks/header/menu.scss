@@ -4,9 +4,9 @@
 .menu {
     height: 100%;
     
-    div {
+    /*div {
         height: 100%;
-    }
+    }*/
     
     color: #FFF;
     font-weight: bold;
@@ -58,10 +58,12 @@
     }
     
     /*&__items {
-    }
+    }*/
     
     &__grid {
-    }*/
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
     
     &__item {
             

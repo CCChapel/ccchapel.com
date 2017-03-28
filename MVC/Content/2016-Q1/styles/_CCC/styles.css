@@ -1697,16 +1697,14 @@ body {
 
 .menu {
   height: 100%;
+  /*div {
+        height: 100%;
+    }*/
   color: #FFF;
   font-weight: bold;
   text-align: center;
   /*&__items {
-    }
-    
-    &__grid {
     }*/ }
-  .menu div {
-    height: 100%; }
   @media only screen and (max-width: 1023px) {
     .menu {
       padding: .5em 0; } }
@@ -1731,6 +1729,9 @@ body {
       transition: color 250ms linear; }
       .menu__search-icon.open {
         color: #41a5ea; }
+  .menu__grid {
+    padding-left: 24px;
+    padding-right: 24px; }
   .menu__item {
     font-size: 64px;
     font-size: 4rem;
