@@ -105,8 +105,14 @@ $header-z-index: 100;
     }
 
     &__menu {
+        position: absolute;
+        top: 0;
+        left: 0;
         padding-top: 4rem;
         overflow-y: auto;
+
+        height: 100%;
+        width: 100%;
     }
     
     &__mobile-menu {

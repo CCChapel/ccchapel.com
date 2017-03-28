@@ -1680,8 +1680,13 @@ body {
   .banner__logo {
     height: 100%; }
   .banner__menu {
+    position: absolute;
+    top: 0;
+    left: 0;
     padding-top: 4rem;
-    overflow-y: auto; }
+    overflow-y: auto;
+    height: 100%;
+    width: 100%; }
   .banner__mobile-menu {
     height: 100%;
     color: #FFF; }
@@ -1721,12 +1726,11 @@ body {
     .menu__search-grid {
       padding-left: 24px;
       padding-right: 24px; }
-    @media only screen and (min-width: 1024px) {
-      .menu__search-field {
-        padding-top: 1em;
-        padding-bottom: 1em; } }
-    .menu__search-field.show {
-      display: inline-block; }
+    .menu__search-field {
+      padding-top: 1em;
+      padding-bottom: 1em; }
+      .menu__search-field.show {
+        display: inline-block; }
     .menu__search-icon {
       cursor: pointer;
       height: 100%;

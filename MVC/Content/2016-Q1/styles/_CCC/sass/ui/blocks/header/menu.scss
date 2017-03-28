@@ -34,10 +34,8 @@
         }
         
         &-field {
-            @include grid-media-query("desk") {
-                padding-top: 1em;
-                padding-bottom: 1em;
-            }
+            padding-top: 1em;
+            padding-bottom: 1em;
 
             &.show {
                 display: inline-block;
