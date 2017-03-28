@@ -256,18 +256,23 @@
             $(this.Trigger).toggleClass("close");
 
             //show items
-            $(this.ItemsClass).show();
+            //$(this.ItemsClass).show();
 
             //toggle screen lock
             $("body").toggleClass("hide-overflow");
             $("body").toggleClass("lock-position");
 
-            CCChapel.toggleModal();
+            CCChapel.toggleModal({}, function () {
+                console.log("callback");
 
-            //toggle menu
-            $(this.MenuClass).slideToggle(250, function () {
-                //blur backgrounds after menu displays
-                //$(".notifications, .body, .footer").toggleClass("blur");  
+                //toggle menu
+                $(".banner__menu").show();
+                //$(".menu__item").slideToggle(250);
+
+                $(".menu__item").animate({
+                    opacity: 'toggle',
+                    height: 'toggle'
+                }, 500);
             });
 
             //clear search
@@ -278,13 +283,15 @@
             $(this.Trigger).addClass("close");
 
             //show items
-            $(this.ItemsClass).show();
+            //$(this.ItemsClass).show();
 
             //toggle screen lock
             $("body").addClass("hide-overflow");
             $("body").addClass("lock-position");
 
-            CCChapel.openModal();
+            CCChapel.openModal({}, function () {
+                console.log("callback");
+            });
 
             //toggle menu
             $(this.MenuClass).slideDown(250, function () {

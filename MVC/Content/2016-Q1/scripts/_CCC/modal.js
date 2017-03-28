@@ -23,7 +23,7 @@
     /************************************************
     // Public Methods
     //***********************************************/
-    CCChapel.openModal = function (options) {
+    CCChapel.openModal = function (options, callback) {
         //Setup Defaults
         options = $.extend({}, defaults, options);
 
@@ -34,7 +34,9 @@
             $(options.cssClass).removeClass("full");
         }
 
-        $(options.cssClass).fadeIn(options.transitionDuration);
+        $(options.cssClass).fadeIn(options.transitionDuration, function () {
+            callback();
+        });
 
         if (options.lockViewport == true) {
             CCChapel.lockViewport();
@@ -43,11 +45,13 @@
         modalOpen = true;
     }
 
-    CCChapel.closeModal = function (options) {
+    CCChapel.closeModal = function (options, callback) {
         //Setup Defaults
         options = $.extend({}, defaults, options);
 
-        $(options.cssClass).fadeOut(options.transitionDuration);
+        $(options.cssClass).fadeOut(options.transitionDuration, function () {
+            callback();
+        });
 
         //Clean out content
         this.clearModalContent();
@@ -57,15 +61,15 @@
         modalOpen = false;
     }
 
-    CCChapel.toggleModal = function (options) {
+    CCChapel.toggleModal = function (options, callback) {
         //Setup Defaults
         options = $.extend({}, defaults, options);
 
         if (modalOpen == true) {
-            CCChapel.closeModal(options);
+            CCChapel.closeModal(options, callback);
         }
         else {
-            CCChapel.openModal(options);
+            CCChapel.openModal(options, callback);
         }
     }
 

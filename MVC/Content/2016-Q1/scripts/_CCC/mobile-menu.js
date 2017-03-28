@@ -30,7 +30,10 @@
             $("body").addClass("hide-overflow");
             $("body").addClass("lock-position");
 
-            CCChapel.openModal();
+            console.log("Opening modal...");
+            CCChapel.openModal({}, function () {
+                    console.log("modal open callback");
+                });
 
             //toggle menu
             $(menuClass).slideDown(250, function () {
