@@ -23,12 +23,14 @@
     }
     
     &__search {
-        @include grid-media-query("portable") {
+        /*@include grid-media-query("portable") {
             height: auto !important;
-        }
+        }*/
         
         &-grid {
-            height: 100%;
+            //height: 100%;
+            padding-left: $gutter;
+            padding-right: $gutter;
         }
         
         &-field {
@@ -80,6 +82,12 @@
     padding-right: $gutter;
 }
 
+.search-icon {
+    padding-right: 20px;
+
+    font-size: 22px;
+}
+
 //*# Menu Icon #*//
 /* Based on code originally by @bennettfeely, and updated by @SaraSoueidan (https://github.com/SaraSoueidan/navicon-transformicons) */
 $button-size : 1.5rem;
@@ -87,7 +95,7 @@ $nav-icon-transition-speed: 100ms; // increase this to see the transformations i
 
 .nav-icon {
     //padding: $button-size/2 $button-size/4;
-    margin-top: -10px;
+    margin-top: -6px;
     transition: $nav-icon-transition-speed;
     cursor: pointer;
     user-select: none;

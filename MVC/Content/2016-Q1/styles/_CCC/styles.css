@@ -1712,23 +1712,25 @@ body {
       padding: .5em 0; } }
   .menu a {
     text-decoration: none !important; }
-  @media only screen and (max-width: 1023px) {
-    .menu__search {
-      height: auto !important; } }
-  .menu__search-grid {
-    height: 100%; }
-  @media only screen and (min-width: 1024px) {
-    .menu__search-field {
-      padding-top: 1em;
-      padding-bottom: 1em; } }
-  .menu__search-field.show {
-    display: inline-block; }
-  .menu__search-icon {
-    cursor: pointer;
-    height: 100%;
-    transition: color 250ms linear; }
-    .menu__search-icon.open {
-      color: #41a5ea; }
+  .menu__search {
+    /*@include grid-media-query("portable") {
+            height: auto !important;
+        }*/ }
+    .menu__search-grid {
+      padding-left: 24px;
+      padding-right: 24px; }
+    @media only screen and (min-width: 1024px) {
+      .menu__search-field {
+        padding-top: 1em;
+        padding-bottom: 1em; } }
+    .menu__search-field.show {
+      display: inline-block; }
+    .menu__search-icon {
+      cursor: pointer;
+      height: 100%;
+      transition: color 250ms linear; }
+      .menu__search-icon.open {
+        color: #41a5ea; }
   .menu__item {
     text-transform: uppercase;
     white-space: nowrap; }
@@ -1744,9 +1746,13 @@ body {
   padding-left: 24px;
   padding-right: 24px; }
 
+.search-icon {
+  padding-right: 20px;
+  font-size: 22px; }
+
 /* Based on code originally by @bennettfeely, and updated by @SaraSoueidan (https://github.com/SaraSoueidan/navicon-transformicons) */
 .nav-icon {
-  margin-top: -10px;
+  margin-top: -6px;
   transition: 100ms;
   cursor: pointer;
   user-select: none;
