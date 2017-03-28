@@ -74,7 +74,16 @@
         setup: function () {
             //Icon Click
             $(this.IconClass).click(function () {
-                DesktopSearch.toggle();
+                //DesktopSearch.toggle();
+
+                //Open Mobile Menu
+                CCChapel.openMobileMenu(function () {
+                    //Set focus to search field
+                    $("#menu-search").focus();
+                });
+
+                ////Set focus to search field
+                //$(this.SearchField).click();
             });
 
             //$(".modal").click(function () {
@@ -93,97 +102,98 @@
             //                }
             //            });
         },
-        toggle: function () {
-            ////Toggle Icon
-            //$(this.IconClass).toggleClass("open");
+        //toggle: function () {
+        //    //////Toggle Icon
+        //    ////$(this.IconClass).toggleClass("open");
 
-            ////Toggle Menu
-            //$(this.MenuItemsClass).toggle();
+        //    //////Toggle Menu
+        //    ////$(this.MenuItemsClass).toggle();
 
-            ////Toggle Width
-            //$(this.ItemClass).toggleClass("one-tenth").toggleClass("one-whole");
-            //$(this.IconClass).toggleClass("desk--one-whole").toggleClass("desk--one-tenth");
+        //    //////Toggle Width
+        //    ////$(this.ItemClass).toggleClass("one-tenth").toggleClass("one-whole");
+        //    ////$(this.IconClass).toggleClass("desk--one-whole").toggleClass("desk--one-tenth");
 
-            ////Toggle Banner Height
-            //$(this.BannerClass).toggleClass("fullHeight");
+        //    //////Toggle Banner Height
+        //    ////$(this.BannerClass).toggleClass("fullHeight");
 
-            ////Clear Search Field
-            //$(this.FieldClass).val("");
+        //    //////Clear Search Field
+        //    ////$(this.FieldClass).val("");
 
-            ////Toggle Search Field
-            //$(this.FieldClass).toggleClass("show");
+        //    //////Toggle Search Field
+        //    ////$(this.FieldClass).toggleClass("show");
 
-            ////Toggle Modal
-            //CCChapel.toggleModal();
+        //    //////Toggle Modal
+        //    ////CCChapel.toggleModal();
 
-            ////Set focus if visible
-            //if ($(this.FieldClass).hasClass("show")) {
-            //    $(this.SearchField).focus();
-            //}
+        //    //////Set focus if visible
+        //    ////if ($(this.FieldClass).hasClass("show")) {
+        //    ////    $(this.SearchField).focus();
+        //    ////}
 
-            //If class show, we're open
-            if ($(this.FieldClass).hasClass("show")) {
-                this.close();
-            }
-            else {
-                this.open();
-            }
-        },
-        open: function () {
-            //Show Icon
-            $(this.IconClass).addClass("open");
+        //    ////If class show, we're open
+        //    //if ($(this.FieldClass).hasClass("show")) {
+        //    //    this.close();
+        //    //}
+        //    //else {
+        //    //    this.open();
+        //    //}
 
-            //Show Menu
-            $(this.MenuItemsClass).hide();
+        //},
+        //open: function () {
+        //    //Show Icon
+        //    $(this.IconClass).addClass("open");
 
-            //Set Width
-            $(this.ItemClass).removeClass("one-tenth").addClass("one-whole");
-            $(this.IconClass).removeClass("desk--one-whole").addClass("desk--one-tenth");
+        //    //Show Menu
+        //    $(this.MenuItemsClass).hide();
 
-            //Set Banner Height
-            $(this.BannerClass).addClass("fullHeight");
+        //    //Set Width
+        //    $(this.ItemClass).removeClass("one-tenth").addClass("one-whole");
+        //    $(this.IconClass).removeClass("desk--one-whole").addClass("desk--one-tenth");
 
-            //Clear Search Field
-            $(this.FieldClass).val("");
+        //    //Set Banner Height
+        //    $(this.BannerClass).addClass("fullHeight");
 
-            //Show Search Field
-            $(this.FieldClass).addClass("show");
+        //    //Clear Search Field
+        //    $(this.FieldClass).val("");
 
-            //Show Modal
-            CCChapel.openModal();
+        //    //Show Search Field
+        //    $(this.FieldClass).addClass("show");
 
-            //Set focus
-            $(this.SearchField).focus();
+        //    //Show Modal
+        //    CCChapel.openModal();
 
-            $(".modal").click(function () {
-                DesktopSearch.close();
-            })
-        },
-        close: function () {
-            //Hide Icon
-            $(this.IconClass).removeClass("open");
+        //    //Set focus
+        //    $(this.SearchField).focus();
 
-            //Show Menu
-            $(this.MenuItemsClass).show();
+        //    $(".modal").click(function () {
+        //        DesktopSearch.close();
+        //    })
+        //},
+        //close: function () {
+        //    //Hide Icon
+        //    $(this.IconClass).removeClass("open");
 
-            //Hide Width
-            $(this.ItemClass).addClass("one-tenth").removeClass("one-whole");
-            $(this.IconClass).addClass("desk--one-whole").removeClass("desk--one-tenth");
+        //    //Show Menu
+        //    $(this.MenuItemsClass).show();
 
-            //Hide Banner Height
-            $(this.BannerClass).removeClass("fullHeight");
+        //    //Hide Width
+        //    $(this.ItemClass).addClass("one-tenth").removeClass("one-whole");
+        //    $(this.IconClass).addClass("desk--one-whole").removeClass("desk--one-tenth");
 
-            //Hide Modal
-            CCChapel.closeModal();
+        //    //Hide Banner Height
+        //    $(this.BannerClass).removeClass("fullHeight");
 
-            //Hide Search Field
-            $(this.FieldClass).removeClass("show");
+        //    //Hide Modal
+        //    CCChapel.closeModal();
 
-            //Clear Search Field
-            $(this.FieldClass).val("");
+        //    //Hide Search Field
+        //    $(this.FieldClass).removeClass("show");
 
-            $(".modal").unbind("click");
-        }
+        //    //Clear Search Field
+        //    $(this.FieldClass).val("");
+
+        //    $(".modal").unbind("click");
+        //}
     }
 
     /*** DESKTOP STICKY MENU ***/

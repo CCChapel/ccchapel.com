@@ -69,6 +69,13 @@
         var delay = 600;
         var loading = false;
 
+        $(searchField).on('focus', function () {
+            CCChapel.hideMenuItems();
+        });
+        $(searchField).on('blur', function () {
+            CCChapel.showMenuItems();
+        });
+
         //Setup AJAX Results
         $(searchField).on('input', function () {
             if (CCChapel.isMobile() != true) {
