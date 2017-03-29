@@ -263,8 +263,6 @@
             $("body").toggleClass("lock-position");
 
             CCChapel.toggleModal({}, function () {
-                console.log("callback");
-
                 //toggle menu
                 $(".banner__menu").show();
                 //$(".menu__item").slideToggle(250);
@@ -290,14 +288,20 @@
             $("body").addClass("lock-position");
 
             CCChapel.openModal({}, function () {
-                console.log("callback");
+                //toggle menu
+                $(".banner__menu").show();
+
+                $(".menu__item").animate({
+                    opacity: 'toggle',
+                    height: 'toggle'
+                }, 500);
             });
 
-            //toggle menu
-            $(this.MenuClass).slideDown(250, function () {
-                //blur backgrounds after menu displays
-                //$(".notifications, .body, .footer").toggleClass("blur");   
-            });
+            ////toggle menu
+            //$(this.MenuClass).slideDown(250, function () {
+            //    //blur backgrounds after menu displays
+            //    //$(".notifications, .body, .footer").toggleClass("blur");   
+            //});
         },
         close: function () {
             //animate icon
@@ -307,12 +311,12 @@
             $("body").removeClass("hide-overflow");
             $("body").removeClass("lock-position");
 
-            CCChapel.closeModal();
-
-            //toggle menu
-            $(this.MenuClass).slideUp(250, function () {
-                //blur backgrounds after menu displays
-                //$(".notifications, .body, .footer").toggleClass("blur");   
+            CCChapel.closeModal({}, function () {
+                //toggle menu
+                $(this.MenuClass).slideUp(250, function () {
+                    //blur backgrounds after menu displays
+                    //$(".notifications, .body, .footer").toggleClass("blur");   
+                });
             });
 
             //clear search

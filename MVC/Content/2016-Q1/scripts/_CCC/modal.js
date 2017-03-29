@@ -52,8 +52,6 @@
         options = $.extend({}, defaults, options);
 
         $(options.cssClass).fadeOut(options.transitionDuration, function () {
-            console.log(callback);
-
             if (callback !== undefined) {
                 callback();
             }
