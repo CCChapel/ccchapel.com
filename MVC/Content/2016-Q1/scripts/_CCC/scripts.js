@@ -284,7 +284,7 @@
                 $(".banner__menu").show();
 
                 $(".menu__item").animate({
-                    opacity: 'toggle',
+                    opacity: 1,
                     height: 'toggle'
                 }, 500);
             });
@@ -302,7 +302,7 @@
                 $(".banner__menu").hide();
 
                 $(".menu__item").animate({
-                    opacity: 'toggle',
+                    opacity: 0,
                     height: 'toggle'
                 }, 500);
             });

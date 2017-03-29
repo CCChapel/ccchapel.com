@@ -52,11 +52,11 @@
     }
 
     CCChapel.hideMenuItems = function (options) {
-        $(ItemClass).fadeOut(options);
+        $(itemClass).fadeOut(options);
     }
 
     CCChapel.showMenuItems = function (options) {
-        $(ItemClass).fadeIn(options);
+        $(itemClass).fadeIn(options);
     }
 
     //************************************************
