@@ -105,7 +105,7 @@
                             }
                             else {
                                 displayNoResults();
-                                console.log(data);
+                                //console.log(data);
                             }
                         })
                         .fail(function (jqxhr, textStatus, error) {

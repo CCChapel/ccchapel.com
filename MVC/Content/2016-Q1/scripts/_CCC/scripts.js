@@ -243,7 +243,7 @@
         ItemsClass: ".menu__items",
         ItemClass: ".menu__item",
         Trigger: "#nav-icon",
-        isOpen: false,
+        //isOpen: false,
 
         //Functions
         setup: function () {
@@ -253,15 +253,16 @@
             });
         },
         toggleMenu: function () {
-            if (this.isOpen === false) {
+            //Check if menu is visible
+            if ($(this.MenuClass).css("display") !== "block") {
                 this.open();
 
-                this.isOpen = true;
+                //this.isOpen = true;
             }
             else {
                 this.close();
 
-                this.isOpen = false;
+                //this.isOpen = false;
             }
 
             //clear search

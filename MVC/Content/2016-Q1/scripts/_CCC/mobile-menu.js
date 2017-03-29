@@ -23,22 +23,31 @@
             //animate icon
             $(trigger).addClass("close");
 
-            //show items
-            $(itemsClass).show();
+            ////show items
+            //$(itemsClass).show();
 
             //toggle screen lock
             $("body").addClass("hide-overflow");
             $("body").addClass("lock-position");
 
             CCChapel.openModal({}, function () {
-                });
+                //toggle menu
+                $(".banner__menu").show();
 
-            //toggle menu
-            $(menuClass).slideDown(250, function () {
-                //blur backgrounds after menu displays
-                //$(".notifications, .body, .footer").toggleClass("blur");   
+                $(".menu__item").animate({
+                    opacity: 1,
+                    height: 'auto'
+                }, 500);
+
                 callback();
             });
+
+            ////toggle menu
+            //$(menuClass).slideDown(250, function () {
+            //    //blur backgrounds after menu displays
+            //    //$(".notifications, .body, .footer").toggleClass("blur");   
+            //    callback();
+            //});
         //}
     }
 
