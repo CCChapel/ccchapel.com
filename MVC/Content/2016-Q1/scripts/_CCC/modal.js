@@ -35,7 +35,9 @@
         }
 
         $(options.cssClass).fadeIn(options.transitionDuration, function () {
-            callback();
+            if (callback !== undefined) {
+                callback();
+            }
         });
 
         if (options.lockViewport == true) {
@@ -50,7 +52,11 @@
         options = $.extend({}, defaults, options);
 
         $(options.cssClass).fadeOut(options.transitionDuration, function () {
-            callback();
+            console.log(callback);
+
+            if (callback !== undefined) {
+                callback();
+            }
         });
 
         //Clean out content
