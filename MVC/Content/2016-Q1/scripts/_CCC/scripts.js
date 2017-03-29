@@ -243,6 +243,7 @@
         ItemsClass: ".menu__items",
         ItemClass: ".menu__item",
         Trigger: "#nav-icon",
+        isOpen: false,
 
         //Functions
         setup: function () {
@@ -252,26 +253,16 @@
             });
         },
         toggleMenu: function () {
-            //animate icon
-            $(this.Trigger).toggleClass("close");
+            if (this.isOpen === false) {
+                this.open();
 
-            //show items
-            //$(this.ItemsClass).show();
+                this.isOpen = true;
+            }
+            else {
+                this.close();
 
-            //toggle screen lock
-            $("body").toggleClass("hide-overflow");
-            $("body").toggleClass("lock-position");
-
-            CCChapel.toggleModal({}, function () {
-                //toggle menu
-                $(".banner__menu").show();
-                //$(".menu__item").slideToggle(250);
-
-                $(".menu__item").animate({
-                    opacity: 'toggle',
-                    height: 'toggle'
-                }, 500);
-            });
+                this.isOpen = false;
+            }
 
             //clear search
             $("#menu-search").val("");
@@ -296,12 +287,6 @@
                     height: 'toggle'
                 }, 500);
             });
-
-            ////toggle menu
-            //$(this.MenuClass).slideDown(250, function () {
-            //    //blur backgrounds after menu displays
-            //    //$(".notifications, .body, .footer").toggleClass("blur");   
-            //});
         },
         close: function () {
             //animate icon
@@ -313,10 +298,12 @@
 
             CCChapel.closeModal({}, function () {
                 //toggle menu
-                $(this.MenuClass).slideUp(250, function () {
-                    //blur backgrounds after menu displays
-                    //$(".notifications, .body, .footer").toggleClass("blur");   
-                });
+                $(".banner__menu").hide();
+
+                $(".menu__item").animate({
+                    opacity: 'toggle',
+                    height: 'toggle'
+                }, 500);
             });
 
             //clear search
