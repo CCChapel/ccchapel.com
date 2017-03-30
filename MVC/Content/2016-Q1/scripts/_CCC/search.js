@@ -71,11 +71,15 @@
 
         $(searchField).on('focus', function () {
             CCChapel.hideMenuItems({ duration: 250 });
+
+            showInstructuions();
         });
 
         $(searchField).on('blur', function () {
             //Only show the Menu Items if the Search is empty
             if ($(searchField).val().length <= 0) {
+                CCChapel.clearModalContent();
+
                 CCChapel.showMenuItems({ duration: 250 });
             }
         });
@@ -121,12 +125,30 @@
                     else {
                         loading = false;
 
-                        CCChapel.clearModalContent();
+                        showInstructuions();
                     }
                 }, delay);
             }
         });
     }
+
+    function showInstructuions() {
+        CCChapel.clearModalContent();
+
+        var html = $("<div></div>").addClass("search-results");
+        var contentWrapper = $("<div></div>").addClass("content-wrapper");
+
+        var instructions = $("<div></div>").html("What can we help you find?");
+
+        var sectionTitle =
+                $("<div></div>")
+                    .addClass("section-title font-white")
+                    .append(instructions);
+
+        contentWrapper.append(sectionTitle);
+        html.append(contentWrapper);
+        $(".modal-content").append(html);
+    } 
 
     function showLoading() {
         CCChapel.clearModalContent();
