@@ -72,7 +72,9 @@
         $(searchField).on('focus', function () {
             CCChapel.hideMenuItems({ duration: 250 });
 
-            showInstructuions();
+            if ($(searchField).val().length <= 0) {
+                showInstructions();
+            }
         });
 
         $(searchField).on('blur', function () {
@@ -125,14 +127,14 @@
                     else {
                         loading = false;
 
-                        showInstructuions();
+                        showInstructions();
                     }
                 }, delay);
             }
         });
     }
 
-    function showInstructuions() {
+    function showInstructions() {
         CCChapel.clearModalContent();
 
         var html = $("<div></div>").addClass("search-results");
