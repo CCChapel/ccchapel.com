@@ -44,6 +44,10 @@
         }
     }
 
+    CCChapel.clearSearchResults = function () {
+        $(".search-results").html("");
+    }
+
     CCChapel.initializeSearch = function () {
         $(document).ready(function () {
             initializeAjaxSearch();
@@ -80,7 +84,7 @@
         $(searchField).on('blur', function () {
             //Only show the Menu Items if the Search is empty
             if ($(searchField).val().length <= 0) {
-                CCChapel.clearModalContent();
+                CCChapel.clearSearchResults();
 
                 CCChapel.showMenuItems({ duration: 250 });
             }
@@ -135,7 +139,7 @@
     }
 
     function showInstructions() {
-        CCChapel.clearModalContent();
+        CCChapel.clearSearchResults();
 
         var html = $("<div></div>").addClass("search-results");
         var contentWrapper = $("<div></div>").addClass("content-wrapper");
@@ -149,11 +153,11 @@
 
         contentWrapper.append(sectionTitle);
         html.append(contentWrapper);
-        $(".modal-content").append(html);
+        $(".search-results").append(html);
     } 
 
     function showLoading() {
-        CCChapel.clearModalContent();
+        CCChapel.clearSearchResults();
 
         var html = $("<div></div>").addClass("search-results");
         var contentWrapper = $("<div></div>").addClass("content-wrapper");
@@ -172,7 +176,7 @@
 
         contentWrapper.append(sectionTitle);
         html.append(contentWrapper);
-        $(".modal-content").append(html);
+        $(".search-results").append(html);
     }
 
     function getQueryLink(query) {
@@ -181,7 +185,7 @@
 
     function displayNoResults() {
         //Clear out old results
-        CCChapel.clearModalContent();
+        CCChapel.clearSearchResults();
 
         var html = $("<div></div>").addClass("search-results");
         var contentWrapper = $("<div></div>").addClass("content-wrapper");
@@ -202,12 +206,12 @@
         contentWrapper.append(sectionDescription);
 
         html.append(contentWrapper);
-        $(".modal-content").append(html);
+        $(".search-results").append(html);
     }
 
     function displayPressEnter() {
         //Clear out old results
-        CCChapel.clearModalContent();
+        CCChapel.clearSearchResults();
 
         var html = $("<div></div>").addClass("search-results");
         var contentWrapper = $("<div></div>").addClass("content-wrapper");
@@ -219,15 +223,15 @@
         contentWrapper.append(sectionTitle);
 
         html.append(contentWrapper);
-        $(".modal-content").append(html);
+        $(".search-results").append(html);
     }
 
     function displaySearchResults(results) {
         //Clear out old results
-        CCChapel.clearModalContent();
+        CCChapel.clearSearchResults();
 
-        var html = $("<div></div>").addClass("search-results");
-        var contentWrapper = $("<div></div>").addClass("content-wrapper");
+        //var html = $("<div></div>").addClass("search-results");
+        var contentWrapper = $("<div></div>").addClass("content-wrapper no-vertical");
 
         $.each(results.items, function (i, item) {
             var result = $("<div></div>").addClass("search-results__item");
@@ -267,14 +271,15 @@
             contentWrapper.append(links);
         }
 
-        html.append(contentWrapper);
-        $(".modal-content").append(html);
+        //html.append(contentWrapper);
+        //$(".search-results").append(html);
+        $(".search-results").append(contentWrapper);
 
-        //Clean Up
-        while ($(window).height() < $(".search-results").outerHeight()) {
-            $(".modal-content .search-results__item").last().remove();
-            $(".modal-content .search-results").children(".content-wrapper").children("hr").last().remove();
-        }
+        ////Clean Up
+        //while ($(window).height() < $(".search-results").outerHeight()) {
+        //    $(".search-results .search-results__item").last().remove();
+        //    $(".search-results .search-results").children(".content-wrapper").children("hr").last().remove();
+        //}
     }
 }(window.CCChapel = window.CCChapel || {}, jQuery));
 

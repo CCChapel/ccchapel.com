@@ -1590,14 +1590,16 @@ body {
     width: 100%; }
     .modal.full > .modal-content {
       padding-top: 0; }
-  .modal .search-results__item {
-    color: #FFF !important; }
-    .modal .search-results__item-description {
+  .modal .search-results {
+    text-align: left; }
+    .modal .search-results__item {
       color: #FFF !important; }
-    .modal .search-results__item a {
-      color: #FFF; }
-      .modal .search-results__item a:hover, .modal .search-results__item a:active {
-        color: #185e94; }
+      .modal .search-results__item-description {
+        color: #FFF !important; }
+      .modal .search-results__item a {
+        color: #FFF; }
+        .modal .search-results__item a:hover, .modal .search-results__item a:active {
+          color: #185e94; }
 
 .header {
   position: relative;
