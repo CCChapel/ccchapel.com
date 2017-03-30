@@ -323,16 +323,19 @@ namespace CCC.Models
         {
             List<SearchResults.AjaxSearchResults.AjaxSearchResultItem> list = new List<SearchResults.AjaxSearchResults.AjaxSearchResultItem>();
 
-            foreach (var item in input)
+            if (input != null)
             {
-                SearchResults.AjaxSearchResults.AjaxSearchResultItem ajax = new SearchResults.AjaxSearchResults.AjaxSearchResultItem()
+                foreach (var item in input)
                 {
-                    Title = item.Title,
-                    Url = item.ItemUrl(),
-                    Description = item.ModifiedContent()
-                };
+                    SearchResults.AjaxSearchResults.AjaxSearchResultItem ajax = new SearchResults.AjaxSearchResults.AjaxSearchResultItem()
+                    {
+                        Title = item.Title,
+                        Url = item.ItemUrl(),
+                        Description = item.ModifiedContent()
+                    };
 
-                list.Add(ajax);
+                    list.Add(ajax);
+                }
             }
 
             return list;
