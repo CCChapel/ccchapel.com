@@ -9,6 +9,8 @@
 
     height: 100vh;
     width: 100vw;
+
+    color: #FFF;
     
     &.full {
         z-index: 1000;
@@ -29,7 +31,7 @@
         height: 3rem;
         width: 3rem;
         
-        color: #FFF;
+        //color: #FFF;
         
         &:hover {
             background: $dark-red;
@@ -59,15 +61,15 @@
             &-description {
                 color: #FFF !important;
             }
+        }
+    }
 
-            a {
-                color: #FFF;
+    a {
+        color: #FFF;
 
-                &:hover,
-                &:active {
-                    color: $light-blue;
-                }
-            }
+        &:hover,
+        &:active {
+            color: $light-blue;
         }
     }
 }
