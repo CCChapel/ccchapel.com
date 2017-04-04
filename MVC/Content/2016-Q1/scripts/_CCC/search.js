@@ -72,22 +72,33 @@
         var timer;
         var delay = 600;
         var loading = false;
+        var hasFocus = false;
 
         $(searchField).on('focus', function () {
-            CCChapel.hideMenuItems({ duration: 250 });
+            if (hasFocus === false) {
+                CCChapel.hideMenuItems({ duration: 250 });
+            }
 
             if ($(searchField).val().length <= 0) {
                 showInstructions();
             }
+
+            hasFocus = true;
         });
 
         $(searchField).on('blur', function () {
-            //Only show the Menu Items if the Search is empty
-            if ($(searchField).val().length <= 0) {
-                CCChapel.clearSearchResults();
+            hasFocus = false;
 
-                CCChapel.showMenuItems({ duration: 250 });
-            }
+            setTimeout(function () {
+                if (hasFocus === false) {
+                    //Only show the Menu Items if the Search is empty
+                    if ($(searchField).val().length <= 0) {
+                        CCChapel.clearSearchResults();
+
+                        CCChapel.showMenuItems({ duration: 250 });
+                    }
+                }
+            }, 500);
         });
 
         //Setup AJAX Results
