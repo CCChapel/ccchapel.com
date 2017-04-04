@@ -14,7 +14,7 @@ input[type="datetime"],
 input[type="email"],
 input[type="number"],
 input[type="password"],
-input[type="search"],
+//input[type="search"],
 input[type="tel"],
 input[type="text"],
 input[type="time"],
@@ -25,6 +25,66 @@ input[type="url"] {
 
     &.one-whole {
         width: 100%;
+    }
+}
+
+input[type="search"] {
+    background-color: transparent;
+    border: none;
+
+    padding-left: 5rem;
+
+    width: 100%;
+
+    @include typecsset-font-size($primary-headline-size, false);
+    line-height: 1.25;
+
+    color: #FFF;
+    font-weight: 300;
+
+    @include grid-media-query("portable") {
+        @include typecsset-font-size($tertiary-headline-size, false);
+        line-height: 1.25;
+
+        padding-left: 2rem;
+    }
+
+    @mixin search--placeholder-defaults {
+        color: $dark-gray;
+        text-align: left;
+        text-transform: uppercase;
+        font-style: normal;
+        font-weight: 300;
+    }
+
+    /* Safari, Chrome and Opera */
+    &::-webkit-input-placeholder {
+        @include search--placeholder-defaults;
+    }
+
+    /* Firefox 18- */
+    &:-moz-placeholder {
+        @include search--placeholder-defaults;
+    }
+
+    /* Firefox 19+ */
+    &::-moz-placeholder {
+        @include search--placeholder-defaults;
+    }
+
+    /* IE 10+ */
+    &:-ms-input-placeholder {
+        @include search--placeholder-defaults;
+    }
+
+    /* Edge */
+    &::-ms-input-placeholder {
+        @include search--placeholder-defaults;
+    }
+
+    /* Default Usage */
+    &:placeholder-shown {
+        @include search--placeholder-defaults;
     }
 }
 

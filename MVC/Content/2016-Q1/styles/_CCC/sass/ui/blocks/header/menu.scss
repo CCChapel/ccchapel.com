@@ -34,11 +34,40 @@
         }
         
         &-field {
-            padding-top: 1em;
-            padding-bottom: 1em;
+            position: relative;
+
+            padding-top: 1rem;
+            padding-bottom: 1rem;
 
             &.show {
                 display: inline-block;
+            }
+
+            &-icon {
+                //content: "\f002";
+
+                position: absolute;
+                top: 0;
+                left: $gutter;
+
+                padding-top: inherit;
+                padding-bottom: inherit;
+
+                height: 100%;
+
+                display: inline-block;
+                //font-family: FontAwesome;
+                @include typecsset-font-size($primary-headline-size, false);
+                line-height: 1.25;
+                color: $dark-gray;
+                //text-rendering: auto;
+                //-webkit-font-smoothing: antialiased;
+                //-moz-osx-font-smoothing: grayscale;
+
+                @include grid-media-query("portable") {
+                    @include typecsset-font-size($tertiary-headline-size, false);
+                    line-height: 1.25;
+                }
             }
         }
         
@@ -72,9 +101,9 @@
         white-space: nowrap;
         
         @include grid-media-query("portable") {
-            @include typecsset-font-size($tertiary-headline-size);
+            @include typecsset-font-size($secondary-headline-size);
             
-            text-align: center;
+            //text-align: center;
 
             height: 3rem !important;
         }

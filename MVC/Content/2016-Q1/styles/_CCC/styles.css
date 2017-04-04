@@ -1730,10 +1730,28 @@ body {
       padding-left: 24px;
       padding-right: 24px; }
     .menu__search-field {
-      padding-top: 1em;
-      padding-bottom: 1em; }
+      position: relative;
+      padding-top: 1rem;
+      padding-bottom: 1rem; }
       .menu__search-field.show {
         display: inline-block; }
+      .menu__search-field-icon {
+        position: absolute;
+        top: 0;
+        left: 24px;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        height: 100%;
+        display: inline-block;
+        font-size: 64px;
+        font-size: 4rem;
+        line-height: 1.25;
+        color: #AAA; }
+        @media only screen and (max-width: 1023px) {
+          .menu__search-field-icon {
+            font-size: 24px;
+            font-size: 1.5rem;
+            line-height: 1.25; } }
     .menu__search-icon {
       cursor: pointer;
       height: 100%;
@@ -1752,10 +1770,9 @@ body {
     white-space: nowrap; }
     @media only screen and (max-width: 1023px) {
       .menu__item {
-        font-size: 24px;
-        font-size: 1.5rem;
-        line-height: 1;
-        text-align: center;
+        font-size: 32px;
+        font-size: 2rem;
+        line-height: 1.5;
         height: 3rem !important; } }
 
 .logo {
@@ -3311,7 +3328,6 @@ input[type="datetime"],
 input[type="email"],
 input[type="number"],
 input[type="password"],
-input[type="search"],
 input[type="tel"],
 input[type="text"],
 input[type="time"],
@@ -3336,9 +3352,6 @@ input[type="url"] {
   input[type="password"]:hover,
   input[type="password"]:active,
   input[type="password"]:focus,
-  input[type="search"]:hover,
-  input[type="search"]:active,
-  input[type="search"]:focus,
   input[type="tel"]:hover,
   input[type="tel"]:active,
   input[type="tel"]:focus,
@@ -3357,12 +3370,70 @@ input[type="url"] {
   input[type="email"].one-whole,
   input[type="number"].one-whole,
   input[type="password"].one-whole,
-  input[type="search"].one-whole,
   input[type="tel"].one-whole,
   input[type="text"].one-whole,
   input[type="time"].one-whole,
   input[type="url"].one-whole {
     width: 100%; }
+
+input[type="search"] {
+  background-color: transparent;
+  border: none;
+  padding-left: 5rem;
+  width: 100%;
+  font-size: 64px;
+  font-size: 4rem;
+  line-height: 1.25;
+  color: #FFF;
+  font-weight: 300;
+  /* Safari, Chrome and Opera */
+  /* Firefox 18- */
+  /* Firefox 19+ */
+  /* IE 10+ */
+  /* Edge */
+  /* Default Usage */ }
+  @media only screen and (max-width: 1023px) {
+    input[type="search"] {
+      font-size: 24px;
+      font-size: 1.5rem;
+      line-height: 1.25;
+      padding-left: 2rem; } }
+  input[type="search"]::-webkit-input-placeholder {
+    color: #AAA;
+    text-align: left;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 300; }
+  input[type="search"]:-moz-placeholder {
+    color: #AAA;
+    text-align: left;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 300; }
+  input[type="search"]::-moz-placeholder {
+    color: #AAA;
+    text-align: left;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 300; }
+  input[type="search"]:-ms-input-placeholder {
+    color: #AAA;
+    text-align: left;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 300; }
+  input[type="search"]::-ms-input-placeholder {
+    color: #AAA;
+    text-align: left;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 300; }
+  input[type="search"]:placeholder-shown {
+    color: #AAA;
+    text-align: left;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 300; }
 
 input[type="button"] {
   padding: .5rem 1rem;
