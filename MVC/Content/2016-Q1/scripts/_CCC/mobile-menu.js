@@ -41,12 +41,13 @@
             //toggle menu
             $(".banner__menu").show();
 
-            //$(".menu__item").animate({
-            //    opacity: 1,
-            //    height: 'toggle'
-            //}, 500);
-
-            CCChapel.showMenuItems({ duration: 500 });
+            $(itemClass)
+                .css('opacity', 0)
+                .slideDown(500)
+                .animate(
+                    { opacity: 1 },
+                    { queue: false, duration: 500 }
+                );
 
             isOpen = true;
 
@@ -92,7 +93,7 @@
     }
 
     CCChapel.showMenuItems = function (options) {
-        $(itemClass).fadeIn(options);
+        $(itemClass).hide().fadeIn(options);
     }
 
     //************************************************
