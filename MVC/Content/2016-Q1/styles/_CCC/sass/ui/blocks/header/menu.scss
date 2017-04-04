@@ -56,13 +56,9 @@
                 height: 100%;
 
                 display: inline-block;
-                //font-family: FontAwesome;
                 @include typecsset-font-size($primary-headline-size, false);
                 line-height: 1.25;
                 color: $dark-gray;
-                //text-rendering: auto;
-                //-webkit-font-smoothing: antialiased;
-                //-moz-osx-font-smoothing: grayscale;
 
                 @include grid-media-query("portable") {
                     @include typecsset-font-size($tertiary-headline-size, false);
