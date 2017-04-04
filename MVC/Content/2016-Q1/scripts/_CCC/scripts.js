@@ -237,80 +237,84 @@
     }
 
     /*** MOBILE MENU ***/
-    var MobileMenu = {
-        //Properties
-        MenuClass: ".banner__menu",
-        ItemsClass: ".menu__items",
-        ItemClass: ".menu__item",
-        Trigger: "#nav-icon",
-        //isOpen: false,
+    //var MobileMenu = {
+    //    //Properties
+    //    MenuClass: ".banner__menu",
+    //    ItemsClass: ".menu__items",
+    //    ItemClass: ".menu__item",
+    //    Trigger: "#nav-icon",
+    //    //isOpen: false,
 
-        //Functions
-        setup: function () {
-            //Toggle open and close
-            $(this.Trigger).click(function () {
-                MobileMenu.toggleMenu();
-            });
-        },
-        toggleMenu: function () {
-            //Check if menu is visible
-            if ($(this.MenuClass).css("display") !== "block") {
-                this.open();
+    //    //Functions
+    //    setup: function () {
+    //        //Toggle open and close
+    //        $(this.Trigger).click(function () {
+    //            MobileMenu.toggleMenu();
+    //        });
+    //    },
+    //    toggleMenu: function () {
+    //        //Check if menu is visible
+    //        if ($(this.MenuClass).css("display") !== "block") {
+    //            //this.open();
+    //            CCChapel.openMobileMenu();
 
-                //this.isOpen = true;
-            }
-            else {
-                this.close();
+    //            //this.isOpen = true;
+    //        }
+    //        else {
+    //            //this.close();
+    //            CCChapel.closeMobileMenu();
 
-                //this.isOpen = false;
-            }
+    //            //this.isOpen = false;
+    //        }
 
-            //clear search
-            $("#menu-search").val("");
-        },
-        open: function () {
-            //animate icon
-            $(this.Trigger).addClass("close");
+    //        //clear search
+    //        $("#menu-search").val("");
+    //    },
+    //    //open: function () {
+    //    //    ////animate icon
+    //    //    //$(this.Trigger).addClass("close");
 
-            //show items
-            //$(this.ItemsClass).show();
+    //    //    ////show items
+    //    //    ////$(this.ItemsClass).show();
 
-            //toggle screen lock
-            $("body").addClass("hide-overflow");
-            $("body").addClass("lock-position");
+    //    //    ////toggle screen lock
+    //    //    //$("body").addClass("hide-overflow");
+    //    //    //$("body").addClass("lock-position");
 
-            CCChapel.openModal({}, function () {
-                //toggle menu
-                $(".banner__menu").show();
+    //    //    //CCChapel.openModal({}, function () {
+    //    //    //    //toggle menu
+    //    //    //    //$(".banner__menu").show();
 
-                $(".menu__item").animate({
-                    opacity: 1,
-                    height: 'toggle'
-                }, 500);
-            });
-        },
-        close: function () {
-            //animate icon
-            $(this.Trigger).removeClass("close");
+    //    //    //    //$(".menu__item").animate({
+    //    //    //    //    opacity: 1,
+    //    //    //    //    height: 'auto'
+    //    //    //    //}, 500);
+    //    //    //});
+    //    //    CCChapel.openMobileMenu();
+    //    //},
+    //    //close: function () {
+    //    //    ////animate icon
+    //    //    //$(this.Trigger).removeClass("close");
 
-            //toggle screen lock
-            $("body").removeClass("hide-overflow");
-            $("body").removeClass("lock-position");
+    //    //    ////toggle screen lock
+    //    //    //$("body").removeClass("hide-overflow");
+    //    //    //$("body").removeClass("lock-position");
 
-            CCChapel.closeModal({}, function () {
-                //toggle menu
-                $(".banner__menu").hide();
+    //    //    //CCChapel.closeModal({}, function () {
+    //    //    //    //toggle menu
+    //    //    //    $(".banner__menu").hide();
 
-                $(".menu__item").animate({
-                    opacity: 0,
-                    height: 'toggle'
-                }, 500);
-            });
+    //    //    //    $(".menu__item").animate({
+    //    //    //        opacity: 0,
+    //    //    //        height: 'toggle'
+    //    //    //    }, 500);
+    //    //    //});
 
-            //clear search
-            $("#menu-search").val("");
-        }
-    }
+    //    //    ////clear search
+    //    //    //$("#menu-search").val("");
+    //    //    CCChapel.closeMobileMenu();
+    //    //}
+    //}
 
     //************************************************
     // Public Methods
@@ -331,6 +335,8 @@
 
         CCChapel.setupSocialSharing();
 
+        CCChapel.initializeMobileMenu();
+
         //DESKTOP FUNCTIONS
         if ($(window).width() >= desktopBreakpoint) {
             //Desktop Search
@@ -338,9 +344,6 @@
 
             //Desktop Sticky Menu
             DesktopStickyMenu.setup();
-
-            //Mobile Menu
-            MobileMenu.setup();
 
             //Homepage Campus Section
             HomepageCampusSection.desktopSetup();
@@ -356,9 +359,6 @@
 
             //Desktop Sticky Menu
             DesktopStickyMenu.setup();
-
-            //Mobile Menu
-            MobileMenu.setup();
 
             //Homepage Campus Section
             HomepageCampusSection.portableSetup();
