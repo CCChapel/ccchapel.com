@@ -2814,6 +2814,38 @@ tbody tr {
 .img-size--horizontal {
   padding: 1.5rem; }
 
+.campus-icon .st0 {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 0.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10; }
+
+.campus-icon .st1 {
+  fill: none;
+  stroke: #363636;
+  stroke-width: 0.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10; }
+
+.campus-icon .st2 {
+  fill: none;
+  stroke: #363636;
+  stroke-width: 2;
+  stroke-miterlimit: 10; }
+
+.campus-icon.dark-blue .st1,
+.campus-icon.dark-blue .st2 {
+  stroke: #0b4673; }
+
+.campus-icon.fill--white .outter-circle {
+  fill: #FFF; }
+
+.campus-icon.fill--white .st0 {
+  stroke: #363636; }
+
 ul {
   list-style: square;
   list-style-position: inside;

@@ -59,3 +59,47 @@
 .#{$ns-image}-size--horizontal {
     padding: 1.5rem;
 }
+
+.campus-icon {
+    .st0 {
+        fill:none;
+        stroke:#FFFFFF;
+        stroke-width:0.75;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        stroke-miterlimit:10;
+    }
+
+	.st1 {
+        fill:none;
+        stroke:#363636;
+        stroke-width:0.75;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        stroke-miterlimit:10;
+	}
+
+	.st2 {
+        fill:none;
+        stroke:#363636;
+        stroke-width:2;
+        stroke-miterlimit:10;
+	}
+
+    &.dark-blue {
+        .st1,
+        .st2 {
+            stroke: $dark-blue;
+        }
+    }
+
+    &.fill--white {
+        .outter-circle {
+            fill: #FFF;
+        }
+
+        .st0 {
+            stroke: #363636;
+        }
+    }
+}
