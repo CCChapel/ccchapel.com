@@ -30,9 +30,6 @@
         //animate icon
         $(trigger).addClass("close");
 
-        ////show items
-        //$(itemsClass).show();
-
         //toggle screen lock
         $("body").addClass("hide-overflow");
         $("body").addClass("lock-position");
@@ -41,13 +38,18 @@
             //toggle menu
             $(".banner__menu").show();
 
-            $(itemClass)
-                .css('opacity', 0)
-                .slideDown(500)
-                .animate(
-                    { opacity: 1 },
-                    { queue: false, duration: 500 }
-                );
+            //show items
+            $(itemsClass).show();
+
+            CCChapel.showMenuItems({ duration: 500 });
+
+            //$(itemClass)
+            //    .css('opacity', 0)
+            //    .slideDown(500)
+            //    .animate(
+            //        { opacity: 1 },
+            //        { queue: false, duration: 500 }
+            //    );
 
             isOpen = true;
 
