@@ -9,7 +9,7 @@
     /************************************************
     // Private Properties
     //***********************************************/
-    var ItemClass = ".menu__items";
+    //var ItemClass = ".menu__items";
     var menuClass = ".banner__menu";
     var itemsClass = ".menu__items";
     var itemClass = ".menu__item";
@@ -89,11 +89,11 @@
     }
 
     CCChapel.hideMenuItems = function (options) {
-        $(itemClass).fadeOut(options);
+        $(itemsClass).fadeOut(options);
     }
 
     CCChapel.showMenuItems = function (options) {
-        $(itemClass).hide().fadeIn(options);
+        $(itemsClass).hide().fadeIn(options);
     }
 
     //************************************************
