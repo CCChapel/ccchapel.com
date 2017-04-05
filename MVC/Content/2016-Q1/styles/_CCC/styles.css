@@ -1751,6 +1751,11 @@ body {
             font-size: 24px;
             font-size: 1.5rem;
             line-height: 1.25; } }
+        .safari .menu__search-field-icon {
+          padding-top: 1.25rem; }
+          @media only screen and (max-width: 480px) {
+            .safari .menu__search-field-icon {
+              padding-top: 1.4rem; } }
     .menu__search-icon {
       cursor: pointer;
       height: 100%;

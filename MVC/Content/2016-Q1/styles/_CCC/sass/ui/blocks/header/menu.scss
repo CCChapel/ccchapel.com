@@ -64,6 +64,14 @@
                     @include typecsset-font-size($tertiary-headline-size, false);
                     line-height: 1.25;
                 }
+
+                .safari & {
+                    padding-top: 1.25rem;
+
+                    @include grid-media-query("palm") {
+                        padding-top: 1.4rem;
+                    }
+                }
             }
         }
         
