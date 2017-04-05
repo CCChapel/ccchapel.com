@@ -2825,7 +2825,7 @@ tbody tr {
 .img-size--horizontal {
   padding: 1.5rem; }
 
-.campus-icon .st0 {
+.st0 {
   fill: none;
   stroke: #FFFFFF;
   stroke-width: 0.75;
@@ -2833,7 +2833,7 @@ tbody tr {
   stroke-linejoin: round;
   stroke-miterlimit: 10; }
 
-.campus-icon .st1 {
+.st1 {
   fill: none;
   stroke: #363636;
   stroke-width: 0.75;
@@ -2841,7 +2841,7 @@ tbody tr {
   stroke-linejoin: round;
   stroke-miterlimit: 10; }
 
-.campus-icon .st2 {
+.st2 {
   fill: none;
   stroke: #363636;
   stroke-width: 2;
