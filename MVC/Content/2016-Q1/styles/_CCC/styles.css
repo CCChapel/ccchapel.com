@@ -2472,6 +2472,12 @@ body {
     -webkit-align-items: center;
     -moz-align-items: center;
     align-items: center; }
+  .flex-section.center-blocks {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center; }
   .flex-section.inline {
     display: -webkit-inline-box;
     display: -webkit-inline-flex;

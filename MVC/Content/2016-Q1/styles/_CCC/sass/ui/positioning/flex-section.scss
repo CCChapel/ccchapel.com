@@ -52,6 +52,10 @@
         @include align-items(center);
     }
 
+    &.center-blocks {
+        @include justify-content(center);
+    }
+
     &.inline {
         @include inline-flex();
         @include align-items(center);
