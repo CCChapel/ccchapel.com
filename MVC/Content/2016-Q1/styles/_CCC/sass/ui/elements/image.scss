@@ -93,6 +93,14 @@
         }
     }
 
+    &.white {
+        .st0,
+        .st1,
+        .st2 {
+            stroke: #FFF;
+        }
+    }
+
     &.fill--white {
         .outter-circle {
             fill: #FFF;

@@ -2846,6 +2846,11 @@ tbody tr {
 .campus-icon.dark-blue .st2 {
   stroke: #0b4673; }
 
+.campus-icon.white .st0,
+.campus-icon.white .st1,
+.campus-icon.white .st2 {
+  stroke: #FFF; }
+
 .campus-icon.fill--white .outter-circle {
   fill: #FFF; }
 
