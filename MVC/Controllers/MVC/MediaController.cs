@@ -6,14 +6,13 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class MessagesController : Controller
+    public class MediaController : Controller
     {
         // GET: Messages
         [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index()
         {
-            //return View();
-            return Redirect("/media");
+            return View();
         }
     }
 }

@@ -79,6 +79,32 @@ namespace MVC
                 defaults: new { controller = "Search", action = "Index" }
             );
 
+            //Media
+            routes.MapRoute(
+                name: "Media",
+                url: "media",
+                defaults: new { controller = "Media", action = "Index" }
+            );
+
+            //Media Series
+            routes.MapRoute(
+                name: "MediaSeries",
+                url: "media/{seriesTitle}",
+                defaults: new { controller = "MediaSeries", action = "Index" }
+            );
+
+            //Media
+            routes.MapRoute(
+                name: "MediaIndividual",
+                url: "media/{seriesTitle}/{year}/{month}/{day}/{sermonTitle}",
+                defaults: new { controller = "MediaIndividual", action = "Index" },
+                constraints: new { year = @"^(\d{4})$", month = @"^(\d{2})$", day = @"^(\d{2})$" }
+            );
+
+            #region Old Messages
+            /******************************************************
+             * Eventually remove these. Using now for redirects.
+             ******************************************************/
             //Messages
             routes.MapRoute(
                 name: "Messages",
@@ -100,6 +126,7 @@ namespace MVC
                 defaults: new { controller = "Message", action = "Index" }, 
                 constraints: new { year = @"^(\d{4})$", month = @"^(\d{2})$", day = @"^(\d{2})$" }
             );
+            #endregion
 
             //Event
             routes.MapRoute(

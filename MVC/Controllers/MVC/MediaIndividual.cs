@@ -9,25 +9,23 @@ using CCC.Helpers;
 
 namespace MVC.Controllers
 {
-    public class MessageController : Controller
+    public class MediaIndividualController : Controller
     {
         // GET: Message
         [OutputCache(CacheProfile = "Cache15min")]
         public ActionResult Index(int year, int month, int day, string seriesTitle, string sermonTitle)
         {
-            ////Create DateTime
-            //DateTime date = new DateTime(year, month, day);
+            //Create DateTime
+            DateTime date = new DateTime(year, month, day);
 
-            ////Get Sermon
-            //var sermon = (from s in SermonProvider.GetSermons().Published()
-            //              where s.MessageDate == date &&
-            //                    s.MessageSeries.NodeAlias.ToLower() == seriesTitle.ToLower() &&
-            //                    s.NodeAlias.ToLower() == sermonTitle.ToLower()
-            //              select s).FirstOrDefault();
+            //Get Sermon
+            var sermon = (from s in SermonProvider.GetSermons().Published()
+                          where s.MessageDate == date &&
+                                s.MessageSeries.NodeAlias.ToLower() == seriesTitle.ToLower() &&
+                                s.NodeAlias.ToLower() == sermonTitle.ToLower()
+                          select s).FirstOrDefault();
 
-            //return View(sermon);
-
-            return Redirect(string.Format("/media/{0}/{1}/{2}/{3}/{4}", seriesTitle, year, month.ToString("00"), day.ToString("00"), sermonTitle));
+            return View(sermon);
         }
 
         [ChildActionOnly]

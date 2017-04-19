@@ -1,0 +1,89 @@
+﻿@using CCC.Helpers
+@using CMS.DocumentEngine.Types
+@model Sermon
+@{
+    string appDeepLink = "http://ccchapel.com/Feeds/App/Sermons/Sermon-Detail/?sermonid=479";
+
+    //Get Vimeo ID
+    string vimeoID = "";
+    var media = Model.Fields.MessageMedia.Where(v => v.ClassName == VimeoVideo.CLASS_NAME);
+
+    if (media.Any())
+    {
+        var videos = VimeoVideoProvider.GetVimeoVideo(
+            media.First().NodeGUID,
+            SiteHelpers.SiteCulture,
+            SiteHelpers.SiteName);
+
+        if (videos.Any())
+        {
+            var video = videos.First();
+
+            //Check Cache for Video
+            vimeoID = video.VimeoID.ToString();
+        }
+    }
+}
+
+<!-- Facebook Metadata-->
+<meta property="og:title" content="@ViewBag.PageTitle">
+<meta property="og:description" content="@Model.Fields.MessageDescription">
+<meta property="og:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(Model.MessageSeries.Background.Fields.ImageFile)))">
+<meta property="og:site_name" content="Christ Community Chapel">
+<meta property="og:url" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Model.RouteUrl))">
+<meta property="fb:admins" content="23307166" />
+<meta property="fb:app_id" content="147696575258574" />
+
+@{
+    if (Model.HasVideo)
+    {
+        string link = string.Format("vimeo.com/moogaloop.swf?clip_id={0}&amp;autoplay=1", vimeoID);
+
+        <meta property="og:type" content="video.other">
+        <meta property="og:video" content="http://@link">
+        <meta property="og:video:secure_url" content="https://@link">
+        <meta property="og:video:type" content="application/x-shockwave-flash">
+        <meta property="og:video:width" content="@Model.Video.width">
+        <meta property="og:video:height" content="@Model.Video.height">
+        <meta property="video:duration" content="@Model.Video.duration">
+    }
+    else
+    {
+        <meta property="og:type" content="music.song">
+        <meta property="music:album:url" content="@Model.DownloadUrlAudio" />
+    }
+}
+
+<!-- Twitter Metadata-->
+<meta name="twitter:card" content="player">
+<meta name="twitter:site" content="@("@ccchapel")">
+<meta name="twitter:title" content="@Model.Fields.MessageTitle">
+<meta name="twitter:description" content="@Model.Fields.MessageDescription">
+<meta name="twitter:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(Model.MessageSeries.Background.Fields.ImageFile)))">
+
+@{
+    if (Model.HasVideo)
+    {
+        string link = string.Format("vimeo.com/moogaloop.swf?clip_id={0}&amp;autoplay=1", vimeoID);
+
+        <meta name="twitter:player" content="https://@link">
+        <meta name="twitter:player:width" content="@Model.Video.width">
+        <meta name="twitter:player:height" content="@Model.Video.height">
+
+        <meta name="twitter:player:stream" content="https://@link">
+        <meta name="twitter:player:stream:content_type" content="video/mp4">
+    }
+}
+
+
+<meta name="twitter:app:id:iphone" content="653157512">
+<meta name="twitter:app:id:ipad" content="653157512">
+<meta name="twitter:app:id:googleplay" content="com.subsplash.thechurchapp.ccchapel">
+<meta name="twitter:app:url:iphone" content="@appDeepLink">
+<meta name="twitter:app:url:ipad" content="@appDeepLink">
+<meta name="twitter:app:url:googleplay" content="@appDeepLink">
+
+<!-- iOS Metadata-->
+<meta property="al:ios:url" content="subsplash://detail?link=@appDeepLink">
+<meta property="al:ios:app_store_id" content="653157512">
+<meta property="al:ios:app_name" content="CCChapel">

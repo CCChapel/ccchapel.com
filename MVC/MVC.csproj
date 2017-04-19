@@ -666,8 +666,11 @@
     <Compile Include="Controllers\MVC\GroupFinderController.cs" />
     <Compile Include="Controllers\MVC\HttpErrorsController.cs" />
     <Compile Include="Controllers\MVC\JobsController.cs" />
+    <Compile Include="Controllers\MVC\MediaIndividual.cs" />
     <Compile Include="Controllers\MVC\MessageController.cs" />
+    <Compile Include="Controllers\MVC\MediaController.cs" />
     <Compile Include="Controllers\MVC\MessagesController.cs" />
+    <Compile Include="Controllers\MVC\MediaSeriesController.cs" />
     <Compile Include="Controllers\MVC\MessageSeriesController.cs" />
     <Compile Include="Controllers\MVC\NotificationController.cs" />
     <Compile Include="Controllers\MVC\PageController.cs" />
@@ -800,7 +803,6 @@
     <Content Include="Views\PageSection\_Image.cshtml" />
     <Content Include="Views\PageSection\_Content.cshtml" />
     <Content Include="Views\Shared\_Empty.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Shared\_SocialSharing.cshtml" />
     <Content Include="Views\MessageSeries\Index.cshtml" />
     <Content Include="Views\MessageSeries\_SeriesTable.cshtml" />
@@ -838,7 +840,7 @@
     <Content Include="Views\Events\_Metadata.cshtml" />
     <Content Include="Views\Event\_Metadata.cshtml" />
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\elements\form-controls\formstack\address.scss" />
-    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Media\Index.cshtml" />
     <Content Include="Content\2016-Q1\styles\_CCC\sass\ui\blocks\body\dividing-line.scss" />
     <Content Include="Views\Search\JSONResults.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
@@ -863,6 +865,12 @@
     <Content Include="Views\StaffTeam\Person.cshtml" />
     <Content Include="Views\Shared\_HotJar.cshtml" />
     <Content Include="Views\Shared\_Campus-Icons.cshtml" />
+    <Content Include="Views\MediaSeries\_CrossSellItem.cshtml" />
+    <Content Include="Views\MediaSeries\_Metadata.cshtml" />
+    <Content Include="Views\MediaSeries\_SeriesTable.cshtml" />
+    <Content Include="Views\MediaIndividual\_CrossSellItem.cshtml" />
+    <Content Include="Views\MediaIndividual\_Metadata.cshtml" />
+    <Content Include="Views\MediaIndividual\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

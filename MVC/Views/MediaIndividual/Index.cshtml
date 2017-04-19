@@ -1,0 +1,240 @@
+﻿@using CMS.DocumentEngine;
+@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+
+@model Sermon
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = string.Format("{0} - {1}", Model.MessageSeries.SeriesTitle, Model.Fields.MessageTitle);
+}
+
+<input id="embedHtml" type="hidden" value="@Model.EmbedHtml" />
+
+<!-- #HEADER IMAGE-->
+<div class="[ header-image @Model.Background.ImageTextColor @Model.Background.ImagePositioning ] [ content-section no-bottom-margin ] [ center-vertically ] [ grid__item one-whole ]" 
+    style="background-image: url(@Url.Kentico().Attachment(Model.Background.Fields.ImageFile));">
+    <div class="content-wrapper">
+        <div class="header-image__title">
+            @Model.MessageTitle
+        </div>
+        
+    @{
+        if (Model.HasVideo)
+        {
+            <div class="header-image__video-controls">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle-thin fa-stack-2x"></i>
+                    <i class="fa fa-play fa-stack-1x"></i>
+                </span>
+            </div>
+        }
+    }
+        
+    </div><!-- /content-wrapper -->
+</div><!-- /header-image --> 
+    
+<div class="header-details [ content-section transparent no-bottom-margin ] [ grid__item one-whole ]">
+    <div class="content-wrapper lock-width no-vertical">
+        <div class="grid">
+            <div class="header-details__left [ grid__item two-thirds lap--one-half palm--one-whole ]">
+                <div class="[ center-vertically left-justify ]">
+                    <ul class="horizontal-list">
+                        <li>@Model.MessageDate.ToString("M.d")</li><!--
+                     --><li>@Model.MessageSpeaker.FullName</li><!--
+                     --><li>@Model.MessageSeries.SeriesTitle</li>
+                    </ul>
+                </div>
+            </div><!-- /header-details__left --><!--
+
+         --><div class="header-details__right [ grid__item one-third lap--one-half palm--hide mobile--hide ]">
+                <div class="flex-section one-whole center-vertically">
+                        <div>Download: </div>
+                        @{
+                            //Audio Download
+                            if (!string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
+                            {
+                                <div>
+                                    <a class="red" href="@Model.DownloadUrlAudio" title="Download Audio" download>
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-volume-up fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            }
+                        }
+
+                        @{
+                            //Video Download
+                            if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
+                            {
+                                <div>
+                                    <a class="red" href="@Model.DownloadUrlVideo" title="Download Video" download>
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            }
+                        }
+
+                        @{
+                            //Transcript Download
+                            if (Model.MessageTranscript != default(Guid))
+                            {
+                                <div>
+                                    <a class="red" href="@Url.Kentico().Attachment(Model.Fields.MessageTranscript)" title="Download Transcript" download>
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </div> <!-- /header-details__button -->
+            </div><!--
+                      
+         -->@{
+             if (string.IsNullOrWhiteSpace(Model.DownloadUrlVideo) && !string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
+             {
+                    <div class="header-details__right add-bottom-margin [ grid__item desktop--hide palm--one-whole ]">
+                        <div class="header-details__buttons">
+                            <a class="cta" href="@Model.DownloadUrlAudio" download><i class="fa fa-play"></i>&nbsp;&nbsp;Audio</a>
+                        </div>
+                    </div>
+             }
+            }<!-- /header-details__right -->
+                        
+            <div class="[ grid__item two-thirds palm--one-whole ] add-bottom-margin">
+                <div class="header-details__copy">
+                    @Html.Raw(Model.MessageDescription)
+                                
+                    <div class="header-details__social center-vertically grid">
+                        @{ Html.RenderPartial("_SocialSharing"); }
+                    </div>
+                </div>
+            </div><!--
+                     
+         --><div class="[ grid__item one-third palm--hide ]"></div>
+        </div> <!-- /grid -->
+    </div> <!-- /content-wrapper -->
+</div><!-- /header-details -->
+
+<div class="sermon-series__table [ content-section no-bottom-margin light-gray ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        <div class="section-title">Other Messages in This Series</div>
+
+        @{ Html.RenderAction("_SeriesTable", "MessageSeries", new { series = Model.MessageSeries }); }
+    </div>
+</div>
+
+@{ 
+    if (Model.Fields.MessageRelatedItems.Any())
+    {
+        @:<div class="[ content-section no-bottom-margin transparent ] [ grid__item one-whole ]">
+           @:<div class="content-wrapper">
+             @:<div class="section-title add-bottom-margin">You Might Also Be Interested In&hellip;</div>
+                @:<div class="grid grid--center"><!--
+
+        //Add Items
+        foreach (var item in Model.Fields.MessageRelatedItems)
+        {
+            var controller = "";
+            var guid = "";
+            var title = "";
+            var description = "";
+
+            //Get Page by Type
+            if (item.ClassName == Sermon.CLASS_NAME)
+            {
+                var csItem = SermonProvider.GetSermon(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "Message";
+                    guid = page.NodeGUID.ToString();
+                    title = String.Format("{0} - {1}", page.MessageSeries.SeriesTitle, page.Fields.MessageTitle);
+                    description = page.MessageDate.ToShortDateString();
+                }
+            }
+            else if (item.ClassName == Series.CLASS_NAME)
+            {
+                var csItem = SeriesProvider.GetSeries(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "MessageSeries";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.Title;
+                    description = page.Fields.Description;
+                }
+            }
+            else if (item.ClassName == CcbEvent.CLASS_NAME)
+            {
+                var csItem = CcbEventProvider.GetCcbEvent(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+                    controller = "Event";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.EventName;
+
+                    if (!string.IsNullOrWhiteSpace(page.EventDateDescription))
+                    {
+                        description = page.EventDateDescription;
+                    }
+                    else
+                    {
+                        description = page.StartDateTime.ToDateRangeString(page.EndDateTime);
+                    }
+                }
+            }
+            else if (item.ClassName == CMS.DocumentEngine.Types.Page.CLASS_NAME)
+            {
+                var csItem = PageProvider.GetPage(item.NodeGUID, SiteHelpers.SiteCulture, SiteHelpers.SiteName);
+
+                if (csItem.Any())
+                {
+                    var page = csItem.FirstOrDefault();
+
+                    controller = "Page";
+                    guid = page.NodeGUID.ToString();
+                    title = page.Fields.Name;
+                    description = page.Fields.SocialDescription;
+                }
+            }
+
+            if (!String.IsNullOrWhiteSpace(controller))
+            {
+                Html.RenderAction("CrossSell", controller, new { guid = guid, title = title, description = description });
+            }
+        }
+
+                @:--></div>
+            @:</div>
+        @:</div>
+    }
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //Play Video Click
+            $(".header-image").click(function () {
+                var html = $("#embedHtml").val();
+
+                CCChapel.showVideo({
+                    videoMarkup: html
+                });
+            });
+        });
+    </script>
+}

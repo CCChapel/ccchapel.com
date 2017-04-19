@@ -1,0 +1,104 @@
+﻿@using CMS.DocumentEngine.Types
+@using CCC.Helpers
+
+@model Series
+
+<table class="message__table [ palm--hide-col-3 ]">
+    <colgroup>
+        <col span="2" style="">
+        <col class="palm--hide-col">
+    </colgroup>
+    <thead>
+        <tr>
+            <th class="one-fifth palm--one-quarter">Date</th>
+            <th class="three-fifths palm--three-quarters">Title</th>
+            <th class="two-fifths palm--hide">Speaker</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            //Get Sermons in Series
+            var sermons = Model.GetSermons();
+
+            if (sermons.Any())
+            {
+                foreach (Sermon sermon in Model.GetSermons())
+                {
+                    <tr data-campus="@sermon.CampusDataAttribute">
+                        <td>@sermon.MessageDate.ToString(BrandingHelpers.DateFormat())</td>
+                        <td>
+                            @Html.RouteLink(sermon.MessageTitle, sermon.RouteValues)
+
+                            <div class="accent desk--hide">
+                                @sermon.MessageSpeaker.FullName
+                            </div>
+                        </td>
+                        <td>@sermon.MessageSpeaker.FullName</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3"><span class="accent">Sorry, no messages were found for this series.</span></td>
+                </tr>
+            }
+        }
+    </tbody>
+
+    @{ 
+        if (!string.IsNullOrWhiteSpace(MiscellaneousHelpers.CurrentCampusName))
+        {
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="right-justify">
+                        <input id="showAll" type="checkbox" />
+                        <label for="showAll">Show Messages for All Campuses</label>
+                    </td>
+                </tr>
+            </tfoot>
+        }
+    }
+</table>
+
+<style>
+    @{ 
+        //Show only current campus sermons
+        if (!string.IsNullOrWhiteSpace(MiscellaneousHelpers.CurrentCampusName))
+        {
+            <text>
+                tr[data-campus]
+                {
+                    display: none;
+                }
+
+                tr[data-campus~=@MiscellaneousHelpers.CurrentCampus.CampusCodeName.ToLower()]
+                {
+                    display: table-row;
+                }
+            </text>
+        }
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        var currentCampus = $("#currentCampus").val().toLowerCase();
+        var selector = "#showAll";
+        var tableRows = ".message__table tbody tr";
+        var campusData = "[data-campus*='" + currentCampus + "']";
+
+        //Setup toggle
+        $(document).ready(function () {
+            $(selector).change(function () {
+                if ($(this).is(":checked")) {
+                    $(tableRows).show();
+                }
+                else {
+                    $(tableRows).not(campusData).hide();
+                }
+            });
+        });
+    });
+</script>

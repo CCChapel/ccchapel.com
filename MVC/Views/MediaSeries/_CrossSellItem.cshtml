@@ -1,0 +1,21 @@
+﻿@using CMS.DocumentEngine.Types
+
+@model Series
+
+--><div class="cross-sell__item [ grid__item one-third lap--one-half palm--one-whole ]">
+    <a href="@Url.RouteUrl(Model.RouteValues)">
+        <div class="[ cross-sell__image @Model.Background.Fields.ImagePositioning) ] [ one-whole ]"
+                style="background-image: url(@Url.Kentico().Attachment(Model.Background.Fields.ImageFile))">
+
+            <img class="img-contain @Model.Fields.TitleTreatment.ImageSizingClass()" src="@Url.Kentico().Attachment(Model.Fields.TitleTreatment)" alt="" />
+        </div>
+
+        <div class="cross-sell__name [ one-whole ]">
+            @ViewData["crossSellTitle"]
+        </div>
+
+        <div class="cross-sell__details [ one-whole ]">
+            @Html.Raw(ViewData["crossSellDescription"])
+        </div>
+    </a>
+</div><!--

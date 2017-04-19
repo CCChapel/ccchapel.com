@@ -1,0 +1,38 @@
+﻿@using CMS.DocumentEngine;
+@using CMS.DocumentEngine.Types
+
+@model Series
+
+@{
+    Layout = "~/Views/_Default.cshtml";
+    ViewBag.PageTitle = Model.SeriesTitle;
+}
+
+<!-- #HEADER IMAGE-->
+<div class="[ header-image @Model.Background.ImageTextColor @Model.Background.ImagePositioning ] [ content-section no-bottom-margin ] [ center-vertically ] [ grid__item one-whole ]"
+     style="background-image: url(@Url.Kentico().Attachment(Model.Background.Fields.ImageFile));">
+    <div class="content-wrapper one-whole">
+        <div class="header-image__title">
+            <img src="@Url.Kentico().Attachment(Model.Fields.TitleTreatment)" class="@Model.Fields.TitleTreatment.ImageSizingClass()" alt="@Model.SeriesTitle" />
+        </div>
+    </div><!-- /content-wrapper -->
+</div><!-- /header-image -->
+
+@{
+    if (!string.IsNullOrWhiteSpace(Model.Fields.Description))
+    {
+        <div class="[ content-section transparent ] [ grid__item one-whole ]">
+            <div class="content-wrapper">
+                <div class="section-description no-bottom-margin">
+                    @Html.Raw(Model.Fields.Description)
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<div class="sermon-series__table [ content-section light-gray no-bottom-margin ] [ grid__item one-whole ]">
+    <div class="content-wrapper">
+        @{ Html.RenderPartial("_SeriesTable"); }
+    </div>
+</div>
