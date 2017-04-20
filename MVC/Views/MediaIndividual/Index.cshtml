@@ -35,15 +35,23 @@
 </div><!-- /header-image --> 
     
 <div class="header-details [ content-section transparent no-bottom-margin ] [ grid__item one-whole ]">
-    <div class="content-wrapper lock-width no-vertical">
+    <div class="content-wrapper lock-width">
         <div class="grid">
-            <div class="header-details__left [ grid__item two-thirds lap--one-half palm--one-whole ]">
+            <div class="[ grid__item two-thirds lap--one-half palm--one-whole ]">
                 <div class="[ center-vertically left-justify ]">
-                    <ul class="horizontal-list">
-                        <li>@Model.MessageDate.ToString("M.d")</li><!--
+                    <ul class="header-details__left horizontal-list">
+                        <li>@Model.MessageDate.ToString("M.d.yyyy")</li><!--
                      --><li>@Model.MessageSpeaker.FullName</li><!--
                      --><li>@Model.MessageSeries.SeriesTitle</li>
                     </ul>
+                </div>
+
+                <div class="header-details__copy">
+                    <div class="header-details__social center-vertically grid add-bottom-margin">
+                        @{ Html.RenderPartial("_SocialSharing"); }
+                    </div>
+
+                    @Html.Raw(Model.MessageDescription)
                 </div>
             </div><!-- /header-details__left --><!--
 
@@ -125,18 +133,6 @@
                     </div>
              }
             }<!-- /header-details__right -->
-                        
-            <div class="[ grid__item two-thirds palm--one-whole ] add-bottom-margin">
-                <div class="header-details__copy">
-                    <div class="header-details__social center-vertically grid">
-                        @{ Html.RenderPartial("_SocialSharing"); }
-                    </div>
-
-                    @Html.Raw(Model.MessageDescription)
-                </div>
-            </div><!--
-                     
-         --><div class="[ grid__item one-third palm--hide ]"></div>
         </div> <!-- /grid -->
     </div> <!-- /content-wrapper -->
 </div><!-- /header-details -->
