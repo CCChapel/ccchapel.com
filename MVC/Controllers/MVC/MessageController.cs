@@ -30,22 +30,22 @@ namespace MVC.Controllers
             return Redirect(string.Format("/media/{0}/{1}/{2}/{3}/{4}", seriesTitle, year, month.ToString("00"), day.ToString("00"), sermonTitle));
         }
 
-        [ChildActionOnly]
-        [ActionName("CrossSell")]
-        public ViewResult CrossSell(string guid, string title, string description)
-        {
-            //Store Extra Data
-            ViewData["crossSellTitle"] = title;
-            ViewData["crossSellDescription"] = description;
+        //[ChildActionOnly]
+        //[ActionName("CrossSell")]
+        //public ViewResult CrossSell(string guid, string title, string description)
+        //{
+        //    //Store Extra Data
+        //    ViewData["crossSellTitle"] = title;
+        //    ViewData["crossSellDescription"] = description;
 
-            //Get Sermon
-            var sermon = SermonProvider.GetSermon(
-                            new Guid(guid), 
-                            SiteHelpers.SiteCulture, 
-                            SiteHelpers.SiteName).FirstOrDefault();
+        //    //Get Sermon
+        //    var sermon = SermonProvider.GetSermon(
+        //                    new Guid(guid), 
+        //                    SiteHelpers.SiteCulture, 
+        //                    SiteHelpers.SiteName).FirstOrDefault();
 
-            //return "I'm a sermon!";
-            return View("_CrossSellItem", sermon);
-        }
+        //    //return "I'm a sermon!";
+        //    return View("_CrossSellItem", sermon);
+        //}
     }
 }

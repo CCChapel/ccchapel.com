@@ -25,28 +25,28 @@ namespace MVC.Controllers
             return Redirect(string.Format("/media/{0}", seriesTitle));
         }
 
-        [ChildActionOnly]
-        public ViewResult _SeriesTable(Series series)
-        {
-            return View("_SeriesTable", series);
-        }
+        //[ChildActionOnly]
+        //public ViewResult _SeriesTable(Series series)
+        //{
+        //    return View("_SeriesTable", series);
+        //}
 
-        [ChildActionOnly]
-        [ActionName("CrossSell")]
-        public ViewResult CrossSell(string guid, string title, string description)
-        {
-            //Store Extra Data
-            ViewData["crossSellTitle"] = title;
-            ViewData["crossSellDescription"] = description;
+        //[ChildActionOnly]
+        //[ActionName("CrossSell")]
+        //public ViewResult CrossSell(string guid, string title, string description)
+        //{
+        //    //Store Extra Data
+        //    ViewData["crossSellTitle"] = title;
+        //    ViewData["crossSellDescription"] = description;
 
-            //Get Series
-            var series = SeriesProvider.GetSeries(
-                            new Guid(guid),
-                            SiteHelpers.SiteCulture,
-                            SiteHelpers.SiteName).FirstOrDefault();
+        //    //Get Series
+        //    var series = SeriesProvider.GetSeries(
+        //                    new Guid(guid),
+        //                    SiteHelpers.SiteCulture,
+        //                    SiteHelpers.SiteName).FirstOrDefault();
 
-            //return "I'm a sermon!";
-            return View("_CrossSellItem", series);
-        }
+        //    //return "I'm a sermon!";
+        //    return View("_CrossSellItem", series);
+        //}
     }
 }
