@@ -33,7 +33,7 @@
             {
                 try
                 {
-                    Html.RenderAction("CrossSell", "Message", new { guid = cs.PageGUID, title = cs.Fields.ItemTitle, description = cs.Fields.ItemDescription });
+                    Html.RenderAction("CrossSell", "MediaIndividual", new { guid = cs.PageGUID, title = cs.Fields.ItemTitle, description = cs.Fields.ItemDescription });
                 }
                 catch { }
             }
@@ -41,7 +41,7 @@
             {
                 try
                 {
-                    Html.RenderAction("CrossSell", "MessageSeries", new { guid = cs.PageGUID, title = cs.Fields.ItemTitle, description = cs.Fields.ItemDescription });
+                    Html.RenderAction("CrossSell", "MediaSeries", new { guid = cs.PageGUID, title = cs.Fields.ItemTitle, description = cs.Fields.ItemDescription });
                 }
                 catch { }
             }
