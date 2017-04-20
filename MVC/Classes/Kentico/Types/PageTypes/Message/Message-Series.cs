@@ -70,7 +70,7 @@ namespace CMS.DocumentEngine.Types
             {
                 return new
                 {
-                    controller = "MessageSeries",
+                    controller = "MediaSeries",
                     action = "Index",
                     seriesTitle = NodeAlias
                 };
