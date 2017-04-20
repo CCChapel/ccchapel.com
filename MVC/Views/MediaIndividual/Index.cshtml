@@ -48,18 +48,24 @@
             </div><!-- /header-details__left --><!--
 
          --><div class="header-details__right [ grid__item one-third lap--one-half palm--hide mobile--hide ]">
-                <div class="flex-section one-whole center-vertically">
-                        <div>Download: </div>
+                <div class="">
+                        <div class="section-subtitle">Download</div>
                         @{
                             //Audio Download
                             if (!string.IsNullOrWhiteSpace(Model.DownloadUrlAudio))
                             {
-                                <div>
+                                @*<div>
                                     <a class="red" href="@Model.DownloadUrlAudio" title="Download Audio" download>
                                         <span class="fa-stack fa-2x">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-volume-up fa-stack-1x fa-inverse"></i>
                                         </span>
+                                    </a>
+                                </div>*@
+
+                                <div class="add-bottom-margin">
+                                    <a class="cta" href="@Model.DownloadUrlAudio" title="Download Audio" download>
+                                        <i class="fa fa-volume-up fa-inverse fa-2x"></i> &nbsp;Audio (MP3)
                                     </a>
                                 </div>
                             }
@@ -69,12 +75,18 @@
                             //Video Download
                             if (!string.IsNullOrWhiteSpace(Model.DownloadUrlVideo))
                             {
-                                <div>
+                                @*<div>
                                     <a class="red" href="@Model.DownloadUrlVideo" title="Download Video" download>
                                         <span class="fa-stack fa-2x">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
                                         </span>
+                                    </a>
+                                </div>*@
+
+                                <div class="add-bottom-margin">
+                                    <a class="cta" href="@Model.DownloadUrlVideo" title="Download Video" download>
+                                        <i class="fa fa-video-camera fa-inverse fa-2x"></i> &nbsp;Video (MP4)
                                     </a>
                                 </div>
                             }
@@ -84,12 +96,18 @@
                             //Transcript Download
                             if (Model.MessageTranscript != default(Guid))
                             {
-                                <div>
+                                @*<div>
                                     <a class="red" href="@Url.Kentico().Attachment(Model.Fields.MessageTranscript)" title="Download Transcript" download>
                                         <span class="fa-stack fa-2x">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i>
                                         </span>
+                                    </a>
+                                </div>*@
+
+                                <div>
+                                    <a class="cta" href="@Url.Kentico().Attachment(Model.Fields.MessageTranscript)" title="Download Transcript" download>
+                                        <i class="fa fa-file-text-o fa-inverse fa-2x"></i> &nbsp;Transcript (PDF)
                                     </a>
                                 </div>
                             }
