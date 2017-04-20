@@ -110,11 +110,11 @@
                         
             <div class="[ grid__item two-thirds palm--one-whole ] add-bottom-margin">
                 <div class="header-details__copy">
-                    @Html.Raw(Model.MessageDescription)
-                                
                     <div class="header-details__social center-vertically grid">
                         @{ Html.RenderPartial("_SocialSharing"); }
                     </div>
+
+                    @Html.Raw(Model.MessageDescription)
                 </div>
             </div><!--
                      
