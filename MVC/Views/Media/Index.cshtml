@@ -44,7 +44,7 @@
                     //Get Linked Page Type
                     if (s.ClassName == Series.CLASS_NAME)
                     {
-                        Html.RenderAction("CrossSell", "MessageSeries", new { guid = s.NodeGUID, title = s.Fields.Title, description = "" });
+                        Html.RenderAction("CrossSell", "MediaSeries", new { guid = s.NodeGUID, title = s.Fields.Title, description = "" });
                     }
                 }
             }
@@ -70,7 +70,7 @@
                            //Get Linked Page Type
                            if (s.ClassName == Sermon.CLASS_NAME)
                            {
-                               Html.RenderAction("CrossSell", "Message", new { guid = s.NodeGUID, title = s.Fields.MessageTitle, description = "" });
+                               Html.RenderAction("CrossSell", "MediaIndividual", new { guid = s.NodeGUID, title = s.Fields.MessageTitle, description = "" });
                            }
                        }
                    }
@@ -93,7 +93,7 @@
                        //Get Linked Page Type
                        if (s.ClassName == Sermon.CLASS_NAME)
                        {
-                           Html.RenderAction("CrossSell", "Message", new { guid = s.NodeGUID, title = s.Fields.MessageTitle, description = "" });
+                           Html.RenderAction("CrossSell", "MediaIndividual", new { guid = s.NodeGUID, title = s.Fields.MessageTitle, description = "" });
                        }
                    }
                }
