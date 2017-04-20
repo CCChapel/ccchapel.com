@@ -139,7 +139,7 @@ namespace CMS.DocumentEngine.Types
             {
                 return new
                 {
-                    controller = "Message",
+                    controller = "MediaIndividual",
                     action = "Index",
                     seriesTitle = MessageSeries.NodeAlias,
                     year = MessageDate.Year.ToString("00"),
