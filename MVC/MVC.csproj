@@ -869,8 +869,9 @@
     <Content Include="Views\MediaSeries\_Metadata.cshtml" />
     <Content Include="Views\MediaSeries\_SeriesTable.cshtml" />
     <Content Include="Views\MediaIndividual\_CrossSellItem.cshtml" />
-    <Content Include="Views\MediaIndividual\_Metadata.cshtml" />
     <Content Include="Views\MediaIndividual\Index.cshtml" />
+    <None Include="Views\Jobs\_Metadata.cshtml.exclude" />
+    <Content Include="Views\MediaIndividual\_Metadata.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
