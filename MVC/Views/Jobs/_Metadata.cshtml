@@ -1,0 +1,15 @@
+﻿@using CCC.Helpers
+
+@if (Model is CMS.DocumentEngine.Types.JobListing)
+{
+    Html.RenderPartial("_Metadata-JobListing");
+}
+else if (Model is CMS.DocumentEngine.Types.Page)
+{
+    Html.RenderPartial("~/Views/Page/_Metadata");
+}
+else
+{
+
+}
+

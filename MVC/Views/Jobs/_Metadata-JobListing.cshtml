@@ -1,0 +1,31 @@
+﻿@using CCC.Helpers
+@model CMS.DocumentEngine.Types.JobListing
+
+<!-- Facebook Metadata-->
+<meta property="og:url" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Model.RouteUrl))" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Join our team!" />
+<meta property="og:description" content="You could be our next @Model.Fields.JobTitle." />
+@*<meta property="og:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(Model.SocialImageFile)))" />*@
+<meta property="og:site_name" content="Christ Community Chapel">
+<meta property="fb:admins" content="23307166" />
+<meta property="fb:app_id" content="147696575258574" />
+
+<!-- Twitter Metadata-->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@("@ccchapel")">
+<meta name="twitter:title" content="Join our team!">
+<meta name="twitter:description" content="You could be our next @Model.Fields.JobTitle.">
+@*<meta name="twitter:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, Url.Kentico().Attachment(Model.SocialImageFile)))">*@
+
+<meta name="twitter:app:id:iphone" content="653157512">
+<meta name="twitter:app:id:ipad" content="653157512">
+<meta name="twitter:app:id:googleplay" content="com.subsplash.thechurchapp.ccchapel">
+<meta name="twitter:app:url:iphone" content="subsplash://detail">
+<meta name="twitter:app:url:ipad" content="subsplash://detail">
+<meta name="twitter:app:url:googleplay" content="subsplash://detail">
+
+<!-- iOS Metadata-->
+<meta property="al:ios:url" content="subsplash://detail">
+<meta property="al:ios:app_store_id" content="653157512">
+<meta property="al:ios:app_name" content="CCChapel">
