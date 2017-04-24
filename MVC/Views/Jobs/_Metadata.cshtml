@@ -4,12 +4,35 @@
 {
     Html.RenderPartial("_Metadata-JobListing");
 }
-else if (Model is CMS.DocumentEngine.Types.Page)
-{
-    Html.RenderPartial("~/Views/Page/_Metadata");
-}
 else
 {
+    <!-- Facebook Metadata-->
+    <meta property="og:url" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, "employment"))" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Jobs & Internships" />
+    <meta property="og:description" content="Opportunities to join our staff in helping people know, grow & serve." />
+    <meta property="og:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, "getattachment/611222ae-c26e-4584-81f8-8d2c22c5d72a/ccc_youtube.jpg"))" />
+    <meta property="og:site_name" content="Christ Community Chapel">
+    <meta property="fb:admins" content="23307166" />
+    <meta property="fb:app_id" content="147696575258574" />
 
+    <!-- Twitter Metadata-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@("@ccchapel")">
+    <meta name="twitter:title" content="Jobs & Internships">
+    <meta name="twitter:description" content="Opportunities to join our staff in helping people know, grow & serve.">
+    <meta name="twitter:image" content="@Html.Raw(string.Format("{0}{1}", SiteHelpers.DomainName, "getattachment/611222ae-c26e-4584-81f8-8d2c22c5d72a/ccc_youtube.jpg"))">
+
+    <meta name="twitter:app:id:iphone" content="653157512">
+    <meta name="twitter:app:id:ipad" content="653157512">
+    <meta name="twitter:app:id:googleplay" content="com.subsplash.thechurchapp.ccchapel">
+    <meta name="twitter:app:url:iphone" content="subsplash://detail">
+    <meta name="twitter:app:url:ipad" content="subsplash://detail">
+    <meta name="twitter:app:url:googleplay" content="subsplash://detail">
+
+    <!-- iOS Metadata-->
+    <meta property="al:ios:url" content="subsplash://detail">
+    <meta property="al:ios:app_store_id" content="653157512">
+    <meta property="al:ios:app_name" content="CCChapel">
 }
 
