@@ -172,7 +172,15 @@
 
                     controller = "Message";
                     guid = page.NodeGUID.ToString();
-                    title = String.Format("{0} - {1}", page.MessageSeries.SeriesTitle, page.Fields.MessageTitle);
+
+                    if (page.MessageSeries.SeriesTitle == page.Fields.MessageTitle)
+                    {
+                        title = page.Fields.MessageTitle;
+                    }
+                    else
+                    {
+                        title = string.Format("{0} - {1}", page.MessageSeries.SeriesTitle, page.Fields.MessageTitle);
+                    }
                     description = page.MessageDate.ToShortDateString();
                 }
             }
