@@ -33,6 +33,12 @@
     margin-bottom: 0 !important;
 }
 
+.palm--no-right-margin {
+    @include grid-media-query("palm") {
+        margin-right: 0 !important;
+    }
+}
+
 //**************************************************
 // VERTICAL PADDING
 //**************************************************/

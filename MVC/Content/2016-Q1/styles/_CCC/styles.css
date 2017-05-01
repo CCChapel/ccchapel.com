@@ -2210,6 +2210,10 @@ body {
 .no-bottom-margin {
   margin-bottom: 0 !important; }
 
+@media only screen and (max-width: 480px) {
+  .palm--no-right-margin {
+    margin-right: 0 !important; } }
+
 .add-vertical-padding--top {
   margin-top: 72px; }
 
@@ -2495,6 +2499,19 @@ body {
     -moz-align-items: center;
     align-items: center;
     width: auto; }
+    @media only screen and (max-width: 480px) {
+      .flex-section.inline.palm--no-inline {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        -webkit-align-items: stretch;
+        -moz-align-items: stretch;
+        align-items: stretch;
+        width: 100%; } }
   .flex-section.use-gutter > * {
     margin-right: 24px; }
     .flex-section.use-gutter > *:last-child {

@@ -61,6 +61,15 @@
         @include align-items(center);
 
         width: auto;
+
+        &.palm--no-inline {
+            @include grid-media-query("palm") {
+                @include flexbox; 
+                @include align-items(stretch); 
+
+                width: 100%;
+            }
+        }
     }
 
     &.use-gutter > * {
